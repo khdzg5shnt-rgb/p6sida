@@ -1,0 +1,497 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=28mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{2pt}
+\setlist[enumerate]{label=\textup{(\roman*)},leftmargin=2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\A}{\mathcal A}
+\newcommand{\U}{\mathcal U}
+\newcommand{\T}{\mathcal T}
+\newcommand{\hinv}{h_{\mathrm{inv}}}
+\newcommand{\hout}{h_{\mathrm{out}}}
+\newcommand{\htrack}{h_{\mathrm{inv}}^+}
+\newcommand{\rinv}{r_{\mathrm{inv}}}
+\newcommand{\h}{h_{\mathrm{top}}}
+\title{What the feasible lift does not determine}
+\author{}
+\date{P6 research note, 2 October 2026}
+\begin{document}
+\maketitle
+
+The cone construction in P6 separates the information needed for viability
+from the complexity of feasible state trajectories. Here we keep the input
+alphabet fixed and compare entire feasible lifts. Their dynamics, input
+factors, and state-trajectory factors can be conjugate while all three
+control entropy rates vary. A scalar example then tests the common-input
+chaos question on an actual control set.
+
+\section{Definitions}
+
+Let $X$ be a metric space, $U$ a compact input space, and
+$f:X\times U\to X$ continuous. Inputs are arbitrary sequences
+$u\in\U=U^{\mathbb N_0}$. Write $\varphi(k,x,u)$ for the forward solution.
+A compact set $Q$ is controlled invariant when each $x\in Q$ has an input
+that keeps its trajectory in $Q$ for all nonnegative times.
+For compact $K\subset Q$, $\rinv(n,K,Q)$ is the least number of inputs
+needed so that each $x\in K$ stays in $Q$ at times $0,\ldots,n$ under one
+of those inputs. Set
+\[
+ \begin{aligned}
+ \hinv(K,Q)&=\limsup_{n\to\infty}n^{-1}\log\rinv(n,K,Q),\\
+ \hout(K,Q)&=\lim_{\varepsilon\downarrow0}\limsup_{n\to\infty}
+       n^{-1}\log\rinv(n,K,Q^\varepsilon),
+ \end{aligned}
+\]
+where $Q^\varepsilon=\{x:d(x,Q)<\varepsilon\}$ uses the ambient metric.
+All logarithms are natural.
+
+A tracking catalogue is a finite family $(a_i,u^i)$ whose reference
+trajectories remain in $Q$ forever, such that each $x\in K$ satisfies
+\[
+ \max_{0\leq k\leq n}d(\varphi(k,x,u^i),\varphi(k,a_i,u^i))<\varepsilon
+\]
+for one member of the family. Its least size is
+$\rinv^+(n,\varepsilon,K,Q)$, and $\htrack(K,Q)$ takes the same ordered
+limits as $\hout$, using this count. In particular $\hout\leq\htrack$.
+Tracking does not require the actual trajectory to be feasible.
+
+The entire feasible lift and its input factor are
+\[
+ \Lambda_Q=\{(u,x):\varphi(k,x,u)\in Q\text{ for all }k\geq0\},\qquad
+ F(u,x)=(\sigma u,f(x,u_0)),\qquad \pi(u,x)=u.
+\]
+Let $e:\Lambda_Q\to\T_Q$ send a lift point to its entire state trajectory,
+and let $S$ be the left shift on $\T_Q\subset Q^{\mathbb N_0}$.
+These are compact systems and $eF=Se$.
+The uniform input-fiber entropy is
+\[
+ h_{\rm fib}(F\mid\pi)=\lim_{\varepsilon\downarrow0}\limsup_{n\to\infty}
+ \frac1n\log\sup_{u\in\pi(\Lambda_Q)}s_n(F,\varepsilon,\pi^{-1}(u)),
+\]
+where $s_n$ is the separated-set count for the restricted Bowen metric.
+
+\section{One alphabet, conjugate lifts, and varying rates}
+
+Fix an integer $m\geq2$ and the labelled input alphabet
+$\A_m=\{0,\ldots,m-1\}$. Let $1<q\leq m$, and put
+\[
+ v_j(q)=q-1-\frac{2(q-1)j}{m-1}\qquad(j\in\A_m).
+\]
+Thus the labels are fixed, although their controlled maps depend on $q$.
+Let $R:\mathbb R\to\mathbb R$ be an increasing smooth diffeomorphism with
+$R(0)=0$ and $0<R(s)<s$ for $0<s\leq1$. Write $\rho=R'(0)$ and define
+\[
+ \begin{gathered}
+ t(s)=\begin{cases}R(s)/s,&s\ne0,\\ \rho,&s=0,\end{cases}\qquad
+ f_j(s,z)=\bigl(R(s),t(s)(qz+sv_j(q))\bigr),\\
+ Q=\{(s,z):0\leq s\leq1,\ |z|\leq s\}.
+ \end{gathered}
+\]
+The function $t$ is smooth and positive, since
+$t(s)=\int_0^1R'(\theta s)\,d\theta$.
+
+\begin{theorem}\label{thm:realization}
+For every $m\geq2$ and every ordered pair
+\[
+ 0<a\leq\log m,\qquad 0\leq b\leq a,
+\]
+there is a system in this family for which each controlled map is a global
+smooth diffeomorphism, $Q$ is controlled invariant, and every compact
+$K\subset Q$ of positive area satisfies
+\[
+ \hinv(K,Q)=a,\qquad \hout(K,Q)=\htrack(K,Q)=b.
+\]
+The exact logarithmic counts have an actual time limit. The outer and
+tracking logarithmic counts have an actual time limit at each fixed
+$\varepsilon>0$.
+
+For fixed $m$, all the resulting feasible lifts are conjugate over the
+same full input shift. Their state-trajectory factors are also conjugate,
+and these conjugacies commute with the trajectory maps $e$. In all cases
+\[
+ \h(F)=\log m,\qquad h_{\rm fib}(F\mid\pi)=0,\qquad \h(S)=0.
+\]
+Viewed as measures on the common ambient space
+$\A_m^{\mathbb N_0}\times Q$, their invariant probability measures are
+exactly $\nu\times\delta_{(0,0)}$, where $\nu$ is shift invariant.
+Every such measure has zero conditional Kolmogorov--Sinai entropy over
+the input factor.
+\end{theorem}
+
+The following interval observation gives the exact upper bound without
+an interior viability margin.
+
+\begin{lemma}\label{lem:intervals}
+If a finite collection of closed intervals of length $\ell>0$, all
+contained in a closed interval of length $L$, covers that interval, a
+subcollection of size at most
+$2L/\ell+2$ still covers it.
+\end{lemma}
+\begin{proof}
+Take a subcover minimal by inclusion, delete duplicate intervals, and
+order the remaining left endpoints $a_1<\cdots<a_N$.
+Consecutive intervals meet; otherwise there would be a gap in the
+covered interval. If $a_{i+2}\leq a_i+\ell$, the union of intervals $i$
+and $i+2$ contains interval $i+1$, contradicting minimality. Thus
+$a_{i+2}>a_i+\ell$ whenever these indices occur.
+The left endpoints lie in a range of length at most $L-\ell$.
+In each parity, successive left endpoints are more than $\ell$ apart,
+so each parity has at most $L/\ell+1$ members. Adding the two bounds
+proves the assertion.
+\end{proof}
+
+\begin{lemma}\label{lem:radial}
+The iterates $R^n$ converge uniformly to zero on $[0,1]$ and form an
+equicontinuous family there. For each $0<\eta<\rho$ there is $C_\eta$ such
+that
+\[
+ R^n(s)/s\leq C_\eta(\rho+\eta)^n\quad(0<s\leq1).
+\]
+For every $s_0>0$ there is $c_{\eta,s_0}>0$ such that
+\[
+ R^n(s)/s\geq c_{\eta,s_0}(\rho-\eta)^n\quad(s_0\leq s\leq1).
+\]
+\end{lemma}
+\begin{proof}
+The decreasing sequence $R^n(1)$ has a fixed-point limit. The assumptions
+force that limit to be zero, and monotonicity bounds all other iterates
+by it. Near zero, $R(s)/s$ lies between $\rho-\eta$ and $\rho+\eta$.
+All trajectories enter this neighborhood after one uniform finite time.
+Apply these bounds to
+$R^n(s)/s=\prod_{k<n}R(R^k(s))/R^k(s)$ and absorb the finitely many earlier
+products into constants. Their upper bound is uniform down to $s=0$;
+their lower bound is positive on $[s_0,1]$.
+For equicontinuity, sufficiently late iterates have uniformly small range,
+and the finitely many earlier iterates are uniformly continuous.
+\end{proof}
+
+\begin{proof}[Proof of the entropy formulas in \cref{thm:realization}]
+The inverse of $f_j$ is given by
+\[
+ s=R^{-1}(s'),\qquad z=q^{-1}\bigl(z'/t(s)-sv_j(q)\bigr).
+\]
+It is smooth and globally defined. At positive radius write $z=sy$.
+Then $s_k=R^k(s)$ and the normalized state obeys
+$y_{k+1}=qy_k+v_{u_k}(q)$.
+
+Let $B=[-1,1]$ and $\psi_j(y)=(y-v_j(q))/q$.
+Each interval $\psi_j(B)$ is contained in $B$. The two extreme intervals
+reach the endpoints of $B$, and consecutive left endpoints differ by
+$2(q-1)/(q(m-1))\leq2/q$, their common length. Hence these intervals
+cover $B$, proving viability.
+For a word $w$ of length $n$, its viable normalized initial set is exactly
+$\psi_{w_0}\cdots\psi_{w_{n-1}}(B)$. These intervals cover $B$ and have
+length $2q^{-n}$. Length gives the lower bound $q^n$ for a subcover;
+\cref{lem:intervals} gives the upper bound $2q^n+2$.
+The same word is viable on every radial slice with the corresponding
+normalized initial interval, and the slice $s=1$ gives the converse.
+Thus
+\begin{equation}\label{eq:exact-count}
+ q^n\leq\rinv(n,Q,Q)\leq2q^n+2.
+\end{equation}
+For a single word the viable vertical section at radius $s$ has length
+$2sq^{-n}$, so its total area in $Q$ is $q^{-n}$.
+Covering any positive-area $K$ requires at least $|K|q^n$ words, while
+\eqref{eq:exact-count} supplies an upper bound. Consequently
+$\lim_n n^{-1}\log\rinv(n,K,Q)=\log q$.
+
+Fix $\varepsilon>0$ and $0<\eta<\rho$, and put
+$\gamma=q(\rho+\eta)$. A grid in $B$ of at most
+$C_\delta\max\{1,\gamma^n\}$ centers ensures
+\[
+ \max_{0\leq k\leq n}\gamma^k|y-c|<\delta.
+\]
+Choose an infinite viable normalized input from each center $c$.
+Under that input the trajectories from $(s,sy)$ and $(s,sc)$ differ by
+$R^k(s)q^k(y-c)$ vertically, whose absolute value is at most
+$C_\eta\delta$. Choosing $\delta<\varepsilon/(2C_\eta)$ produces an
+outer catalogue with upper rate at most $\max\{0,\log\gamma\}$.
+
+For tracking, equicontinuity in \cref{lem:radial} supplies a finite radial
+net $T\subset[0,1]$, independent of $n$, so that each $s$ has $r\in T$
+with $\sup_k|R^k(s)-R^k(r)|<\varepsilon/(2\sqrt2)$.
+Use references $(r,rc)$ with the chosen viable inputs. If $c_k\in B$
+is the reference normalized state, the trajectory difference is
+\[
+ \bigl(s_k-r_k,(s_k-r_k)c_k+s_kq^k(y-c)\bigr).
+\]
+Its norm is less than $\varepsilon$, after decreasing $\delta$ if needed.
+The number of references is the grid size times $|T|$, giving the same
+upper rate. Letting $\eta\downarrow0$ proves both upper bounds
+$\max\{0,\log(\rho q)\}$.
+
+For the outer lower bound choose $s_0>0$ so that
+$K_0=K\cap\{s\geq s_0\}$ has positive area. At time $n$, a fixed input
+maps the initial vertical coordinate affinely with slope
+$q^nR^n(s)/s$. Outer-feasible final coordinates lie in the bounded vertical
+projection of $Q^\varepsilon$. By \cref{lem:radial}, a single input can
+therefore cover at most
+$C_{\varepsilon,\eta,s_0}[q(\rho-\eta)]^{-n}$ of the area of $K_0$.
+Fubini's theorem and the covering inequality give lower rate at least
+$\log(q(\rho-\eta))$. Nonnegativity and $\eta\downarrow0$ give
+$\max\{0,\log(\rho q)\}$. The inequality $\hout\leq\htrack$ gives the
+tracking lower bound as well. These arguments hold for each fixed
+$\varepsilon$, so the two time limits exist at that scale.
+
+Finally take $q=e^a$. If $b<a$, choose $R(s)=e^{b-a}s$; if $b=a$, choose
+$R(s)=\operatorname{arsinh}s$. Both are global smooth diffeomorphisms with
+the required radial decrease, and the formulas give exactly $(a,b)$.
+\end{proof}
+
+\begin{proof}[Proof of the lift and factor assertions]
+Let $\Sigma_m=\A_m^{\mathbb N_0}$ and set
+\[
+ Y_q(u)=-\sum_{k=0}^{\infty}\frac{v_{u_k}(q)}{q^{k+1}}.
+\]
+The series is uniformly convergent and $|Y_q(u)|\leq1$.
+Also $qY_q(u)+v_{u_0}(q)=Y_q(\sigma u)$.
+It follows that
+\[
+ H_{q,R}(u,s)=(u,(s,sY_q(u)))
+\]
+maps $\Sigma_m\times[0,1]$ into the feasible lift and intertwines $F$ with
+$\sigma\times R$. Conversely, a feasible positive-radius trajectory has
+bounded normalized states, and
+\[
+ y=-\sum_{k=0}^{n-1}\frac{v_{u_k}(q)}{q^{k+1}}+q^{-n}y_n
+       \longrightarrow Y_q(u).
+\]
+At zero radius the only state is the apex. Thus $H_{q,R}$ is onto the
+entire lift; its input and radial coordinates make it injective.
+Compactness gives a homeomorphism.
+
+Any two radial maps $R_1,R_2$ in this construction are conjugate on
+$[0,1]$. To see this, choose an increasing homeomorphism
+$h_0:[R_1(1),1]\to[R_2(1),1]$ and define
+\[
+ h(R_1^nt)=R_2^nh_0(t)\quad
+   (R_1(1)\leq t\leq1,\ n\geq0),\qquad h(0)=0.
+\]
+Adjacent definitions agree at endpoints. The shells cover $(0,1]$, and
+their images tend to zero, proving continuity at zero.
+The resulting increasing homeomorphism satisfies $hR_1=R_2h$.
+Hence
+$H_{q_2,R_2}(\mathrm{id}\times h)H_{q_1,R_1}^{-1}$ is an input-preserving
+conjugacy of the lifts.
+
+For the state-trajectory factor, let $C_m$ be the quotient of
+$\Sigma_m\times[0,1]$ obtained by collapsing $\Sigma_m\times\{0\}$ to one
+point. The trajectory corresponding to $(u,s)$ is
+\[
+ \bigl(R^k(s),R^k(s)Y_q(\sigma^ku)\bigr)_{k\geq0}.
+\]
+At positive radius this trajectory determines every input label: its
+successive normalized states determine $v_{u_k}(q)$, and the $v_j(q)$ are
+distinct. At zero radius all inputs give the same constant trajectory.
+These are exactly the identifications in $C_m$.
+The trajectory map therefore induces a homeomorphism $C_m\to\T_Q$.
+Under it, $S$ is the quotient of $\sigma\times R$.
+The map $\mathrm{id}\times h$ passes to the quotient, proving both the
+factor conjugacies and their commutation with $e$.
+
+All feasible states at time $n$ lie in $R^n(1)Q$, whose diameter is
+$2R^n(1)\to0$. The state-trajectory shift consequently converges
+uniformly to its constant apex trajectory and has zero entropy: at any
+fixed separation scale only finitely many initial iterates need to be
+covered. In an input fiber, the normalized trajectory is fixed and only
+the radial coordinate varies. Equicontinuity of $R^n$ bounds separated
+sets in every fiber uniformly in time and input, proving zero fiber
+entropy.
+In the product model $\sigma\times R$, equicontinuity supplies a finite
+radial cover valid for every iterate. Matching the first $n+\ell$ input
+symbols then bounds separated sets by $Cm^{n+\ell}$ at a fixed scale,
+with $C$ and $\ell$ independent of $n$. Uniform continuity of $H_{q,R}$
+transfers this bound to the lift. The apex subsystem is the full shift,
+so $\h(F)=\log m$.
+
+For an invariant measure, the nonnegative continuous function
+$s-R(s)$ has integral zero. It vanishes only at $s=0$ on $Q$, so the
+measure is supported at the apex. Conversely every shift-invariant
+$\nu$ gives $\nu\times\delta_{(0,0)}$.
+On this support $\pi$ is an isomorphism, giving conditional entropy zero.
+\end{proof}
+
+\begin{corollary}\label{cor:no-go}
+No functional invariant under isomorphism of the diagram
+$(\Lambda_Q,F,\pi,e,\T_Q,S)$ can recover any one of the three control
+entropies, already for $K=Q$, on all smooth finite-alphabet systems with compact convex
+controlled invariant constraints. Adding the invariant measures of the
+lift does not change this conclusion.
+\end{corollary}
+\begin{proof}
+For $m=2$, take $(a,b)=(\log2,\log2)$ and
+$(a,b)=(\log(3/2),\log(3/2))$ in \cref{thm:realization}.
+The diagrams are isomorphic and their families of invariant measures
+coincide, while each of the three control entropy values differs.
+\end{proof}
+
+The initial-state projection is additional data. Write
+$p_Q(u,x)=x$. For a length-$n$ input word $w$, let
+\[
+ V_w=p_Q\bigl(\Lambda_Q\cap\pi^{-1}([w])\bigr).
+\]
+Controlled invariance implies that $V_w$ is exactly the set of states
+whose finite trajectory under $w$ stays in $Q$: any such finite trajectory
+can be continued. Therefore $\rinv(n,K,Q)$ is the minimum number of sets
+$V_w$ covering $K$. The conjugacies above need not preserve these
+initial-state identifications when $q$ changes.
+
+There is a further distinction for ambient tolerances. With $q$ fixed,
+the radial conjugacy induces a state homeomorphism of the constraint,
+\[
+ (s,sy)\longmapsto(h(s),h(s)y).
+\]
+It preserves every feasible controlled transition, and hence every exact
+finite-horizon count on corresponding initial sets. Taking different
+$b$ at fixed $a$ nevertheless changes the outer and tracking rates.
+This homeomorphism is defined on $Q$; an ambient conjugacy of the
+controlled maps near $Q$ has not been asserted. Thus there is no conflict
+with invariance of control entropy under an ambient state equivalence.
+
+\section{Common inputs on a control set}
+
+\begin{proposition}\label{prop:control-set}
+Consider $f(x,v)=2x+v$ on $\mathbb R$, with $U=[-1,1]$.
+The interval $D=(-1,1)$ is a control set, and $Q=\overline D=[-1,1]$
+is compact and controlled invariant. Each interior point is locally
+accessible in both directions in one step; exact steering inside $D$
+is possible, uniformly in a common finite time on each compact
+subinterval of $D$. Every point of $D$ has a stationary feasible input.
+For every positive-length compact $K\subset Q$,
+\[
+ \hinv(K,Q)=\hout(K,Q)=\htrack(K,Q)=\log2.
+\]
+The entire feasible lift is surjective and its input projection is a
+homeomorphism to the full shift on $[-1,1]^{\mathbb N_0}$.
+Nevertheless no two distinct initial states are a common-input
+Li--Yorke pair, even without a feasibility requirement.
+\end{proposition}
+\begin{proof}
+For $x,y\in D$, choose $n$ large enough that
+$c=(2^nx-y)/(2^n-1)$ belongs to $D$ and apply the constant input $v=-c$.
+At intermediate times
+\[
+ x_k=c+2^k(x-c)
+     =x+\frac{2^k-1}{2^n-1}(y-x),\qquad 0\leq k\leq n.
+\]
+The states lie between $x$ and $y$, and $x_n=y$.
+For $|x|,|y|\leq r<1$, it suffices to choose
+$r(2^n+1)/(2^n-1)<1$, giving a common steering time.
+Taking $v=-x$ keeps $x$ fixed forever.
+The one-step forward and backward reachable intervals are
+$[2x-1,2x+1]$ and $[(x-1)/2,(x+1)/2]$; each contains a neighborhood of
+$x$ when $|x|<1$.
+
+To verify maximality of $D$, a state $x>1$ satisfies
+$x_k\geq1+2^k(x-1)$ under every input. At $x=1$, every forward state is
+at least $1$. Such states cannot approximate any interior point of $D$.
+The symmetric argument applies on the left, proving maximality among
+controlled invariant approximately controllable sets.
+
+The two inputs $v=\pm1$ give $2^n$ viable intervals of length $2^{1-n}$
+that cover $Q$. For any fixed input, the final state has slope $2^n$
+as a function of the initial state. Thus
+\[
+ |K|2^{n-1}\leq\rinv(n,K,Q)\leq2^n,
+ \qquad
+ \rinv(n,K,Q^\varepsilon)\geq\frac{|K|2^{n-1}}{1+\varepsilon}.
+\]
+These estimates give the exact and outer rates.
+For tracking, choose an initial grid with mesh smaller than
+$\varepsilon2^{-n}$ and use the stationary reference input $v=-c$ at
+each center $c$. The errors are $2^k|x-c|$, giving an upper rate $\log2$.
+The outer lower bound supplies the matching tracking rate.
+
+For each input $u$, its unique feasible initial state is
+$Y(u)=-\sum_{k\geq0}u_k/2^{k+1}$.
+The proof is the same bounded-state calculation used above.
+Consequently $u\mapsto(u,Y(u))$ conjugates the full input shift with the
+entire lift. It is surjective because the full input shift is.
+Every input fiber is a singleton, so all conditional state entropies
+over input vanish.
+Finally, for every common input,
+\[
+ |\varphi(n,x,u)-\varphi(n,y,u)|=2^n|x-y|.
+\]
+This precludes proximality whenever $x\ne y$.
+\end{proof}
+
+This example excludes a common-input implication based only on positive
+control entropy, controllability, accessibility, and existence of recurrent
+feasible controls. It does not impose recurrence on every feasible input,
+and it does not exclude scrambled trajectories under different inputs.
+It also excludes a conclusion required to hold for every feasible
+controller: the continuous feedback $\kappa(x)=-x$ induces the identity.
+
+For comparison, existence of a chaotic feedback can occur at zero control
+information cost. Take $f(x,v)=x/2+v$, $U=[-1,1]$, and $Q=[-2,2]$.
+Every input preserves $Q$, and one input spans it for every horizon, so
+$\hinv(Q,Q)=\hout(Q,Q)=\htrack(Q,Q)=0$.
+The last equality follows by using a finite initial grid and the common
+zero input, under which initial errors decrease.
+Every fixed-input map is a smooth diffeomorphism. Also $Q$ is a control
+set: the constant input $v=y/2$ makes a trajectory from any $x\in Q$
+converge to any prescribed $y\in Q$, while no point outside $Q$ can be
+approximated from an initial state in $Q$.
+
+Put $c=2/3$ and define $G:Q\to Q$ by $G(x)=x$ outside $[-c,c]$;
+on that interval take
+the continuous piecewise linear map through
+\[
+ (-c,-c),\quad(-c/3,c),\quad(c/3,-c),\quad(c,c).
+\]
+The feedback $\kappa(x)=G(x)-x/2$ is continuous and belongs to $[-1,1]$:
+inside the small interval its absolute value is at most $3c/2=1$, and
+outside it, within $Q$, it equals $x/2$.
+The outer two inverse branches on $[-c,c]$ are
+$(y-2c)/3$ and $(y+2c)/3$. Their images are disjoint, and their invariant
+Cantor set is conjugate to the full two-symbol shift. Hence the induced
+closed loop has an uncountable Li--Yorke scrambled set by the classical
+positive-entropy theorem \cite{BGKM}.
+This fixed continuous feedback gives one assignment for the entire set;
+there is no pair-dependent choice. The construction does not refute an
+existential implication from positive invariance entropy, but shows that
+such existence alone need not reflect a positive control information cost.
+
+\section{Relation to the existing entropy formulas}
+
+The missing initial-state and ambient data in \cref{cor:no-go} are
+essential. For hyperbolic control sets, Da Silva and Kawan use an unstable
+Jacobian cocycle in their entropy formula, even when the control flow is
+conjugate to the input shift \cite{DSK}. Kawan's current discrete-time
+preprint likewise combines unstable expansion with conditional state
+entropy \cite{Kawan}. Those formulas retain geometric information that
+the conjugacy diagram in \cref{cor:no-go} omits.
+The calculations here neither disprove these formulas nor supply a
+variational principle for general forward constraints.
+Their role in the P6 project is to identify what a proposed general
+principle or state-chaos implication must retain.
+
+\begin{thebibliography}{9}
+\bibitem{BGKM}
+F. Blanchard, E. Glasner, S. Kolyada, and A. Maass,
+On Li-Yorke pairs, \emph{Journal f\"ur die reine und angewandte Mathematik}
+\textbf{547} (2002), 51--68.
+\href{https://doi.org/10.1515/crll.2002.053}{doi:10.1515/crll.2002.053}.
+\bibitem{DSK}
+A. Da Silva and C. Kawan, Invariance entropy of hyperbolic control sets,
+\emph{Discrete and Continuous Dynamical Systems} \textbf{36} (2016),
+no.~1, 97--136.
+\href{https://doi.org/10.3934/dcds.2016.36.97}{doi:10.3934/dcds.2016.36.97}.
+\bibitem{Kawan}
+C. Kawan, \emph{Control of chaos with minimal information transfer},
+arXiv:2003.06935, version 5, 20 September 2026.
+\href{https://arxiv.org/abs/2003.06935v5}{Version 5};
+\href{https://doi.org/10.48550/arXiv.2003.06935}{arXiv DOI}.
+\end{thebibliography}
+\end{document}
