@@ -1,6 +1,6 @@
 # P6 当前状态
 
-截至 2026-10-03（Asia/Shanghai；UTC 2026-10-02）：R02 完成分离定理独立复核、关键文献对照与路线 A 裁决。目标保持 Annals / Inventiones / JAMS / Acta。
+截至 2026-10-03（Asia/Shanghai）：R03 推进原件获取及 WHS2019 定义接口，尚未完成全面文献覆盖裁决。R02 的独立复核和暂停理由保留。目标保持 Annals / Inventiones / JAMS / Acta。
 
 原稿原样在 `original/`，SHA-256 `47aa42836d78fa281d1ef18e1fbb20d5d311eeab0959077f775542b61249b869`。R01 的 14 项审查和全部文件保留；R02 没有重做全部原稿审查。文献和首创性未全面认证。
 
@@ -8,4 +8,6 @@
 
 裁决：核心几何 / 内部复杂度分离及压力对偶已有研究覆盖，具体 R01 族的首创性仍未认证。目前零条路线通过四大价值评估，**暂停路线 A 证明扩展与整篇扩写**；没有降低目标或否定原稿。
 
-剩余缺口：WHS2019 全文仍未取得；NWH2022 已读实际正文片段，完整原件及全部证明仍未取得。新版 Kawan v5 的相关假设 / 主下界已对照，完整版本差异未审完。下一入口以新增完整原件为条件，见 [`research/R02/NEXT_COMMAND.md`](research/R02/NEXT_COMMAND.md)；无新证据不重复检索。完整裁决和推导在 [`research/R02/REPORT.md`](research/R02/REPORT.md)、[`MATHEMATICS.md`](research/R02/MATHEMATICS.md)。只操作本仓库，原稿不变、历史保留、不投稿、不联系他人。
+新证据：用户已提供 WHS2019 的 24 页期刊原件，题名 / DOI / 哈希核对通过，关键测度类别、分划、共轭和 clopen 条件已补核。R03 独立证明二进制模型的面积概率 WHS 两种熵均为 `log 2`，锥顶概率均为零；按已有定义的应用处理，不增加四大价值评价。完整推导见 [`research/R03/MATHEMATICS.md`](research/R03/MATHEMATICS.md)。
+
+剩余缺口：NWH2022 的 arXiv 官方 API 精确题名与作者查询未命中，未找到可验证公开全文；仍只读实际正文片段，不能声称不存在预印本或排除覆盖。WHS2019 全部证明和其他版本差异尚未审完。公开全文获取由助手自行执行，无需用户先找齐两篇才能核验已到位的原件。下一入口见 [`research/R03/NEXT_COMMAND.md`](research/R03/NEXT_COMMAND.md)，本次范围见 [`REPORT.md`](research/R03/REPORT.md)；原稿和 R01–R02 历史不变，只操作本仓库、不投稿、不联系他人。
