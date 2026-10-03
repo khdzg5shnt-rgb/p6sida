@@ -6,10 +6,14 @@ Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathe
 
 - [`CURRENT.md`](CURRENT.md)：最新裁决与下一入口。
 - [`original/`](original/)：未经改动的原稿、SHA-256 与归档说明。
+- [`research/R07/REPORT.md`](research/R07/REPORT.md)：指定横向扩张系统的精确成本率、与 R06 的机制差别及有限贡献判断。
+- [`research/R07/MATHEMATICS.md`](research/R07/MATHEMATICS.md)：临界前缀见证、任意近似控制下界、快尾部上界与完整匹配极限。
+- [`research/R07/SOURCES.md`](research/R07/SOURCES.md)：经典循环移位原文与控制增长/精度文献的直接覆盖边界。
+- [`research/R07/NEXT_COMMAND.md`](research/R07/NEXT_COMMAND.md)：指定问题已解决；不自动 R08，下一入口为阶段主贡献裁决。
 - [`research/R06/REPORT.md`](research/R06/REPORT.md)：控制依赖收缩的结构结果、与 R05 的增量及有限发表价值提升。
 - [`research/R06/MATHEMATICS.md`](research/R06/MATHEMATICS.md)：真实目录与停止树比较、完整精度谱及近满面积初始集的严格成本分裂。
 - [`research/R06/SOURCES.md`](research/R06/SOURCES.md)：控制增长、稳定化精度与经典停止尺度方法的逐项覆盖比较。
-- [`research/R06/NEXT_COMMAND.md`](research/R06/NEXT_COMMAND.md)：R06 完成停点；核验后可明确授权的横向扩张分支问题，不自动 R07。
+- [`research/R06/NEXT_COMMAND.md`](research/R06/NEXT_COMMAND.md)：R06 历史停点；其明确扩张分支问题已由 R07 完成。
 - [`research/R05/REPORT.md`](research/R05/REPORT.md)：两个阶段候选的评估、新主定理、发表依据及具体缺口。
 - [`research/R05/MATHEMATICS.md`](research/R05/MATHEMATICS.md)：非线性锥体精度—时域成本律的完整假设、上下界及实际时间极限。
 - [`research/R05/SOURCES.md`](research/R05/SOURCES.md)：直接原文、正式身份/作者稿差异、APA / DOI 和实际阅读范围。
@@ -36,6 +40,6 @@ Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathe
 
 R03 两篇期刊原件已到位，NWH2022 的 31 页全文及 WHS2019 的相关证明已补核。新反例否定 NWH 原文在单向约束包含下的时变共轭等式；原文混用二进制对数和指数权重也使所写变分公式失效。统一为自然单位并允许熵为负无穷后，已有压力对偶方法仍可用，R01–R03 的自含计算不因此推翻。二进制锥体的面积概率 WHS 熵仍为 `ln 2`，锥顶概率仍为零。
 
-R04 的固定初始概率反例及经典分数覆盖结论保留。R05 完成共同径向非线性锥体的精度—时域成本律，R06 必要复核未发现须修正错误。R06 进一步证明：控制依赖收缩时，正面积甚至任意近满面积不再保证统一精度谱；含开集与某些大面积紧集可有严格不同成本，尽管 exact/outer 端点相同。新增的是实际近似控制的匹配界及初始集几何边界；类型计数、停止尺度和熵/收缩比仍是已有工具。阶段论文主线因此增强，但独立发表分量、全库首创性与具体刊档仍不确定。暂停整篇改写，不自动 R07；下一入口见 R06。原稿、R01–R05 及全部历史保留。
+R04 的固定初始概率反例及经典分数覆盖结论保留。R05 完成共同径向非线性锥体的精度—时域成本律；R06 证明控制依赖收缩时，正面积甚至任意近满面积不再保证统一精度谱。R07 进一步解决 `ρ_0=3/4,ρ_1=1/4,K=Q,δ_n=2^(−n)`：真实目录率为 `H(ln2/ln3)`，横向扩张没有带来指数级目录节省，新增下界来自临界前缀见证。循环移位、类型计数及停止尺度仍是经典工具；该扩张系统也不保留所有输入一致收敛。结果有限增强阶段主线，未认证独立成篇价值、全库优先权或具体刊档。指定问题已完成，暂停自动换参数和整篇改写，不自动 R08；下一入口见 R07。原稿、R01–R06 及全部历史保留。
 
 复现数学笔记 PDF：在安装 LaTeX 的环境执行 `latexmk -pdf -interaction=nonstopmode -halt-on-error research/R01/P6_R01_Mathematical_Note.tex`。原稿需单独编译，不覆盖。此仓库仅存 P6，不修改其他暂停项目。
