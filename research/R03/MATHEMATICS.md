@@ -1,5 +1,7 @@
 # WHS2019 entropy in the binary cone
 
+Completion note, 3 October 2026: the complete NWH2022 original is now available. The calculation below is retained unchanged. The new normalization audit, time-variant conjugacy counterexample, and corrected pressure-duality verification are in [FULLTEXT_AUDIT.md](FULLTEXT_AUDIT.md). All values below use natural logarithms; they are not a certification of NWH's mixed printed discrete-time units.
+
 3 October 2026. This is an application of Definitions 4.1 and 4.3 of Wang–Huang–Sun (2019), checked in the supplied journal original. It is not claimed as a new variational principle. All logarithms are natural.
 
 ## Definitions and model
