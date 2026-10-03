@@ -1,0 +1,1045 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Precision-dependent invariance costs and the geometry of initial sets},
+ pdfsubject={Finite-horizon control catalogues with vanishing constraint tolerance},
+ pdfkeywords={invariance entropy, precision, control, contraction, initial sets}}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\area}{\operatorname{area}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\pos}[1]{\left(#1\right)_{+}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+\setlist[enumerate]{label=\textup{(\roman*)},leftmargin=*}
+\title{Precision-dependent invariance costs\\and the geometry of initial sets}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study the number of open-loop controls required to keep every actual initial
+state near a constraint set when the tolerance decreases with the time horizon.
+For a planar linear family whose feasible branches have different contraction
+rates, we determine the cost for every compact initial set with interior.
+We also construct compact initial sets with area arbitrarily close to that of
+the constraint and a strictly smaller cost, although their exact and outer invariance rates
+are unchanged. The lower bounds apply to arbitrary approximate controls,
+including trajectories that leave the constraint set. A separate theorem for
+common radial dynamics gives one precision law for all positive-area compact
+initial sets, allowing nonlinear transverse terms. Finally, a fixed example
+with an expanding branch is resolved by cyclically selected symbolic witnesses.
+The results distinguish the geometry of actual controlled feasibility from
+the classical symbolic counting used to evaluate its cost.
+\end{abstract}
+
+\noindent\textbf{Keywords.} Invariance entropy; finite-horizon control;
+vanishing tolerance; contraction; initial-set geometry.
+
+\section{Introduction}
+
+Invariance entropy counts the controls needed to preserve a state constraint.
+Its exact version requires membership in the constraint set at every time,
+whereas its outer version first fixes a positive tolerance and then lets the
+time horizon increase. These two requirements can have different asymptotic
+costs. A joint limit, in which the tolerance decreases as the horizon grows,
+asks a more quantitative question: how much of the exact feasibility
+information remains necessary at a specified ambient resolution?
+
+We answer this question for two classes of planar controlled systems. The
+main result concerns two linear maps preserving a forward cone by an
+appropriate choice of input. Both maps are contractions in a common norm,
+but their contraction factors differ. For every compact initial set with
+interior, the cost is determined by the largest symbolic entropy attainable
+before contraction reaches the prescribed tolerance. In the same system,
+compact initial sets with area arbitrarily close to that of the whole cone
+can have a strictly smaller cost. Their exact invariance rate is nevertheless
+the same, and their ordinary outer rate is still zero. Thus nearly full area
+does not determine the joint precision--horizon cost.
+
+The distinction is between worst-case feasible contraction along all symbolic
+prefixes and the uniform typical contraction on a large compact subset.
+Neither symbolic calculation alone gives a lower bound for the control
+problem: an approximate control need not follow the exactly feasible branch.
+We therefore estimate the actual states that an arbitrary control can cover
+after its first incorrect branch choice. For initial sets with interior,
+one control covers only linearly many witnesses from an appropriate stopped
+tree. For large compact sets of uniformly typical points, the same first
+deviation gives a sectional measure bound. These are the steps that connect
+classical counting to the ambient constrained dynamics.
+
+For comparison, we prove a different theorem with common radial dynamics and
+a strict inward control margin. It allows nonlinear transverse terms and
+gives the same cost for every positive-area compact initial set. Its
+assumptions are not contained in those of the binary linear family, or
+conversely. The comparison identifies two distinct mechanisms without
+claiming a general dichotomy. A final example with one expanding branch
+shows how to recover a matching lower bound when the stopped-interval
+argument no longer applies.
+
+\subsection*{Relation to previous work}
+
+The control-catalogue formulation and the distinction between exact and
+outer invariance are standard; see Kawan~\cite{Kawan2013}, especially
+Sections 2.1 and 3.2. Volume growth and control selection already enter
+invariance-entropy estimates. For hyperbolic control sets, Da Silva and
+Kawan~\cite{DSK2016} express the cost through unstable volume growth under
+their control-set hypotheses. Our forward cone does not satisfy those
+hypotheses: a positive radial coordinate only decreases, so states cannot
+approximately reach larger radii within the cone. We do not obtain a new
+formula for hyperbolic control sets.
+
+Precision requirements also occur in entropy for exponential stabilization
+\cite{Colonius2012}, practical stabilization~\cite{CH2021}, and state
+estimation~\cite{LM2018}. In stabilization the bound is imposed relative to
+a target and changes with the current time. In state estimation it bounds
+the discrepancy from a reference trajectory. Here the initial state is
+never approximated: a selected control must keep its actual trajectory
+within one tolerance of a fixed set throughout the entire horizon. Only
+between horizons does that tolerance change. The results below concern
+this catalogue problem, not an encoder--decoder implementation theorem.
+
+Yao's preprint~\cite{Yao2026} gives a continuous-time construction with a
+Cantor matching constraint, positive exact cost and zero approximate cost.
+Its matching and fading estimates already show why late control
+disagreements may disappear at fixed ambient resolution. The mere
+separation of exact and outer rates is consequently not our contribution.
+Our main assertion is the explicit joint limit and its strict dependence
+on initial-set geometry in a positive-area planar constraint, including
+compact initial sets of nearly full area.
+
+The symbolic tools have a separate, established history. Stopping at a
+product scale and entropy-to-contraction ratios occur in self-similar
+geometry~\cite{Hutchinson1981}; the binomial estimates used here are
+elementary instances of the method of types~\cite{Csiszar1998}.
+Dimension constructions for control entropy were developed by Huang and
+Zhong~\cite{HZ2018}, and Bowen equations for invariance pressure on
+partitions by Yang et al.~\cite{YCYZ2025}. Measure-theoretic invariance
+entropy and variational principles are studied in
+\cite{WHS2019,NWH2022}. We do not claim a new dimension equation or pressure
+duality. In particular, partition-based pressure fixes an invariant
+partition, whereas our infimum runs over all actual controls satisfying
+an ambient tolerance. Proposition~\ref{prop:tree} supplies the
+comparison with symbolic covers in the contracting binary family;
+Section~\ref{sec:large} gives the separate estimate on nearly full-area
+sets. Neither comparison is assumed in the symbolic calculation.
+Likewise, the
+minimum-partial-sum rotation in the last example is a classical cyclic
+argument; see~\cite{DZ1990}.
+
+\section{The catalogue problem and the main result}\label{sec:main}
+
+Let $U$ be a finite alphabet and let $f_i:\R^2\to\R^2$, $i\in U$, be
+continuous maps. All sequences $u=(u_1,u_2,\ldots)\in U^{\N}$ are allowed.
+Put $\varphi(0,x,u)=x$ and
+$\varphi(k,x,u)=f_{u_k}\circ\cdots\circ f_{u_1}(x)$ for $k\ge1$.
+Throughout, the constraint and metric are
+\begin{equation}\label{eq:cone}
+ Q=\{(s,z):0\le s\le1,\ |z|\le s\},\qquad \dist=\dist_2.
+\end{equation}
+In particular, $\area(Q)=1$. Write
+$Q^\delta=\{x:\dist_2(x,Q)<\delta\}$.
+
+\begin{definition}\label{def:count}
+For compact nonempty $K\subset Q$, integer $n\ge1$, and $\delta>0$, let
+$r(n,\delta;K)$ be the least cardinality of a finite set
+$\mathcal C\subset U^{\N}$ such that
+\begin{equation}\label{eq:quantifiers}
+ \forall x\in K\quad\exists u\in\mathcal C\quad
+ \forall k\in\{0,\ldots,n\}:\quad \varphi(k,x,u)\in Q^\delta.
+\end{equation}
+Let $r_E(n;K)$ be the corresponding exact count with $Q^\delta$ replaced
+by $Q$. Set both counts equal to one at $n=0$, and set a count equal to
+$+\infty$ if no finite catalogue exists.
+The outer rate is
+\[
+ h_{\mathrm{out}}(K)=\lim_{\delta\downarrow0}\limsup_{n\to\infty}
+          \frac1n\ln r(n,\delta;K).
+\]
+All logarithms are natural. We evaluate the joint limit
+\begin{equation}\label{eq:precision}
+ \lim_{n\to\infty}\frac1n\ln r(n,\delta_n;K),\qquad
+ \delta_n>0,\quad\delta_n\to0,\quad
+ -\frac1n\ln\delta_n\to\gamma\in[0,\infty].
+\end{equation}
+No monotonicity of $\delta_n$ is assumed.
+\end{definition}
+
+Only the first $n$ input symbols affect a horizon $n$. There are $n+1$
+constrained states, including the actual initial state. A word meeting
+\eqref{eq:quantifiers} may leave $Q$; it need not agree with any particular
+exactly feasible coding.
+
+Our main family is
+\begin{equation}\label{eq:binary}
+ F_i(s,z)=(\rho_i s,\rho_i(2z+v_i s)),\qquad
+ v_0=1,\quad v_1=-1,\quad 0<\rho_0,\rho_1<\tfrac12.
+\end{equation}
+These are smooth linear diffeomorphisms. Define
+\begin{gather*}
+ \alpha=\ln2,\qquad c_i=-\ln\rho_i,\qquad
+ \bar c=(c_0+c_1)/2,\qquad c_{\min}=\min(c_0,c_1),\quad
+ c_{\max}=\max(c_0,c_1),\\
+ H(p)=-p\ln p-(1-p)\ln(1-p),\qquad
+ \chi(p)=pc_0+(1-p)c_1,\qquad 0\ln0=0,\\
+ \mathcal F(\gamma)=\max_{0\le p\le1}
+       H(p)\min\{1,\gamma/\chi(p)\},\qquad
+ \mathcal G(\gamma)=\alpha\min\{1,\gamma/\bar c\}.
+\end{gather*}
+At $\gamma=\infty$ the minima are interpreted as one.
+
+\begin{theorem}[Dependence on the initial set]\label{thm:main}
+For the family \eqref{eq:binary}, the following hold.
+\begin{enumerate}
+\item $Q$ is controlled invariant. Every trajectory from a bounded set
+converges to the origin uniformly over all input sequences. For every
+compact $K\subset Q$ with positive area,
+\[
+ \lim_{n\to\infty}\frac1n\ln r_E(n;K)=\alpha,
+ \qquad h_{\mathrm{out}}(K)=0.
+\]
+\item For every compact $K\subset Q$ with nonempty interior in $\R^2$,
+and every tolerance sequence satisfying \eqref{eq:precision},
+\begin{equation}\label{eq:interiorlaw}
+ \lim_{n\to\infty}\frac1n\ln r(n,\delta_n;K)=\mathcal F(\gamma).
+\end{equation}
+\item For every $\varepsilon\in(0,1)$ there is a compact
+$K_\varepsilon\subset Q$ with $\area(K_\varepsilon)>1-\varepsilon$
+such that, for every tolerance sequence satisfying \eqref{eq:precision},
+\begin{equation}\label{eq:largelaw}
+ \lim_{n\to\infty}\frac1n\ln r(n,\delta_n;K_\varepsilon)
+       =\mathcal G(\gamma).
+\end{equation}
+The same $K_\varepsilon$ works for all $\gamma$ and all such sequences.
+\item If $\rho_0\ne\rho_1$, then
+$\mathcal F(\gamma)>\mathcal G(\gamma)$ for
+$0<\gamma\le c_{\min}$.
+\end{enumerate}
+\end{theorem}
+
+This theorem does not classify arbitrary positive-area compact sets.
+The sets in part (iii) have empty interior. They show that even arbitrarily
+small loss of area can change the rate, while part (ii) ensures that every
+set containing an open subset retains the full rate.
+
+\begin{example}\label{ex:golden}
+Take $\rho_0=1/4$, $\rho_1=1/16$, and $\delta_n=2^{-n}$.
+Writing $\phi=(1+\sqrt5)/2$, Theorem~\ref{thm:main} gives
+\[
+ \mathcal F(\ln2)=\tfrac12\ln\phi
+       >\tfrac13\ln2=\mathcal G(\ln2).
+\]
+Both classes of initial sets have exact rate $\ln2$ and outer rate zero.
+The computation and the strict inequality are justified in
+Section~\ref{sec:gap}.
+\end{example}
+
+\section{Feasible words and arbitrary approximate controls}\label{sec:geometry}
+
+For a finite word $w=w_1\cdots w_k$, put
+\[
+ A_w=\prod_{j=1}^k\rho_{w_j},\qquad S(w)=-\ln A_w,
+ \qquad A_{\varnothing}=1.
+\]
+For $s>0$ use $y=z/s$ only as a calculation coordinate. Under $F_i$ the
+ratio becomes $2y+v_i$, and the radius after $w$ is $sA_w$. The inverse
+ratio branches
+\[
+ b_0(y)=(y-1)/2,\qquad b_1(y)=(y+1)/2
+\]
+map $[-1,1]$ onto its two halves. Thus
+\begin{equation}\label{eq:cylinders}
+ I_w=b_{w_1}\circ\cdots\circ b_{w_k}([-1,1]),\qquad |I_w|=2^{1-k},
+\end{equation}
+is precisely the set of ratios exactly feasible through the word $w$.
+The intervals at each depth cover $[-1,1]$ with disjoint interiors.
+Shared endpoints have no effect on any count or measure estimate below.
+This proves controlled invariance, including at the fixed origin.
+
+Choose $M\ge1$ so large that
+\begin{equation}\label{eq:common-norm}
+ L=\rho_{\max}(2+1/M)<1,\qquad
+ \norm{(s,z)}_M=\max\{M|s|,|z|\},\qquad
+ \rho_{\max}=\max_i\rho_i.
+\end{equation}
+Each $F_i$ has operator norm at most $L$ in this norm, and
+$\norm{x}_2\le\sqrt2\norm{x}_M$. This proves the uniform convergence
+claim in Theorem~\ref{thm:main}(i). A length-$n$ exact word covers a cone
+slice of area $\int_0^1s|I_w|\,ds=2^{-n}$. Consequently
+\begin{equation}\label{eq:exactbinary}
+ \area(K)2^n\le r_E(n;K)\le2^n
+\end{equation}
+for positive-area $K\subset Q$. For fixed $\delta>0$, choose a fixed $m$
+with $M\rho_{\max}^m<\delta/(2\sqrt2)$. Follow an exactly feasible prefix
+of length $m$ and append any fixed tail. Every later state has Euclidean
+norm less than $\delta/2$. The catalogue has at most $2^m$ elements for
+all $n\ge m$, proving the outer assertion.
+
+\subsection{Comparison with a stopped tree}
+
+For $0<t<1$, stop every binary path at the first word $w$ satisfying
+$A_w\le t$, or at depth $n$ if no earlier prefix meets this condition.
+Let $\mathcal L(n,t)$ be the complete prefix-free leaf set and
+$N(n,t)=|\mathcal L(n,t)|$. Write $w^-$ for the word obtained by deleting
+the last symbol of $w$. For every leaf,
+\begin{equation}\label{eq:leaf-scale}
+ A_{w^-}>t,\qquad A_w>\rho_{\min}t,\qquad
+ \rho_{\min}=\min_i\rho_i.
+\end{equation}
+A leaf of depth less than $n$ also has $A_w\le t$.
+
+\begin{proposition}[Actual controls versus stopped words]\label{prop:tree}
+There are constants $B,C_0>0$, depending only on the maps, such that
+for all $n\ge1$ and all sufficiently small $\delta>0$,
+\begin{equation}\label{eq:treecomparison}
+ \frac{N(n,\delta)}{1+Bn}\le r(n,\delta;Q)
+                \le N(n,\delta/C_0).
+\end{equation}
+If compact $K\subset Q$ has interior, there are a radius $s_*>0$ and a
+fixed word $a$ of length $d$ such that, for $n>d$ and sufficiently small
+$\delta$,
+\begin{equation}\label{eq:subtreecomparison}
+ \frac{N(n-d,\delta/(s_*A_a))}{1+Bn}
+       \le r(n,\delta;K)\le N(n,\delta/C_0).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Set $C_0=2\sqrt2M$. For each leaf of $\mathcal L(n,\delta/C_0)$,
+use that word followed by a fixed tail. A leaf reaching $n$ is exactly
+feasible for its cylinder throughout the horizon. At an earlier stopping
+time the endpoint has $M$-norm at most $M\delta/C_0$; by
+\eqref{eq:common-norm} its whole tail stays within Euclidean distance
+$\delta/2$ of the origin. This proves both upper bounds.
+
+For the lower bound fix $s_*\in(0,1]$, take $t=\delta/s_*<1$, and
+associate to each leaf its midpoint witness $(s_*,s_*y_w)$,
+where $y_w$ is the midpoint of $I_w$. A necessary condition for
+$(r,z)\in Q^\delta$ with $r\ge0$ is
+\begin{equation}\label{eq:euclideannecessary}
+ |z|<r+2\delta.
+\end{equation}
+Indeed a point $(r',z')\in Q$ within distance $\delta$ has
+$|r-r'|<\delta$ and $|z-z'|<\delta$.
+
+Consider any input word $u$ of length $n$ that covers some of these
+witnesses in the sense of \eqref{eq:quantifiers}. At most one leaf is a
+prefix of $u$. For any other covered witness let $j\le|w|$ be the first
+position where $w_j\ne u_j$, and put $a'=u_1\cdots u_{j-1}$.
+If $m_{a'}$ is the midpoint of $I_{a'}$, applying the wrong branch gives
+\[
+ |y_j|-1=2^j|y_w-m_{a'}|.
+\]
+Its actual radius is $s_*A_{a'}\rho_{u_j}$. Hence
+\eqref{eq:euclideannecessary} confines $y_w$ to the opposite child in a
+one-sided band of width at most
+\begin{equation}\label{eq:band}
+ b_j=\frac{2\delta}{s_*2^jA_{a'}\rho_{\min}}.
+\end{equation}
+Every leaf in that child has
+\begin{align}
+ |I_w|&=|I_{a'}|2^{-(|w|-|a'|)}
+       \ge |I_{a'}|\frac{A_w}{A_{a'}}
+       >\frac{2^{2-j}\rho_{\min}\delta}{s_*A_{a'}}=:\ell_j.
+       \label{eq:leaflength}
+\end{align}
+The first inequality uses $\rho_i<1/2$, and the last one uses
+\eqref{eq:leaf-scale}. Midpoints of disjoint-interior intervals of length
+at least $\ell_j$ are separated by at least $\ell_j$. Thus the band
+\eqref{eq:band} contains at most
+$1+b_j/\ell_j\le1+(2\rho_{\min}^2)^{-1}$ such midpoints.
+Summing over $j$ shows that one arbitrary control covers at most $1+Bn$
+witnesses. Taking $s_*=1$ proves \eqref{eq:treecomparison}.
+
+If $K$ has interior, a ball inside $K$ contains a fixed-radius segment
+$\{(s_*,s_*y):y\in I_a\}$ for some dyadic interval $I_a$.
+For $\delta/s_*<A_a$, the leaves below $a$ in
+$\mathcal L(n,\delta/s_*)$ are $a$ concatenated with
+$\mathcal L(n-d,\delta/(s_*A_a))$. Their witnesses lie in $K$.
+The preceding bound still applies if $u$ first disagrees within $a$.
+This proves \eqref{eq:subtreecomparison}.
+\end{proof}
+
+The lower bound uses an error at an intermediate time. It imposes no
+condition on the approximate trajectory after that time, and in particular
+does not presume that approximate controls follow the exact coding.
+
+\section{Counting stopped words}\label{sec:count}
+
+\begin{lemma}\label{lem:types}
+For integers $k\ge1$ and $0\le j\le k$,
+\[
+ \frac{e^{kH(j/k)}}{k+1}\le\binom{k}{j}\le e^{kH(j/k)}.
+\]
+\end{lemma}
+\begin{proof}
+For $0<j<k$, set $p=j/k$. The probability of $j$ successes in a
+binomial distribution with parameters $k,p$ is
+$\binom{k}{j}e^{-kH(p)}$. It is at most one and is a mode, as the ratios
+of adjacent probabilities show. A largest one of $k+1$ probabilities is
+at least $1/(k+1)$. The endpoint cases are immediate.
+\end{proof}
+
+\begin{proposition}\label{prop:stoppinglimit}
+If $t_n\to0$ and $-n^{-1}\ln t_n\to\gamma\in[0,\infty]$, then
+\[
+ \lim_{n\to\infty}\frac1n\ln N(n,t_n)=\mathcal F(\gamma).
+\]
+\end{proposition}
+\begin{proof}
+Put $T_n=-\ln t_n$. A word of length $k$ with $j$ zeros has cost
+$k\chi(j/k)$. An early leaf satisfies
+\[
+ T_n\le k\chi(j/k)<T_n+c_{\max};
+\]
+a terminal leaf of length $n$ satisfies $n\chi(j/n)<T_n+c_{\max}$.
+Suppose first that $0<\gamma<\infty$. There are at most $(n+1)^2$
+length--type pairs. Bound the number of leaves of each pair by
+Lemma~\ref{lem:types}, allowing all words of that type. Along a
+subsequence maximizing the exponential count, pass to limits
+$k/n\to a$ and $j/k\to p$. For early leaves $a\chi(p)=\gamma$, and
+the exponent is at most $aH(p)$. For terminal leaves $a=1$ and
+$\chi(p)\le\gamma$, so it is at most $H(p)$. Both are bounded by
+$\mathcal F(\gamma)$; the polynomial number of types does not change
+the exponential rate.
+
+Conversely fix $p\in[0,1]$ and
+$0<a<\min\{1,\gamma/\chi(p)\}$. Choose $k_n=\lfloor an\rfloor$
+and $j_n/k_n\to p$. All words of this type have cost less than $T_n$
+for large $n$. Costs are positive, so no prefix has stopped. Distinct
+words have disjoint descendant leaf sets, and therefore
+$N(n,t_n)\ge\binom{k_n}{j_n}$. Lemma~\ref{lem:types} gives a lower
+rate $aH(p)$. Increase $a$ to the indicated minimum and maximize over
+$p$.
+
+If $\gamma=0$, every path stops by depth
+$\lceil T_n/c_{\min}\rceil+1$, unless it reaches the earlier horizon.
+The number of leaves is bounded by $2^{\min(n,\lceil T_n/c_{\min}\rceil+1)}$,
+which has zero rate. If $\gamma=\infty$, eventually
+$T_n>nc_{\max}$, and every path reaches depth $n$; then $N(n,t_n)=2^n$.
+\end{proof}
+
+Fixed multiplicative changes in $t_n$ and fixed shifts of the horizon
+do not alter this limit. Proposition~\ref{prop:tree} now proves
+Theorem~\ref{thm:main}(ii).
+
+\section{Nearly full area with a smaller cost}\label{sec:large}
+
+\subsection{A compact set of uniformly typical ratios}
+
+For a non-dyadic $y\in(-1,1)$, let $i_1(y)i_2(y)\cdots$ be its unique
+feasible coding. Under normalized Lebesgue measure on $[-1,1]$ these
+digits are independent and uniformly distributed, since every
+length-$k$ cylinder has measure $2^{-k}$. Hence
+\begin{equation}\label{eq:typical}
+ \frac{S_k(y)}k:=\frac1k\sum_{j=1}^kc_{i_j(y)}\longrightarrow\bar c
+ \quad\text{for almost every }y.
+\end{equation}
+For completeness, the moment-generating function of the number of zeros,
+together with $\cosh t\le e^{t^2/2}$, gives a probability at most
+$2e^{-2k\eta^2}$ for a frequency deviation exceeding $\eta$.
+Borel--Cantelli for $\eta=1/m$, $m\ge1$, proves \eqref{eq:typical}.
+
+Egorov's theorem and inner regularity give compact sets
+$E\subset(-1,1)$, excluding all dyadic points, of measure as close to
+$2$ as desired, on which \eqref{eq:typical} is uniform. For every
+$\zeta>0$ there is $C_\zeta\ge1$ such that
+\begin{equation}\label{eq:uniformtypical}
+ C_\zeta^{-1}e^{-(\bar c+\zeta)k}
+ \le A_k(y)\le C_\zeta e^{-(\bar c-\zeta)k}
+ \quad(y\in E,\ k\ge0).
+\end{equation}
+Indeed uniform convergence gives these bounds for large $k$, and a
+single constant handles the finitely many earlier times.
+
+Choose $s_0\in(0,1)$ and set
+\begin{equation}\label{eq:largeK}
+ K_E=\{(s,sy):s_0\le s\le1,\ y\in E\}.
+\end{equation}
+It is compact and has area $(1-s_0^2)|E|/2$, since the coordinate map
+$(s,y)\mapsto(s,sy)$ has Jacobian $s$. Taking
+$s_0^2<\varepsilon/2$ and $|E|>2(1-\varepsilon/2)$ gives
+$\area(K_E)>1-\varepsilon$. The set has empty interior because every
+ratio interval contains a dyadic point absent from $E$.
+
+\subsection{Matching estimates for arbitrary controls}
+
+Fix $0<\zeta<\bar c-\alpha$. Let $T=-\ln\delta$. For the upper bound
+use the natural prefixes meeting $E$ at length
+\begin{equation}\label{eq:typicalupperlength}
+ m=\min\left\{n,
+ \left\lceil\frac{T+\ln(2\sqrt2MC_\zeta)}{\bar c-\zeta}\right\rceil
+ \right\}.
+\end{equation}
+There are at most $2^m$ of them. If $m<n$, the endpoint has $M$-norm at
+most $MC_\zeta e^{-(\bar c-\zeta)m}\le\delta/(2\sqrt2)$.
+Append any fixed tail and use \eqref{eq:common-norm}. If $m=n$, use the
+exact catalogue. Thus the upper rate is at most
+$\alpha\min\{1,\gamma/(\bar c-\zeta)\}$, with the usual convention
+at infinity.
+
+For the lower bound consider any control $u$, any fixed $s\in[s_0,1]$,
+and any $m\le n$. The ratios in $E$ that agree with $u$ through time
+$m$ lie in one interval of length $2^{1-m}$. If the first disagreement
+is at $j\le m$, the common prefix satisfies
+\eqref{eq:uniformtypical}. The same first-deviation calculation as in
+\eqref{eq:band} bounds the measure of those ratios by
+\[
+ C\delta\,2^{-j}e^{(\bar c+\zeta)(j-1)},
+\]
+where $C$ depends on $s_0,\zeta$ and the maps, but not on $u,s,j,n$
+or $\delta$. Summing this geometric progression, using
+$\bar c+\zeta>\alpha$, shows that the set of ratios covered by $u$
+has measure at most
+\begin{equation}\label{eq:typicalsection}
+ C'\bigl(2^{-m}+\delta e^{(\bar c+\zeta-\alpha)m}\bigr).
+\end{equation}
+Fubini's theorem and the Jacobian $s\le1$ give the same bound, up to a
+constant, for the area of points of $K_E$ covered by one control.
+
+For sufficiently small $\delta$ choose
+$m=\min\{n,\lfloor T/(\bar c+\zeta)\rfloor\}$. Since
+$\delta e^{(\bar c+\zeta)m}\le1$, the second term in
+\eqref{eq:typicalsection} is at most $2^{-m}$. Positive area then gives
+$r(n,\delta;K_E)\ge b_\zeta2^m$ for some $b_\zeta>0$. Applied to
+\eqref{eq:precision}, this gives the lower rate
+$\alpha\min\{1,\gamma/(\bar c+\zeta)\}$. Letting $\zeta\downarrow0$
+in both estimates proves \eqref{eq:largelaw}, including $\gamma=0$
+and $\gamma=\infty$. The construction of $E$ preceded the choice of
+$\zeta$ and of the tolerance sequence, so the required quantifier order
+holds.
+
+\subsection{Strict separation}\label{sec:gap}
+
+Let $D>0$ be the unique solution of
+\begin{equation}\label{eq:dimensionroot}
+ \rho_0^D+\rho_1^D=1.
+\end{equation}
+Set $p_D=\rho_0^D$. The nonnegativity of relative entropy gives
+\[
+ H(p)-D\chi(p)
+ =-p\ln\frac{p}{p_D}-(1-p)\ln\frac{1-p}{1-p_D}\le0,
+\]
+with equality at $p=p_D$. Consequently $\max_p H(p)/\chi(p)=D$,
+and for $0\le\gamma\le c_{\min}$,
+\[
+ \mathcal F(\gamma)=D\gamma,\qquad
+ \mathcal G(\gamma)=\frac{\alpha}{\bar c}\gamma.
+\]
+If $c_0\ne c_1$, strict arithmetic--geometric mean at
+$D_0=\alpha/\bar c$ gives
+$e^{-D_0c_0}+e^{-D_0c_1}>2e^{-D_0\bar c}=1$.
+The left side decreases in $D$, so $D>D_0$.
+This proves Theorem~\ref{thm:main}(iv) and completes its proof.
+
+In Example~\ref{ex:golden}, setting $x=4^{-D}$ in
+\eqref{eq:dimensionroot} gives $x+x^2=1$, whence
+$D=\ln\phi/(2\ln2)$ and $\bar c=3\ln2$.
+The inequality $\phi^3=2\phi+1>4$ proves the claimed strict gap.
+The equation \eqref{eq:dimensionroot} is classical; its role here is to
+evaluate a rate whose comparison with actual controls has already been
+proved.
+
+\section{A common radial law for all positive-area sets}\label{sec:radial}
+
+We now consider a separate class. Let $q>1$ and let $V\subset\R$ be a
+finite nonempty set for which there exists $\eta>0$ satisfying
+\begin{equation}\label{eq:margin}
+ \forall y\in[-1,1]\quad\exists v\in V:\quad |qy+v|\le1-2\eta.
+\end{equation}
+Let $R:\R\to\R$ be an increasing $C^\infty$ diffeomorphism such that
+\begin{equation}\label{eq:radialR}
+ R(0)=0,\qquad 0<R(s)<s\ (0<s\le1),\qquad
+ \rho=R'(0)\in(0,1].
+\end{equation}
+For each $v\in V$ let $P_v:\R^2\to\R$ be smooth, with
+$P_v(0)=0$ and $DP_v(0)=0$, and assume
+\begin{equation}\label{eq:Pbound}
+ \kappa:=\max_{v\in V}\sup_{x\in\R^2}
+ \max\{|P_v(x)|,\norm{DP_v(x)},\norm{D^2P_v(x)}\}
+       <\min\{\eta,q/2\}.
+\end{equation}
+Derivative norms in this hypothesis are Euclidean operator norms. Define
+\begin{equation}\label{eq:radialmaps}
+ f_v(s,z)=\left(R(s),t(s)\,[qz+sv+P_v(s,z)]\right),\qquad
+ t(s)=\begin{cases}R(s)/s,&s\ne0,\\ \rho,&s=0.\end{cases}
+\end{equation}
+Use Definition~\ref{def:count} with these maps, the same $Q$, and all
+sequences in $V^{\N}$ allowed.
+
+\begin{theorem}[Common radial precision law]\label{thm:radial}
+Under \eqref{eq:margin}--\eqref{eq:Pbound}, the maps
+\eqref{eq:radialmaps} are smooth diffeomorphisms and $Q$ is controlled
+invariant. For every compact positive-area $K\subset Q$ and every
+tolerance sequence satisfying \eqref{eq:precision}, the limit is
+\begin{equation}\label{eq:radiallaw}
+ \lim_{n\to\infty}\frac1n\ln r(n,\delta_n;K)
+ =\Psi_{\alpha,c}(\gamma)
+ :=\max_{0\le a\le1}\{a\alpha-\pos{ac-\gamma}\},
+ \qquad \alpha=\ln q,\quad c=-\ln\rho.
+\end{equation}
+Here $x_+=\max\{x,0\}$. For finite $\gamma$, this equals
+\begin{equation}\label{eq:radialcases}
+ \Psi_{\alpha,c}(\gamma)=
+ \begin{cases}
+ \alpha,&c=0,\\
+ \min\{\alpha,\alpha-c+\gamma\},&0<c\le\alpha,\\
+ \alpha\min\{1,\gamma/c\},&c>\alpha.
+ \end{cases}
+\end{equation}
+At $\gamma=\infty$ it equals $\alpha$. Moreover
+$\lim_n n^{-1}\ln r_E(n;K)=\alpha$.
+\end{theorem}
+
+\subsection{Viability and an exact prefix catalogue}
+
+The identity $t(s)=\int_0^1 R'(\theta s)\,d\theta$ shows that $t$ is
+smooth and positive. For fixed $s$, the vertical map is strictly
+increasing, with derivative $t(s)(q+\partial_zP_v)>0$, and is proper
+because $P_v$ is bounded. Together with invertibility of $R$, the inverse
+function theorem proves that each $f_v$ is a global smooth diffeomorphism.
+
+Taylor's formula and \eqref{eq:Pbound} give
+\begin{equation}\label{eq:TaylorP}
+ |P_v(s,sy)|\le\kappa s^2\quad(|y|\le1),\qquad
+ |\partial_zP_v(x)|\le\min\{\kappa,\kappa\norm{x}_2\}.
+\end{equation}
+For $s>0$ the ratio evolves as
+\[
+ y_{j+1}=qy_j+v_{j+1}+P_{v_{j+1}}(s_j,s_jy_j)/s_j,
+ \qquad s_j=R^j(s).
+\]
+The last term has absolute value at most $\kappa s_j\le\kappa<\eta$
+in $Q$. The inward margin \eqref{eq:margin} therefore proves viability
+with margin at least $\eta$. The origin is fixed.
+
+Since $R$ is increasing, $R^j(s)\le R^j(1)\to0$ uniformly on
+$s\in[0,1]$: the decreasing limit for $s=1$ is a fixed point, and
+\eqref{eq:radialR} excludes every positive fixed point in this interval.
+For each $\xi\in(0,\rho)$ there is $C_\xi>0$ such that
+\begin{equation}\label{eq:radialupper}
+ \frac{R^j(s)}s\le C_\xi(\rho+\xi)^j
+ \quad(0<s\le1,\ j\ge0).
+\end{equation}
+For each $s_0>0$ there is also $d_{\xi,s_0}>0$ such that
+\begin{equation}\label{eq:radiallower}
+ \frac{R^j(s)}s\ge d_{\xi,s_0}(\rho-\xi)^j
+ \quad(s_0\le s\le1,\ j\ge0).
+\end{equation}
+To see this, after a common finite time all radii are in a neighborhood
+where $\rho-\xi\le R(s)/s\le\rho+\xi$. The finitely many earlier
+products have a uniform upper bound, and a positive lower bound on
+$[s_0,1]$.
+
+\begin{lemma}\label{lem:exactradialupper}
+For every $e>0$ there is $D_e\ge1$ such that
+$r_E(m;Q)\le D_e e^{(\alpha+e)m}$ for every $m\ge0$.
+\end{lemma}
+\begin{proof}
+Fix a block length $N$. Cover $[-1,1]$ by a mesh of at most
+$C_\eta q^N$ centers, so that each ratio is within
+$\eta q^{-N}/4$ of a center. For each center choose a length-$N$ word
+for the unperturbed ratio system $y\mapsto qy+v$ that keeps every
+subsequent ratio in $[-1+2\eta,1-2\eta]$; this is possible by
+\eqref{eq:margin}.
+
+Choose $a_N>0$ so small that
+$\kappa a_N\sum_{j=0}^{N-1}q^j\le\eta/4$.
+For any $0<s\le a_N$, apply the center's word to the actual system
+starting from a nearby ratio. As long as the actual ratios lie in
+$[-1,1]$, their discrepancy from the reference at each time $k\le N$
+is bounded by
+\[
+ q^k\frac{\eta q^{-N}}4+
+ \kappa a_N\sum_{j=0}^{k-1}q^j\le\eta/2.
+\]
+Induction using the reference margin establishes the required membership
+in $[-1,1]$ at every step, and hence justifies this estimate throughout
+the block. This single block catalogue works for every $s\le a_N$.
+
+A common finite time $m_0$ brings every feasible radius below $a_N$.
+Use all length-$m_0$ words, which include a feasible choice for each
+initial state, and thereafter concatenate the block catalogues. A
+remaining block of length less than $N$ can use all words of that
+length. For fixed $N$, this gives exact upper rate at most
+$\ln q+N^{-1}\ln C_\eta$. Choose $N$ large enough for the extra term
+to be less than $e$ and absorb the finite initial and remaining blocks
+into $D_e$.
+\end{proof}
+
+\subsection{A sectional lower bound at every intermediate time}
+
+Fix $s\in(0,1]$ and a word $u$. Write $Z_k(z)$ for the vertical
+coordinate at time $k$ when the initial state is $(s,z)$. Each $Z_k$
+is strictly increasing. The set $J=J(n,\delta,s,u)$ of
+$z\in[-s,s]$ whose whole trajectory through time $n$ belongs to
+$Q^\delta$ is an interval, possibly empty. Indeed, $Q^\delta$ is
+convex; its section at the fixed radius $R^k(s)$ is an interval; and
+its inverse under $Z_k$ is an interval. Intersect these intervals over
+$k=0,\ldots,n$.
+
+The chain rule gives
+\begin{equation}\label{eq:verticalderivative}
+ Z_k'(z)=\frac{R^k(s)}s
+ \prod_{j=0}^{k-1}\bigl(q+\partial_zP_{u_{j+1}}(s_j,Z_j(z))\bigr).
+\end{equation}
+Given $\zeta\in(0,q)$, choose a small $d>0$ and a common time
+$N_\zeta$ so that $s_j\le d$ for $j\ge N_\zeta$ and
+$\kappa\sqrt{10}d\le\zeta$. If $\delta<d$ and $z\in J$, then
+\eqref{eq:euclideannecessary} implies $|Z_j(z)|<s_j+2\delta\le3d$
+at those times. Thus \eqref{eq:TaylorP} bounds each late derivative
+factor below by $q-\zeta$. The early factors are at least
+$q-\kappa>0$. After decreasing a constant to cover all early values
+of $k$, one obtains
+\begin{equation}\label{eq:derivlower}
+ Z_k'(z)\ge A_\zeta\frac{R^k(s)}s(q-\zeta)^k
+ \quad(z\in J,\ 0\le k\le n),
+\end{equation}
+uniformly in $n,u,s$ and sufficiently small $\delta$.
+
+The interval $Z_k(J)$ has length at most $2R^k(s)+4\delta$.
+Applying the mean value theorem on subintervals of $J$, then taking
+their increasing union, gives from \eqref{eq:derivlower} and
+\eqref{eq:radiallower}, for $s\in[s_0,1]$,
+\begin{equation}\label{eq:radialsection}
+ |J|\le C(q-\zeta)^{-k}
+           \bigl(1+C'\delta(\rho-\xi)^{-k}\bigr),
+ \qquad 0\le k\le n.
+\end{equation}
+The constants are independent of the control and the horizon. This is a
+bound for controls satisfying the entire time interval, tested at any
+chosen time $k$.
+
+If $K$ has positive area, choose $s_0>0$ so that
+$K\cap\{s\ge s_0\}$ still has positive area. By Fubini, every
+spanning catalogue satisfies
+\begin{equation}\label{eq:radialcountlower}
+ r(n,\delta;K)\ge
+ \frac{B(q-\zeta)^k}{1+C'\delta(\rho-\xi)^{-k}}
+ \quad(0\le k\le n).
+\end{equation}
+For finite $\gamma$ in \eqref{eq:precision}, take $k=\lfloor an\rfloor$.
+The logarithm of the denominator divided by $n$ tends to
+$\pos{a[-\ln(\rho-\xi)]-\gamma}$. First let $n\to\infty$, then
+$\zeta,\xi\downarrow0$, and finally maximize over $a\in[0,1]$.
+This proves the lower bound in \eqref{eq:radiallaw}. When
+$\gamma=\infty$, take $k=n$ to obtain the lower rate $\alpha$.
+For the exact count the same argument with $\delta=0$ applies directly
+to the exact feasible interval. It gives lower rate $\alpha$, matching
+Lemma~\ref{lem:exactradialupper}.
+
+\subsection{A feasible prefix followed by a full approximate tail}
+
+Suppose first that $\rho<1$. Fix $a_r\in(\rho,1)$.
+Equation~\eqref{eq:radialupper} implies that the endpoint of any
+exactly feasible prefix of length $m$ satisfies
+\begin{equation}\label{eq:endpoint}
+ \norm{x_m}_M\le C a_r^m,
+\end{equation}
+where $\norm{(s,z)}_M=\max\{M|s|,|z|\}$ and $C$ is uniform in the
+prefix and the initial state in $Q$. At the origin,
+\[
+ Df_v(0)=\begin{pmatrix}\rho&0\\ \rho v&\rho q\end{pmatrix}.
+\]
+For any $L>\rho q$, choosing $M$ sufficiently large makes the operator
+norm of every such matrix less than $L$. Continuity and finiteness of
+$V$ give a common convex neighborhood of the origin on which every
+$f_v$ is $L$-Lipschitz in this norm. All maps fix the origin.
+
+Append one fixed input tail after an exact prefix. Inductively, as long
+as it stays in the neighborhood,
+$\norm{x_k}_M\le Ca_r^m L^{k-m}$ for $m\le k\le n$.
+For small enough $\delta$, making this bound at most
+$\delta/(2\sqrt2)$ for every $k$ both proves that the induction remains
+in the neighborhood and ensures membership in $Q^\delta$ throughout
+the tail.
+
+If $L>1$, it is enough to take an exact prefix of length
+\begin{equation}\label{eq:radialtail1}
+ m=\min\left\{n,\max\left\{m_0,
+ \left\lceil\frac{n\ln L+\ln(2\sqrt2C/\delta)}
+                         {\ln L-\ln a_r}\right\rceil\right\}\right\},
+\end{equation}
+where $m_0$ is any fixed initial time needed for the local estimate.
+If the minimum selects $n$, the exact catalogue itself suffices.
+Otherwise the displayed inequality proves the complete tail bound.
+Lemma~\ref{lem:exactradialupper} gives the upper rate
+\[
+ (\alpha+e)\min\left\{1,
+               \frac{\gamma+\ln L}{\ln L-\ln a_r}\right\}.
+\]
+If $L\le1$, the maximum along the tail occurs at $m$, and one can
+instead take
+\begin{equation}\label{eq:radialtail2}
+ m=\min\left\{n,\max\left\{m_0,
+       \left\lceil\frac{\ln(2\sqrt2C/\delta)}{-\ln a_r}\right\rceil
+                      \right\}\right\}.
+\end{equation}
+The resulting upper rate is
+$(\alpha+e)\min\{1,\gamma/(-\ln a_r)\}$.
+
+Let $e\downarrow0$ and $a_r\downarrow\rho$. If $\rho q>1$, let
+$L\downarrow\rho q$ in the first bound. It gives
+$\min\{\alpha,\alpha-c+\gamma\}$. The same limit from $L>1$
+handles $\rho q=1$. If $\rho q<1$, choose $L<1$ and use the second
+bound to get $\alpha\min\{1,\gamma/c\}$. For $\rho=1$, the exact
+catalogue already gives upper rate $\alpha$, which matches the lower
+bound. The case $\gamma=\infty$ is likewise bounded by the exact
+catalogue. A direct maximization over $a$ gives
+\eqref{eq:radialcases}, completing Theorem~\ref{thm:radial}.
+
+\begin{example}[Why the terminal time is insufficient]\label{ex:intermediate}
+Let $q=2$, $V=\{-3/2,0,3/2\}$, $\eta=1/8$, and $R(s)=s/4$.
+The margin \eqref{eq:margin} holds since every number in $[-2,2]$
+is within $3/4$ of one of $-3/2,0,3/2$. Set
+$P_v(s,z)=e_v\tanh s\tanh z$, with $|e_v|<1/64$.
+These functions vanish to first order at the origin, and their function,
+gradient and Hessian norms are bounded by $4|e_v|<1/16$.
+For every positive-area compact $K\subset Q$, Theorem~\ref{thm:radial}
+therefore gives rate $\min\{\ln2,\gamma/2\}$.
+At $\delta_n=2^{-n}$, the rate is $\tfrac12\ln2$.
+In \eqref{eq:radiallaw} the maximizing time fraction is $a=1/2$;
+testing only $a=1$ would give zero. The whole time interval is essential.
+\end{example}
+
+\begin{remark}[The two classes have different hypotheses]\label{rem:classes}
+Theorem~\ref{thm:radial} has a strict inward margin and a common radial
+map; Theorem~\ref{thm:main} has two nonoverlapping ratio branches and
+control-dependent radial factors. The latter alphabet has no strict
+inward margin at the branch boundary. Thus neither theorem is stated
+as an extension of the other. When $\rho_0\ne\rho_1$, their difference
+also cannot be removed by a fixed $C^1$ state change taking origin to
+origin and respecting labels. The eigenvalues of $DF_i(0)$ are
+$\rho_i,2\rho_i$, so its spectral radius is $2\rho_i$; in
+\eqref{eq:radialmaps} every derivative has the same spectral radius
+$\rho q$. A $C^1$ conjugacy makes corresponding derivatives similar,
+which is incompatible with two different spectral radii. No assertion
+about an arbitrary topological change of coordinates is needed here.
+\end{remark}
+
+\section{One expanding branch at the critical tolerance}\label{sec:expanding}
+
+The geometric inequality \eqref{eq:leaflength} uses
+$\rho_i\le1/2$. We finish with a fixed system for which it fails:
+\begin{equation}\label{eq:expandingmaps}
+ F_0(s,z)=\left(\frac{3s}4,\frac{3(2z+s)}4\right),\qquad
+ F_1(s,z)=\left(\frac{s}4,\frac{2z-s}4\right).
+\end{equation}
+The exact ratio coding \eqref{eq:cylinders} remains valid. The map
+$F_0$ has transverse eigenvalue $3/2$, whereas $F_1$ contracts in
+the maximum norm with operator norm at most $3/4$.
+
+\begin{proposition}\label{prop:expanding}
+For \eqref{eq:expandingmaps}, $K=Q$, and $\delta_n=2^{-n}$, put
+$p_*=\ln2/\ln3$. Then
+\begin{equation}\label{eq:expandinglimit}
+ \lim_{n\to\infty}\frac1n\ln r(n,2^{-n};Q)=H(p_*).
+\end{equation}
+More precisely, with $\lambda=\ln(p_* /(1-p_*))/\ln3>0$ and the
+stopped-tree count for the factors $3/4,1/4$,
+\begin{equation}\label{eq:expandingbounds}
+ \frac{\binom{n}{\lceil p_*n\rceil}}{n(3n+1)}
+ \le r(n,2^{-n};Q)
+ \le N\left(n,\frac{2^{-n}}{2\sqrt2}\right)
+ \le (8\sqrt2)^\lambda e^{nH(p_*)}.
+\end{equation}
+In particular, the displayed stopped catalogue exceeds the minimal
+actual catalogue by at most a factor $Cn^3$ for a fixed $C$.
+\end{proposition}
+
+\begin{proof}
+For the upper bound, use each stopped prefix exactly, then append
+$1^\infty$. At an early stopping time the endpoint has maximum norm
+at most $2^{-n}/(2\sqrt2)$, and each tail step multiplies that norm by
+at most $3/4$. Thus its Euclidean norm stays at most
+$2^{-n}/2$. Terminal leaves are exactly feasible throughout.
+
+To bound the leaves, write
+$c_0=\ln(4/3)$, $c_1=\ln4$, and
+$T=n\ln2+\ln(2\sqrt2)$. Every leaf $w$ of length $k\le n$ has
+$S(w)<T+c_1$. Give symbol $0$ Bernoulli probability $p_*$.
+The mass of its cylinder is
+\begin{equation}\label{eq:Bernleaf}
+ \nu[w]=e^{-\beta k-\lambda S(w)},\qquad
+ \beta=-\ln(1-p_*)-\lambda c_1.
+\end{equation}
+Here $1/2<p_*<3/4$. The function
+$g(p)=c_0\ln(1-p)-c_1\ln p$ is strictly decreasing and
+$g(3/4)=0$, so $\beta=g(p_*)/\ln3>0$.
+The leaves form a complete prefix-free family whose masses sum to one.
+By \eqref{eq:Bernleaf}, each mass is at least
+$e^{-\beta n-\lambda(T+c_1)}$. It follows that
+\[
+ N\le e^{\beta n+\lambda(T+c_1)}
+      =(8\sqrt2)^\lambda e^{nH(p_*)},
+\]
+because $p_*c_0+(1-p_*)c_1=\ln2$ and
+$\beta+\lambda\ln2=H(p_*)$.
+
+For the lower bound, let $j_n=\lceil p_*n\rceil$ and consider words
+of length $n$ with $j_n$ zeros. For a word $w$ define
+\[
+ D_k(w)=\ln(2^kA_{w_1\cdots w_k})
+       =N_0(w_1\cdots w_k)\ln3-k\ln2.
+\]
+Here $N_0(a)$ counts the zeros in $a$.
+Their total satisfies $0\le D_n(w)<\ln3$. Call a word good if
+$D_k(w)\ge0$ for every $0\le k\le n$. Every cyclic orbit of these
+words contains a good one: start immediately after a minimum of
+$D_0,\ldots,D_{n-1}$. Before wrapping, all new partial sums are
+differences from that minimum; after wrapping they are such differences
+plus the nonnegative total $D_n$. Each cyclic orbit has at most $n$
+elements, so there are at least $n^{-1}\binom{n}{j_n}$ good words.
+This is the elementary minimum-partial-sum rotation; no assertion about
+an exact number of good rotations is required.
+
+For every good word choose the actual state $(1,y_w)$, where $y_w$ is
+the midpoint of $I_w$. All such midpoints belong to a grid of spacing
+$2^{1-n}=2\delta_n$. Fix any length-$n$ input word $u$ covering some
+of these states. One witness can have $w=u$. For any other one let
+$j$ be the first disagreement and $a=u_1\cdots u_{j-1}$ the common
+prefix. As in \eqref{eq:band}, the wrong branch and
+\eqref{eq:euclideannecessary} imply
+\[
+ |y_w-m_a|<\frac{\delta_n}{\rho_{u_j}e^{D_{j-1}(w)}}
+                         \le4\delta_n.
+\]
+For each fixed $j$, this is a one-sided band, so it contains at most
+three points of the grid. Thus an arbitrary approximate control covers
+at most $3n+1$ good witnesses. Dividing their count by $3n+1$ proves
+the first inequality in \eqref{eq:expandingbounds}.
+
+By Lemma~\ref{lem:types},
+$\binom{n}{j_n}\ge e^{nH(j_n/n)}/(n+1)$.
+Since $j_n/n=p_*+O(1/n)$ and $p_*\in(0,1)$,
+$nH(j_n/n)=nH(p_*)+O(1)$. The two bounds therefore give
+\eqref{eq:expandinglimit} and the stated polynomial ratio.
+\end{proof}
+
+Unlike \eqref{eq:binary}, this example does not have convergence for
+every input sequence. In fact
+\[
+ F_0^k(1,1)=\bigl((3/4)^k,\ 2(3/2)^k-(3/4)^k\bigr),
+\]
+whose second coordinate diverges. Exactly feasible trajectories still
+converge to the origin, since $s_k\le(3/4)^k$ and $|z_k|\le s_k$.
+Proposition~\ref{prop:expanding} addresses one specified tolerance and
+initial set. It is not a precision spectrum for general expanding
+branches or an extension preserving convergence under all inputs.
+
+\section{Scope of the results}
+
+The main distinction is visible within a single system: positive area
+and even nearly full area need not substitute for interior when
+contraction is tied to the feasible control branch. The common radial
+theorem provides an independent regime where positive area does suffice.
+The exact and outer rates alone do not record this distinction.
+
+All estimates use the actual state projection and the Euclidean
+constraint neighborhood, and all upper bounds control the whole tail.
+The proofs rely on special one-dimensional ratio geometry. They do not
+classify all positive-area initial sets, establish a general formula for
+nonlinear control-dependent contraction, or produce a communication
+protocol. The cyclic witnesses resolve the particular expanding example
+without removing these restrictions. These limitations separate the
+proved control-geometric statements from the classical counting methods
+used to calculate their exponents.
+
+\begin{thebibliography}{99}
+
+\bibitem{Colonius2012}
+Colonius, F. (2012).
+Minimal bit rates and entropy for exponential stabilization.
+\emph{SIAM Journal on Control and Optimization, 50}(5), 2988--3010.
+\doi{10.1137/110829271}.
+
+\bibitem{CH2021}
+Colonius, F., \& Hamzi, B. (2021).
+Entropy for practical stabilization.
+\emph{SIAM Journal on Control and Optimization, 59}(3), 2195--2222.
+\doi{10.1137/20M1367775}.
+
+\bibitem{Csiszar1998}
+Csisz\'ar, I. (1998).
+The method of types.
+\emph{IEEE Transactions on Information Theory, 44}(6), 2505--2523.
+\doi{10.1109/18.720546}.
+
+\bibitem{DSK2016}
+Da Silva, A., \& Kawan, C. (2016).
+Invariance entropy of hyperbolic control sets.
+\emph{Discrete and Continuous Dynamical Systems, 36}(1), 97--136.
+\doi{10.3934/dcds.2016.36.97}.
+
+\bibitem{DZ1990}
+Dershowitz, N., \& Zaks, S. (1990).
+The cycle lemma and some applications.
+\emph{European Journal of Combinatorics, 11}(1), 35--40.
+\doi{10.1016/S0195-6698(13)80053-4}.
+
+\bibitem{HZ2018}
+Huang, Y., \& Zhong, X. (2018).
+Carath\'eodory--Pesin structures associated with control systems.
+\emph{Systems \& Control Letters, 112}, 36--41.
+\doi{10.1016/j.sysconle.2017.12.009}.
+
+\bibitem{Hutchinson1981}
+Hutchinson, J. E. (1981).
+Fractals and self-similarity.
+\emph{Indiana University Mathematics Journal, 30}(5), 713--747.
+\doi{10.1512/iumj.1981.30.30055}.
+
+\bibitem{Kawan2013}
+Kawan, C. (2013).
+\emph{Invariance entropy for deterministic control systems: An introduction}
+(Lecture Notes in Mathematics, Vol. 2089). Springer.
+\doi{10.1007/978-3-319-01288-9}.
+
+\bibitem{LM2018}
+Liberzon, D., \& Mitra, S. (2018).
+Entropy and minimal bit rates for state estimation and model detection.
+\emph{IEEE Transactions on Automatic Control, 63}(10), 3330--3344.
+\doi{10.1109/TAC.2017.2782478}.
+
+\bibitem{NWH2022}
+Nie, X., Wang, T., \& Huang, Y. (2022).
+Measure-theoretic invariance entropy and variational principles for control systems.
+\emph{Journal of Differential Equations, 321}, 318--348.
+\doi{10.1016/j.jde.2022.03.013}.
+
+\bibitem{WHS2019}
+Wang, T., Huang, Y., \& Sun, H.-W. (2019).
+Measure-theoretic invariance entropy for control systems.
+\emph{SIAM Journal on Control and Optimization, 57}(1), 310--333.
+\doi{10.1137/18M1197862}.
+
+\bibitem{YCYZ2025}
+Yang, R., Chen, E., Yang, J., \& Zhou, X. (2025).
+Bowen's equations for invariance pressure of control systems.
+\emph{SIAM Journal on Control and Optimization, 63}(2), 1104--1128.
+\doi{10.1137/23M1607684}.
+
+\bibitem{Yao2026}
+Yao, S. (2026).
+\emph{Invariance entropy in the dust} (Version 1) [Preprint]. arXiv.
+\doi{10.48550/arXiv.2607.02279}.
+
+\end{thebibliography}
+\end{document}

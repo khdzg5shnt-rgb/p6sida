@@ -2,14 +2,19 @@
 
 基线论文：*Positive invariance entropy under uniform state convergence*。
 
+当前唯一阶段稿：*Precision-dependent invariance costs and the geometry of initial sets*。已完成主贡献裁决、完整英文证明及 14 页 PDF；数学核验与成稿通过，不等于期刊录用资格。
+
 Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathematical Society、Acta Mathematica 保留为长期目标。R05 按用户明确授权调整近期策略：先争取数学正确、真实新意和独立专业发表价值的阶段成果，不要求阶段候选先达到四大，不承诺逐级升级；不用扩写、加维数或小幅放宽假设代替贡献。
 
 - [`CURRENT.md`](CURRENT.md)：最新裁决与下一入口。
+- [`paper/P6_PRECISION_COST.tex`](paper/P6_PRECISION_COST.tex)：阶段论文英文 LaTeX，主线为初始集几何与精度成本。
+- [`paper/P6_PRECISION_COST.pdf`](paper/P6_PRECISION_COST.pdf)：已编译并逐页检查的唯一阶段稿。
+- [`research/R07/STAGE_PAPER_DECISION.md`](research/R07/STAGE_PAPER_DECISION.md)：成稿裁决、定理关系、证明链、直接覆盖边界和条件性期刊判断。
 - [`original/`](original/)：未经改动的原稿、SHA-256 与归档说明。
 - [`research/R07/REPORT.md`](research/R07/REPORT.md)：指定横向扩张系统的精确成本率、与 R06 的机制差别及有限贡献判断。
 - [`research/R07/MATHEMATICS.md`](research/R07/MATHEMATICS.md)：临界前缀见证、任意近似控制下界、快尾部上界与完整匹配极限。
 - [`research/R07/SOURCES.md`](research/R07/SOURCES.md)：经典循环移位原文与控制增长/精度文献的直接覆盖边界。
-- [`research/R07/NEXT_COMMAND.md`](research/R07/NEXT_COMMAND.md)：指定问题已解决；不自动 R08，下一入口为阶段主贡献裁决。
+- [`research/R07/NEXT_COMMAND.md`](research/R07/NEXT_COMMAND.md)：历史停点；其主贡献裁决已按用户新授权执行并进入成稿，最新入口以 CURRENT 为准。
 - [`research/R06/REPORT.md`](research/R06/REPORT.md)：控制依赖收缩的结构结果、与 R05 的增量及有限发表价值提升。
 - [`research/R06/MATHEMATICS.md`](research/R06/MATHEMATICS.md)：真实目录与停止树比较、完整精度谱及近满面积初始集的严格成本分裂。
 - [`research/R06/SOURCES.md`](research/R06/SOURCES.md)：控制增长、稳定化精度与经典停止尺度方法的逐项覆盖比较。
@@ -40,6 +45,6 @@ Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathe
 
 R03 两篇期刊原件已到位，NWH2022 的 31 页全文及 WHS2019 的相关证明已补核。新反例否定 NWH 原文在单向约束包含下的时变共轭等式；原文混用二进制对数和指数权重也使所写变分公式失效。统一为自然单位并允许熵为负无穷后，已有压力对偶方法仍可用，R01–R03 的自含计算不因此推翻。二进制锥体的面积概率 WHS 熵仍为 `ln 2`，锥顶概率仍为零。
 
-R04 的固定初始概率反例及经典分数覆盖结论保留。R05 完成共同径向非线性锥体的精度—时域成本律；R06 证明控制依赖收缩时，正面积甚至任意近满面积不再保证统一精度谱。R07 进一步解决 `ρ_0=3/4,ρ_1=1/4,K=Q,δ_n=2^(−n)`：真实目录率为 `H(ln2/ln3)`，横向扩张没有带来指数级目录节省，新增下界来自临界前缀见证。循环移位、类型计数及停止尺度仍是经典工具；该扩张系统也不保留所有输入一致收敛。结果有限增强阶段主线，未认证独立成篇价值、全库优先权或具体刊档。指定问题已完成，暂停自动换参数和整篇改写，不自动 R08；下一入口见 R07。原稿、R01–R06 及全部历史保留。
+R04 的固定初始概率反例及经典分数覆盖结论保留。阶段稿以 R06 的任意近满面积初始集与含开集初始集的严格成本分裂为主结果，收入 R05 的共同径向非线性精度律作比较，并以 R07 的指定扩张系统作补充。拟用完整证明已核验；经典循环移位、类型计数、停止尺度与压力方法均明确归属已有内容。R05/R06 假设互不包含，R07 不保留所有输入一致收敛。现有组合已通过独立阶段稿的成稿裁决；DCDS 为条件性尝试对象，SIAM JCO 为挑战性备选，不认证全库首创、分区或四大水平。停在现稿的专业评估与必要修订，不自动 R08 或添加模型；下一入口见 STAGE_PAPER_DECISION。原稿、R01–R07 及全部历史保留。
 
-复现数学笔记 PDF：在安装 LaTeX 的环境执行 `latexmk -pdf -interaction=nonstopmode -halt-on-error research/R01/P6_R01_Mathematical_Note.tex`。原稿需单独编译，不覆盖。此仓库仅存 P6，不修改其他暂停项目。
+复现阶段稿 PDF：在仓库根目录执行 `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/p6-paper-build paper/P6_PRECISION_COST.tex`。历史 R01 笔记仍可单独编译。原稿保留不覆盖；此仓库仅存 P6，不修改其他暂停项目。
