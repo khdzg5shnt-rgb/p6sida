@@ -1,8 +1,8 @@
-\documentclass[11pt]{article}
+\documentclass[11pt,a4paper,reqno]{amsart}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage[a4paper,margin=28mm]{geometry}
-\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{amssymb,mathtools}
 \usepackage{microtype}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
@@ -28,11 +28,21 @@
 \newcommand{\pos}[1]{\left(#1\right)_{+}}
 \newcommand{\doi}[1]{\href{https://doi.org/#1}{\nolinkurl{#1}}}
 \setlist[enumerate]{label=\textup{(\roman*)},leftmargin=*}
-\title{Precision-dependent invariance costs\\and the geometry of initial sets}
-\author{}
+% Preserve sentence case in the displayed title, as requested by AIMS.
+\makeatletter
+\def\@settitle{\begin{center}\baselineskip14\p@\relax
+  \bfseries\@title\end{center}}
+\makeatother
+\title[Precision-dependent invariance costs]{Precision-dependent invariance costs
+and the geometry of initial sets}
+% Replace this single pending author block using SUBMISSION_CHECKLIST.md.
+% No author identity, affiliation, funding or approval is inferred.
+\author[Author information pending]{Author information pending}
+\subjclass[2020]{Primary 93C55; Secondary 37B40, 93C10}
+\keywords{Invariance entropy, finite-horizon control, vanishing tolerance,
+contraction, initial-set geometry}
 \date{}
 \begin{document}
-\maketitle
 
 \begin{abstract}
 We study the number of open-loop controls required to keep every actual initial
@@ -50,8 +60,7 @@ The results distinguish the geometry of actual controlled feasibility from
 the classical symbolic counting used to evaluate its cost.
 \end{abstract}
 
-\noindent\textbf{Keywords.} Invariance entropy; finite-horizon control;
-vanishing tolerance; contraction; initial-set geometry.
+\maketitle
 
 \section{Introduction}
 
@@ -94,7 +103,7 @@ claiming a general dichotomy. A final example with one expanding branch
 shows how to recover a matching lower bound when the stopped-interval
 argument no longer applies.
 
-\subsection*{Relation to previous work}
+\subsection{Relation to previous work}
 
 The control-catalogue formulation and the distinction between exact and
 outer invariance are standard; see Kawan~\cite{Kawan2013}, especially
@@ -103,8 +112,16 @@ invariance-entropy estimates. For hyperbolic control sets, Da Silva and
 Kawan~\cite{DSK2016} express the cost through unstable volume growth under
 their control-set hypotheses. Our forward cone does not satisfy those
 hypotheses: a positive radial coordinate only decreases, so states cannot
-approximately reach larger radii within the cone. We do not obtain a new
-formula for hyperbolic control sets.
+approximately reach larger radii within the cone.
+
+Chen and Zhong~\cite{CZ2024} study the finite-horizon outer invariance
+complexity of subsets of a controlled invariant set. Their catalogue
+already ranges over actual controls and uses an ambient neighborhood of
+the constraint. Their Theorem 2.12 characterizes bounded complexity at
+each fixed tolerance by finite outer equi-invariability. Our contracting
+family has this boundedness property. The question here is quantitative:
+how the catalogue grows when tolerance and horizon vary together, and
+whether nearly full area forces the same rate as interior.
 
 Precision requirements also occur in entropy for exponential stabilization
 \cite{Colonius2012}, practical stabilization~\cite{CH2021}, and state
@@ -113,17 +130,14 @@ a target and changes with the current time. In state estimation it bounds
 the discrepancy from a reference trajectory. Here the initial state is
 never approximated: a selected control must keep its actual trajectory
 within one tolerance of a fixed set throughout the entire horizon. Only
-between horizons does that tolerance change. The results below concern
-this catalogue problem, not an encoder--decoder implementation theorem.
+between horizons does that tolerance change.
 
 Yao's preprint~\cite{Yao2026} gives a continuous-time construction with a
 Cantor matching constraint, positive exact cost and zero approximate cost.
-Its matching and fading estimates already show why late control
-disagreements may disappear at fixed ambient resolution. The mere
-separation of exact and outer rates is consequently not our contribution.
-Our main assertion is the explicit joint limit and its strict dependence
-on initial-set geometry in a positive-area planar constraint, including
-compact initial sets of nearly full area.
+Its matching and fading estimates show why late control disagreements may
+disappear at fixed ambient resolution. We determine the joint limit in a
+positive-area planar constraint and prove its strict dependence on the
+initial set, even among compact sets of nearly full area.
 
 The symbolic tools have a separate, established history. Stopping at a
 product scale and entropy-to-contraction ratios occur in self-similar
@@ -133,15 +147,15 @@ Dimension constructions for control entropy were developed by Huang and
 Zhong~\cite{HZ2018}, and Bowen equations for invariance pressure on
 partitions by Yang et al.~\cite{YCYZ2025}. Measure-theoretic invariance
 entropy and variational principles are studied in
-\cite{WHS2019,NWH2022}. We do not claim a new dimension equation or pressure
-duality. In particular, partition-based pressure fixes an invariant
-partition, whereas our infimum runs over all actual controls satisfying
-an ambient tolerance. Proposition~\ref{prop:tree} supplies the
+\cite{WHS2019,NWH2022}. Our large-set assertion keeps the statewise
+covering requirement on one fixed compact set; it does not define a new
+measure entropy. The pressure formulas in~\cite{YCYZ2025} are calculated
+relative to invariant partitions. To use symbolic counting here, one
+must first compare it with the infimum over all actual controls satisfying
+an ambient tolerance. Proposition~\ref{prop:tree} supplies this
 comparison with symbolic covers in the contracting binary family;
 Section~\ref{sec:large} gives the separate estimate on nearly full-area
-sets. Neither comparison is assumed in the symbolic calculation.
-Likewise, the
-minimum-partial-sum rotation in the last example is a classical cyclic
+sets. The minimum-partial-sum rotation in the last example is a classical cyclic
 argument; see~\cite{DZ1990}.
 
 \section{The catalogue problem and the main result}\label{sec:main}
@@ -182,6 +196,9 @@ All logarithms are natural. We evaluate the joint limit
 No monotonicity of $\delta_n$ is assumed.
 \end{definition}
 
+With the notation of Chen and Zhong~\cite[Section 2.2]{CZ2024}, our
+count is exactly $r_{\mathrm{inv}}(n+1,\delta,K,Q)$; the shift accounts
+for their time interval $[0,n)$ and our interval $\{0,\ldots,n\}$.
 Only the first $n$ input symbols affect a horizon $n$. There are $n+1$
 constrained states, including the actual initial state. A word meeting
 \eqref{eq:quantifiers} may leave $Q$; it need not agree with any particular
@@ -940,9 +957,9 @@ every input sequence. In fact
 \]
 whose second coordinate diverges. Exactly feasible trajectories still
 converge to the origin, since $s_k\le(3/4)^k$ and $|z_k|\le s_k$.
-Proposition~\ref{prop:expanding} addresses one specified tolerance and
-initial set. It is not a precision spectrum for general expanding
-branches or an extension preserving convergence under all inputs.
+Proposition~\ref{prop:expanding} concerns only the specified tolerance
+and initial set; the all-input convergence in Theorem~\ref{thm:main}
+does not hold here.
 
 \section{Scope of the results}
 
@@ -952,93 +969,104 @@ contraction is tied to the feasible control branch. The common radial
 theorem provides an independent regime where positive area does suffice.
 The exact and outer rates alone do not record this distinction.
 
-All estimates use the actual state projection and the Euclidean
-constraint neighborhood, and all upper bounds control the whole tail.
-The proofs rely on special one-dimensional ratio geometry. They do not
-classify all positive-area initial sets, establish a general formula for
-nonlinear control-dependent contraction, or produce a communication
-protocol. The cyclic witnesses resolve the particular expanding example
-without removing these restrictions. These limitations separate the
-proved control-geometric statements from the classical counting methods
-used to calculate their exponents.
+The proofs rely on one-dimensional ratio geometry. Classifying arbitrary
+positive-area initial sets and treating nonlinear control-dependent
+contraction remain outside their scope. The catalogues determine a
+covering cost; an encoder--decoder implementation would require a
+separate argument. Within the stated systems, the estimates apply to
+arbitrary approximate controls and to the complete time horizon.
+
+\section*{Use of generative-AI tools declaration}
+OpenAI's ChatGPT/Codex was used throughout the development of the
+mathematical arguments, proof and literature checks, drafting and revision
+of the text, and preparation of the LaTeX source. This includes generated
+proof arguments and manuscript text, rather than language editing alone.
+AI output can contain mathematical or bibliographic errors and omissions;
+the use of these tools does not constitute independent human verification.
+Responsibility for the article rests with its human author or authors.
 
 \begin{thebibliography}{99}
 
+\bibitem{CZ2024}
+Z. Chen and X. Zhong,
+Invariance complexity and equi-invariability for control systems,
+\emph{J. Math. Anal. Appl.}, \textbf{539} (2024), 128533.
+\doi{10.1016/j.jmaa.2024.128533}.
+
 \bibitem{Colonius2012}
-Colonius, F. (2012).
-Minimal bit rates and entropy for exponential stabilization.
-\emph{SIAM Journal on Control and Optimization, 50}(5), 2988--3010.
+F. Colonius,
+Minimal bit rates and entropy for exponential stabilization,
+\emph{SIAM J. Control Optim.}, \textbf{50} (2012), 2988--3010.
 \doi{10.1137/110829271}.
 
 \bibitem{CH2021}
-Colonius, F., \& Hamzi, B. (2021).
-Entropy for practical stabilization.
-\emph{SIAM Journal on Control and Optimization, 59}(3), 2195--2222.
+F. Colonius and B. Hamzi,
+Entropy for practical stabilization,
+\emph{SIAM J. Control Optim.}, \textbf{59} (2021), 2195--2222.
 \doi{10.1137/20M1367775}.
 
 \bibitem{Csiszar1998}
-Csisz\'ar, I. (1998).
-The method of types.
-\emph{IEEE Transactions on Information Theory, 44}(6), 2505--2523.
+I. Csisz\'ar,
+The method of types,
+\emph{IEEE Trans. Inform. Theory}, \textbf{44} (1998), 2505--2523.
 \doi{10.1109/18.720546}.
 
 \bibitem{DSK2016}
-Da Silva, A., \& Kawan, C. (2016).
-Invariance entropy of hyperbolic control sets.
-\emph{Discrete and Continuous Dynamical Systems, 36}(1), 97--136.
+A. Da Silva and C. Kawan,
+Invariance entropy of hyperbolic control sets,
+\emph{Discrete Contin. Dyn. Syst.}, \textbf{36} (2016), 97--136.
 \doi{10.3934/dcds.2016.36.97}.
 
 \bibitem{DZ1990}
-Dershowitz, N., \& Zaks, S. (1990).
-The cycle lemma and some applications.
-\emph{European Journal of Combinatorics, 11}(1), 35--40.
+N. Dershowitz and S. Zaks,
+The cycle lemma and some applications,
+\emph{European J. Combin.}, \textbf{11} (1990), 35--40.
 \doi{10.1016/S0195-6698(13)80053-4}.
 
 \bibitem{HZ2018}
-Huang, Y., \& Zhong, X. (2018).
-Carath\'eodory--Pesin structures associated with control systems.
-\emph{Systems \& Control Letters, 112}, 36--41.
+Y. Huang and X. Zhong,
+Carath\'eodory--Pesin structures associated with control systems,
+\emph{Systems Control Lett.}, \textbf{112} (2018), 36--41.
 \doi{10.1016/j.sysconle.2017.12.009}.
 
 \bibitem{Hutchinson1981}
-Hutchinson, J. E. (1981).
-Fractals and self-similarity.
-\emph{Indiana University Mathematics Journal, 30}(5), 713--747.
+J. E. Hutchinson,
+Fractals and self-similarity,
+\emph{Indiana Univ. Math. J.}, \textbf{30} (1981), 713--747.
 \doi{10.1512/iumj.1981.30.30055}.
 
 \bibitem{Kawan2013}
-Kawan, C. (2013).
-\emph{Invariance entropy for deterministic control systems: An introduction}
-(Lecture Notes in Mathematics, Vol. 2089). Springer.
+C. Kawan,
+\emph{Invariance entropy for deterministic control systems: An introduction}, Lecture Notes in Mathematics, 2089, Springer, 2013.
 \doi{10.1007/978-3-319-01288-9}.
 
 \bibitem{LM2018}
-Liberzon, D., \& Mitra, S. (2018).
-Entropy and minimal bit rates for state estimation and model detection.
-\emph{IEEE Transactions on Automatic Control, 63}(10), 3330--3344.
+D. Liberzon and S. Mitra,
+Entropy and minimal bit rates for state estimation and model detection,
+\emph{IEEE Trans. Automat. Control}, \textbf{63} (2018), 3330--3344.
 \doi{10.1109/TAC.2017.2782478}.
 
 \bibitem{NWH2022}
-Nie, X., Wang, T., \& Huang, Y. (2022).
-Measure-theoretic invariance entropy and variational principles for control systems.
-\emph{Journal of Differential Equations, 321}, 318--348.
+X. Nie, T. Wang and Y. Huang,
+Measure-theoretic invariance entropy and variational principles for control systems,
+\emph{J. Differential Equations}, \textbf{321} (2022), 318--348.
 \doi{10.1016/j.jde.2022.03.013}.
 
 \bibitem{WHS2019}
-Wang, T., Huang, Y., \& Sun, H.-W. (2019).
-Measure-theoretic invariance entropy for control systems.
-\emph{SIAM Journal on Control and Optimization, 57}(1), 310--333.
+T. Wang, Y. Huang and H.-W. Sun,
+Measure-theoretic invariance entropy for control systems,
+\emph{SIAM J. Control Optim.}, \textbf{57} (2019), 310--333.
 \doi{10.1137/18M1197862}.
 
 \bibitem{YCYZ2025}
-Yang, R., Chen, E., Yang, J., \& Zhou, X. (2025).
-Bowen's equations for invariance pressure of control systems.
-\emph{SIAM Journal on Control and Optimization, 63}(2), 1104--1128.
+R. Yang, E. Chen, J. Yang and X. Zhou,
+Bowen's equations for invariance pressure of control systems,
+\emph{SIAM J. Control Optim.}, \textbf{63} (2025), 1104--1128.
 \doi{10.1137/23M1607684}.
 
 \bibitem{Yao2026}
-Yao, S. (2026).
-\emph{Invariance entropy in the dust} (Version 1) [Preprint]. arXiv.
+S. Yao,
+Invariance entropy in the dust, preprint, 2026, arXiv:2607.02279v1.
 \doi{10.48550/arXiv.2607.02279}.
 
 \end{thebibliography}
