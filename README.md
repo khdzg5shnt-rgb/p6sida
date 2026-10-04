@@ -2,11 +2,15 @@
 
 基线论文：*Positive invariance entropy under uniform state convergence*。
 
-当前唯一阶段稿：*Precision-dependent invariance costs and the geometry of initial sets*。现有完整英文证明、12 页 PDF 和历史投稿材料保留不改。用户 R08 新授权暂停投稿准备、继续结构性研究；本轮已证明分支重叠和严格内向余量仍不足以消除精度成本分裂，未扩写整稿。
+当前唯一阶段稿：*Precision-dependent invariance costs and the geometry of initial sets*。现有英文证明、12页PDF和历史投稿材料保留不改。R09已证明固定重叠系统的真实精度成本率极限存在，以首次越界修复连接任意近似控制与最优精确停止覆盖，并严格收紧两侧界；准确常数尚未求出。本轮继续数学研究，没有扩写整稿或准备投稿。
 
 近期争取数学正确、真实新意和独立专业价值明确的主定理，后续扩大机制或适用范围、争取一区 TOP，长期保留 Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathematical Society、Acta Mathematica。一区与 TOP 是阶段目标，未经贡献比较及相应体系、年份核实不作档位认定；不要求先认证档位才允许证明，不保证升级链。
 
 - [`CURRENT.md`](CURRENT.md)：最新裁决与下一入口。
+- [`research/R09/MATHEMATICS.md`](research/R09/MATHEMATICS.md)：首次越界修复、线性损失比较、极限存在性及严格收紧的根界。
+- [`research/R09/REPORT.md`](research/R09/REPORT.md)：本轮已证内容、与R08和现稿的增量、准确常数的剩余缺口。
+- [`research/R09/SOURCES.md`](research/R09/SOURCES.md)：直接原文、准确APA/DOI、阅读范围及既有方法归属。
+- [`research/R09/NEXT_COMMAND.md`](research/R09/NEXT_COMMAND.md)：同一系统最优停止覆盖指数的唯一下一入口。
 - [`research/R08/MATHEMATICS.md`](research/R08/MATHEMATICS.md)：重叠与严格内向余量下仍有成本分离的完整定理、任意近似控制下界、统一近满面积紧集及明确证书。
 - [`research/R08/REPORT.md`](research/R08/REPORT.md)：本轮结构裁决、相比现稿的实际增量及未认证的发表分量。
 - [`research/R08/SOURCES.md`](research/R08/SOURCES.md)：最近原文、准确 APA/DOI、实际阅读范围和逐项覆盖。
@@ -52,6 +56,6 @@
 
 R03 两篇期刊原件已到位，NWH2022 的 31 页全文及 WHS2019 的相关证明已补核。新反例否定 NWH 原文在单向约束包含下的时变共轭等式；原文混用二进制对数和指数权重也使所写变分公式失效。统一为自然单位并允许熵为负无穷后，已有压力对偶方法仍可用，R01–R03 的自含计算不因此推翻。二进制锥体的面积概率 WHS 熵仍为 `ln 2`，锥顶概率仍为零。
 
-R04 的固定初始概率反例及经典分数覆盖结论保留。现有阶段稿仍以 R06 的成本分裂为主结果，R05 作独立假设下的比较，R07 作固定扩张案例。R08 新证分裂并非只来自全局唯一分支或缺乏内向余量：在不同收缩率均小于1/2的范围内，足够接近2的重叠系统仍有严格分离，同一近满面积紧集适用于全部精度序列。结果尚未收入整稿；中间精度只有严格分离界，未证明准确率或极限存在。目录定义、类型法、受限编码、停止尺度和压力根式明确归于已有方法，不认证全库首创或期刊档位。下一入口固定同一明确系统，研究重复切换对真实初态覆盖的影响；不自动开启新轮或投稿。原稿、论文及 R01–R07 全部历史保留。
+R04的固定概率反例及经典分数覆盖结论保留。现有阶段稿仍以R06成本分裂为主结果，R05作独立假设下的比较，R07作固定扩张案例。R08证明有重叠与归一化角向余量仍可分裂。R09进一步证明指定重叠系统的真实率极限存在，并将界严格缩窄到约0.16102194—0.16107928；这些是解析根界，不是准确值或数值拟合。新接口比较实际最优精确停止覆盖，完整处理任意近似控制的首次越界与后期重入。目录定义、次可加、诱导压力、受限编码和加权计数均归于已有内容；不认证全库首创或期刊档位。下一入口只处理同一系统重叠区间的准确最优覆盖指数，不重复存在性或自动增加模型。原稿、论文及全部研究历史保留。
 
 复现阶段稿 PDF：在仓库根目录执行 `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/p6-paper-build paper/P6_PRECISION_COST.tex`。历史 R01 笔记仍可单独编译。原稿保留不覆盖；此仓库仅存 P6，不修改其他暂停项目。
