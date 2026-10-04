@@ -2,15 +2,19 @@
 
 基线论文：*Positive invariance entropy under uniform state convergence*。
 
-当前唯一阶段稿：*Precision-dependent invariance costs and the geometry of initial sets*。现有英文证明、12页PDF和历史投稿材料保留不改。R09已证固定重叠系统的真实成本率极限存在。R10完成不同成本强制块的真实混合覆盖及同后缀替换失败的解析反例；准确常数仍未知，R09两侧界未收紧。本轮新增局部机制与排除理由，没有扩写整稿或提高期刊档位判断。
+当前唯一阶段稿：*Precision-dependent invariance costs and the geometry of initial sets*。现有英文证明、12页PDF和历史投稿材料保留不改。R09已证固定重叠系统的真实成本率极限存在；R10完成平移混合覆盖及同后缀反例。R11进一步证明任意完整可行区间内的同长策略前缀数统一子指数，并导出保留残余成本的真实目录重编码上界；固定策略率最优仍未证，准确常数未知，R09两侧界未收紧。新增是有限技术接口，未扩稿或提高期刊档位判断。
 
 近期争取数学正确、真实新意和独立专业价值明确的主定理，后续扩大机制或适用范围、争取一区 TOP，长期保留 Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathematical Society、Acta Mathematica。一区与 TOP 是阶段目标，未经贡献比较及相应体系、年份核实不作档位认定；不要求先认证档位才允许证明，不保证升级链。
 
 - [`CURRENT.md`](CURRENT.md)：最新裁决与下一入口。
+- [`research/R11/MATHEMATICS.md`](research/R11/MATHEMATICS.md)：统一子指数几何重编码、真实残余成本因子及轨迹累积恒等式。
+- [`research/R11/REPORT.md`](research/R11/REPORT.md)：比较仍未解、已完成接口和有限贡献判断。
+- [`research/R11/SOURCES.md`](research/R11/SOURCES.md)：经典分支重数先例、最新预印本身份、APA/DOI与实际范围。
+- [`research/R11/NEXT_COMMAND.md`](research/R11/NEXT_COMMAND.md)：同一比较中的成本欠额入口；不自动启动R12。
 - [`research/R10/MATHEMATICS.md`](research/R10/MATHEMATICS.md)：不同成本强制块、平移混合覆盖和全部大成本层的同后缀支配反例。
 - [`research/R10/REPORT.md`](research/R10/REPORT.md)：实际有限增量、准确常数未解和期刊判断边界。
 - [`research/R10/SOURCES.md`](research/R10/SOURCES.md)：正式原文补读、准确APA/DOI和未关闭的覆盖范围。
-- [`research/R10/NEXT_COMMAND.md`](research/R10/NEXT_COMMAND.md)：跨后缀的率最优覆盖比较，尚未证明且不自动启动。
+- [`research/R10/NEXT_COMMAND.md`](research/R10/NEXT_COMMAND.md)：跨后缀比较的历史入口；R11已执行一次有界攻击，比较仍未证明。
 - [`research/R09/MATHEMATICS.md`](research/R09/MATHEMATICS.md)：首次越界修复、线性损失比较、极限存在性及严格收紧的根界。
 - [`research/R09/REPORT.md`](research/R09/REPORT.md)：本轮已证内容、与R08和现稿的增量、准确常数的剩余缺口。
 - [`research/R09/SOURCES.md`](research/R09/SOURCES.md)：直接原文、准确APA/DOI、阅读范围及既有方法归属。
@@ -61,5 +65,7 @@
 R03 两篇期刊原件已到位，NWH2022 的 31 页全文及 WHS2019 的相关证明已补核。新反例否定 NWH 原文在单向约束包含下的时变共轭等式；原文混用二进制对数和指数权重也使所写变分公式失效。统一为自然单位并允许熵为负无穷后，已有压力对偶方法仍可用，R01–R03 的自含计算不因此推翻。二进制锥体的面积概率 WHS 熵仍为 `ln 2`，锥顶概率仍为零。
 
 R04的固定概率反例及经典分数覆盖结论保留。现有阶段稿仍以R06成本分裂为主结果，R05作独立假设下的比较，R07作固定扩张案例。R08证明有重叠与归一化角向余量仍可分裂。R09进一步证明指定重叠系统的真实率极限存在，并将界严格缩窄到约0.16102194—0.16107928；这些是解析根界，不是准确值或数值拟合。新接口比较实际最优精确停止覆盖，完整处理任意近似控制的首次越界与后期重入。目录定义、次可加、诱导压力、受限编码和加权计数均归于已有内容；不认证全库首创或期刊档位。R10现已证明重叠区两个强制块具有81/24不同成本及非零角向平移，合法同后缀停止词在所有足够大成本层仍可完全分离。因此不能仅靠收缩速度删目录；局部混合覆盖未闭合全局指数。下一入口是同一系统的跨后缀率最优比较，具体见R10，不重试同后缀替换或自动增加模型。原稿、论文及全部研究历史保留。
+
+R11新增任意完整可行区间的统一同长重编码及残余预算比较，具体证明见R11。等时几何碎裂不会另付指数因子，但固定策略在相同时间内的成本可能不足，所需后续目录仍未控制。G_m率g存在，g=κ未证；本轮没有收紧κ或提高阶段稿期刊档位判断。经典固定块、分支重数及拼接不包装为原创。下一入口只处理这一预算因子，不自动开轮或扩稿。
 
 复现阶段稿 PDF：在仓库根目录执行 `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/p6-paper-build paper/P6_PRECISION_COST.tex`。历史 R01 笔记仍可单独编译。原稿保留不覆盖；此仓库仅存 P6，不修改其他暂停项目。
