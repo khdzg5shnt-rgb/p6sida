@@ -2,11 +2,15 @@
 
 基线论文：*Positive invariance entropy under uniform state convergence*。
 
-当前唯一阶段稿：*Precision-dependent invariance costs and the geometry of initial sets*。现有英文证明、12页PDF和历史投稿材料保留不改。R09已证真实成本率极限存在，R10–R12完成平移、重编码与实际端点预算接口。R13证明临界端点不能有限步精确汇合、完整策略语言没有精确有限词图，排除一种端点化简；没有控制剩余成本因子。固定策略率最优仍未证明或否定，准确常数未知，R09两侧界未收紧。未扩稿或提高期刊判断，暂停重复预算攻击，不自动启动R14。
+当前唯一阶段稿：*Precision-dependent invariance costs and the geometry of initial sets*。现有英文证明、12页PDF和历史投稿材料保留不改。R15新证一条结构充分条件：径向收缩与可行角向逆分支长度按同一幂次匹配时，即使控制具有不同径向因子，任意正面积紧初始集在明确精度范围内仍有共同真实成本律。完整任意近似控制面积下界与停止尾部已证明；只是一条低精度充分条件，未认证一区/TOP。R09–R14固定策略最优性及准确常数继续暂停，原界未变，不自动启动R16。
 
 近期争取数学正确、真实新意和独立专业价值明确的主定理，后续扩大机制或适用范围、争取一区 TOP，长期保留 Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathematical Society、Acta Mathematica。一区与 TOP 是阶段目标，未经贡献比较及相应体系、年份核实不作档位认定；不要求先认证档位才允许证明，不保证升级链。
 
 - [`CURRENT.md`](CURRENT.md)：最新裁决与下一入口。
+- [`research/R15/MATHEMATICS.md`](research/R15/MATHEMATICS.md)：不同径向收缩下的几何匹配充分条件、任意近似控制的面积界、任意正面积紧集的统一低精度律。
+- [`research/R15/REPORT.md`](research/R15/REPORT.md)：新机制与R06的对照、有限发表价值增量和明确范围限制。
+- [`research/R15/SOURCES.md`](research/R15/SOURCES.md)：直接原文、APA/DOI、实际阅读范围及已有方法归属。
+- [`research/R15/NEXT_COMMAND.md`](research/R15/NEXT_COMMAND.md)：完成停点与同一固定样例的高精度分裂问题；须另获授权，不自动启动R16。
 - [`research/R13/MATHEMATICS.md`](research/R13/MATHEMATICS.md)：实际core与10/100返回、临界端点不汇合、精确有限词图排除的完整证明。
 - [`research/R13/REPORT.md`](research/R13/REPORT.md)：原比较未解、没有剩余预算新界及暂停裁决。
 - [`research/R13/SOURCES.md`](research/R13/SOURCES.md)：中间β原文、APA/DOI、实际范围及已有方法归属。
@@ -76,6 +80,6 @@ R04的固定概率反例及经典分数覆盖结论保留。现有阶段稿仍�
 
 R11新增任意完整可行区间的统一同长重编码及残余预算比较，具体证明见R11。等时几何碎裂不会另付指数因子，但固定策略在相同时间内的成本可能不足，所需后续目录仍未控制。G_m率g存在，g=κ未证；本轮没有收紧κ或提高阶段稿期刊档位判断。经典固定块、分支重数及拼接不包装为原创。下一入口只处理这一预算因子，不自动开轮或扩稿。
 
-R12进一步证明合法达标区间最多相交三条最优目录区间，因而实际端点延续的重复计数只有常数损失。未达成本的实际计数R_m之指数相对N_m恰为g−κ，并有端点长度与预算的显式两侧界；这不是策略最优证明。剩余障碍是最优覆盖上的端点大小—预算分布。R13按新授权完成一次攻击，但未取得该因子的新控制；仅保存有限精确端点闭合的排除理由，属于已有理论的具体应用，不认证独立新主贡献。当前停点见R13，暂停重复攻击，不自动启动R14。
+R12进一步证明合法达标区间最多相交三条最优目录区间，因而实际端点延续的重复计数只有常数损失。未达成本的实际计数R_m之指数相对N_m恰为g−κ，并有端点长度与预算的显式两侧界；这不是策略最优证明。剩余障碍是最优覆盖上的端点大小—预算分布。R13按新授权完成一次攻击，但未取得该因子的新控制；仅保存有限精确端点闭合的排除理由，属于已有理论的具体应用，不认证独立新主贡献。R13暂停停点与排除理由作为历史保留。R14获新授权后只核验端点递推及贪心工具，没有比较增量或提交；R15已转入同一路线A的结构充分条件，当前停点以CURRENT和R15为准。
 
 复现阶段稿 PDF：在仓库根目录执行 `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/p6-paper-build paper/P6_PRECISION_COST.tex`。历史 R01 笔记仍可单独编译。原稿保留不覆盖；此仓库仅存 P6，不修改其他暂停项目。
