@@ -2,15 +2,19 @@
 
 基线论文：*Positive invariance entropy under uniform state convergence*。
 
-当前唯一阶段稿：*Precision-dependent invariance costs and the geometry of initial sets*。DCDS 终稿审阅与条件式投稿准备已完成，现有完整英文证明、按官方指南适配的 12 页 PDF、附信和材料清单。数学内容支持有风险的尝试；作者信息和真实声明待确认，尚未投稿。
+当前唯一阶段稿：*Precision-dependent invariance costs and the geometry of initial sets*。现有完整英文证明、12 页 PDF 和历史投稿材料保留不改。用户 R08 新授权暂停投稿准备、继续结构性研究；本轮已证明分支重叠和严格内向余量仍不足以消除精度成本分裂，未扩写整稿。
 
-Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathematical Society、Acta Mathematica 保留为长期目标。R05 按用户明确授权调整近期策略：先争取数学正确、真实新意和独立专业发表价值的阶段成果，不要求阶段候选先达到四大，不承诺逐级升级；不用扩写、加维数或小幅放宽假设代替贡献。
+近期争取数学正确、真实新意和独立专业价值明确的主定理，后续扩大机制或适用范围、争取一区 TOP，长期保留 Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathematical Society、Acta Mathematica。一区与 TOP 是阶段目标，未经贡献比较及相应体系、年份核实不作档位认定；不要求先认证档位才允许证明，不保证升级链。
 
 - [`CURRENT.md`](CURRENT.md)：最新裁决与下一入口。
+- [`research/R08/MATHEMATICS.md`](research/R08/MATHEMATICS.md)：重叠与严格内向余量下仍有成本分离的完整定理、任意近似控制下界、统一近满面积紧集及明确证书。
+- [`research/R08/REPORT.md`](research/R08/REPORT.md)：本轮结构裁决、相比现稿的实际增量及未认证的发表分量。
+- [`research/R08/SOURCES.md`](research/R08/SOURCES.md)：最近原文、准确 APA/DOI、实际阅读范围和逐项覆盖。
+- [`research/R08/NEXT_COMMAND.md`](research/R08/NEXT_COMMAND.md)：已完成停点与同一重叠系统真实目录最优率的唯一入口。
 - [`paper/P6_PRECISION_COST.tex`](paper/P6_PRECISION_COST.tex)：阶段论文英文 LaTeX，主线为初始集几何与精度成本。
 - [`paper/P6_PRECISION_COST.pdf`](paper/P6_PRECISION_COST.pdf)：已编译并逐页检查的唯一阶段稿。
 - [`research/R07/STAGE_PAPER_DECISION.md`](research/R07/STAGE_PAPER_DECISION.md)：成稿裁决、定理关系、证明链、直接覆盖边界和条件性期刊判断。
-- [`research/R07/DCDS_FINAL_REVIEW.md`](research/R07/DCDS_FINAL_REVIEW.md)：本轮有限证明核验、Chen–Zhong 2024 的直接定义覆盖、官方适配与完成停点。
+- [`research/R07/DCDS_FINAL_REVIEW.md`](research/R07/DCDS_FINAL_REVIEW.md)：历史 DCDS 终稿核验、Chen–Zhong 2024 的直接定义覆盖、官方适配与完成停点。
 - [`paper/COVER_LETTER_DRAFT.md`](paper/COVER_LETTER_DRAFT.md)：有具体数学内容的 DCDS 投稿附信草稿。
 - [`paper/SUBMISSION_CHECKLIST.md`](paper/SUBMISSION_CHECKLIST.md)：材料状态、官方依据及集中待确认的作者事实。
 - [`original/`](original/)：未经改动的原稿、SHA-256 与归档说明。
@@ -48,6 +52,6 @@ Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathe
 
 R03 两篇期刊原件已到位，NWH2022 的 31 页全文及 WHS2019 的相关证明已补核。新反例否定 NWH 原文在单向约束包含下的时变共轭等式；原文混用二进制对数和指数权重也使所写变分公式失效。统一为自然单位并允许熵为负无穷后，已有压力对偶方法仍可用，R01–R03 的自含计算不因此推翻。二进制锥体的面积概率 WHS 熵仍为 `ln 2`，锥顶概率仍为零。
 
-R04 的固定初始概率反例及经典分数覆盖结论保留。阶段稿以 R06 的近满面积初始集与含开集初始集的严格成本分裂为主结果，R05 作独立假设下的比较，R07 作固定扩张案例。完整证明经本轮有界复核未发现需要撤下的结论。Chen–Zhong 2024 的相同目录定义及固定精度有界性、经典循环移位、类型计数、停止尺度和压力方法均归属已有内容；不认证全库首创、分区或四大水平。当前只以 DCDS 作条件性定位，停在材料清单中的真实作者信息及人工审读待确认；下一步补齐同一稿件，不自动 R08 或添加模型。原稿、原成稿裁决与 R01–R07 既有文件全部保留。
+R04 的固定初始概率反例及经典分数覆盖结论保留。现有阶段稿仍以 R06 的成本分裂为主结果，R05 作独立假设下的比较，R07 作固定扩张案例。R08 新证分裂并非只来自全局唯一分支或缺乏内向余量：每对不同收缩率下，足够接近2的重叠系统仍有严格分离，同一近满面积紧集适用于全部精度序列。结果尚未收入整稿；中间精度只有严格分离界，未证明准确率或极限存在。目录定义、类型法、受限编码、停止尺度和压力根式明确归于已有方法，不认证全库首创或期刊档位。下一入口固定同一明确系统，研究重复切换对真实初态覆盖的影响；不自动开启新轮或投稿。原稿、论文及 R01–R07 全部历史保留。
 
 复现阶段稿 PDF：在仓库根目录执行 `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/p6-paper-build paper/P6_PRECISION_COST.tex`。历史 R01 笔记仍可单独编译。原稿保留不覆盖；此仓库仅存 P6，不修改其他暂停项目。
