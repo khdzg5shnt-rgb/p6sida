@@ -66,6 +66,8 @@ $$
 
 Their feasible domains in \([-1,1]\) are \([-1,b]\) and \([-b,1]\), with \(b=1/q-1/2>0\). Choosing 0 for \(y\le0\) and 1 for \(y>0\) sends every ratio into \([-q/2,q/2]\). The inward margin is \(1-q/2>0\). Radii decrease and the origin is fixed, proving controlled invariance.
 
+This is a uniform normalized angular margin for \(s>0\), not a uniform positive Euclidean distance from \(\partial Q\). Absolute inward distances tend to zero at the fixed cone vertex.
+
 Choose \(M\ge1\) sufficiently large that
 
 $$
