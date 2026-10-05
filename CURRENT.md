@@ -1,13 +1,15 @@
 # P6 当前状态
 
-截至 2026-10-05 UTC：R23 主贡献整合完成。开始时 main 为 a2d73a6fdd7d987cd352d00384685a30f03c318b，与恢复点一致；无后续完成项或适用 AGENTS.md。近期可靠专业成果及一区评估、后续一区 TOP、长期 Annals / Inventiones / JAMS / Acta 目标保留，不认证档位。
+截至 2026-10-05 UTC（北京时间2026-10-06）：R24 渐近匹配边界已证明。开始时 main 为5ab1c5d5867d83e69608f35e5580ec17b755da17，与恢复点一致；无后续完成项或适用AGENTS.md。近期可靠专业成果及一区评估、后续一区TOP、长期Annals / Inventiones / JAMS / Acta目标保留，不认证档位。
 
-[唯一英文稿](paper/P6_PRECISION_COST.tex)与[15页 PDF](paper/P6_PRECISION_COST.pdf)已更新，题名为 *Matching, angular feedback, and initial-set dependence in the precision cost of contracting control systems*。主线为可行分支几何—径向收缩的匹配如何决定实际初始集精度成本。R22 角向反馈边界为主结果，R21 双指数半径自主失配为定量对照；线性匹配和局部匹配不足例服务这一主线。
+R24 在用户给定的三个独立紧支撑状态函数类内，给出显式充分小阈值ν₀=min{a_min/1000，(β−1)(−ln a_max)/[4(1+2/a_min)]}，证明无需逐步R_i=p_i^β：γ≤βh_a时每个固定正面积紧集的准确率为γ/β；同一个近满面积紧集先于全部有限高侧指数、精度序列和时域选定，准确率均h_a，严格低于全Q的liminf。
 
-角向反馈类中，γ≤βh_a 时每个固定正面积紧集的准确率为 γ/β；同一个近满面积紧集在全部有限 γ>βh_a 及其全部精度序列下准确率为 h_a，严格低于全 Q 的 liminf。新增采用的图锥、完整区间及首次偏离带给任意近似输入 1+Bn 停止目录损失。半径自主失配类在 0<γ<γ₀ 的两率为 γD、γh_a/χ，且 D>h_a/χ；其匹配充要判据仅限本类，不扩大到角向反馈。非共轭排除仅限 0<|a₀−a₁|<ε/4，保持 Q 和同时控制共轭要求。
+关键增量是独立径向导数的图锥、完整可行区间、物理首次偏离带及任意近似输入的1+Bn停止目录损失；完整尾部、重入、闭端点、实际平面初态和欧氏距离均保留。一个非空解析实例族有有限且至少三个内部可行像边界交点，排除保持Q同时化约到旧R22及半径自主类；没有对每个三元组都断言非共轭。完整证明见[R24/MATHEMATICS](research/R24/MATHEMATICS.md)，归属及定位见[REPORT](research/R24/REPORT.md)，真实来源见[SOURCES](research/R24/SOURCES.md)，[完成停点](research/R24/NEXT_COMMAND.md)。声明的主定理无未解核心引理。
 
-全部实际初态、闭端点、完整时域、重入及统一尾部保留。采用主证明链已核查闭合，编译和15页版面已检查；整合不另算新数学发现。全 Q 高侧准确谱/极限、角向反馈失配必要性及一般扰动转移仍未证明。更高定位受贡献范围及新颖性证据限制，不是现有主定理缺一个关键引理。作者事实和人工审读待确认，AI披露准确保留；旧 DCDS 材料只是历史，当前未准备投稿。
+[唯一英文稿](paper/P6_PRECISION_COST.tex)及[15页PDF](paper/P6_PRECISION_COST.pdf)保持R23原字节，尚未收入R24；题名仍为Matching, angular feedback, and initial-set dependence in the precision cost of contracting control systems。R24先完成数学，不扩稿或准备投稿。旧DCDS材料只是历史，作者事实和人工审读待确认，AI披露保留。
 
-陈虎.pdf 已于 R21 取得并全文核验，24页，DOI 10.1016/j.jde.2025.113819，SHA-256 8a431cc9d2668c84464205ae30eed7c2bdeedb42c44e265aed2657dea8bccd7c；不再标缺失或索取。具体采用范围、来源版本限制与三版本贡献比较见 [R23/REPORT](research/R23/REPORT.md)、[SOURCES](research/R23/SOURCES.md)、[完成停点](research/R23/NEXT_COMMAND.md)。
+新增确实解除瞬时精确匹配限制，有增加独立专业价值的理由；图、畸变、停止与典型集仍为经典工具，边界计数是新接口后的R22论证应用。小导数、紧支撑、特殊互补无内部重叠分支和一阶匹配仍限制一般性。全Q高侧准确谱/极限、反馈必要充分分类未证明；正式版本覆盖证据亦有范围限制，一区/TOP尚未认证。
 
-原稿 SHA-256 保持 47aa42836d78fa281d1ef18e1fbb20d5d311eeab0959077f775542b61249b869；original/ 和全部研究历史保留。R09–R14 策略最优性及 κ 求值继续暂停。R23完成后停止，不自动 R24；只操作 p6sida，不投稿、联系他人、分派代理或增加第三路线。
+陈虎.pdf已全文取得：24页，DOI 10.1016/j.jde.2025.113819，SHA-256 8a431cc9d2668c84464205ae30eed7c2bdeedb42c44e265aed2657dea8bccd7c；本轮核对校验、复用R21真实全文范围，不再标缺失或索取。其余文献版本缺口准确保留。
+
+original/原稿SHA-256仍为47aa42836d78fa281d1ef18e1fbb20d5d311eeab0959077f775542b61249b869；全部历史及唯一TeX/PDF保留。完成R24后停止，不自动R25。后续整合或新证明须另获明确授权，R09–R14策略最优性及κ求值继续暂停；只操作p6sida，不投稿、联系他人、分派代理或增加第三路线。
