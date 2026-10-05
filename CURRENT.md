@@ -1,15 +1,13 @@
 # P6 当前状态
 
-截至 2026-10-05 UTC（北京时间2026-10-06）：R24 渐近匹配边界已证明。开始时 main 为5ab1c5d5867d83e69608f35e5580ec17b755da17，与恢复点一致；无后续完成项或适用AGENTS.md。近期可靠专业成果及一区评估、后续一区TOP、长期Annals / Inventiones / JAMS / Acta目标保留，不认证档位。
+截至2026-10-05 UTC（北京时间2026-10-06）：R25已将R24渐近匹配主定理整合进唯一英文论文。开始时最新main为d112f650a2c3b16973cef7ed688fd44d49de49bc，与恢复点一致；无后续完成项或适用AGENTS.md。近期可靠专业成果及一区评估、后续一区TOP、长期Annals / Inventiones / JAMS / Acta目标保留，不认证档位。
 
-R24 在用户给定的三个独立紧支撑状态函数类内，给出显式充分小阈值ν₀=min{a_min/1000，(β−1)(−ln a_max)/[4(1+2/a_min)]}，证明无需逐步R_i=p_i^β：γ≤βh_a时每个固定正面积紧集的准确率为γ/β；同一个近满面积紧集先于全部有限高侧指数、精度序列和时域选定，准确率均h_a，严格低于全Q的liminf。
+[唯一英文稿](paper/P6_PRECISION_COST.tex)题名为Asymptotic matching and initial-set dependence in the precision cost of contracting control systems，[对应PDF](paper/P6_PRECISION_COST.pdf)16页。主定理Theorem 2.2允许分支与径向因子独立依赖状态，不要求逐步R_i=p_i^β；保留显式小阈值、固定紧支撑、互补无内部重叠分支及匹配一阶矩阵。低侧每个正面积紧集准确率γ/β；同一个近满面积紧集在全部有限高侧指数及精度序列下准确率h_a，严格低于全Q的liminf。
 
-关键增量是独立径向导数的图锥、完整可行区间、物理首次偏离带及任意近似输入的1+Bn停止目录损失；完整尾部、重入、闭端点、实际平面初态和欧氏距离均保留。一个非空解析实例族有有限且至少三个内部可行像边界交点，排除保持Q同时化约到旧R22及半径自主类；没有对每个三元组都断言非共轭。完整证明见[R24/MATHEMATICS](research/R24/MATHEMATICS.md)，归属及定位见[REPORT](research/R24/REPORT.md)，真实来源见[SOURCES](research/R24/SOURCES.md)，[完成停点](research/R24/NEXT_COMMAND.md)。声明的主定理无未解核心引理。
+采用链核验未发现需撤回主贡献的错误；独立径向图锥、完整可行区间、物理首次偏离带、任意近似输入的1+Bn停止比较及完整尾部均在正文证明。失配必要性只在半径自主类内；非化约排除只对构造实例及保持Q的同时控制共轭。R22与本类未称整体包含；全Q高侧准确谱/极限和一般分类仍未证明。
 
-[唯一英文稿](paper/P6_PRECISION_COST.tex)及[15页PDF](paper/P6_PRECISION_COST.pdf)保持R23原字节，尚未收入R24；题名仍为Matching, angular feedback, and initial-set dependence in the precision cost of contracting control systems。R24先完成数学，不扩稿或准备投稿。旧DCDS材料只是历史，作者事实和人工审读待确认，AI披露保留。
+完整贡献裁决见[R25/REPORT](research/R25/REPORT.md)，准确APA/DOI及实际阅读范围见[SOURCES](research/R25/SOURCES.md)，[完成停点](research/R25/NEXT_COMMAND.md)。相对R23实质解除瞬时匹配限制，数学增量归R24；R25整合与编译不另算新突破。形成完整可评估稿件，但正式版本覆盖范围、专门系统结构和贡献分量仍限制一区/TOP判断。作者真实事实及人工审读待确认，原AI披露保留；旧DCDS材料只作历史，本轮没有准备投稿。
 
-新增确实解除瞬时精确匹配限制，有增加独立专业价值的理由；图、畸变、停止与典型集仍为经典工具，边界计数是新接口后的R22论证应用。小导数、紧支撑、特殊互补无内部重叠分支和一阶匹配仍限制一般性。全Q高侧准确谱/极限、反馈必要充分分类未证明；正式版本覆盖证据亦有范围限制，一区/TOP尚未认证。
+陈虎.pdf保持已全文取得状态：24页，DOI 10.1016/j.jde.2025.113819，SHA-256 8a431cc9d2668c84464205ae30eed7c2bdeedb42c44e265aed2657dea8bccd7c。本轮复核身份校验、复用R21真实全文范围，不再标缺失或索取。两项定向文献的正式主文范围限制准确保留。
 
-陈虎.pdf已全文取得：24页，DOI 10.1016/j.jde.2025.113819，SHA-256 8a431cc9d2668c84464205ae30eed7c2bdeedb42c44e265aed2657dea8bccd7c；本轮核对校验、复用R21真实全文范围，不再标缺失或索取。其余文献版本缺口准确保留。
-
-original/原稿SHA-256仍为47aa42836d78fa281d1ef18e1fbb20d5d311eeab0959077f775542b61249b869；全部历史及唯一TeX/PDF保留。完成R24后停止，不自动R25。后续整合或新证明须另获明确授权，R09–R14策略最优性及κ求值继续暂停；只操作p6sida，不投稿、联系他人、分派代理或增加第三路线。
+original/及R01–R24历史保留原字节。当前主定理无未解核心引理，本轮选择零个新增待攻命题，完成后停止，不自动R26；后续须另获明确授权。R09–R14策略最优性及κ求值继续暂停。只操作p6sida，不投稿、联系他人、分派代理或增加第三路线。
