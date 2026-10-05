@@ -2,11 +2,14 @@
 
 基线论文：*Positive invariance entropy under uniform state convergence*。
 
-当前唯一英文稿：*A precision threshold for initial-set dependence in contracting control systems*，仍保持 R20 的11页整合版本。R22完整证明指定角向反馈可逆类的共同成本边界：低侧全部正面积紧集准确率γ/β，高侧同一个近满面积紧集准确率h_a，严格低于全Q的liminf。新增移动可行图锥、首次偏离带和1+Bn的真实目录比较，解除半径不受初始角度影响的限制；非空子范围还排除保持Q化约到旧半径自主类，其余参数不泛称非共轭。R21正式原件补核与双指数失配判据保持；R21/R22结果尚未扩写论文。经典图/畸变及相对前缀工具明确归属已有，适用范围增强但未认证一区/TOP。完成后停止，不自动R23；R09–R14策略最优性及常数继续暂停。
+当前唯一英文稿：*Matching, angular feedback, and initial-set dependence in the precision cost of contracting control systems*，R23已完成15页整合稿。主贡献是匹配角向反馈下的共同成本边界与任意近似输入目录比较；半径自主双指数失配给出任意小正精度下的严格两率对照，其充要判据只限该类。相比R20解除一词共享径向轨迹的限制，非空参数子范围排除保持Q化约到旧类。完整证明与全部精度量词已落实，经典图/畸变、停止和压力方法准确归属；整合不另算数学突破，尚不认证一区/TOP。完成后停止，不自动R24；R09–R14策略最优性及κ求值继续暂停。
 
 近期争取数学正确、真实新意和独立专业价值明确的主定理，后续扩大机制或适用范围、争取一区 TOP，长期保留 Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathematical Society、Acta Mathematica。一区与 TOP 是阶段目标，未经贡献比较及相应体系、年份核实不作档位认定；不要求先认证档位才允许证明，不保证升级链。
 
 - [`CURRENT.md`](CURRENT.md)：最新裁决与下一入口。
+- [`research/R23/REPORT.md`](research/R23/REPORT.md)：唯一主线、完整采用链、三版本贡献比较与阶段定位。
+- [`research/R23/SOURCES.md`](research/R23/SOURCES.md)：准确APA/DOI、实际读文与正式版本范围、方法及覆盖归属。
+- [`research/R23/NEXT_COMMAND.md`](research/R23/NEXT_COMMAND.md)：成稿完成停点，不自动新证明、审计或投稿。
 - [`research/R22/MATHEMATICS.md`](research/R22/MATHEMATICS.md)：角向反馈全域核验、移动可行图、任意近似目录比较、完整边界及有限范围的共轭排除。
 - [`research/R22/REPORT.md`](research/R22/REPORT.md)：解除半径自主限制的实际增量、经典工具归属与有限发表价值裁决。
 - [`research/R22/SOURCES.md`](research/R22/SOURCES.md)：图变换正式附录/作者稿实际范围、两篇原文身份、既有正式原件及未读正文边界。
@@ -62,7 +65,7 @@
 - [`research/R08/REPORT.md`](research/R08/REPORT.md)：本轮结构裁决、相比现稿的实际增量及未认证的发表分量。
 - [`research/R08/SOURCES.md`](research/R08/SOURCES.md)：最近原文、准确 APA/DOI、实际阅读范围和逐项覆盖。
 - [`research/R08/NEXT_COMMAND.md`](research/R08/NEXT_COMMAND.md)：已完成停点与同一重叠系统真实目录最优率的唯一入口。
-- [`paper/P6_PRECISION_COST.tex`](paper/P6_PRECISION_COST.tex)：唯一英文 LaTeX，主线为临界精度边界及可逆状态依赖转移。
+- [`paper/P6_PRECISION_COST.tex`](paper/P6_PRECISION_COST.tex)：唯一英文 LaTeX，主线为匹配角向反馈边界及半径自主失配对照。
 - [`paper/P6_PRECISION_COST.pdf`](paper/P6_PRECISION_COST.pdf)：已编译并逐页检查的唯一阶段稿。
 - [`research/R07/STAGE_PAPER_DECISION.md`](research/R07/STAGE_PAPER_DECISION.md)：成稿裁决、定理关系、证明链、直接覆盖边界和条件性期刊判断。
 - [`research/R07/DCDS_FINAL_REVIEW.md`](research/R07/DCDS_FINAL_REVIEW.md)：历史 DCDS 终稿核验、Chen–Zhong 2024 的直接定义覆盖、官方适配与完成停点。
@@ -107,6 +110,6 @@ R04的固定概率反例及经典分数覆盖结论保留。旧阶段稿以R06�
 
 R11新增任意完整可行区间的统一同长重编码及残余预算比较，具体证明见R11。等时几何碎裂不会另付指数因子，但固定策略在相同时间内的成本可能不足，所需后续目录仍未控制。G_m率g存在，g=κ未证；本轮没有收紧κ或提高阶段稿期刊档位判断。经典固定块、分支重数及拼接不包装为原创。下一入口只处理这一预算因子，不自动开轮或扩稿。
 
-R12进一步证明合法达标区间最多相交三条最优目录区间，因而实际端点延续的重复计数只有常数损失。未达成本的实际计数R_m之指数相对N_m恰为g−κ，并有端点长度与预算的显式两侧界；这不是策略最优证明。剩余障碍是最优覆盖上的端点大小—预算分布。R13按新授权完成一次攻击，但未取得该因子的新控制；仅保存有限精确端点闭合的排除理由，属于已有理论的具体应用，不认证独立新主贡献。R13暂停停点与排除理由作为历史保留。R14获新授权后只核验端点递推及贪心工具，没有比较增量或提交；R15已转入同一路线A的结构充分条件，R16证明同一匹配系统的高精度分裂，R17将二者收束为准确共同成本边界；R18进一步给出局部匹配不足的光滑非可逆反例，R19进一步完成指定可逆状态依赖类的正向边界转移，R20已按新授权整合主贡献并完成唯一论文，此为R20历史停点；最新实质结果与停点以CURRENT和R21为准。
+R12进一步证明合法达标区间最多相交三条最优目录区间，因而实际端点延续的重复计数只有常数损失。未达成本的实际计数R_m之指数相对N_m恰为g−κ，并有端点长度与预算的显式两侧界；这不是策略最优证明。剩余障碍是最优覆盖上的端点大小—预算分布。R13按新授权完成一次攻击，但未取得该因子的新控制；仅保存有限精确端点闭合的排除理由，属于已有理论的具体应用，不认证独立新主贡献。R13暂停停点与排除理由作为历史保留。R14获新授权后只核验端点递推及贪心工具，没有比较增量或提交；R15已转入同一路线A的结构充分条件，R16证明同一匹配系统的高精度分裂，R17将二者收束为准确共同成本边界；R18进一步给出局部匹配不足的光滑非可逆反例，R19进一步完成指定可逆状态依赖类的正向边界转移，R20已按新授权整合主贡献并完成唯一论文，此为R20历史停点；最新实质结果与停点以CURRENT和R23为准。
 
 复现阶段稿 PDF：在仓库根目录执行 `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/p6-paper-build paper/P6_PRECISION_COST.tex`。历史 R01 笔记仍可单独编译。原稿保留不覆盖；此仓库仅存 P6，不修改其他暂停项目。
