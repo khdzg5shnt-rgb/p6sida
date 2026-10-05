@@ -4,6 +4,8 @@
 
 当前唯一英文稿：*Asymptotic matching and initial-set dependence in the precision cost of contracting control systems*，仍为R25完整英文源码及16页PDF。本轮保持其原字节，R26研究结果尚未入稿。
 
+已按用户要求研读十篇四大标杆论文，四刊均有覆盖；[研读与P6接口](research/FOUR_JOURNAL_STUDY/READING_REPORT.md)及[版本、实际页码与SHA-256](research/FOUR_JOURNAL_STUDY/SOURCES.json)已记录。重点学习实际几何与熵的连接、典型/全部初态差别及集中证明的写法。两篇全文阅读，其余为定位的部分阅读；这不是完整新颖性检索或新的数学升级，未改论文或自动开轮。
+
 最新数学结果R26进一步解除无内部可行重叠限制：在指定渐近消失重叠小扰动类及显式正阈值内，γ≤βh_a时所有固定正面积紧集准确率γ/β；同一个近满面积紧集在全部有限高侧指数及精度序列下准确率h_a，严格低于全Q的liminf。首次真正不可行、所有可行前缀的面积典型性和有界串物理见证给出任意近似输入的真实目录控制；未预设停止树必要或策略最优。正重叠排除保持Q的旧类同时共轭。完整边界已证明，全Q高侧准确谱/极限仍未知；独立价值增加但尚不认证一区/TOP。完成后停止，不自动R27；R09–R14继续暂停。
 
 近期争取数学正确、真实新意和独立专业价值明确的主定理，后续扩大机制或适用范围、争取一区 TOP，长期保留 Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathematical Society、Acta Mathematica。一区与 TOP 是阶段目标，未经贡献比较及相应体系、年份核实不作档位认定；不要求先认证档位才允许证明，不保证升级链。
