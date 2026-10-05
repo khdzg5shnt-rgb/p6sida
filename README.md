@@ -2,11 +2,15 @@
 
 基线论文：*Positive invariance entropy under uniform state convergence*。
 
-当前唯一英文稿：*A precision threshold for initial-set dependence in contracting control systems*，仍保持 R20 的11页整合版本。R21 已全文补核陈虎正式原件并保留主贡献，证明指定可逆状态依赖失配类在每个 0<γ<γ₀ 下的全 Q 准确率 γD 与同一近满面积紧集准确率 γh_a/χ 严格分离；与匹配侧合并得到本类内共同匹配的必要充分判据。完整证明先存研究记录，尚未扩写论文。相对前缀方法延续 R06，状态依赖估计延续 R19，不计新压力或全新覆盖工具；解释更完整，未认证一区/TOP。旧稿和投稿材料作为历史保留；完成后停止，不自动R22，R09–R14策略最优性及常数继续暂停。
+当前唯一英文稿：*A precision threshold for initial-set dependence in contracting control systems*，仍保持 R20 的11页整合版本。R22完整证明指定角向反馈可逆类的共同成本边界：低侧全部正面积紧集准确率γ/β，高侧同一个近满面积紧集准确率h_a，严格低于全Q的liminf。新增移动可行图锥、首次偏离带和1+Bn的真实目录比较，解除半径不受初始角度影响的限制；非空子范围还排除保持Q化约到旧半径自主类，其余参数不泛称非共轭。R21正式原件补核与双指数失配判据保持；R21/R22结果尚未扩写论文。经典图/畸变及相对前缀工具明确归属已有，适用范围增强但未认证一区/TOP。完成后停止，不自动R23；R09–R14策略最优性及常数继续暂停。
 
 近期争取数学正确、真实新意和独立专业价值明确的主定理，后续扩大机制或适用范围、争取一区 TOP，长期保留 Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathematical Society、Acta Mathematica。一区与 TOP 是阶段目标，未经贡献比较及相应体系、年份核实不作档位认定；不要求先认证档位才允许证明，不保证升级链。
 
 - [`CURRENT.md`](CURRENT.md)：最新裁决与下一入口。
+- [`research/R22/MATHEMATICS.md`](research/R22/MATHEMATICS.md)：角向反馈全域核验、移动可行图、任意近似目录比较、完整边界及有限范围的共轭排除。
+- [`research/R22/REPORT.md`](research/R22/REPORT.md)：解除半径自主限制的实际增量、经典工具归属与有限发表价值裁决。
+- [`research/R22/SOURCES.md`](research/R22/SOURCES.md)：图变换正式附录/作者稿实际范围、两篇原文身份、既有正式原件及未读正文边界。
+- [`research/R22/NEXT_COMMAND.md`](research/R22/NEXT_COMMAND.md)：完整完成停点，不自动R23、扩稿或投稿。
 - [`research/R21/MATHEMATICS.md`](research/R21/MATHEMATICS.md)：双指数可逆失配系统的真实目录两率、同一紧集量词及本类匹配充要判据的完整证明。
 - [`research/R21/REPORT.md`](research/R21/REPORT.md)：正式覆盖裁决、实际增量、既有方法归属与有限发表价值判断。
 - [`research/R21/SOURCES.md`](research/R21/SOURCES.md)：陈虎正式原件24页全文范围、身份与SHA-256、具体定理/证明覆盖及此前记录更正。
