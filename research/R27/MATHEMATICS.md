@@ -49,7 +49,7 @@ the principal result.
 
 **Selected candidate A (local jets, with truncated feasible images).**
 The maps need not agree with any old formula, preserve either boundary
-ray, or make every word feasible. Assume only:
+ray, or make every word feasible at each fixed initial radius. Assume only:
 
 1. \(F_0,F_1:\mathbb R^2\to\mathbb R^2\) are \(C^2\) diffeomorphisms,
    \(F_i(0)=0\), and \(DF_i(0)=A_i\).
@@ -110,7 +110,7 @@ The same set works for all these exponents, sequences, and horizons.
 No exact high-precision spectrum or high-side limit for \(Q\) is claimed.
 
 The independent geometric content is (4), valid for actual arbitrary
-approximate inputs even when a complete feasible word region is empty
+approximate inputs even when a fixed-radius complete feasible word interval is empty
 or its terminal angular image is only a subinterval. Sections 2–6
 prove it; Section 7 supplies physical difficult-state witnesses, without
 assuming all words are feasible. Section 9 gives an explicit application
@@ -445,8 +445,8 @@ These radii stay below \(\bar r^ks_*\), independently of whether
 the angular recursion has yet been imposed.
 The scalar map \(s\mapsto sR_i(s,y)\) has derivative bounded in
 absolute value by \(\widehat r<1\), and its \(y\) derivative is
-bounded by \(B s^2\), increasing \(B\) within its generous value
-if necessary. Thus two candidate sequences give
+bounded by \(B s^2\), since \(R_i\le\bar r<1\) and (9) bounds
+its logarithmic angular derivative. Thus two candidate sequences give
 \[
  \sup_k|s_k(y)-s_k(\widetilde y)|
        \le C_s s_*^2\|y-\widetilde y\|_\infty,
@@ -551,7 +551,7 @@ The auxiliary witness radius may depend on \(\gamma\). The initial
 set \(K_\zeta\) from Section 6 does not. Equations (5),(25) complete
 Theorem 27.1 for every stated precision sequence. \(\square\)
 
-## 9. An application with missing words and inward boundary images
+## 9. An application with missing word slices and inward boundary images
 
 This verifies that the selected criterion handles a local geometry
 not covered by merely applying the old full-image argument.
@@ -605,6 +605,13 @@ angle, hence for all of them. The old nonempty/full-image assertion
 is false for this example. This is a counterexample to that proof
 property, not to the cost boundary proved above.
 
+This statement concerns \(I_{0^m}(s_0)\) at a fixed radius, not the
+whole physical region \(\mathcal I_{0^m}\). Choosing the radius smaller
+can make a given finite word feasible. Indeed any finite word admits
+a bounded-run infinite extension, and Lemma 27.2 realises that
+extension at a sufficiently small positive radius. Missing fixed-radius
+slices must not be confused with removing a word everywhere in \(Q\).
+
 There is also a precise obstruction to a fixed coordinate reduction.
 For (26), \(F_0\) sends the positive lower edge of \(Q\) strictly
 inside \(Q\), and its upper edge outside; \(F_1\) does the symmetric
@@ -630,7 +637,7 @@ changes or every member of the new class is made.
 
 - New: a criterion based on matched first jets, directly checked
   controlled invariance, and a common toward-origin norm inequality;
-  the actual-area bound (4) tolerates missing words and truncated
+  the actual-area bound (4) tolerates missing fixed-radius word intervals and truncated
   angular images, with explicit \(O(\delta)\) transient leakage.
 - New geometric step relative to the R26 proof: local interval
   comparison without onto images, and the physical shadowing lemma
