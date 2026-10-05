@@ -2,11 +2,14 @@
 
 基线论文：*Positive invariance entropy under uniform state convergence*。
 
-当前唯一阶段稿：*Precision-dependent invariance costs and the geometry of initial sets*。现有英文证明、12页PDF和历史投稿材料保留不改。R19已将γ*=βh_a共同成本边界转移到用户指定的全域可逆、分支与收缩随状态变化的C∞系统类：低侧每个正面积紧集共享γ/β；高侧同一近满面积紧集对所有高侧指数及相应精度序列的率为h_a，而全Q下极限严格更高。实际曲线条带、任意近似输入及全时域目录比较已证明，保持Q的固定同时共轭被排除。仍保留精确一步匹配，不认证一般扰动或一区/TOP。完成后停止，不自动启动R20；R09–R14固定策略最优性及准确常数继续暂停。
+当前唯一英文稿：*A precision threshold for initial-set dependence in contracting control systems*。R20已将准确共同成本边界γ*=βh_a、指定可逆状态依赖转移、保持Q的共轭排除及局部匹配不足反例整合为完整英文证明和11页PDF。低侧任意正面积紧集共享γ/β；高侧同一近满面积紧集对全部高侧指数和精度序列的率为h_a，全Q下率严格更高。整合不计新数学突破，未声明一般高侧全Q准确谱/极限；仍保留精确一步匹配，未认证一区/TOP。旧稿和投稿材料作为历史保留，未适配新稿。完成后停止，不自动R21；R09–R14策略最优性及常数继续暂停。
 
 近期争取数学正确、真实新意和独立专业价值明确的主定理，后续扩大机制或适用范围、争取一区 TOP，长期保留 Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathematical Society、Acta Mathematica。一区与 TOP 是阶段目标，未经贡献比较及相应体系、年份核实不作档位认定；不要求先认证档位才允许证明，不保证升级链。
 
 - [`CURRENT.md`](CURRENT.md)：最新裁决与下一入口。
+- [`research/R20/REPORT.md`](research/R20/REPORT.md)：唯一主贡献裁决、完整证明链、三版本比较和成稿判断。
+- [`research/R20/SOURCES.md`](research/R20/SOURCES.md)：APA/DOI、真实阅读范围、经典方法覆盖及未读正文缺口。
+- [`research/R20/NEXT_COMMAND.md`](research/R20/NEXT_COMMAND.md)：整合完成停点，不自动开轮或投稿。
 - [`research/R19/MATHEMATICS.md`](research/R19/MATHEMATICS.md)：可逆状态依赖系统的完整边界转移、真实曲线条带目录比较及保持Q的共轭排除。
 - [`research/R19/REPORT.md`](research/R19/REPORT.md)：实质正向扩展、特殊匹配限制与有限发表价值判断。
 - [`research/R19/SOURCES.md`](research/R19/SOURCES.md)：准确APA/DOI、实际读取及未读正式正文的覆盖边界。
@@ -51,12 +54,12 @@
 - [`research/R08/REPORT.md`](research/R08/REPORT.md)：本轮结构裁决、相比现稿的实际增量及未认证的发表分量。
 - [`research/R08/SOURCES.md`](research/R08/SOURCES.md)：最近原文、准确 APA/DOI、实际阅读范围和逐项覆盖。
 - [`research/R08/NEXT_COMMAND.md`](research/R08/NEXT_COMMAND.md)：已完成停点与同一重叠系统真实目录最优率的唯一入口。
-- [`paper/P6_PRECISION_COST.tex`](paper/P6_PRECISION_COST.tex)：阶段论文英文 LaTeX，主线为初始集几何与精度成本。
+- [`paper/P6_PRECISION_COST.tex`](paper/P6_PRECISION_COST.tex)：唯一英文 LaTeX，主线为临界精度边界及可逆状态依赖转移。
 - [`paper/P6_PRECISION_COST.pdf`](paper/P6_PRECISION_COST.pdf)：已编译并逐页检查的唯一阶段稿。
 - [`research/R07/STAGE_PAPER_DECISION.md`](research/R07/STAGE_PAPER_DECISION.md)：成稿裁决、定理关系、证明链、直接覆盖边界和条件性期刊判断。
 - [`research/R07/DCDS_FINAL_REVIEW.md`](research/R07/DCDS_FINAL_REVIEW.md)：历史 DCDS 终稿核验、Chen–Zhong 2024 的直接定义覆盖、官方适配与完成停点。
-- [`paper/COVER_LETTER_DRAFT.md`](paper/COVER_LETTER_DRAFT.md)：有具体数学内容的 DCDS 投稿附信草稿。
-- [`paper/SUBMISSION_CHECKLIST.md`](paper/SUBMISSION_CHECKLIST.md)：材料状态、官方依据及集中待确认的作者事实。
+- [`paper/COVER_LETTER_DRAFT.md`](paper/COVER_LETTER_DRAFT.md)：旧阶段稿的历史 DCDS 附信，未适配当前整合稿。
+- [`paper/SUBMISSION_CHECKLIST.md`](paper/SUBMISSION_CHECKLIST.md)：旧阶段稿的历史材料清单，不是当前投稿包。
 - [`original/`](original/)：未经改动的原稿、SHA-256 与归档说明。
 - [`research/R07/REPORT.md`](research/R07/REPORT.md)：指定横向扩张系统的精确成本率、与 R06 的机制差别及有限贡献判断。
 - [`research/R07/MATHEMATICS.md`](research/R07/MATHEMATICS.md)：临界前缀见证、任意近似控制下界、快尾部上界与完整匹配极限。
@@ -92,10 +95,10 @@
 
 R03 两篇期刊原件已到位，NWH2022 的 31 页全文及 WHS2019 的相关证明已补核。新反例否定 NWH 原文在单向约束包含下的时变共轭等式；原文混用二进制对数和指数权重也使所写变分公式失效。统一为自然单位并允许熵为负无穷后，已有压力对偶方法仍可用，R01–R03 的自含计算不因此推翻。二进制锥体的面积概率 WHS 熵仍为 `ln 2`，锥顶概率仍为零。
 
-R04的固定概率反例及经典分数覆盖结论保留。现有阶段稿仍以R06成本分裂为主结果，R05作独立假设下的比较，R07作固定扩张案例。R08证明有重叠与归一化角向余量仍可分裂。R09进一步证明指定重叠系统的真实率极限存在，并将界严格缩窄到约0.16102194—0.16107928；这些是解析根界，不是准确值或数值拟合。新接口比较实际最优精确停止覆盖，完整处理任意近似控制的首次越界与后期重入。目录定义、次可加、诱导压力、受限编码和加权计数均归于已有内容；不认证全库首创或期刊档位。R10现已证明重叠区两个强制块具有81/24不同成本及非零角向平移，合法同后缀停止词在所有足够大成本层仍可完全分离。因此不能仅靠收缩速度删目录；局部混合覆盖未闭合全局指数。下一入口是同一系统的跨后缀率最优比较，具体见R10，不重试同后缀替换或自动增加模型。原稿、论文及全部研究历史保留。
+R04的固定概率反例及经典分数覆盖结论保留。旧阶段稿以R06成本分裂为主结果，R05作独立假设下的比较，R07作固定扩张案例；当前主线已由R20整合更新。R08证明有重叠与归一化角向余量仍可分裂。R09进一步证明指定重叠系统的真实率极限存在，并将界严格缩窄到约0.16102194—0.16107928；这些是解析根界，不是准确值或数值拟合。新接口比较实际最优精确停止覆盖，完整处理任意近似控制的首次越界与后期重入。目录定义、次可加、诱导压力、受限编码和加权计数均归于已有内容；不认证全库首创或期刊档位。R10现已证明重叠区两个强制块具有81/24不同成本及非零角向平移，合法同后缀停止词在所有足够大成本层仍可完全分离。因此不能仅靠收缩速度删目录；局部混合覆盖未闭合全局指数。下一入口是同一系统的跨后缀率最优比较，具体见R10，不重试同后缀替换或自动增加模型。原稿、论文及全部研究历史保留。
 
 R11新增任意完整可行区间的统一同长重编码及残余预算比较，具体证明见R11。等时几何碎裂不会另付指数因子，但固定策略在相同时间内的成本可能不足，所需后续目录仍未控制。G_m率g存在，g=κ未证；本轮没有收紧κ或提高阶段稿期刊档位判断。经典固定块、分支重数及拼接不包装为原创。下一入口只处理这一预算因子，不自动开轮或扩稿。
 
-R12进一步证明合法达标区间最多相交三条最优目录区间，因而实际端点延续的重复计数只有常数损失。未达成本的实际计数R_m之指数相对N_m恰为g−κ，并有端点长度与预算的显式两侧界；这不是策略最优证明。剩余障碍是最优覆盖上的端点大小—预算分布。R13按新授权完成一次攻击，但未取得该因子的新控制；仅保存有限精确端点闭合的排除理由，属于已有理论的具体应用，不认证独立新主贡献。R13暂停停点与排除理由作为历史保留。R14获新授权后只核验端点递推及贪心工具，没有比较增量或提交；R15已转入同一路线A的结构充分条件，R16证明同一匹配系统的高精度分裂，R17将二者收束为准确共同成本边界；R18进一步给出局部匹配不足的光滑非可逆反例，R19进一步完成指定可逆状态依赖类的正向边界转移，当前停点以CURRENT和R19为准。
+R12进一步证明合法达标区间最多相交三条最优目录区间，因而实际端点延续的重复计数只有常数损失。未达成本的实际计数R_m之指数相对N_m恰为g−κ，并有端点长度与预算的显式两侧界；这不是策略最优证明。剩余障碍是最优覆盖上的端点大小—预算分布。R13按新授权完成一次攻击，但未取得该因子的新控制；仅保存有限精确端点闭合的排除理由，属于已有理论的具体应用，不认证独立新主贡献。R13暂停停点与排除理由作为历史保留。R14获新授权后只核验端点递推及贪心工具，没有比较增量或提交；R15已转入同一路线A的结构充分条件，R16证明同一匹配系统的高精度分裂，R17将二者收束为准确共同成本边界；R18进一步给出局部匹配不足的光滑非可逆反例，R19进一步完成指定可逆状态依赖类的正向边界转移，R20已按新授权整合主贡献并完成唯一论文，当前停点以CURRENT和R20为准。
 
 复现阶段稿 PDF：在仓库根目录执行 `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/p6-paper-build paper/P6_PRECISION_COST.tex`。历史 R01 笔记仍可单独编译。原稿保留不覆盖；此仓库仅存 P6，不修改其他暂停项目。
