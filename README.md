@@ -2,9 +2,9 @@
 
 基线论文：*Positive invariance entropy under uniform state convergence*。
 
-当前唯一英文稿：*Precision spectra and initial-set dependence in contracting control systems*，现为R30整合后的完整英文源码及对应17页PDF。Theorem2.1与Corollary2.2给全Q准确谱、三段闭式、两阈值及固定近满面积紧集的准确差距；Theorem2.3与Lemma5.1保留任意近似输入实际面积比较和物理困难状态。只有一份现行论文。
+当前唯一英文稿：*First-order matching and precision costs in contracting control systems*，现为R32整合后的完整英文源码及对应18页PDF。Theorem2.1给指定一般反馈一阶族中的匹配充要判据，Theorem2.2给失配低精度两率，Theorem2.3与Corollary2.4保留匹配全Q完整谱、三段闭式及两阈值；Theorem2.5与Lemmas5.1–5.2保留双尺度任意近似输入实际面积及物理困难状态。只有一份现行论文。
 
-最新数学R31已完成指定一般C²反馈结构类中的一阶失配判据：半径可依赖角度，所有0<γ<γ₀的全Q准确率为γD，同一个先于全部精度选择的近满面积紧集准确率为γh_a/χ，且D>h_a/χ。实际首真越界面积使用独立乘积比λ_w/P_w，物理有界串给任意近似输入下界。共同低精度成本的匹配条件在这一明确一阶族中必要且充分；不是任意系统分类。属R21、R27–R29的已核加权结构扩展，不宣称新方法或认证一区/TOP。R31尚未整合，唯一论文保持R30稿；完成后停止，不自动R32。
+最新数学R31已完成指定一般C²反馈结构类中的一阶失配判据，R32现已收入唯一论文：半径可依赖角度，所有0<γ<γ₀的全Q准确率为γD，同一个先于全部精度选择的近满面积紧集准确率为γh_a/χ_R，且D>h_a/χ_R。实际首真越界面积使用独立乘积比λ_w/P_w，物理有界串给任意近似输入下界。共同低精度成本的匹配条件在这一明确一阶族中必要且充分；不是任意系统分类。R31属R21、R27–R29的已核加权结构扩展；R32整合不算新证明，不宣称新方法或认证一区/TOP。采用链未发现需撤下结论，完成后停止，不自动R33。
 
 已按用户要求研读十篇四大标杆论文，四刊均有覆盖；[研读与P6接口](research/FOUR_JOURNAL_STUDY/READING_REPORT.md)及[版本、实际页码与SHA-256](research/FOUR_JOURNAL_STUDY/SOURCES.json)已记录。重点学习实际几何与熵的连接、典型/全部初态差别及集中证明的写法。两篇全文阅读，其余为定位的部分阅读；这不是完整新颖性检索或新的数学升级，未改论文或自动开轮。
 
@@ -15,10 +15,13 @@ R29已在同一R27结构类求出全Q准确谱及全部有限精度指数下的�
 近期争取数学正确、真实新意和独立专业价值明确的主定理，后续扩大机制或适用范围、争取一区 TOP，长期保留 Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathematical Society、Acta Mathematica。一区与 TOP 是阶段目标，未经贡献比较及相应体系、年份核实不作档位认定；不要求先认证档位才允许证明，不保证升级链。
 
 - [`CURRENT.md`](CURRENT.md)：最新裁决与下一入口。
+- [research/R32/REPORT.md](research/R32/REPORT.md)：匹配—失配主线整合、采用链、三版本比较、完整英文稿与阶段贡献裁决。
+- [research/R32/SOURCES.md](research/R32/SOURCES.md)：准确APA/DOI、真实复用范围、具体覆盖及方法归属。
+- [research/R32/NEXT_COMMAND.md](research/R32/NEXT_COMMAND.md)：整合完成停点，无必需补攻的证明缺口，不自动R33。
 - [research/R31/MATHEMATICS.md](research/R31/MATHEMATICS.md)：一般反馈失配两率、任意输入双乘积面积界及范围明确的匹配充要判据。
 - [research/R31/REPORT.md](research/R31/REPORT.md)：实际证明链、相对R21/R30的结构增量和有限发表价值裁决。
 - [research/R31/SOURCES.md](research/R31/SOURCES.md)：准确APA/DOI、正式原件定向范围及未读正文边界。
-- [research/R31/NEXT_COMMAND.md](research/R31/NEXT_COMMAND.md)：数学完成停点，尚未整合，不自动R32。
+- [research/R31/NEXT_COMMAND.md](research/R31/NEXT_COMMAND.md)：历史数学完成停点；其必要核验与整合已由用户新授权R32完成。
 - [research/R30/REPORT.md](research/R30/REPORT.md)：准确谱整合、采用链、三版本实质比较及有限阶段定位。
 - [research/R30/SOURCES.md](research/R30/SOURCES.md)：准确APA/DOI、真实复用范围、方法归属及正式正文限制。
 - [research/R30/NEXT_COMMAND.md](research/R30/NEXT_COMMAND.md)：唯一英文稿的历史停点；失配研究已按用户新授权由R31完成。
@@ -102,7 +105,7 @@ R29已在同一R27结构类求出全Q准确谱及全部有限精度指数下的�
 - [`research/R08/REPORT.md`](research/R08/REPORT.md)：本轮结构裁决、相比现稿的实际增量及未认证的发表分量。
 - [`research/R08/SOURCES.md`](research/R08/SOURCES.md)：最近原文、准确 APA/DOI、实际阅读范围和逐项覆盖。
 - [`research/R08/NEXT_COMMAND.md`](research/R08/NEXT_COMMAND.md)：已完成停点与同一重叠系统真实目录最优率的唯一入口。
-- [`paper/P6_PRECISION_COST.tex`](paper/P6_PRECISION_COST.tex)：唯一英文LaTeX，主线为局部匹配结构判据、实际面积界、全Q准确谱及初始集依赖；失配比较仅限仿射子类。
+- [paper/P6_PRECISION_COST.tex](paper/P6_PRECISION_COST.tex)：唯一英文LaTeX，主线为指定一般反馈一阶族的匹配—失配判据、双尺度实际面积、匹配完整谱及初始集依赖。
 - [`paper/P6_PRECISION_COST.pdf`](paper/P6_PRECISION_COST.pdf)：已编译并逐页检查的唯一阶段稿。
 - [`research/R07/STAGE_PAPER_DECISION.md`](research/R07/STAGE_PAPER_DECISION.md)：成稿裁决、定理关系、证明链、直接覆盖边界和条件性期刊判断。
 - [`research/R07/DCDS_FINAL_REVIEW.md`](research/R07/DCDS_FINAL_REVIEW.md)：历史 DCDS 终稿核验、Chen–Zhong 2024 的直接定义覆盖、官方适配与完成停点。

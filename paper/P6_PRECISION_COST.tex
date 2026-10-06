@@ -26,42 +26,45 @@
 
 
 
-\hypersetup{pdftitle={Precision spectra and initial-set dependence in contracting control systems}}
-\title[Precision spectra and initial sets]{Precision spectra and initial-set dependence\\
+\hypersetup{pdftitle={First-order matching and precision costs in contracting control systems}}
+\title[Matching and precision costs]{First-order matching and precision costs\\
 in contracting control systems}
 \author{Author information pending}
 \date{}
 \subjclass[2020]{Primary 93C55, 37B40; Secondary 93D15, 37C05}
-\keywords{Outer invariance complexity, precision spectrum, controlled contraction,
-feasible geometry, initial-set dependence}
+\keywords{Outer invariance complexity, first-order matching, precision spectrum,
+controlled contraction, initial-set dependence}
 \begin{document}
 \begin{abstract}
-We consider the minimum number of open-loop inputs needed to keep every
-state of a compact initial set within a Euclidean tolerance of a planar
-constraint throughout a finite horizon. Two $C^2$ diffeomorphisms share
-a contracting origin and make the constraint controlled invariant.
-Their first derivatives match feasible branch proportions $a_0,a_1$
-with radial factors $a_0^\beta,a_1^\beta$, where $\beta>1$.
-For every finite $\gamma\ge0$ and every vanishing tolerance sequence
-$\delta_n=\exp(-\gamma n+o(n))$, we determine the full-constraint
-cost rate as
-$\max_{p\in[0,1]} H_b(p)\min\{1,\gamma/[\beta\chi(p)]\}$,
-where $H_b$ is binary entropy and
+We study the minimum number of open-loop inputs needed to keep each
+actual initial state within a Euclidean tolerance of a triangular
+constraint at every time of a finite horizon. Two planar $C^2$
+diffeomorphisms have a common contracting origin and make the
+constraint controlled invariant. Their first derivatives have limiting angular
+branch proportions $a_0,a_1$ and radial factors
+$r_i=a_i^{\beta_i}$, where $\beta_i>1$.
+Within this specified first-order family, all positive-area compact
+initial sets share a cost rate for sufficiently small positive
+precision exponents if and only if $\beta_0=\beta_1$.
+Under mismatch, the full-constraint rate is $\gamma D$, whereas one
+fixed compact set of arbitrarily nearly full area has rate
+$\gamma h/\chi_R$, strictly smaller, for $0<\gamma<-\log\max_i r_i$.
+Here $r_0^D+r_1^D=1$, $h=-\sum_i a_i\log a_i$ and
+$\chi_R=-\sum_i a_i\log r_i$. The same set works for every tolerance
+sequence $\delta_n=\exp(-\gamma n+o(n))$ in this range.
+Under matching, $\beta_i=\beta$, we determine the full spectrum
+$\max_p H_b(p)\min\{1,\gamma/[\beta\chi(p)]\}$ for all finite
+$\gamma\ge0$, where $H_b$ is the binary entropy and
 $\chi(p)=-p\log a_0-(1-p)\log a_1$.
-Its three explicit pieces have a common-cost boundary
-$\gamma_*=\beta h_a$, with $h_a=-\sum_i a_i\log a_i$,
-and a distinct saturation boundary $-(\beta/2)\log(a_0a_1)$.
-Every fixed positive-area compact initial set has rate $\gamma/\beta$
-at and below $\gamma_*$. One compact set of arbitrarily nearly full
-area, chosen before all exponents and sequences, has rate
-$\min\{h_a,\gamma/\beta\}$ throughout and a strictly smaller rate
-than the full constraint above $\gamma_*$.
-The geometric foundation is an area bound for every approximately
-feasible input, including inputs that leave and reenter the constraint.
-Complete feasible intervals may overlap, have truncated images, or be
-empty at a fixed radius. Physical bounded-run trajectories with
-wrong-control margins supply the matching full-set lower bound;
-stopping scales and type counting evaluate the spectrum.
+Its common-cost and saturation boundaries are $\beta h$ and
+$-(\beta/2)\log(a_0a_1)$.
+In that case a single nearly full-area compact set has rate
+$\min\{h,\gamma/\beta\}$ for all exponents and sequences.
+The proof separates angular and radial products in an actual-area
+bound for every approximate input, including exit and reentry.
+Complete feasible intervals may overlap or have empty or truncated
+images. Physical bounded-run trajectories provide the lower bounds;
+stopping scales and type counting supply the corresponding upper bounds.
 \end{abstract}
 \maketitle
 \section{Introduction}
@@ -83,45 +86,61 @@ It may switch between overlapping feasible branches, leave the
 constraint within the permitted tolerance, and later return. A symbolic
 count alone does not settle the minimum physical catalogue.
 
-Our main theorem determines the complete full-set spectrum from matched first
-derivatives at the origin, controlled feasibility of the actual
-constraint, and a global norm inequality toward the origin. It does
-not require globally small derivatives, compactly supported
-perturbations, boundary-ray preservation, an instantaneous relation
-between branch lengths and radial factors, or full angular images
-for every feasible word. The resulting spectrum has three pieces.
-At and below $\beta h_a$, where $h_a=-\sum_i a_i\log a_i$,
-every positive-area compact initial set has rate $\gamma/\beta$.
-Above it, one fixed compact set of almost full area has rate $h_a$,
-whereas the full-set rate increases to $\log2$. Saturation occurs at
-$-(\beta/2)\log(a_0a_1)$, strictly above the common-cost boundary.
-The near-full set is chosen before all precision exponents,
-sequences, and horizons.
+The main question is whether the angular branch geometry and radial
+contraction must match for a common low-precision cost to exist.
+Theorem~\ref{thm:criterion} answers this within a specified first-order
+family, under controlled feasibility of the actual triangle, global
+invertibility, and a common norm inequality toward the origin.
+The radial factors are $r_i=a_i^{\beta_i}$.
+The matching condition $\beta_0=\beta_1$ is necessary and sufficient.
+No radial autonomy, boundary-ray preservation, globally small
+derivatives, compact support, or full angular image for every
+feasible word is required.
 
-Two physical estimates give the result. Theorem~\ref{thm:area}
+When the powers differ, Theorem~\ref{thm:mismatch} separates the
+full-constraint cost $\gamma D$ from $\gamma h/\chi_R$ on a single
+nearly full-area compact initial set, for every sufficiently small
+positive exponent. The strict difference follows from a relative
+entropy identity after the physical catalogue bounds have been proved.
+When the powers agree, Theorem~\ref{thm:main} gives the complete
+full-set spectrum. At and below $\beta h$, every positive-area
+compact initial set has rate $\gamma/\beta$. Above it, one fixed
+nearly full-area compact set has rate $h$, whereas the full-set
+rate increases to $\log2$. The distinct saturation boundary is
+$-(\beta/2)\log(a_0a_1)$. In both cases the compact set is selected
+before all exponents, precision sequences, and horizons in the
+respective statement.
+
+Two physical estimates give these results. Theorem~\ref{thm:area}
 controls the area covered by any approximately feasible input.
 Near the origin, a logarithmic slope cone bounds complete feasible
 intervals without requiring them to map onto the full angular range.
-At a first true exit, the Euclidean excess gives a band in the actual
-initial fibre. A finite noncollapsing transient contributes only
-$O(\delta)$ area. These estimates apply to all feasible prefixes,
-so no exact strategy is assumed optimal. For the matching full-set
+The angular product $\lambda_w=\prod a_{w_j}$ and radial product
+$P_w=\prod r_{w_j}$ enter separately: a first true exit gives a
+physical area band of size at most $C\delta\lambda_w/P_w$.
+A finite noncollapsing transient contributes only $O(\delta)$ area.
+The estimates apply to all feasible prefixes, so no exact strategy
+is assumed optimal. For the full-set
 lower bound, Lemma~\ref{lem:shadow} constructs actual bounded-run
 trajectories with a uniform margin against the alternative control.
 Forcing suitably shorter prefixes gives every frequency contribution
 to the spectrum before its physical margin falls below the tolerance.
-The upper bound counts all lengths and types in an auxiliary stopping
-tree, retaining only actual feasible assignments. The exact formula
-is a consequence of these controlled estimates and classical counting.
+An auxiliary radial stopping tree constructs full-horizon upper
+catalogues, retaining only actual feasible assignments. In the matched
+case $P_w=\lambda_w^\beta$, and counting all leaf lengths and types
+evaluates the complete spectrum. Under mismatch, stopping lengths of
+typical words give the different near-full-area slope. The criterion
+extends these controlled estimates; it introduces no new pressure or
+graph-transform method.
 
+Section~\ref{sec:mismatch} proves the mismatch bounds and the matching
+criterion for the same nonlinear first-order family.
 Section~\ref{sec:examples} gives both independently perturbed factors
 with vanishing overlap and an inward boundary example. In the latter,
 long constant words have empty feasible slices at each fixed positive
 radius, although every finite word is realised at sufficiently small
 radius. A constraint-preserving simultaneous conjugacy cannot reduce
 this example to the displayed boundary-ray-preserving models.
-Section~\ref{sec:mismatch} treats unequal matching powers in an affine
-comparison class. Its necessity statement stays within that class.
 Section~\ref{sec:local} gives a smooth collapse example explaining why
 local matching and all-input convergence alone do not suffice.
 
@@ -194,9 +213,10 @@ A precision sequence means $\delta_n>0$, $\delta_n\to0$ and
 $-\log\delta_n/n\to\gamma$ for a finite $\gamma\ge0$.
 It need not be monotone. Fix
 \begin{equation}\label{eq:parameters}
-a_0,a_1\in(0,1),\quad a_0+a_1=1,\quad a_0\ne a_1,\quad\beta>1,
+a_0,a_1\in(0,1),\quad a_0+a_1=1,\quad a_0\ne a_1,\quad
+\beta_0,\beta_1>1,
 \end{equation}
-and set $r_i=a_i^\beta$, $t_i=a_i^{\beta-1}$,
+and set $r_i=a_i^{\beta_i}$, $t_i=r_i/a_i<1$,
 $a_* =\min_i a_i$, $a^*=\max_i a_i$ and $h=-\sum_i a_i\log a_i$.
 Write
 \begin{equation}\label{eq:jets}
@@ -204,7 +224,7 @@ Write
 \qquad
 \mathsf A_1=\begin{pmatrix}r_1&0\\-t_1a_0&t_1\end{pmatrix}.
 \end{equation}
-The main theorem assumes the following properties of the actual maps:
+The standing assumptions on the actual maps are:
 \begin{enumerate}
 \item $F_0,F_1:\R^2\to\R^2$ are $C^2$ diffeomorphisms,
 $F_i(0)=0$ and $DF_i(0)=\mathsf A_i$.
@@ -219,11 +239,60 @@ The second assumption is one-step controlled invariance; unrestricted
 concatenation yields an exactly feasible infinite input from each
 point of $Q$. The third concerns contraction toward the origin,
 not distances between two arbitrary trajectories. In particular it
-controls appended tails even outside $Q$. No accumulated distortion,
+controls appended tails even outside $Q$. Radial motion may depend
+on angle. No accumulated distortion,
 word-area bound or catalogue comparison is assumed.
 
-For words write $\lambda_w=\prod_{j=1}^{|w|}a_{w_j}$, with empty
-product one. Define
+Both matched and mismatched subfamilies are nonempty. For the linear
+maps $\mathsf A_i$, the angular domains
+$[-1,a_0-a_1]$ and $[a_0-a_1,1]$ cover every fibre.
+Put $t=\max_i t_i<1$ and choose $\Lambda=1+4t/(1-t)$.
+Then $V(\mathsf A_i x)\le
+\max\{\max_i r_i,t(1+1/\Lambda)\}V(x)$ globally, with factor
+less than one, and $\det\mathsf A_i=r_i^2/a_i>0$.
+
+For words write
+\[
+\lambda_w=\prod_{j=1}^{|w|}a_{w_j},\qquad
+P_w=\prod_{j=1}^{|w|}r_{w_j},
+\]
+with empty products one. Define
+\begin{equation}\label{eq:radialparameters}
+\chi_R=-\sum_i a_i\log r_i>h,\qquad
+\gamma_0=-\log\max_i r_i>0,\qquad r_0^D+r_1^D=1.
+\end{equation}
+The root $D$ is unique in $(0,1)$, since the left side decreases
+from two to zero and $r_0+r_1<1$. Also $\chi_R\ge\gamma_0$.
+
+\begin{theorem}[First-order matching criterion]\label{thm:criterion}
+For every fixed system satisfying the standing assumptions, the
+following property holds if and only if $\beta_0=\beta_1$:
+there are $\gamma_1>0$ and a function $c:(0,\gamma_1)\to[0,\infty)$
+such that, for every fixed positive-area compact $K\subset Q$,
+every $\gamma\in(0,\gamma_1)$, and every precision sequence of
+exponent $\gamma$,
+\[
+\lim_n n^{-1}\log r_F(n,\delta_n;K)=c(\gamma).
+\]
+\end{theorem}
+
+\begin{theorem}[Low-precision mismatch]\label{thm:mismatch}
+Suppose $\beta_0\ne\beta_1$. For each $\zeta\in(0,1)$ there is
+one compact $K_\zeta\subset Q$, of area greater than $1-\zeta$,
+such that simultaneously for every $0<\gamma<\gamma_0$ and
+every precision sequence of that exponent,
+\begin{equation}\label{eq:mismatchrates}
+\lim_n\frac{\log r_F(n,\delta_n;Q)}n=\gamma D,\qquad
+\lim_n\frac{\log r_F(n,\delta_n;K_\zeta)}n
+                =\gamma h/\chi_R<\gamma D.
+\end{equation}
+The set is selected before the exponent, sequence, and horizon.
+Every other fixed positive-area compact $K\subset Q$ has lower
+rate at least $\gamma h/\chi_R$ in this range.
+\end{theorem}
+
+Write $H_b$ for the binary entropy. In the matched case
+$\beta_0=\beta_1=\beta$, the angular cost and spectrum are
 \begin{gather}
 H_b(p)=-p\log p-(1-p)\log(1-p),\qquad
 \chi(p)=-p\log a_0-(1-p)\log a_1,\label{eq:entropycost}\\
@@ -233,7 +302,8 @@ S(\gamma)=\max_{p\in[0,1]} H_b(p)
 where $0\log0=0$. In particular $H_b(a_0)=\chi(a_0)=h$.
 
 \begin{theorem}[Precision spectrum and initial-set dependence]\label{thm:main}
-Under the three assumptions above, for every fixed system,
+Suppose $\beta_0=\beta_1=\beta$ in the standing assumptions.
+For every fixed system,
 every finite $\gamma\ge0$ and every precision sequence of exponent
 $\gamma$,
 \begin{equation}\label{eq:spectrum}
@@ -259,7 +329,8 @@ The set is chosen before the exponent, sequence and horizon.
 \end{theorem}
 
 \begin{corollary}[Closed spectrum and two thresholds]\label{cor:thresholds}
-Put $\alpha=a_*\in(0,1/2)$,
+Under the hypotheses of Theorem~\ref{thm:main}, put
+$\alpha=a_*\in(0,1/2)$,
 $c_b=-\log(1-\alpha)$ and $d_b=\log((1-\alpha)/\alpha)>0$.
 The common-cost boundary and saturation boundary are respectively
 \begin{equation}\label{eq:thresholds}
@@ -298,14 +369,15 @@ The theorem does not classify high-side rates of arbitrary compact
 initial sets or assert that only two such rates are possible.
 
 \begin{theorem}[Area covered by an arbitrary approximate input]\label{thm:area}
-Under the same assumptions, there is a fixed integer $J\ge1$ with
+Under the standing assumptions, whether matched or mismatched,
+there is a fixed integer $J\ge1$ with
 the following property. For every positive-area compact $K\subset Q$
 one can choose a compact $T\subset K\setminus\{0\}$ of positive area
 and $C_J<\infty$ so that for every $e\in(0,h)$ there is $C_e<\infty$
 such that
 \begin{equation}\label{eq:actualarea}
 \area(T\cap A_u(n,\delta;K))\le C_J\delta+
-C_e\left[e^{-(h-e)m}+\delta e^{(\beta-1)(h+e)m}\right]
+C_e\left[e^{-(h-e)m}+\delta e^{(\chi_R-h+2e)m}\right]
 \end{equation}
 for every input $u$, $n\ge J$, $0\le m\le n-J$ and $0<\delta\le1$.
 The integer and the set precede $e,n,\delta,u$.
@@ -378,7 +450,9 @@ Their feasible intervals are respectively
 \([-1,\vartheta_0(s)]\) and \([\vartheta_1(s),1]\).
 Controlled invariance gives \(\vartheta_1\le\vartheta_0\).
 Thus any local overlap has angular width \(O(s)\) and physical
-width \(O(s^2)\). Positivity of the overlap is not assumed.\subsection{Complete intervals with truncated images}
+width \(O(s^2)\). Positivity of the overlap is not assumed.
+
+\subsection{Complete intervals with truncated images}
 Consider a radial graph \(s=S(y)\), on any closed subinterval of
 \([-1,1]\), with \(|S'/S|\le1\). Put \(k=S'/S\).
 For either input its terminal angular derivative along the graph is
@@ -412,12 +486,11 @@ an interval. No terminal map is asserted to be onto \([-1,1]\).
 The two allowed children cover the parent, by controlled invariance,
 but either child can be empty.
 
-Write \(\lambda_w=\prod_{j=1}^{|w|}a_{w_j}\).
 Along any such feasible graph, \eqref{eq:local} and the geometric decay of \(s_j\)
 give constants independent of \(w,s_0\) and its initial angle:
 \begin{equation}
-C_R^{-1}s_0\lambda_w^\beta\le s_{|w|}
-                  \le C_Rs_0\lambda_w^\beta,\qquad
+C_R^{-1}s_0P_w\le s_{|w|}
+                  \le C_Rs_0P_w,\qquad
  C_A^{-1}\lambda_w^{-1}\le \frac{dY_w}{dy_0}
                   \le C_A\lambda_w^{-1}.                    \label{eq:products}
 \end{equation}
@@ -425,7 +498,10 @@ For instance one may take
 \(C_R=\exp(B\rho/(1-\bar r))\),
 \(C_A=\exp(4B\rho/(1-\bar r))\):
 \(|a_iJ_i-1|\le2Bs_j\le1/8\), so its logarithm has modulus at
-most \(4Bs_j\). Integration over the \emph{actual} angular image implies
+most \(4Bs_j\). The first estimate sums \(\log(R_i/r_i)\);
+the second sums the angular derivatives. They are independent product
+estimates. Only in the matched case is \(P_w=\lambda_w^\beta\).
+Integration over the \emph{actual} angular image implies
 \begin{equation}
 |I_w(s_0)|\le2C_A\lambda_w,
  \quad |\mathcal I_w|\le C_A\rho^2\lambda_w,
@@ -442,7 +518,7 @@ Suppose the prefix \(w\) of length \(j-1\) is exactly feasible and
 the next prescribed input \(i\) is the first one to leave $Q$.
 On the current graph the map \(T_i\) is increasing with derivative
 at least \(1/(2a_i)\). The radial output is at least
-\(c s_0\lambda_w^\beta\), by \eqref{eq:local},\eqref{eq:products}, with \(c>0\) fixed.
+\(c s_0P_w\), by \eqref{eq:local},\eqref{eq:products}, with \(c>0\) fixed.
 If this wrong step nonetheless has distance less than \(\delta\)
 from $Q$, then
 \begin{equation}
@@ -452,14 +528,14 @@ This follows from the Euclidean Lipschitz linear functionals
 \(z-s\) and \(-z-s\). The output radius is positive and at most
 \(\rho\), so the violated constraint is angular, not the upper radius.
 Consequently the wrong part of the terminal angular interval has
-diameter at most \(C\delta/(s_0\lambda_w^\beta)\).
+diameter at most \(C\delta/(s_0P_w)\).
 By \eqref{eq:products}, its initial-angle preimage has length at most
 \[
-                         C\delta\lambda_w^{1-\beta}/s_0.
+                         C\delta\lambda_w/(s_0P_w).
 \]
 After integration against \(s_0\,ds_0\), its physical area is at most
 \begin{equation}
-C\delta\lambda_w^{1-\beta}.     \label{eq:exitarea}
+C\delta\lambda_w/P_w.     \label{eq:exitarea}
 \end{equation}
 This argument also covers a point interval or a terminal interval
 lying wholly beyond the cut: monotonicity bounds the diameter of
@@ -505,11 +581,15 @@ chosen using frequency convergence, without choosing a precision
 exponent or sequence. For every \(e>0\) there is \(D_e\ge1\) such
 that every feasible tail \(w\), after every feasible \(\sigma\) from
 every state of \(T\), obeys
-\begin{equation}
-D_e^{-1}e^{-(h+e)|w|}\le\lambda_w
-                      \le D_e e^{-(h-e)|w|}.                 \label{eq:typicalproducts}
+\begin{equation}\label{eq:typicalproducts}
+\begin{split}
+D_e^{-1}e^{-(h+e)|w|}&\le\lambda_w\le D_e e^{-(h-e)|w|},\\
+D_e^{-1}e^{-(\chi_R+e)|w|}&\le P_w\le D_e e^{-(\chi_R-e)|w|}.
+\end{split}
 \end{equation}
-Finitely many short lengths are absorbed in \(D_e\).
+Both logarithmic costs are affine functions of word frequency.
+Finitely many short lengths are absorbed in \(D_e\), on the same
+set \(T\) for every \(e\).
 
 The finite transient does not silently assume exact feasibility for
 an approximate input. The polygon $Q$ has
@@ -536,9 +616,13 @@ constant. Exact feasibility through the next \(m\) steps has area
 at most \(C\lambda_{u_{J+1}\cdots u_{J+m}}\), bounded using \eqref{eq:typicalproducts}.
 For a first true exit at tail time \(j\le m\), its length-\(j-1\)
 prefix intersects the transported set, so \eqref{eq:typicalproducts} applies to that
-prefix and \eqref{eq:exitarea} bounds its area. The geometric sum of these bounds
-is at most \(C_e\delta e^{(\beta-1)(h+e)m}\). This proves \eqref{eq:actualarea},
-including all times, all inputs, and all later reentries.\end{proof}
+prefix and \eqref{eq:exitarea} bounds its area. The ratio of the two
+products in \eqref{eq:typicalproducts} is at most
+\(D_e^2e^{(\chi_R-h+2e)(j-1)}\).
+Since \(\chi_R>h\), summing the first-exit classes gives at most
+\(C_e\delta e^{(\chi_R-h+2e)m}\). This proves \eqref{eq:actualarea},
+including all inputs and all later reentries.
+\end{proof}
 \section{Physical trajectories with a wrong-control margin}\label{sec:shadow}
 \begin{lemma}[Bounded-run realisation]\label{lem:shadow}
 For each integer \(L\ge2\), there is a positive radius \(s_L\)
@@ -621,176 +705,177 @@ so that these last error terms are at most
 All choices depend only on \(L\) and the fixed system.
 This proves the lemma, including the physical realisation and the
 genuine-infeasibility assertion. \end{proof}
-\section{Matching catalogue bounds and the spectrum}\label{sec:rates}
-The geometric estimates above concern actual states and arbitrary
-approximate inputs. We now combine them with stopping scales and
-elementary type counting. The reference tree below is a construction
-for an upper bound, not a claim about an optimal strategy or a
-necessary catalogue.
 
-\subsection{A full-horizon stopping catalogue}
-Let $c_i=-\log a_i$, $c_{\min}=\min_i c_i>0$ and
-$c_{\max}=\max_i c_i$. Put $M_0=4\sqrt2\Lambda C_R\rho$ and
+\begin{lemma}[Forcing a block prefix]\label{lem:prefixpacking}
+Fix $L\ge2$ and $1\le j\le L-1$, and put
 \[
-t_\delta=\min\{1,(\delta/M_0)^{1/\beta}\},\qquad
-b_\delta=-\log t_\delta,\qquad
-\Gamma_{n,\delta}=\frac{\beta(b_\delta+c_{\max})}{n}.
+M_L=\binom{L-2}{j-1},\qquad
+c_L=-\frac jL\log r_0-\left(1-\frac jL\right)\log r_1.
 \]
-For $n\ge J$, use the full reference binary tree capped at depth
-$N=n-J$, stopping at the first $\lambda_w\le t_\delta$ or at
-depth $N$, whichever is earlier.
+For every precision sequence of exponent $\gamma>0$ and every
+$0<t<\min\{1,\gamma/c_L\}$, for all sufficiently large $n$,
+\begin{equation}\label{eq:blockpacking}
+r_F(n,\delta_n;Q)\ge M_L^{\lfloor tn/L\rfloor}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Use all length-$L$ blocks starting with zero, ending with one,
+and containing $j$ zeros. Every concatenation has runs of length
+at most $L$ and radial product $e^{-Lc_L}$ per complete block.
+Put $k_n=\lfloor tn/L\rfloor$ and $m_n=Lk_n$.
+For each of the $M_L^{k_n}$ initial concatenations, append one
+fixed allowable block forever. Lemma~\ref{lem:shadow} realises
+these infinite inputs at the same positive radius $s_L$.
+Every prefix through time $m_n$ has
+$P_{v|k}\ge P_{v|m_n}=e^{-c_Lm_n}$.
 
-For each actual initial state choose an exactly feasible infinite
-input, provided by controlled invariance. Its first $J$ digits
-give a feasible transient ending in $Q_\rho$; the subsequent digits
-lead to a reference leaf. Keep all transient/leaf pairs with a
-nonempty actual feasible initial region. Empty regions can be
-discarded. If a leaf reaches the weight threshold, then
-\eqref{eq:products} gives
+If an arbitrary catalogue input first differs from a witness at
+$j'\le m_n$, its preceding states agree with that witness.
+By \eqref{eq:products}, their radius at $j'-1$ is at least
+$C_R^{-1}s_Le^{-c_Lm_n}$. The wrong radial factor is at least
+$r_*/2$, and the alternative angular excess is at least $d_L'$.
+Its actual physical excess therefore obeys
+\begin{equation}\label{eq:physicalmargin}
+|z_{j'}|-s_{j'}\ge E_Le^{-c_Lm_n},\qquad
+E_L=\frac{s_Lr_*d_L'}{2C_R}>0.
+\end{equation}
+The ratio to $2\delta_n$ has logarithmic rate
+$\gamma-c_Lt>0$. For large $n$, it violates
+\eqref{eq:exitnecessary}, regardless of later reentry.
+Thus the approximate input must agree with all $m_n$ witness digits.
+Distinct selected prefixes give distinct actual states: at their
+first different digit one input is feasible and the other has the
+proved wrong-control margin. One catalogue input covers at most one
+of them, proving \eqref{eq:blockpacking}.
+The block length, positive radius, and margin remain fixed throughout
+this horizon limit. Integer rounding and every $o(n)$ precision
+fluctuation are absorbed by the strict choice of $t$.
+\end{proof}
+
+\section{Stopping catalogues and the matched spectrum}\label{sec:rates}
+We first give a catalogue construction under the standing assumptions.
+The reference tree provides an upper bound; it is not presumed
+necessary or optimal.
+
+\begin{lemma}[A complete radial stopping catalogue]\label{lem:stopping}
+Put $M=\max\{1,4\sqrt2\Lambda C_R\rho\}$.
+For $N\ge0$ and $0<t\le1$, let $\mathcal L_P(N,t)$ be the full
+reference binary tree stopped at the first $P_w\le t$, or at
+depth $N$, whichever occurs first. For $n\ge J$ and $0<\delta\le1$,
+\begin{equation}\label{eq:radialupper}
+r_F(n,\delta;Q)\le 2^J\#\mathcal L_P(n-J,\delta/M).
+\end{equation}
+The catalogue can retain only transient/leaf pairs whose complete
+actual feasible initial region is nonempty.
+\end{lemma}
+\begin{proof}
+For every actual initial state choose an exactly feasible infinite
+input. Its first $J$ letters form a feasible transient ending in
+$Q_\rho$; the subsequent letters reach a reference leaf.
+Keep every pair realised by an actual state, including singleton
+regions and boundary states. Before stopping the assigned states
+are exactly feasible. At a threshold leaf, \eqref{eq:products} gives
 \[
-s_{|w|}\le C_R\rho\,t_\delta^\beta
-                    \le\delta/(4\sqrt2\Lambda).
+s_{|w|}\le C_R\rho P_w\le C_R\rho\,\delta/M
+                         \le\delta/(4\sqrt2\Lambda).
 \]
-At this exactly feasible state $V=\Lambda s\le\delta/(4\sqrt2)$.
-Append the same infinite zero tail to every such pair.
-The global inequality \eqref{eq:contract} and
-$\|x\|_2\le\sqrt2 V(x)$ keep every later Euclidean norm at most
-$\delta/4$, hence strictly within $\delta$ of $Q$.
-Before stopping, assigned states are exactly feasible.
-A horizon leaf already specifies the constraint through time $n$;
-its infinite extension is irrelevant to this horizon.
-This constructs actual controls for all states, including the origin,
-and checks every intermediate time even on the appended tail.
+Since $V=\Lambda s$ on $Q$, appending the same infinite zero tail
+and using \eqref{eq:contract} keeps the Euclidean norm at most
+$\delta/4$ at every later time. The origin belongs to $Q$,
+so every constraint holds strictly on that tail. A horizon leaf
+is exactly feasible through time $n$, and its later extension is
+irrelevant. Every constructed input fixes the origin as well.
+There are at most $2^J$ transients, proving \eqref{eq:radialupper}.
+\end{proof}
 
-For sufficiently small $\delta$, $b_\delta>0$. The logarithmic
-cost $C(w)=-\log\lambda_w$ of a threshold leaf lies in
-$[b_\delta,b_\delta+c_{\max})$, since its proper prefix has
-cost below $b_\delta$. A horizon leaf not reaching the threshold
-has cost below $b_\delta$. Thus any nonempty leaf of length
-$\ell\le n$, with $j$ zeros and $p=j/\ell$, satisfies
+\subsection{Upper bound for the matched spectrum}
+For the rest of this section assume $\beta_0=\beta_1=\beta$.
+Then $P_w=\lambda_w^\beta$, $\chi_R=\beta h$, and
+\[
+t_\delta=(\delta/M)^{1/\beta},\qquad b_\delta=-\log t_\delta.
+\]
+Lemma~\ref{lem:stopping} uses the tree stopped at
+$\lambda_w\le t_\delta$ or at depth $N=n-J$.
+Put $c_i=-\log a_i$, $c_{\min}=\min_i c_i>0$,
+$c_{\max}=\max_i c_i$, and
+$\Gamma_{n,\delta}=\beta(b_\delta+c_{\max})/n$.
+A threshold leaf has logarithmic angular cost in
+$[b_\delta,b_\delta+c_{\max})$; an unfinished horizon leaf
+has cost below $b_\delta$. Thus every nonempty leaf of length
+$\ell\le n$, containing $j$ zeros with $p=j/\ell$, satisfies
 \begin{equation}\label{eq:leafcost}
 \ell\chi(p)<b_\delta+c_{\max},\qquad
 \frac{\ell}{n}\le
        \min\{1,\Gamma_{n,\delta}/[\beta\chi(p)]\}.
 \end{equation}
-The binomial upper bound
-$\binom{\ell}{j}\le e^{\ell H_b(j/\ell)}$ follows by evaluating
-the corresponding term of the binomial law with parameter $j/\ell$.
-For endpoint types the count is one. Therefore each leaf type
-has at most $e^{nS(\Gamma_{n,\delta})}$ words.
-There are at most $(n+1)^2$ length/type pairs, including the empty
-leaf, and at most $2^J$ transient choices. We obtain
+The corresponding term of the binomial law of parameter $j/\ell$
+gives $\binom{\ell}{j}\le e^{\ell H_b(j/\ell)}$.
+Endpoint types have one word. Each leaf type therefore has at most
+$e^{nS(\Gamma_{n,\delta})}$ words. There are at most $(n+1)^2$
+length/type pairs, including a possible empty word. By the actual
+catalogue construction,
 \begin{equation}\label{eq:treeupper}
-r_F(n,\delta;Q)\le
-           2^J(n+1)^2 e^{nS(\Gamma_{n,\delta})}.
+r_F(n,\delta;Q)\le 2^J(n+1)^2e^{nS(\Gamma_{n,\delta})}.
 \end{equation}
-No positive length or full terminal image has been assumed for an
-actual feasible slice.
+No nonempty fixed-radius slice or full terminal image is assumed.
 
-Each function under the maximum in \eqref{eq:variational} is
-Lipschitz in $\gamma$, with common constant at most
-$\log2/(\beta c_{\min})$. Their maximum $S$ is consequently
-continuous. Eventually
-$\beta b_{\delta_n}=-\log\delta_n+\log M_0$, so
+Every function under the maximum defining $S$ is Lipschitz in
+$\gamma$, with common constant at most
+$\log2/(\beta c_{\min})$. Their maximum is continuous.
+Here $\beta b_{\delta_n}=-\log\delta_n+\log M$, so
 $\Gamma_{n,\delta_n}\to\gamma$ for every precision sequence.
-The fixed transient factor and polynomial in \eqref{eq:treeupper}
-have zero exponential rate. Hence
+The fixed transient and polynomial factors have zero rate, giving
 \begin{equation}\label{eq:spectrumupper}
 \limsup_n n^{-1}\log r_F(n,\delta_n;Q)\le S(\gamma).
 \end{equation}
 This includes $\gamma=0$ and nonmonotone sequences.
 
-We also record the coarser finite-tolerance bound used below.
-The weights of the reference leaves sum to one by
-$a_0+a_1=1$, and each is at least $a_*t_\delta$.
-This identity concerns a reference tree, not a partition of the
-actual plane. Enlarging a constant to include $n<J$, we have
+The reference angular leaf weights sum to one, and each is at least
+$a_*t_\delta$: a threshold leaf has parent weight above $t_\delta$,
+whereas an unfinished leaf has weight above $t_\delta$ itself.
+This identity concerns a reference tree, not a physical partition.
+Enlarging a constant for $n<J$ yields the useful coarse bound
 \begin{equation}\label{eq:upper}
 r_F(n,\delta;Q)\le C_U\delta^{-1/\beta}
        \quad(0<\delta\le1),\qquad r_F(n,\delta;Q)\le2^n .
 \end{equation}
 
 \subsection{Shorter physical prefixes give the lower bound}
-Suppose first that $\gamma>0$ and fix $p\in(0,1)$.
-Choose $j_L\in\{1,\ldots,L-1\}$ with $j_L/L\to p$.
-Use all length-$L$ blocks starting with zero, ending with one,
-and containing exactly $j_L$ zeros. Their number and logarithmic
-weight per digit are
+Let $\gamma>0$ and fix $p\in(0,1)$.
+Choose $j_L\in\{1,\ldots,L-1\}$ with $j_L/L\to p$, and put
 \[
 M_L=\binom{L-2}{j_L-1},\qquad
-B_L=\frac{\log M_L}{L},\qquad
-\chi_L=\chi(j_L/L).
+B_L=L^{-1}\log M_L,\qquad \chi_L=\chi(j_L/L).
 \]
-All concatenations have runs of length at most $L$, and every
-complete block has cost $L\chi_L$.
-The exact identity
+The exact identity and elementary type bounds
 \[
-\binom{L-2}{j-1}=\frac{j(L-j)}{L(L-1)}\binom Lj
-\]
-and the elementary bounds
-\[
+\binom{L-2}{j-1}=\frac{j(L-j)}{L(L-1)}\binom Lj,\qquad
 \frac{e^{LH_b(j/L)}}{L+1}\le\binom Lj\le e^{LH_b(j/L)}
 \]
-show that $B_L\to H_b(p)$ and $\chi_L\to\chi(p)$.
-For the lower binomial bound the $j$-th term is a largest term
-of the binomial law with parameter $j/L$, so is at least
-$1/(L+1)$. The additional fraction has logarithm $o(L)$
-because the limiting frequency is interior.
+give $B_L\to H_b(p)$ and $\chi_L\to\chi(p)$.
+For the lower type bound the $j$-th term is a largest term of
+the binomial law with parameter $j/L$, so is at least $1/(L+1)$.
+The additional fraction has logarithm $o(L)$ for interior $p$.
 
-Fix $L$ before taking the horizon limit, and choose a strict ratio
+The radial block cost in Lemma~\ref{lem:prefixpacking} is now
+$c_L=\beta\chi_L$. Fix $L$ first and take
 \begin{equation}\label{eq:prefixratio}
-0<t<\min\{1,\gamma/(\beta\chi_L)\},\qquad
-k_n=\lfloor tn/L\rfloor,\qquad m_n=Lk_n\le n .
+0<t<\min\{1,\gamma/(\beta\chi_L)\}.
 \end{equation}
-For each of the $M_L^{k_n}$ choices of these initial blocks,
-append one fixed allowable block forever. Lemma~\ref{lem:shadow}
-realises the resulting sequence as an actual exactly feasible
-orbit at the same positive radius $s_L$, independent of $n$
-and of the block choices. For every $k\le m_n$,
-\[
-\lambda_{v|k}\ge\lambda_{v|m_n}=e^{-\chi_Lm_n}.
-\]
-If an arbitrary catalogue input first differs from such a witness
-at time $j\le m_n$, its preceding actual states coincide with
-the witness. Their radius at time $j-1$ is at least
-$C_R^{-1}s_Le^{-\beta\chi_Lm_n}$ by \eqref{eq:products}.
-The wrong radial multiplier is at least $r_*/2$, and
-Lemma~\ref{lem:shadow} supplies an angular excess of at least $d_L'$.
-The wrong physical state therefore satisfies
-\begin{equation}\label{eq:physicalmargin}
-|z_j|-s_j\ge E_L e^{-\beta\chi_Lm_n},\qquad
-E_L=\frac{s_Lr_*d_L'}{2C_R}>0.
-\end{equation}
-The strict choice in \eqref{eq:prefixratio} gives
-\[
-\frac1n\log\frac{E_Le^{-\beta\chi_Lm_n}}{2\delta_n}
-                 \longrightarrow\gamma-\beta\chi_Lt>0.
-\]
-For large $n$ this contradicts the necessary condition
-\eqref{eq:exitnecessary}. A later reentry cannot remove that
-earlier violation. Thus an approximately feasible input for
-a witness must agree with all its first $m_n$ digits.
-Different selected prefixes give distinct actual initial states:
-at their first different digit one control is exactly feasible
-and the other has the proved wrong-control margin.
-A single catalogue input can cover at most one of these witnesses,
-so
+The lemma, which checks the physical margin and every constrained
+time, gives
 \begin{equation}\label{eq:prefixlower}
-r_F(n,\delta_n;Q)\ge M_L^{k_n},\qquad
-\liminf_n n^{-1}\log r_F(n,\delta_n;Q)\ge tB_L .
+\liminf_n n^{-1}\log r_F(n,\delta_n;Q)\ge tB_L.
 \end{equation}
-For fixed $L$ take the supremum over the strict choices of $t$,
-then let $L\to\infty$, and then take the supremum over $p\in(0,1)$.
-The endpoint frequencies have zero entropy, so continuity gives
-\[
-\liminf_n n^{-1}\log r_F(n,\delta_n;Q)\ge S(\gamma).
-\]
-No uniform positive radius or margin as $L\to\infty$ is needed:
-$L,s_L,E_L$ are fixed in each horizon limit.
-The strict ratio handles critical exponents, integer rounding,
-and every $o(n)$ fluctuation of $-\log\delta_n$.
-For $\gamma=0$, $r_F\ge1$ and \eqref{eq:spectrumupper} give the
-zero limit. This proves \eqref{eq:spectrum}.
+For fixed $L$ take the supremum over the strict $t$, next let
+$L\to\infty$, and finally take the supremum over $p\in(0,1)$.
+Endpoint frequencies have zero entropy, so continuity yields
+$\liminf n^{-1}\log r_F(n,\delta_n;Q)\ge S(\gamma)$.
+No witness radius or margin is required to remain uniformly positive
+as $L\to\infty$; they are fixed in each horizon limit.
+For $\gamma=0$, the bound $r_F\ge1$ and
+\eqref{eq:spectrumupper} give the zero limit.
+This proves \eqref{eq:spectrum}.
 
 \subsection{Positive-area and fixed near-full initial sets}
 To complete Theorem~\ref{thm:main}, apply Theorem~\ref{thm:area}
@@ -800,17 +885,18 @@ $\area(T)/\sup_u\area(T\cap A_u(n,\delta_n;K))$ elements.
 For fixed $e\in(0,h)$, put
 \[
 m_n=\min\left\{n-J,
- \left\lfloor\frac{-\log\delta_n}{\beta(h+e)}\right\rfloor\right\}.
+ \left\lfloor\frac{-\log\delta_n}{\chi_R+e}\right\rfloor\right\}.
 \]
 Eventually $m_n\ge0$, and
-$\delta_n\le e^{-\beta(h+e)m_n}$.
+$\delta_n\le e^{-(\chi_R+e)m_n}$.
 Each term on the right of \eqref{eq:actualarea} is then at most
 a constant times $e^{-(h-e)m_n}$. Consequently
 \[
 \liminf_n n^{-1}\log r_F(n,\delta_n;K)
- \ge (h-e)\min\{1,\gamma/[\beta(h+e)]\}.
+ \ge (h-e)\min\{1,\gamma/(\chi_R+e)\}.
 \]
-Letting $e\downarrow0$ gives the lower bound in
+Since $\chi_R=\beta h$ here, letting $e\downarrow0$
+gives the lower bound in
 \eqref{eq:universal}; for $\gamma=0$ the bound $r_F\ge1$
 also suffices. The upper bound follows from
 $r_F(n,\delta;K)\le r_F(n,\delta;Q)$ and
@@ -877,7 +963,8 @@ strict gap and the exact saturation threshold.
 \end{proof}
 
 \begin{corollary}[Matched linear systems]\label{cor:linear}
-The pair $(\mathsf A_0,\mathsf A_1)$ has all the conclusions of
+If $\beta_0=\beta_1=\beta$, the pair
+$(\mathsf A_0,\mathsf A_1)$ has all the conclusions of
 Theorems~\ref{thm:main} and \ref{thm:area}.
 \end{corollary}
 \begin{proof}
@@ -889,8 +976,120 @@ Then $V(\mathsf A_i x)\le\max\{\max_i r_i,v\}V(x)$ globally.
 The remaining hypotheses are immediate.
 \end{proof}
 
+\section{Mismatch and the common-cost criterion}\label{sec:mismatch}
+We now return to the standing assumptions with $\beta_0\ne\beta_1$.
+The same physical estimates apply, but the angular and radial
+products no longer have a common-power identity.
+
+\begin{proof}[Proof of Theorem~\ref{thm:mismatch}]
+First consider the upper rate on $Q$. For every $0<\gamma<\gamma_0$,
+all branches of the tree in Lemma~\ref{lem:stopping} cross
+$P_w\le\delta_n/M$ before depth $n-J$ for large $n$, since
+\[
+P_w\le e^{-\gamma_0(n-J)}<\delta_n/M
+       \quad\text{at that depth}.
+\]
+The ratio has logarithmic rate $\gamma-\gamma_0<0$, so the
+statement includes every $o(n)$ tolerance fluctuation.
+For the uncapped radial tree, write $N(t)$ for its leaf count.
+Replacing a parent by its children preserves $\sum P_w^D=1$,
+and each leaf satisfies $r_*t<P_w\le t$. Hence
+\begin{equation}\label{eq:mismatchtree}
+t^{-D}\le N(t)\le(r_*t)^{-D},\qquad
+r_F(n,\delta_n;Q)\le2^JN(\delta_n/M).
+\end{equation}
+This proves the upper rate $\gamma D$ through an actual full-time
+catalogue, without asserting that the reference tree is necessary.
+
+For the lower rate put $p_*=r_0^D$, so $1-p_*=r_1^D$, and
+$c_R(p)=-p\log r_0-(1-p)\log r_1$. Then
+\begin{equation}\label{eq:rootentropy}
+H_b(p_*)=D c_R(p_*).
+\end{equation}
+Choose $j_L/L\to p_*$ and use the blocks in
+Lemma~\ref{lem:prefixpacking}, with
+$c_L=c_R(j_L/L)$ and $B_L=L^{-1}\log\binom{L-2}{j_L-1}$.
+The binomial calculation in Section~\ref{sec:rates} gives
+$B_L\to H_b(p_*)$ and $c_L\to c_R(p_*)$.
+For each fixed $L$, $c_L\ge\gamma_0>\gamma$.
+Every strict $0<t<\gamma/c_L<1$ therefore gives lower rate $tB_L$.
+Take its supremum first, then let $L\to\infty$.
+Equation~\eqref{eq:rootentropy} gives the lower rate $\gamma D$.
+The positive-radius witnesses and wrong-control margins are those
+of the common physical lemma, not midpoints of assumed full images.
+This proves the first limit in \eqref{eq:mismatchrates}.
+
+For any fixed positive-area compact $K$, take the set $T$ in
+Theorem~\ref{thm:area}, and set
+\[
+m_n=\min\left\{n-J,
+       \left\lfloor\frac{-\log\delta_n}{\chi_R+e}\right\rfloor\right\}.
+\]
+For large $n$ it is nonnegative, and
+$\delta_n\le e^{-(\chi_R+e)m_n}$.
+Every term of \eqref{eq:actualarea} is then bounded by a constant
+times $e^{-(h-e)m_n}$. Covering the positive area of $T$ implies
+lower rate $\gamma(h-e)/(\chi_R+e)$, since
+$\gamma<\gamma_0\le\chi_R$. Let $e\downarrow0$.
+This proves the asserted universal lower bound $\gamma h/\chi_R$.
+
+For $K=Q$, choose the single set $T$ of area greater than $1-\zeta$
+in the area proof, and put $K_\zeta=T\cup\{0\}$.
+Keep only stopped pairs in Lemma~\ref{lem:stopping} realised on $T$.
+They cover it with the complete tails already constructed.
+Let $q_\delta=-\log(\delta/M)$ and $c_{\max}=-\log r_*$.
+Each retained tail of length $\ell$ has
+\[
+q_\delta\le-\log P_w<q_\delta+c_{\max},\qquad
+\ell\le\frac{q_\delta+c_{\max}+\log D_e}{\chi_R-e},
+\]
+by \eqref{eq:typicalproducts}. At this length,
+$\lambda_w\ge D_e^{-1}e^{-(h+e)\ell}$, while all reference
+length-$\ell$ weights sum to one. There are at most
+$D_ee^{(h+e)\ell}$ such words. Sum over these lengths and the
+at most $2^J$ transients, and include one input for the origin.
+For fixed $e\in(0,h)$ this gives
+\begin{equation}\label{eq:typicalstop}
+\log r_F(n,\delta_n;K_\zeta)
+\le\frac{h+e}{\chi_R-e}
+[q_{\delta_n}+c_{\max}+\log D_e]
++O_e(\log(1+q_{\delta_n}))+O_e(1).
+\end{equation}
+Because $q_{\delta_n}=\gamma n+o(n)$, letting $e\downarrow0$
+gives upper rate $\gamma h/\chi_R$, matching the lower bound.
+The set was selected through uniform frequency convergence before
+$e$, the precision exponent, the sequence, and the horizon.
+
+Finally let $b_i=r_i^D$. The classical relative-entropy identity is
+\[
+D\chi_R-h=\sum_i a_i\log(a_i/b_i)\ge0.
+\]
+Concavity of the logarithm proves the inequality, with equality
+only when $b_i=a_i$ for both labels. Equality would require
+$\beta_0D=\beta_1D=1$, contrary to mismatch.
+Thus $D>h/\chi_R$, completing the theorem.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:criterion}]
+If $\beta_0=\beta_1=\beta$, Theorem~\ref{thm:main} gives
+the common rate $c(\gamma)=\gamma/\beta$ on $(0,\beta h)$.
+If $\beta_0\ne\beta_1$, Theorem~\ref{thm:mismatch} separates
+$Q$ and one fixed nearly full-area compact set for every
+$0<\gamma<\gamma_0$. Any interval adjacent to zero contains
+such an exponent, contradicting the common-rate property.
+\end{proof}
+
+The criterion concerns precisely the first derivatives
+\eqref{eq:jets}, global invertibility, controlled feasibility of $Q$,
+and the common norm inequality. The proof does not extend this
+necessity statement to arbitrary feedback systems, classify
+high-precision mismatch rates, or compare a fixed strategy with
+the optimal catalogue.
+
 \section{Applications of the criterion}\label{sec:examples}
-\subsection{Independent factors and vanishing overlap}
+The next two subfamilies use $\beta_0=\beta_1=\beta$ and illustrate
+the matched theorem beyond exact linear or boundary-ray geometry.
+\subsection{Independent factors and vanishing overlap}\label{sec:cutoff}
 This subfamily shows how the criterion applies to separately varying
 branch lengths and radial factors. Fix a smooth function
 $0\le\kappa\le1$ equal to one on $\overline B(0,3/2)$ and with
@@ -1085,155 +1284,33 @@ The first inequality follows from $(4/3)^3>2$ and the second
 from $4<9/2$. It is an evaluation of the spectrum, not a claim
 that missing fixed-radius words require a different count.
 
-\section{An affine mismatch comparison}\label{sec:mismatch}
-The matched first derivatives have a definite role in an affine
-comparison class. Here let $\beta_0,\beta_1>1$,
-$\rho_i=a_i^{\beta_i}$, and define
-\begin{align}
-B_0(s,z)&=(\rho_0s,(\rho_0/a_0)(z+a_1s)),\nonumber\\
-B_1(s,z)&=(\rho_1s,(\rho_1/a_1)(z-a_0s)).\label{eq:affinemismatch}
-\end{align}
-Set $\chi_R=-\sum_i a_i\log\rho_i$,
-$\gamma_0=-\log\max_i\rho_i$, and let $D>0$ solve
-$\rho_0^D+\rho_1^D=1$. The following comparison is restricted to
-\eqref{eq:affinemismatch}; it is not a classification of the nonlinear
-class in Theorem~\ref{thm:main}.
-
-\begin{proposition}\label{prop:mismatch}
-If $\beta_0\ne\beta_1$, then for each $\zeta\in(0,1)$ one can
-choose a single compact $K_\zeta\subset Q$ of area greater than
-$1-\zeta$ such that every precision sequence of exponent
-$0<\gamma<\gamma_0$ satisfies
+\subsection{Angular feedback in an admissible mismatched pair}
+Choose unequal $\beta_0,\beta_1$ in \eqref{eq:parameters}, and
+let $\kappa$ be the fixed cutoff in Section~\ref{sec:cutoff}.
+Put $\phi(s,z)=z^2\kappa(s,z)$,
+$M_\phi=\max\{1,\|x\cdot\nabla\phi\|_\infty\}$, and fix
+$0<c<1/(2M_\phi)$. Define
 \[
-\lim_n\frac{\log r_B(n,\delta_n;Q)}n=\gamma D,\qquad
-\lim_n\frac{\log r_B(n,\delta_n;K_\zeta)}n
-       =\gamma h/\chi_R,\qquad D>h/\chi_R.
+H(x)=e^{-c\phi(x)}x,\qquad F_i(x)=\mathsf A_iH(x).
 \]
-Every fixed positive-area compact set has lower rate at least
-$\gamma h/\chi_R$ in this range.
-\end{proposition}
-\begin{proof}
-Both maps are invertible and contract toward the origin in a norm
-$\max\{\Lambda|s|,|z|\}$ for large $\Lambda$, since
-$\rho_i/a_i=a_i^{\beta_i-1}<1$.
-The complete angular maps are $(y+a_1)/a_0$ and $(y-a_0)/a_1$,
-with inverse branches $a_0y-a_1$ and $a_1y+a_0$.
-Every complete prefix-free family partitions each fibre with all
-endpoints included. For $R_w=\prod_j\rho_{w_j}$,
-the radial product is exactly $R_w$ and the feasible interval has
-length $2\lambda_w$, independently of initial radius.
-Its physical area is $\lambda_w$.
+On each ray $x=te$, $t\ge0$, the image radius has derivative
+$e^{-c\phi(te)}[1-cte\cdot\nabla\phi(te)]>0$ and tends to
+infinity. Thus $H$ is bijective. Its derivative has determinant
+$e^{-2c\phi(x)}[1-cx\cdot\nabla\phi(x)]>0$; the inverse
+function theorem gives a smooth global inverse, including at zero.
+The map is the identity outside a compact set and $DH(0)=I$.
+Consequently $DF_i(0)=\mathsf A_i$.
+Since the scalar factor is at most one, the linear norm inequality
+checked in Section~2 proves \eqref{eq:contract} globally.
+The angles are the reference maps \eqref{eq:limangular},
+their domains cover each fibre, and the radius decreases.
+This proves controlled feasibility with all boundary states retained.
+On $Q$, $\phi=z^2$, so the first coordinate
+$r_i s e^{-cz^2}$ depends on the initial angle at fixed positive
+radius. Theorem~\ref{thm:mismatch} applies.
+This example verifies actual radial feedback; no assertion that it
+excludes every simultaneous coordinate reduction is made.
 
-We first compare all approximate inputs with radial stopping words.
-Let $\mathcal L_R(n,t)$ stop at the first $R_w\le t$, or at depth
-$n$, and put $N_R(n,t)=\#\mathcal L_R(n,t)$.
-For a first difference from a chosen exact code at time $j$, common
-prefix $a$, the angular separating point $b_a$ satisfies
-\[
-|z_j|-s_j=sR_a(\rho_i/a_i)|y-b_a|/\lambda_a.
-\]
-Thus approximate feasibility implies a one-sided band
-\begin{equation}\label{eq:mismatchband}
-|y-b_a|\le C_b\delta\lambda_a/(sR_a),\qquad
-C_b=2\max_i a_i/\rho_i.
-\end{equation}
-At a tie the excess is zero and the band includes it.
-Integrating against $s\,ds$ gives area at most
-$C_b\delta\lambda_a/R_a$. Reentry does not change this necessary
-condition at time $j$.
-
-Take midpoint witnesses at radius one for leaves with threshold
-$t=\delta$, and write $\rho_*=\min_i\rho_i$.
-Each leaf has $R_w>\rho_*t$. For descendants $w=av$ of a fixed
-proper prefix $a$, $\lambda_v\ge R_v=R_w/R_a$, so their intervals
-have length greater than $2\lambda_a\rho_*t/R_a$.
-The ordered midpoints below $a$ have at least this spacing.
-For any input and one first-difference time, \eqref{eq:mismatchband}
-at radius one therefore contains at most
-$B=\lceil1+C_b/(2\rho_*)\rceil$ such witnesses.
-There is at most one leaf which is a prefix of the input. Summing
-over first-difference times proves
-\begin{equation}\label{eq:mismatchcomparison}
-\frac{N_R(n,\delta)}{1+Bn}\le r_B(n,\delta;Q)
-\le N_R(n,\delta/C_0)
-\end{equation}
-for a fixed $C_0>1$. For the upper bound, use every leaf as an
-exact prefix and append the same zero tail. Its complete interval
-covers the assigned states at all prefix times. An early leaf has
-radius at most $\delta/C_0$; choose $C_0$ large enough that the
-origin-contracting norm keeps the entire tail within Euclidean norm
-$\delta/2$. A depth-$n$ leaf needs no later constraint.
-This proves the full-time comparison for arbitrary inputs.
-
-When $\gamma<\gamma_0$, every branch crosses both thresholds before
-the horizon for all sufficiently large $n$, because $R_w\le
-e^{-\gamma_0n}$ at depth $n$.
-In the uncapped tree the weights $R_w^D$ sum to one, and each
-leaf has $\rho_*t<R_w\le t$. Hence
-\[
-t^{-D}\le N_R(t)\le(\rho_*t)^{-D}.
-\]
-Equation \eqref{eq:mismatchcomparison} gives the full-set rate.
-
-For the smaller initial set, the exact code has cylinder area
-$\lambda_w$. The same Bernoulli type estimate used in
-Section~\ref{sec:area}, followed by Egorov and compact inner
-approximation, gives one compact $T\subset Q\setminus\{0\}$ of
-area greater than $1-\zeta$ with uniformly typical frequencies.
-For every $e>0$ there is $A_e\ge1$ such that on all its exact prefixes
-\begin{align*}
-A_e^{-1}e^{-(h+e)k}&\le\lambda_w\le A_ee^{-(h-e)k},\\
-A_e^{-1}e^{-(\chi_R+e)k}&\le R_w\le A_ee^{-(\chi_R-e)k}.
-\end{align*}
-The set is chosen before $e$ and all precision sequences.
-Any positive-area compact initial set contains a positive-area
-compact set with the same property. Splitting the portion covered
-by an arbitrary input into agreement through $m$ and first difference
-at $j\le m$, and using \eqref{eq:mismatchband}, gives
-\[
-\area(T\cap A_u(n,\delta;Q))\le C_e
- [e^{-(h-e)m}+\delta e^{(\chi_R-h+2e)m}].
-\]
-Here $\chi_R>h$. Take
-$m=\min\{n,\lfloor(-\log\delta)/(\chi_R+e)\rfloor\}$.
-Since $\gamma<\gamma_0\le\chi_R$, the covering lower rate is
-$\gamma(h-e)/(\chi_R+e)$, and $e\downarrow0$ gives
-$\gamma h/\chi_R$.
-
-Set $K_\zeta=T\cup\{0\}$. For its upper rate, retain all radial
-stopping prefixes realised on $T$ at threshold $\delta/C_0$ and
-append the full tails already constructed. With
-$c_{\max}=-\log\rho_*$, their lengths satisfy
-\[
-\ell\le\frac{-\log\delta+\log C_0+c_{\max}+\log A_e}{\chi_R-e}.
-\]
-At each length $\ell$ their weights are at least
-$A_e^{-1}e^{-(h+e)\ell}$, whereas all length-$\ell$ weights sum
-to one. There are at most $A_ee^{(h+e)\ell}$ such words.
-Summing up to the displayed length and including an input for the
-origin gives upper rate $\gamma(h+e)/(\chi_R-e)$.
-Let $e\downarrow0$ to obtain the matching limit on this single set.
-
-Finally put $b_i=\rho_i^D$. Since $b_0+b_1=1$,
-\[
-D\chi_R-h=\sum_i a_i\log(a_i/b_i)\ge0.
-\]
-The inequality follows from $-\log t\ge1-t$, with equality only if
-$b_i=a_i$ for both $i$. Equality would require
-$\beta_0D=\beta_1D=1$, contradicting mismatch.
-This proves the strict difference.
-\end{proof}
-
-\begin{corollary}\label{cor:criterion}
-Within \eqref{eq:affinemismatch}, all fixed positive-area compact
-initial sets share a rate on some nonempty interval of precision
-exponents adjacent to zero if and only if $\beta_0=\beta_1$.
-\end{corollary}
-\begin{proof}
-Under equality use Corollary~\ref{cor:linear} and
-Theorem~\ref{thm:main}. Under inequality use
-Proposition~\ref{prop:mismatch} for every $0<\gamma<\gamma_0$.
-\end{proof}
 \section{Why local matching alone is insufficient}
 \label{sec:local}
 
@@ -1243,7 +1320,7 @@ of it. It violates global injectivity by collapsing
 positive-area regions onto an invariant ray.
 
 \begin{proposition}\label{prop:collapse}
-For every choice of $a_0,a_1,\beta$ in
+For every matched choice $\beta_0=\beta_1=\beta$ in
 \eqref{eq:parameters} and every $0<\sigma<1/2$, there are
 $C^\infty$ maps $S_0,S_1:\R^2\to\R^2$ with these properties:
 \begin{enumerate}
@@ -1369,38 +1446,42 @@ counterexample to the diffeomorphism theorem.
 
 
 \section{Consequences and scope}
-Theorem~\ref{thm:area} is a bound for actual initial states under
-every approximately feasible input. It handles overlap through
-typicality of all feasible prefixes, and handles reentry by retaining
-the constraint at the first true exit. The finite transient is
-controlled through inverse Jacobians, rather than an assumption
-that approximate inputs remain exactly feasible near the origin.
-No lower bound on every complete word interval is needed.
+Theorem~\ref{thm:criterion} characterises the common low-precision
+cost in the specified first-order family. Unequal radial powers
+already separate the full triangle and one nearly full-area compact
+set at arbitrarily small positive exponents.
+The necessity statement permits angular feedback in the radius and
+has the same global hypotheses as the matched result.
 
-Theorem~\ref{thm:main} separates two uses of initial geometry.
-Every positive-area compact set contains enough typical mass to
-force the low-side rate. The full-set lower bound instead uses
-rare physical states at a fixed small positive radius; their
-wrong-control margins exclude any alternate approximate input.
-Type counting of all stopping lengths and shorter forced physical
-prefixes gives the exact spectrum \eqref{eq:closed}, including its
-high-side limit. The auxiliary witness radius may depend on the
-fixed block length, whereas the near-full compact initial set is
-fixed before all exponents.
-This distinction is responsible for the shared-rate boundary.
+Theorem~\ref{thm:area} is the underlying estimate for actual initial
+states under every approximately feasible input. Its two products
+record different features: $\lambda_w$ controls feasible angular
+size and $P_w$ controls the physical radius at a first true exit.
+Typicality of all feasible prefixes handles overlap, and the
+constraint at that first exit handles later reentry.
+Finite inverse Jacobians control the transient.
+No positive length or full image is required of each feasible slice.
 
-The criterion retains a particular matched pair of first derivatives,
-a common attracting origin, controlled feasibility of the triangle,
-global invertibility and a global norm inequality. It applies beyond
-the boundary-ray-preserving examples, as the inward system shows.
-It does not address constant overlap in the limiting angular maps,
-noninvertible collapse, or arbitrary control systems. The affine
-mismatch criterion does not establish necessity in the full nonlinear
-class. The high-side spectrum of arbitrary compact initial sets is not
-classified, and no fixed-strategy optimality is asserted. In this matched
-class, nonlinear geometry changes the constants in the controlled
-estimates, while the exact full-set rate depends only on the displayed
-first derivatives.
+The full-set lower bounds use rare actual states at a fixed small
+positive radius, with a margin against the wrong control.
+Typical positive-area mass instead gives the near-full-set slope.
+Under matching, the product identity and classical type counting
+give the complete spectrum and its two distinct thresholds.
+The auxiliary witness radius depends on the fixed block length;
+the near-full initial set precedes all stated precision choices.
+
+The results retain binary planar dynamics, a particular triangular
+constraint, the displayed first-jet family, controlled feasibility,
+global invertibility, and contraction toward a common origin.
+They allow truncated feasible images and vanishing overlap, but
+do not treat constant overlap in the limiting angular maps.
+The collapse example explains why the noncollapse hypothesis
+cannot simply be omitted. The inward example proves a
+constraint-preserving conjugacy obstruction only for its displayed
+target class; no claim of nonreducibility is made for every member.
+The high-precision spectrum under mismatch and the high-side rates
+of arbitrary compact initial sets are not classified.
+No fixed-strategy optimality or new pressure principle is asserted.
 
 \subsection*{Generative AI disclosure}
 Generative AI was used extensively in developing mathematical
