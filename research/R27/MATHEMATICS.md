@@ -162,7 +162,7 @@ gives, with the generous common constant \(B\),
 \end{split}
 \]
 For example \(|N_i|\le3\) on this rectangle; quotient derivatives
-have denominators at most \(R_i^2\), bounded by \(4/r_*^2\).
+use \(R_i^{-2}\le 4/r_*^2\).
 Thus the displayed choice of \(B\) dominates all the constants in (9).
 These are derived local inequalities, not extra hypotheses.
 
@@ -239,8 +239,9 @@ most \(4Bs_j\). Integration over the *actual* angular image implies
  \quad \mathcal I_w=\{(s,sy):0<s\le\rho,\ y\in I_w(s)\}.      \tag{13}
 \]
 The Jacobian of \((s,y)\mapsto(s,sy)\) is \(s\).
-There is no positive lower bound on \(|I_w|\); some words will have
-empty regions in the application in Section 9.
+There is no positive lower bound on \(|I_w|\); some fixed-radius
+slices in Section 9 are empty. This does not mean the same finite word
+has an empty physical feasible region throughout \(Q\).
 
 ## 4. First true infeasibility, for arbitrary inputs
 
