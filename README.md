@@ -2,11 +2,13 @@
 
 基线论文：*Positive invariance entropy under uniform state convergence*。
 
-当前唯一英文稿：*First-order matching and precision costs under noncollapsing control maps*，已完成R34整合及对应19页PDF。以Q内临界集零面积替代全域微分同胚，匹配完整谱、失配低侧两率、指定结构族充要判据和实际双尺度面积均落实到正文。只有一份现行论文。
+当前唯一英文稿：*First-order matching and initial-set dependence of precision costs*，已完成R36行文定稿及对应20页PDF。以匹配—失配共同成本判据组织全文；匹配完整谱、固定近满面积集的率、实际双尺度面积和非塌缩转移均保留。只有一份现行论文。
 
 最新数学增量来自R33：可行瞬态零集拉回、同一个固定紧集的多局部逆图和早期首真越界面积，允许Q内真实可行折叠而保留全部声明范围内的率。R34完整收入这些证明及实例，不假设全Q统一逆Jacobian下界，完成全文、编译及19页渲染核对；整合不算新证明。
 
-R35已按新授权完成两篇JDE正式原件的同刊贡献比较，明确选择B：现稿有理由向JDE冲刺，但当前证据不足以作为主要定位。独立用途仍集中于指定局部二分支几何与共同原点收缩；没有发现省略实际覆盖接口即可推出本稿的等价结论或会改变定位的正文错误。2025年中科院数学大类一区TOP有大学间接来源，未核到2026官方条目或完整JCR年度学科记录，不将期刊分区认证为稿件水平。唯一论文保持不变，本轮没有新数学、投稿或材料准备；无合格新入口，暂停机械扩展，不自动R36。
+R35已按新授权完成两篇JDE正式原件的同刊贡献比较，明确选择B：现稿有理由向JDE冲刺，但当前证据不足以作为主要定位。独立用途仍集中于指定局部二分支几何与共同原点收缩；没有发现省略实际覆盖接口即可推出本稿的等价结论或会改变定位的正文错误。2025年中科院数学大类一区TOP有大学间接来源，未核到2026官方条目或完整JCR年度学科记录，不将期刊分区认证为稿件水平。R35当轮未改论文或新增数学，未投稿或准备材料；其停止点已由用户明确授权的R36行文修订续接。
+
+R36按用户新授权完成标题、摘要、引言、结论和证明衔接修订，并将匹配谱排在失配详细结论之前。13条正式命题、12段proof正文、98组显示数学及作者/AI披露保持原内容。重新编译，渲染并检查全部20页，无引用或排版问题。JDE定位仍为B，行文改善不算新增数学或档位认证；本轮不投稿、不准备材料、不自动R37。
 
 已按用户要求研读十篇四大标杆论文，四刊均有覆盖；[研读与P6接口](research/FOUR_JOURNAL_STUDY/READING_REPORT.md)及[版本、实际页码与SHA-256](research/FOUR_JOURNAL_STUDY/SOURCES.json)已记录。重点学习实际几何与熵的连接、典型/全部初态差别及集中证明的写法。两篇全文阅读，其余为定位的部分阅读；这不是完整新颖性检索或新的数学升级，未改论文或自动开轮。
 
@@ -17,6 +19,7 @@ R29已在同一R27结构类求出全Q准确谱及全部有限精度指数下的�
 近期争取数学正确、真实新意和独立专业价值明确的主定理，后续扩大机制或适用范围、争取一区 TOP，长期保留 Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathematical Society、Acta Mathematica。一区与 TOP 是阶段目标，未经贡献比较及相应体系、年份核实不作档位认定；不要求先认证档位才允许证明，不保证升级链。
 
 - [`CURRENT.md`](CURRENT.md)：最新裁决与下一入口。
+- [research/R36/REVISION_NOTES.md](research/R36/REVISION_NOTES.md)：唯一稿实质修订、两篇原件实际回查范围、完整内容保留检查及B定位停点。
 - [research/R35/REPORT.md](research/R35/REPORT.md)：两篇JDE的逐项贡献比较、明确冲刺定位与决定性用途限制。
 - [research/R35/SOURCES.md](research/R35/SOURCES.md)：正式原件APA/DOI、实际页码与哈希、方法覆盖及分区年份/来源等级。
 - [research/R35/NEXT_COMMAND.md](research/R35/NEXT_COMMAND.md)：完成停点，不机械增加定理，不自动R36或投稿。

@@ -26,9 +26,9 @@
 
 
 
-\hypersetup{pdftitle={First-order matching and precision costs under noncollapsing control maps}}
-\title[Matching and precision costs]{First-order matching and precision costs\\
-under noncollapsing control maps}
+\hypersetup{pdftitle={First-order matching and initial-set dependence of precision costs}}
+\title[Matching and precision costs]{First-order matching and initial-set dependence\\
+of precision costs}
 \author{Author information pending}
 \date{}
 \subjclass[2020]{Primary 93C55, 37B40; Secondary 93D15, 37C05}
@@ -36,167 +36,182 @@ under noncollapsing control maps}
 noninjective control maps, initial-set dependence}
 \begin{document}
 \begin{abstract}
-We study the minimum size of an open-loop input catalogue that keeps
-every assigned actual initial state within a tolerance of a triangular
-constraint at all times of a finite horizon. Two planar $C^2$ control
-maps make the constraint controlled invariant, contract toward a
-common origin, and have critical sets of area zero in the constraint.
-Their first derivatives have angular branch proportions $a_0+a_1=1$
-and radial factors $r_i=a_i^{\beta_i}$, $\beta_i>1$.
-Within this family, all positive-area compact initial sets share a
-cost rate on a positive precision interval adjacent to zero if and
-only if $\beta_0=\beta_1$.
-For $\delta_n\to0$ with $\delta_n=\exp(-\gamma n+o(n))$, matching
-with power $\beta$ gives the full-constraint spectrum
+We study the minimum number of open-loop inputs needed to keep every
+assigned initial state within a decreasing tolerance of a controlled
+invariant triangle. The two planar $C^2$ control maps contract toward
+the origin in a common norm and have critical sets of area zero in
+the triangle. Their first derivatives have angular branch proportions
+$a_0+a_1=1$ and radial factors $r_i=a_i^{\beta_i}$, $\beta_i>1$.
+Within this first-order family, all positive-area compact initial sets
+share a cost rate for sufficiently small positive precision exponents
+if and only if $\beta_0=\beta_1$.
+In the matched case, with power $\beta$, the full-triangle rate at
+tolerance $\delta_n=\exp(-\gamma n+o(n))\to0$ is
 $\max_p H_b(p)\min\{1,\gamma/[\beta\chi(p)]\}$, where $H_b$ is
 binary entropy and $\chi(p)=-p\log a_0-(1-p)\log a_1$.
-Its common-cost and saturation boundaries are $\beta h$ and
-$-(\beta/2)\log(a_0a_1)$, with $h=-\sum_i a_i\log a_i$.
+All positive-area compact initial sets have rate $\gamma/\beta$
+up to $\gamma=\beta h$, with $h=-\sum_i a_i\log a_i$.
 One fixed compact set of arbitrarily nearly full area has rate
 $\min\{h,\gamma/\beta\}$ simultaneously for all finite exponents
-and their precision sequences.
-Under mismatch, the full-constraint rate is $\gamma D$ and one
-fixed nearly full-area compact set has the strictly smaller rate
-$\gamma h/\chi_R$ for $0<\gamma<-\log\max_i r_i$;
-here $r_0^D+r_1^D=1$ and $\chi_R=-\sum_i a_i\log r_i$.
-An actual-area estimate for every approximate input handles exit,
-reentry and truncated local feasible images. A regular compact
-window controls all finite transient inverse branches.
-Physical bounded-run trajectories and stopping counts give the
-matching catalogue bounds. A smooth feasible fold shows that
-global injectivity is unnecessary.
+and corresponding precision sequences. Above $\beta h$ its rate
+is strictly below the full-triangle rate, which increases to $\log2$.
+Under mismatch, strict initial-set
+dependence occurs at every sufficiently small positive exponent.
+The proof bounds the actual area covered by an arbitrary approximate
+input and constructs physical trajectories that force distinct input
+prefixes. These estimates retain every intermediate constraint,
+allow exit and reentry, and accommodate noninjective feasible maps.
 \end{abstract}
 \maketitle
 \section{Introduction}
 
 Invariance entropy measures the number of control signals needed to
 maintain a state constraint; see Kawan \cite{Kawan2013}.
-When every input contracts toward a common point, a finite catalogue
-can suffice for arbitrarily long horizons at each fixed positive
-tolerance. The catalogue can nevertheless grow exponentially when
-the tolerance decreases exponentially with the horizon. We study
-this joint limit and ask whether its cost is shared by all compact
-initial sets of positive area.
+For systems in which every input contracts toward a common origin,
+the information cost at a fixed positive tolerance can have zero
+asymptotic rate. Increasing the required precision with the horizon
+reveals a different cost. We consider tolerances
+$\delta_n=\exp(-\gamma n+o(n))\to0$ and count the inputs needed
+to keep each assigned initial state within that tolerance at every
+time $0,\ldots,n$. The assignment is made to actual states; no
+feedback policy or symbolic coding is prescribed.
 
-The distinction between typical initial states and the full constraint
-is essential. A compact set of almost full area can omit rare states
-whose required controls determine the full-set cost. At the same time,
-an approximately feasible input need not follow a selected exact code.
-It may switch between overlapping feasible branches, leave the
-constraint within the permitted tolerance, and later return. A symbolic
-count alone does not settle the minimum physical catalogue.
+We ask how the geometry of the initial set affects this rate.
+Positive area does not require a set to contain
+all states that are difficult to control. Even a compact set of
+almost full area can omit them. Our question is therefore whether
+all positive-area compact initial sets share a rate for small positive
+precision exponents, and what distinguishes systems that have this
+property from those that do not.
 
-The main question is whether the angular branch geometry and radial
-contraction must match for a common low-precision cost to exist.
-Theorem~\ref{thm:criterion} answers this within a specified first-order
-family, under controlled feasibility of the actual triangle,
-nonsingularity almost everywhere in it, and a common norm inequality
-toward the origin.
-The radial factors are $r_i=a_i^{\beta_i}$.
-The matching condition $\beta_0=\beta_1$ is necessary and sufficient.
-No radial autonomy, boundary-ray preservation, globally small
-derivatives, compact support, or full angular image for every
-feasible word is required.
+We answer the question for a first-order family of two planar maps.
+In the angular coordinate $y=z/s$, their linear parts have branch
+proportions $a_0+a_1=1$ and radial factors $r_i=a_i^{\beta_i}$.
+The actual maps are $C^2$, make the triangle controlled invariant,
+and contract toward the origin in a common norm. Their critical sets
+inside the triangle have area zero. These global assumptions allow
+nonlinear feedback and feasible folds, while local inverse charts
+carry area estimates through finite transients.
+The common contraction is a bound toward the
+origin, not a contraction of the distance between two trajectories.
 
-When the powers differ, Theorem~\ref{thm:mismatch} separates the
-full-constraint cost $\gamma D$ from $\gamma h/\chi_R$ on a single
-nearly full-area compact initial set, for every sufficiently small
-positive exponent. The strict difference follows from a relative
-entropy identity after the physical catalogue bounds have been proved.
-When the powers agree, Theorem~\ref{thm:main} gives the complete
-full-set spectrum. At and below $\beta h$, every positive-area
-compact initial set has rate $\gamma/\beta$. Above it, one fixed
-nearly full-area compact set has rate $h$, whereas the full-set
-rate increases to $\log2$. The distinct saturation boundary is
-$-(\beta/2)\log(a_0a_1)$. In both cases the compact set is selected
-before all exponents, precision sequences, and horizons in the
-respective statement.
+Theorem~\ref{thm:criterion} states that a common low-precision rate
+exists exactly when $\beta_0=\beta_1$.
+The two cases also give quantitative answers. Under matching with
+power $\beta$, Theorem~\ref{thm:main} computes the full-triangle
+spectrum for every finite exponent and every corresponding precision
+sequence. All positive-area compact initial sets have rate
+$\gamma/\beta$ for $\gamma\le\beta h$, where
+$h=-\sum_i a_i\log a_i$. Above this boundary, one fixed compact
+set of arbitrarily nearly full area has rate $h$, but the full-triangle
+rate continues to grow. It reaches $\log2$ at the distinct threshold
+$-(\beta/2)\log(a_0a_1)$. Thus a small loss of area can change
+the cost without changing the dynamics.
 
-Two physical estimates give these results. Theorem~\ref{thm:area}
-controls the area covered by any approximately feasible input.
-Near the origin, a logarithmic slope cone bounds complete feasible
-intervals without requiring them to map onto the full angular range.
-The angular product $\lambda_w=\prod a_{w_j}$ and radial product
-$P_w=\prod r_{w_j}$ enter separately: a first true exit gives a
-physical area band of size at most $C\delta\lambda_w/P_w$.
-The finite transient is handled on one regular compact subset of the
-initial set, where early true exits contribute only $O(\delta)$ area. Null critical sets permit null-set pullbacks along every
-feasible prefix. Finitely many local inverse charts then bound both
-early true exits and transported local areas, without an inverse
-Jacobian bound on the whole constraint. The compact subset is chosen
-before any precision sequence. The estimates apply to all feasible
-prefixes. For the full-set lower bound, Lemma~\ref{lem:shadow} constructs actual bounded-run
-trajectories with a uniform margin against the alternative control.
-Forcing suitably shorter prefixes gives every frequency contribution
-to the spectrum before its physical margin falls below the tolerance.
-An auxiliary radial stopping tree constructs full-horizon upper
-catalogues, retaining only actual feasible assignments. In the matched
-case $P_w=\lambda_w^\beta$, and counting all leaf lengths and types
-evaluates the complete spectrum. Under mismatch, stopping lengths of
-typical words give the different near-full-area slope. The criterion
-extends these controlled estimates; it introduces no new pressure or
-graph-transform method.
+Under mismatch, Theorem~\ref{thm:mismatch} gives full-triangle rate
+$\gamma D$ and the smaller rate $\gamma h/\chi_R$ on one fixed
+nearly full-area compact set, throughout
+$0<\gamma<-\log\max_i r_i$. Here
+$r_0^D+r_1^D=1$ and $\chi_R=-\sum_i a_i\log r_i$.
+In both cases the compact set is chosen before all exponents,
+precision sequences and horizons covered by the statement.
+The mismatch conclusion makes matching necessary, as well as
+sufficient, for a common rate near zero.
 
-Section~\ref{sec:mismatch} proves the mismatch bounds and the matching
-criterion for the same nonlinear first-order family.
-Section~\ref{sec:examples} gives an inward boundary example. In it,
-long constant words have empty feasible slices at each fixed positive
-radius, although every finite word is realised at sufficiently small
-radius. A constraint-preserving simultaneous conjugacy cannot reduce
-this example to boundary-ray-preserving models. A second example
-folds a genuinely feasible branch inside the constraint while its
-critical set still has area zero.
-Section~\ref{sec:local} gives a smooth collapse example explaining why
-local matching and all-input convergence alone do not suffice.
+The main difficulty is to connect these rates to the minimum
+physical catalogue. Exact feasible words give useful constructions,
+but an approximate input need not follow a chosen exact code.
+It may use another feasible branch in an overlap, leave the triangle
+by less than the permitted tolerance, and later return. Consequently
+neither the number of addresses nor a pressure computed for a fixed
+partition determines the catalogue by itself.
+
+Our geometric estimate, Theorem~\ref{thm:area}, bounds the area
+covered by \emph{every} approximate input. It keeps the angular
+product $\lambda_w=\prod a_{w_j}$ separate from the radial
+product $P_w=\prod r_{w_j}$. At a first true exit, the admissible
+initial states occupy a band of area at most
+$C\delta\lambda_w/P_w$. Summable local distortion gives this
+bound for complete feasible intervals, including truncated images.
+Null critical sets allow the local estimate to be transported through
+all feasible finite transients on one fixed regular compact window.
+The same local geometry yields typicality for all feasible prefixes,
+so the area argument accounts for every feasible coding.
+
+Full-triangle lower bounds require a second ingredient. In
+Lemma~\ref{lem:shadow}, we realise bounded-run words at a fixed
+positive physical radius and give each orbit a margin against the
+alternative control. A sufficiently short prefix remains distinguishable
+at tolerance $\delta_n$, forcing distinct catalogue inputs.
+For the upper bounds, radial stopping words are assigned to actual
+feasible states and followed by a common tail that satisfies every
+remaining constraint. Once these physical bounds are in place,
+classical type counting and a relative-entropy identity give the
+spectrum and the matching criterion.
+
+The examples clarify the role of the global assumptions. An inward
+boundary image can make long words infeasible at a fixed radius;
+the spectrum still applies. A feasible fold with a null critical set
+is also allowed. By contrast, a smooth map that collapses a region
+of positive area onto an invariant ray can destroy the common rate
+despite agreeing with the matched linear maps near the origin.
 
 \subsection{Related work}
-Our finite-horizon count is the outer invariance complexity of Chen
-and Zhong \cite[Section 2.2]{CZ2024}, with $n+1$ constrained times
-instead of $n$. Their framework already allows noninjective continuous
-control maps. The fixed-tolerance equivalence results concern
-bounded catalogue size and finite outer equi-invariability. They do
-not quantify the catalogue constants along a tolerance sequence
-linked to the horizon. Stabilization entropies
-\cite{Colonius2012,CH2021} study related information costs under
-prescribed decay or practical stabilization conditions. Here the
-task is approximate viability of the actual constraint at every
-time, rather than a prescribed decay estimate for each state.
+The finite-horizon count used here is the outer invariance complexity
+of Chen and Zhong \cite[Section 2.2]{CZ2024}, with $n+1$ constrained
+times instead of $n$. That framework already allows noninjective
+continuous maps. Its fixed-tolerance results relate bounded catalogue
+size to finite outer equi-invariability. Our problem asks for the rate
+when tolerance and horizon vary together. Stabilization entropies
+\cite{Colonius2012,CH2021} concern related information costs under
+prescribed decay or practical stabilization conditions; here each
+assigned state must remain close to the actual constraint throughout
+the horizon.
 
-Measure-theoretic invariance entropy and variational principles
-are developed in \cite{WHS2019,NWH2022}. Chen, Huang and Zhong
-\cite{CHZ2026} study entropy dimensions using specified invariant
-partition cylinders and time-power weights. Their measures need
-not be invariant. Those cylinder estimates do not themselves bound
-the physical sets covered by arbitrary approximate inputs at
-$\delta_n$. This framework also allows noninjective control maps. The first-exit
-estimate and the finite local-inverse-chart bound in
-Theorem~\ref{thm:area} supply the additional geometric connection.
+Wang, Huang and Sun \cite{WHS2019} and Nie, Wang and Huang
+\cite{NWH2022} develop measure-theoretic invariance entropy and
+variational principles. In \cite{NWH2022}, a convex pressure
+functional determines a measure-theoretic entropy by duality.
+Chen, Huang and Zhong \cite{CHZ2026} use specified invariant
+partition cylinders and time-power weights to study entropy
+dimensions. Their measures need not be invariant. These methods
+give measure-theoretic descriptions of pressure for a fixed admissible
+pair or of complexity for a specified partition. To obtain the joint
+precision rates studied here, one must additionally control the physical
+sets covered by arbitrary inputs uniformly along $\delta_n$.
+The first-exit band and the finite transient area bound provide this
+connection; the difference in definitions alone would not do so.
 
-Graph transforms and volume distortion are established methods.
-Kawan and Da Silva \cite[Appendix]{KD2018} give volume estimates
-near partially hyperbolic all-time lifts. In the present class,
-every bounded bi-infinite trajectory is the origin: iterating the
-norm inequality from time $-k$ bounds its time-zero norm by
-$\theta^k$ times a fixed bound. The blow-up angular coordinate is
-singular there and is not a physical unstable bundle. Their
-fixed-radius volume estimates do not provide the joint tolerance
-estimate needed here. We use the graph-transform method to prove
-that estimate directly, including truncated feasible images.
+Kawan and Da Silva \cite[Appendix]{KD2018} obtain volume estimates
+near partially hyperbolic all-time lifts. In our class every bounded
+bi-infinite trajectory is the origin: the norm inequality iterated
+from time $-k$ bounds the time-zero norm by $\theta^k$ times a
+fixed bound. The singular angular coordinate at that point is not
+a physical unstable bundle. We therefore derive the required local
+graph and area bounds directly, at the changing tolerance and with
+truncated feasible images.
 
-Product weights, stopping scales, types and typical sets are
-classical tools \cite{Hutchinson1981,Csiszar1998}. Yang, Chen,
-Yang and Zhou \cite{YCYZ2025} establish cost-threshold pressure
-and Bowen-equation results for a given invariant partition.
-Such address counts still require a comparison with all approximate
-physical inputs before they can determine our catalogue.
-The contribution here is that comparison through actual area and
-physical witnesses, rather than a new pressure or type formula.
-The comparisons with \cite{KD2018,YCYZ2025} use the published
-graph-transform appendix and the author versions
-arXiv:1711.01181v2 and arXiv:2309.01628v3, respectively.
-The estimates used below are proved in full.
+Product weights and stopping scales are classical, as is type
+counting \cite{Hutchinson1981,Csiszar1998}. Yang, Chen, Yang and
+Zhou \cite{YCYZ2025} establish cost-threshold pressure and
+Bowen-equation results for a given invariant partition. Such weighted
+counts are useful here after their relation to the actual catalogue
+has been proved. The independent geometric content is that relation,
+through covered area and physical witnesses. We use the published
+graph-transform appendix of \cite{KD2018} together with its author
+version arXiv:1711.01181v2, and the author version arXiv:2309.01628v3
+of \cite{YCYZ2025}; all estimates needed for our results are proved
+below.
+
+Section~2 states the hypotheses and results.
+Sections~\ref{sec:geometry}--\ref{sec:shadow} establish the physical
+estimates. Sections~\ref{sec:rates} and \ref{sec:mismatch} derive
+the matched spectrum and the mismatch criterion, respectively.
+The examples in Sections~\ref{sec:examples} and \ref{sec:local}
+show which global restrictions matter.
 
 \section{The catalogue and main results}
+\subsection{Catalogue and precision}
 Let
 \[
 Q=\{(s,z)\in\R^2:0\le s\le1,\ |z|\le s\},\qquad \area(Q)=1.
@@ -218,7 +233,10 @@ this count. Controlled feasibility makes it finite.
 
 A precision sequence means $\delta_n>0$, $\delta_n\to0$ and
 $-\log\delta_n/n\to\gamma$ for a finite $\gamma\ge0$.
-It need not be monotone. Fix
+It need not be monotone.
+
+\subsection{First-order data and global assumptions}
+Fix
 \begin{equation}\label{eq:parameters}
 a_0,a_1\in(0,1),\quad a_0+a_1=1,\quad a_0\ne a_1,\quad
 \beta_0,\beta_1>1,
@@ -278,6 +296,10 @@ with empty products one. Define
 The root $D$ is unique in $(0,1)$, since the left side decreases
 from two to zero and $r_0+r_1<1$. Also $\chi_R\ge\gamma_0$.
 
+\subsection{Matching and mismatch}
+The next theorem characterises a common rate near zero; the following
+statements give the rates in its two cases.
+
 \begin{theorem}[First-order matching criterion]\label{thm:criterion}
 For every fixed system satisfying the standing assumptions, the
 following property holds if and only if $\beta_0=\beta_1$:
@@ -290,20 +312,7 @@ exponent $\gamma$,
 \]
 \end{theorem}
 
-\begin{theorem}[Low-precision mismatch]\label{thm:mismatch}
-Suppose $\beta_0\ne\beta_1$. For each $\zeta\in(0,1)$ there is
-one compact $K_\zeta\subset Q$, of area greater than $1-\zeta$,
-such that simultaneously for every $0<\gamma<\gamma_0$ and
-every precision sequence of that exponent,
-\begin{equation}\label{eq:mismatchrates}
-\lim_n\frac{\log r_F(n,\delta_n;Q)}n=\gamma D,\qquad
-\lim_n\frac{\log r_F(n,\delta_n;K_\zeta)}n
-                =\gamma h/\chi_R<\gamma D.
-\end{equation}
-The set is selected before the exponent, sequence, and horizon.
-Every other fixed positive-area compact $K\subset Q$ has lower
-rate at least $\gamma h/\chi_R$ in this range.
-\end{theorem}
+
 
 Write $H_b$ for the binary entropy. In the matched case
 $\beta_0=\beta_1=\beta$, the angular cost and spectrum are
@@ -382,6 +391,27 @@ compact initial sets; the second concerns the full-set catalogue alone.
 The theorem does not classify high-side rates of arbitrary compact
 initial sets or assert that only two such rates are possible.
 
+\begin{theorem}[Low-precision mismatch]\label{thm:mismatch}
+Suppose $\beta_0\ne\beta_1$. For each $\zeta\in(0,1)$ there is
+one compact $K_\zeta\subset Q$, of area greater than $1-\zeta$,
+such that simultaneously for every $0<\gamma<\gamma_0$ and
+every precision sequence of that exponent,
+\begin{equation}\label{eq:mismatchrates}
+\lim_n\frac{\log r_F(n,\delta_n;Q)}n=\gamma D,\qquad
+\lim_n\frac{\log r_F(n,\delta_n;K_\zeta)}n
+                =\gamma h/\chi_R<\gamma D.
+\end{equation}
+The set is selected before the exponent, sequence, and horizon.
+Every other fixed positive-area compact $K\subset Q$ has lower
+rate at least $\gamma h/\chi_R$ in this range.
+\end{theorem}
+
+\subsection{The physical coverage estimate}
+The following estimate bounds the mass covered by one arbitrary input,
+without selecting an exact coding. It supplies the lower rate for
+positive-area initial sets in both cases. Its regular compact set
+also provides the single near-full set used in the upper bounds.
+
 \begin{theorem}[Area covered by an arbitrary approximate input]\label{thm:area}
 Under the standing assumptions, whether matched or mismatched,
 there is a fixed integer $J\ge1$ with
@@ -403,6 +433,11 @@ $1-\zeta$ for any prescribed $\zeta\in(0,1)$.
 \end{theorem}
 
 \section{Local feasible geometry}\label{sec:geometry}
+We first control complete feasible regions near the origin. The angular
+and radial products describe different scales, so they remain separate
+throughout this section. The first-exit estimate will then apply to
+any input, even one that is only approximately feasible.
+
 Use \((s,y)\) with \(z=sy\), only for \(s>0\). Define
 \[
  R_i(s,y)=F_i^s(s,sy)/s,\quad
@@ -531,6 +566,12 @@ For a point interval the length bound is zero. Derivative comparisons
 on nondegenerate intervals extend to their endpoints by continuity;
 degenerate fibres remain in all covers and do not contribute area.
 \subsection{The first true exit}
+For a fixed input, partition its covered states by the first time
+at which its trajectory actually leaves $Q$. Up to that time the
+prefix is exactly feasible, so the preceding interval estimates apply.
+The permitted tolerance restricts the states that can survive this
+first exit.
+
 Suppose the prefix \(w\) of length \(j-1\) is exactly feasible and
 the next prescribed input \(i\) is the first one to leave $Q$.
 On the current graph the map \(T_i\) is increasing with derivative
@@ -562,6 +603,12 @@ outside afterwards. Any later reentry cannot erase constraint \eqref{eq:exitnece
 at its first exit. A different exact feasible coding is not counted
 as an exit and has no role in \eqref{eq:exitarea}.
 \section{Finite transients and actual covered area}\label{sec:area}
+Common contraction gives a uniform time of entry into the local region.
+To transport its area estimates back to the initial set, we remove a
+small area once and retain all feasible transient choices on the
+remaining compact window. This is where the null-critical-set
+hypothesis is used; a global inverse is not required.
+
 For a finite word \(w\), let
 \begin{equation}\label{eq:feasibledomains}
 D_w=\{x\in Q:F_{w|k}x\in Q\ (1\le k\le|w|)\},
@@ -753,6 +800,12 @@ counted as an exit. Every covered state satisfies the constraint at
 its first true exit, regardless of subsequent reentry.
 \end{proof}
 \section{Physical trajectories with a wrong-control margin}\label{sec:shadow}
+The area estimate concerns positive-area mass. For the full constraint
+we also need actual states whose controls cannot be replaced by
+approximate alternatives. We construct them at one fixed positive
+radius for each run bound, then force prefixes while their physical
+margin remains larger than the tolerance.
+
 \begin{lemma}[Bounded-run realisation]\label{lem:shadow}
 For each integer \(L\ge2\), there is a positive radius \(s_L\)
 and \(d_L'>0\) such that every infinite binary sequence whose
@@ -835,6 +888,11 @@ All choices depend only on \(L\) and the fixed system.
 This proves the lemma, including the physical realisation and the
 genuine-infeasibility assertion. \end{proof}
 
+The preceding margin is angular. Its physical size decreases with
+the radius, so a long exact word need not remain distinguishable at
+an assigned tolerance. The next lemma chooses a shorter prefix and
+compares its radial scale directly with that tolerance.
+
 \begin{lemma}[Forcing a block prefix]\label{lem:prefixpacking}
 Fix $L\ge2$ and $1\le j\le L-1$, and put
 \[
@@ -882,9 +940,12 @@ fluctuation are absorbed by the strict choice of $t$.
 \end{proof}
 
 \section{Stopping catalogues and the matched spectrum}\label{sec:rates}
-We first give a catalogue construction under the standing assumptions.
-The reference tree provides an upper bound; it is not presumed
-necessary or optimal.
+We first construct catalogues by following feasible inputs until the
+radius is small enough for a common tail. This construction applies
+under all the standing assumptions. We then prove the matched spectrum
+using the physical prefix lower bound and the covered-area estimate.
+The reference tree provides an upper bound; its leaves need not all
+be realised by actual states.
 
 \begin{lemma}[A complete radial stopping catalogue]\label{lem:stopping}
 Put $M=\max\{1,4\sqrt2\Lambda C_R\rho\}$.
@@ -1576,48 +1637,40 @@ pullback, unlike the fold in Proposition~\ref{prop:fold}.
 
 
 \section{Consequences and scope}
-Theorem~\ref{thm:criterion} characterises the common low-precision
-cost in the specified first-order family. Unequal radial powers
-already separate the full triangle and one nearly full-area compact
-set at arbitrarily small positive exponents.
-The necessity statement permits angular feedback in the radius and
-has the same global hypotheses as the matched result.
+First-order matching determines whether positive-area initial sets
+share a precision cost near zero in the family considered here.
+When the radial powers agree, the full-triangle spectrum separates
+two thresholds: $\beta h$ marks the end of the common rate, whereas
+$-(\beta/2)\log(a_0a_1)$ marks saturation at $\log2$.
+A single compact set of arbitrarily nearly full area retains rate
+$\min\{h,\gamma/\beta\}$ at every finite exponent.
+Unequal powers already produce a strict cost difference at every
+sufficiently small positive exponent.
 
-Theorem~\ref{thm:area} is the underlying estimate for actual initial
-states under every approximately feasible input. Its two products
-record different features: $\lambda_w$ controls feasible angular
-size and $P_w$ controls the physical radius at a first true exit.
-Typicality of all feasible prefixes handles overlap, and the
-constraint at that first exit handles later reentry.
-On one fixed regular compact window, finite local inverse charts
-control all feasible transients and early true exits. Their constants
-may depend on the chosen area loss, but precede every precision
-sequence. No inverse Jacobian bound is required on the full triangle.
-No positive length or full image is required of each feasible slice.
+The distinction is geometric. Theorem~\ref{thm:area} measures what
+an arbitrary approximate input can cover, keeping feasible angular
+size and radial stopping scale separate. It accounts for all feasible
+codings and for the constraint at the first true exit.
+Actual trajectories with a wrong-control margin supply the
+full-triangle lower bound, while typical positive-area mass gives
+the lower cost on the fixed near-full set. Radial stopping catalogues
+connect these bounds to unrestricted inputs over the complete horizon.
+The spectrum then follows from classical counting.
 
-The full-set lower bounds use rare actual states at a fixed small
-positive radius, with a margin against the wrong control.
-Typical positive-area mass instead gives the near-full-set slope.
-Under matching, the product identity and classical type counting
-give the complete spectrum and its two distinct thresholds.
-The auxiliary witness radius depends on the fixed block length;
-the near-full initial set precedes all stated precision choices.
-
-The results retain binary planar dynamics, a particular triangular
-constraint, the displayed first-jet family, controlled feasibility,
-nonsingularity almost everywhere in $Q$, and contraction toward a
-common origin.
-They allow truncated feasible images and vanishing overlap, but
-do not treat constant overlap in the limiting angular maps.
-The feasible fold shows that global invertibility is unnecessary.
-The collapse example explains why local matching and all-input
-convergence alone are insufficient; it does not show that null
-critical sets are necessary for every possible cost theorem.
-The inward and folded examples prove only their stated
-constraint-preserving conjugacy obstructions.
-The high-precision spectrum under mismatch and the high-side rates
-of arbitrary compact initial sets are not classified.
-No fixed-strategy optimality or new pressure principle is asserted.
+The results concern binary planar maps with the prescribed first-order
+matrices, a controlled invariant triangle, and common norm contraction
+toward the origin. Null critical sets are sufficient to transport the
+area estimates through finite transients; the feasible fold shows that
+global injectivity is not needed. The collapse example explains why
+local matching and all-input convergence alone are insufficient, without
+making null critical sets a necessary condition for every cost theorem.
+Local overlap may vanish toward the origin and feasible images may
+be truncated. Persistent overlap in the limiting angular maps,
+high-precision mismatch spectra and high-side rates of arbitrary
+compact initial sets remain outside these results.
+The conjugacy obstructions concern only the stated examples and
+constraint-preserving simultaneous control conjugacies.
+No fixed feedback strategy is asserted to have the optimal rate.
 
 \subsection*{Generative AI disclosure}
 Generative AI was used extensively in developing mathematical
