@@ -4,7 +4,9 @@
 
 当前唯一英文稿：*First-order matching and precision costs under noncollapsing control maps*，已完成R34整合及对应19页PDF。以Q内临界集零面积替代全域微分同胚，匹配完整谱、失配低侧两率、指定结构族充要判据和实际双尺度面积均落实到正文。只有一份现行论文。
 
-最新数学增量来自R33：可行瞬态零集拉回、同一个固定紧集的多局部逆图和早期首真越界面积，允许Q内真实可行折叠而保留全部声明范围内的率。R34完整收入这些证明及实例，不假设全Q统一逆Jacobian下界。采用链未发现需撤回的实质错误，全文、编译及19页渲染核对完成。独立发表价值有有限范围增量；整合不算新证明，不认证一区/TOP。特殊一阶二分支几何、二进制平面、三角Q和共同原点收缩仍限制定位；没有必需补攻缺口或合格新入口，完成后暂停，不自动R35。
+最新数学增量来自R33：可行瞬态零集拉回、同一个固定紧集的多局部逆图和早期首真越界面积，允许Q内真实可行折叠而保留全部声明范围内的率。R34完整收入这些证明及实例，不假设全Q统一逆Jacobian下界，完成全文、编译及19页渲染核对；整合不算新证明。
+
+R35已按新授权完成两篇JDE正式原件的同刊贡献比较，明确选择B：现稿有理由向JDE冲刺，但当前证据不足以作为主要定位。独立用途仍集中于指定局部二分支几何与共同原点收缩；没有发现省略实际覆盖接口即可推出本稿的等价结论或会改变定位的正文错误。2025年中科院数学大类一区TOP有大学间接来源，未核到2026官方条目或完整JCR年度学科记录，不将期刊分区认证为稿件水平。唯一论文保持不变，本轮没有新数学、投稿或材料准备；无合格新入口，暂停机械扩展，不自动R36。
 
 已按用户要求研读十篇四大标杆论文，四刊均有覆盖；[研读与P6接口](research/FOUR_JOURNAL_STUDY/READING_REPORT.md)及[版本、实际页码与SHA-256](research/FOUR_JOURNAL_STUDY/SOURCES.json)已记录。重点学习实际几何与熵的连接、典型/全部初态差别及集中证明的写法。两篇全文阅读，其余为定位的部分阅读；这不是完整新颖性检索或新的数学升级，未改论文或自动开轮。
 
@@ -15,9 +17,12 @@ R29已在同一R27结构类求出全Q准确谱及全部有限精度指数下的�
 近期争取数学正确、真实新意和独立专业价值明确的主定理，后续扩大机制或适用范围、争取一区 TOP，长期保留 Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathematical Society、Acta Mathematica。一区与 TOP 是阶段目标，未经贡献比较及相应体系、年份核实不作档位认定；不要求先认证档位才允许证明，不保证升级链。
 
 - [`CURRENT.md`](CURRENT.md)：最新裁决与下一入口。
+- [research/R35/REPORT.md](research/R35/REPORT.md)：两篇JDE的逐项贡献比较、明确冲刺定位与决定性用途限制。
+- [research/R35/SOURCES.md](research/R35/SOURCES.md)：正式原件APA/DOI、实际页码与哈希、方法覆盖及分区年份/来源等级。
+- [research/R35/NEXT_COMMAND.md](research/R35/NEXT_COMMAND.md)：完成停点，不机械增加定理，不自动R36或投稿。
 - [research/R34/REPORT.md](research/R34/REPORT.md)：非塌缩主定理整合、完整瞬态证明、三版本比较及19页英文稿验证。
 - [research/R34/SOURCES.md](research/R34/SOURCES.md)：正式原文实际范围、准确APA/DOI、覆盖和经典方法归属。
-- [research/R34/NEXT_COMMAND.md](research/R34/NEXT_COMMAND.md)：整合完成停点，无必需补攻缺口，不自动R35。
+- [research/R34/NEXT_COMMAND.md](research/R34/NEXT_COMMAND.md)：历史整合停点；已由用户新授权的R35有界定位续接。
 - [research/R33/MATHEMATICS.md](research/R33/MATHEMATICS.md)：非塌缩有限瞬态、全部率/判据转移及Q内真实折叠实例的完整证明。
 - [research/R33/REPORT.md](research/R33/REPORT.md)：解除全域可逆的实际范围、经典结构推论归属及有限发表价值裁决。
 - [research/R33/SOURCES.md](research/R33/SOURCES.md)：两篇既有正式原件的定向范围、准确APA/DOI与覆盖边界。
