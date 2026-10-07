@@ -2,9 +2,9 @@
 
 基线论文：*Positive invariance entropy under uniform state convergence*。
 
-当前唯一英文稿：*First-order matching and precision costs in contracting control systems*，仍为R32的完整英文源码及对应18页PDF。指定一般反馈一阶族的匹配充要判据、失配低精度两率、匹配全Q准确谱及双尺度实际面积已在正文；R33的非单射转移尚未整合。只有一份现行论文。
+当前唯一英文稿：*First-order matching and precision costs under noncollapsing control maps*，已完成R34整合及对应19页PDF。以Q内临界集零面积替代全域微分同胚，匹配完整谱、失配低侧两率、指定结构族充要判据和实际双尺度面积均落实到正文。只有一份现行论文。
 
-最新数学R33已证明：保持指定一阶矩阵、Q受控可行和全域共同向原点收缩，用每个控制在Q内的临界集零面积替代全域微分同胚，R32全部声明范围内的率和判据仍成立。完整有限瞬态零集拉回、同一个紧集上的多局部逆分支界及早期首真越界面积见R33；Q内实际可行折叠的光滑实例证明真正超出单射类。常数不假定全Q统一逆Jacobian下界。此为经典工具的已核结构推论，有范围增量，不是新方法或新谱，不认证一区/TOP。唯一论文保持R32稿，完成后停止，不自动R34。
+最新数学增量来自R33：可行瞬态零集拉回、同一个固定紧集的多局部逆图和早期首真越界面积，允许Q内真实可行折叠而保留全部声明范围内的率。R34完整收入这些证明及实例，不假设全Q统一逆Jacobian下界。采用链未发现需撤回的实质错误，全文、编译及19页渲染核对完成。独立发表价值有有限范围增量；整合不算新证明，不认证一区/TOP。特殊一阶二分支几何、二进制平面、三角Q和共同原点收缩仍限制定位；没有必需补攻缺口或合格新入口，完成后暂停，不自动R35。
 
 已按用户要求研读十篇四大标杆论文，四刊均有覆盖；[研读与P6接口](research/FOUR_JOURNAL_STUDY/READING_REPORT.md)及[版本、实际页码与SHA-256](research/FOUR_JOURNAL_STUDY/SOURCES.json)已记录。重点学习实际几何与熵的连接、典型/全部初态差别及集中证明的写法。两篇全文阅读，其余为定位的部分阅读；这不是完整新颖性检索或新的数学升级，未改论文或自动开轮。
 
@@ -15,10 +15,13 @@ R29已在同一R27结构类求出全Q准确谱及全部有限精度指数下的�
 近期争取数学正确、真实新意和独立专业价值明确的主定理，后续扩大机制或适用范围、争取一区 TOP，长期保留 Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathematical Society、Acta Mathematica。一区与 TOP 是阶段目标，未经贡献比较及相应体系、年份核实不作档位认定；不要求先认证档位才允许证明，不保证升级链。
 
 - [`CURRENT.md`](CURRENT.md)：最新裁决与下一入口。
+- [research/R34/REPORT.md](research/R34/REPORT.md)：非塌缩主定理整合、完整瞬态证明、三版本比较及19页英文稿验证。
+- [research/R34/SOURCES.md](research/R34/SOURCES.md)：正式原文实际范围、准确APA/DOI、覆盖和经典方法归属。
+- [research/R34/NEXT_COMMAND.md](research/R34/NEXT_COMMAND.md)：整合完成停点，无必需补攻缺口，不自动R35。
 - [research/R33/MATHEMATICS.md](research/R33/MATHEMATICS.md)：非塌缩有限瞬态、全部率/判据转移及Q内真实折叠实例的完整证明。
 - [research/R33/REPORT.md](research/R33/REPORT.md)：解除全域可逆的实际范围、经典结构推论归属及有限发表价值裁决。
 - [research/R33/SOURCES.md](research/R33/SOURCES.md)：两篇既有正式原件的定向范围、准确APA/DOI与覆盖边界。
-- [research/R33/NEXT_COMMAND.md](research/R33/NEXT_COMMAND.md)：数学完成停点，R33尚未整合且不自动R34。
+- [research/R33/NEXT_COMMAND.md](research/R33/NEXT_COMMAND.md)：历史数学停点；其必要核验与整合已按用户新授权由R34完成。
 - [research/R32/REPORT.md](research/R32/REPORT.md)：匹配—失配主线整合、采用链、三版本比较、完整英文稿与阶段贡献裁决。
 - [research/R32/SOURCES.md](research/R32/SOURCES.md)：准确APA/DOI、真实复用范围、具体覆盖及方法归属。
 - [research/R32/NEXT_COMMAND.md](research/R32/NEXT_COMMAND.md)：整合完成停点，无必需补攻的证明缺口，不自动R33。

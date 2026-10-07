@@ -26,45 +26,45 @@
 
 
 
-\hypersetup{pdftitle={First-order matching and precision costs in contracting control systems}}
+\hypersetup{pdftitle={First-order matching and precision costs under noncollapsing control maps}}
 \title[Matching and precision costs]{First-order matching and precision costs\\
-in contracting control systems}
+under noncollapsing control maps}
 \author{Author information pending}
 \date{}
 \subjclass[2020]{Primary 93C55, 37B40; Secondary 93D15, 37C05}
 \keywords{Outer invariance complexity, first-order matching, precision spectrum,
-controlled contraction, initial-set dependence}
+noninjective control maps, initial-set dependence}
 \begin{document}
 \begin{abstract}
-We study the minimum number of open-loop inputs needed to keep each
-actual initial state within a Euclidean tolerance of a triangular
-constraint at every time of a finite horizon. Two planar $C^2$
-diffeomorphisms have a common contracting origin and make the
-constraint controlled invariant. Their first derivatives have limiting angular
-branch proportions $a_0,a_1$ and radial factors
-$r_i=a_i^{\beta_i}$, where $\beta_i>1$.
-Within this specified first-order family, all positive-area compact
-initial sets share a cost rate for sufficiently small positive
-precision exponents if and only if $\beta_0=\beta_1$.
-Under mismatch, the full-constraint rate is $\gamma D$, whereas one
-fixed compact set of arbitrarily nearly full area has rate
-$\gamma h/\chi_R$, strictly smaller, for $0<\gamma<-\log\max_i r_i$.
-Here $r_0^D+r_1^D=1$, $h=-\sum_i a_i\log a_i$ and
-$\chi_R=-\sum_i a_i\log r_i$. The same set works for every tolerance
-sequence $\delta_n=\exp(-\gamma n+o(n))$ in this range.
-Under matching, $\beta_i=\beta$, we determine the full spectrum
-$\max_p H_b(p)\min\{1,\gamma/[\beta\chi(p)]\}$ for all finite
-$\gamma\ge0$, where $H_b$ is the binary entropy and
-$\chi(p)=-p\log a_0-(1-p)\log a_1$.
+We study the minimum size of an open-loop input catalogue that keeps
+every assigned actual initial state within a tolerance of a triangular
+constraint at all times of a finite horizon. Two planar $C^2$ control
+maps make the constraint controlled invariant, contract toward a
+common origin, and have critical sets of area zero in the constraint.
+Their first derivatives have angular branch proportions $a_0+a_1=1$
+and radial factors $r_i=a_i^{\beta_i}$, $\beta_i>1$.
+Within this family, all positive-area compact initial sets share a
+cost rate on a positive precision interval adjacent to zero if and
+only if $\beta_0=\beta_1$.
+For $\delta_n\to0$ with $\delta_n=\exp(-\gamma n+o(n))$, matching
+with power $\beta$ gives the full-constraint spectrum
+$\max_p H_b(p)\min\{1,\gamma/[\beta\chi(p)]\}$, where $H_b$ is
+binary entropy and $\chi(p)=-p\log a_0-(1-p)\log a_1$.
 Its common-cost and saturation boundaries are $\beta h$ and
-$-(\beta/2)\log(a_0a_1)$.
-In that case a single nearly full-area compact set has rate
-$\min\{h,\gamma/\beta\}$ for all exponents and sequences.
-The proof separates angular and radial products in an actual-area
-bound for every approximate input, including exit and reentry.
-Complete feasible intervals may overlap or have empty or truncated
-images. Physical bounded-run trajectories provide the lower bounds;
-stopping scales and type counting supply the corresponding upper bounds.
+$-(\beta/2)\log(a_0a_1)$, with $h=-\sum_i a_i\log a_i$.
+One fixed compact set of arbitrarily nearly full area has rate
+$\min\{h,\gamma/\beta\}$ simultaneously for all finite exponents
+and their precision sequences.
+Under mismatch, the full-constraint rate is $\gamma D$ and one
+fixed nearly full-area compact set has the strictly smaller rate
+$\gamma h/\chi_R$ for $0<\gamma<-\log\max_i r_i$;
+here $r_0^D+r_1^D=1$ and $\chi_R=-\sum_i a_i\log r_i$.
+An actual-area estimate for every approximate input handles exit,
+reentry and truncated local feasible images. A regular compact
+window controls all finite transient inverse branches.
+Physical bounded-run trajectories and stopping counts give the
+matching catalogue bounds. A smooth feasible fold shows that
+global injectivity is unnecessary.
 \end{abstract}
 \maketitle
 \section{Introduction}
@@ -89,8 +89,9 @@ count alone does not settle the minimum physical catalogue.
 The main question is whether the angular branch geometry and radial
 contraction must match for a common low-precision cost to exist.
 Theorem~\ref{thm:criterion} answers this within a specified first-order
-family, under controlled feasibility of the actual triangle, global
-invertibility, and a common norm inequality toward the origin.
+family, under controlled feasibility of the actual triangle,
+nonsingularity almost everywhere in it, and a common norm inequality
+toward the origin.
 The radial factors are $r_i=a_i^{\beta_i}$.
 The matching condition $\beta_0=\beta_1$ is necessary and sufficient.
 No radial autonomy, boundary-ray preservation, globally small
@@ -118,10 +119,13 @@ intervals without requiring them to map onto the full angular range.
 The angular product $\lambda_w=\prod a_{w_j}$ and radial product
 $P_w=\prod r_{w_j}$ enter separately: a first true exit gives a
 physical area band of size at most $C\delta\lambda_w/P_w$.
-A finite noncollapsing transient contributes only $O(\delta)$ area.
-The estimates apply to all feasible prefixes, so no exact strategy
-is assumed optimal. For the full-set
-lower bound, Lemma~\ref{lem:shadow} constructs actual bounded-run
+The finite transient is handled on one regular compact subset of the
+initial set, where early true exits contribute only $O(\delta)$ area. Null critical sets permit null-set pullbacks along every
+feasible prefix. Finitely many local inverse charts then bound both
+early true exits and transported local areas, without an inverse
+Jacobian bound on the whole constraint. The compact subset is chosen
+before any precision sequence. The estimates apply to all feasible
+prefixes. For the full-set lower bound, Lemma~\ref{lem:shadow} constructs actual bounded-run
 trajectories with a uniform margin against the alternative control.
 Forcing suitably shorter prefixes gives every frequency contribution
 to the spectrum before its physical margin falls below the tolerance.
@@ -135,19 +139,21 @@ graph-transform method.
 
 Section~\ref{sec:mismatch} proves the mismatch bounds and the matching
 criterion for the same nonlinear first-order family.
-Section~\ref{sec:examples} gives both independently perturbed factors
-with vanishing overlap and an inward boundary example. In the latter,
+Section~\ref{sec:examples} gives an inward boundary example. In it,
 long constant words have empty feasible slices at each fixed positive
 radius, although every finite word is realised at sufficiently small
 radius. A constraint-preserving simultaneous conjugacy cannot reduce
-this example to the displayed boundary-ray-preserving models.
+this example to boundary-ray-preserving models. A second example
+folds a genuinely feasible branch inside the constraint while its
+critical set still has area zero.
 Section~\ref{sec:local} gives a smooth collapse example explaining why
 local matching and all-input convergence alone do not suffice.
 
 \subsection{Related work}
 Our finite-horizon count is the outer invariance complexity of Chen
 and Zhong \cite[Section 2.2]{CZ2024}, with $n+1$ constrained times
-instead of $n$. Their fixed-tolerance equivalence results concern
+instead of $n$. Their framework already allows noninjective continuous
+control maps. The fixed-tolerance equivalence results concern
 bounded catalogue size and finite outer equi-invariability. They do
 not quantify the catalogue constants along a tolerance sequence
 linked to the horizon. Stabilization entropies
@@ -162,8 +168,9 @@ are developed in \cite{WHS2019,NWH2022}. Chen, Huang and Zhong
 partition cylinders and time-power weights. Their measures need
 not be invariant. Those cylinder estimates do not themselves bound
 the physical sets covered by arbitrary approximate inputs at
-$\delta_n$. The first-exit estimate and the finite transient in
-Theorem~\ref{thm:area} supply this additional geometric connection.
+$\delta_n$. This framework also allows noninjective control maps. The first-exit
+estimate and the finite local-inverse-chart bound in
+Theorem~\ref{thm:area} supply the additional geometric connection.
 
 Graph transforms and volume distortion are established methods.
 Kawan and Da Silva \cite[Appendix]{KD2018} give volume estimates
@@ -226,7 +233,7 @@ Write
 \end{equation}
 The standing assumptions on the actual maps are:
 \begin{enumerate}
-\item $F_0,F_1:\R^2\to\R^2$ are $C^2$ diffeomorphisms,
+\item $F_0,F_1:\R^2\to\R^2$ are $C^2$ maps,
 $F_i(0)=0$ and $DF_i(0)=\mathsf A_i$.
 \item $Q\subset F_0^{-1}Q\cup F_1^{-1}Q$.
 \item For some $\Lambda\ge1$ and $0<\theta<1$, the norm
@@ -234,13 +241,20 @@ $V(s,z)=\max\{\Lambda|s|,|z|\}$ satisfies
 \begin{equation}\label{eq:contract}
 V(F_i x)\le\theta V(x)\qquad(x\in\R^2,\ i=0,1).
 \end{equation}
+\item Each critical set
+\begin{equation}\label{eq:critical}
+\mathcal C_i=\{x\in Q:\det DF_i(x)=0\}
+\end{equation}
+has area zero.
 \end{enumerate}
 The second assumption is one-step controlled invariance; unrestricted
 concatenation yields an exactly feasible infinite input from each
 point of $Q$. The third concerns contraction toward the origin,
 not distances between two arbitrary trajectories. In particular it
-controls appended tails even outside $Q$. Radial motion may depend
-on angle. No accumulated distortion,
+controls appended tails even outside $Q$. The fourth supplies
+noncollapse along feasible finite transients; it allows folds and
+requires no condition on critical points outside $Q$.
+Radial motion may depend on angle. No accumulated distortion,
 word-area bound or catalogue comparison is assumed.
 
 Both matched and mismatched subfamilies are nonempty. For the linear
@@ -372,17 +386,20 @@ initial sets or assert that only two such rates are possible.
 Under the standing assumptions, whether matched or mismatched,
 there is a fixed integer $J\ge1$ with
 the following property. For every positive-area compact $K\subset Q$
-one can choose a compact $T\subset K\setminus\{0\}$ of positive area
-and $C_J<\infty$ so that for every $e\in(0,h)$ there is $C_e<\infty$
+and every $0<\varepsilon<\area(K)$,
+one can choose a compact $T\subset K\setminus\{0\}$ with
+$\area(T)>\area(K)-\varepsilon$ and $C_T<\infty$
+so that for every $e\in(0,h)$ there is $C_{T,e}<\infty$
 such that
 \begin{equation}\label{eq:actualarea}
-\area(T\cap A_u(n,\delta;K))\le C_J\delta+
-C_e\left[e^{-(h-e)m}+\delta e^{(\chi_R-h+2e)m}\right]
+\area(T\cap A_u(n,\delta;K))\le C_T\delta+
+C_{T,e}\left[e^{-(h-e)m}+\delta e^{(\chi_R-h+2e)m}\right]
 \end{equation}
 for every input $u$, $n\ge J$, $0\le m\le n-J$ and $0<\delta\le1$.
-The integer and the set precede $e,n,\delta,u$.
-For $K=Q$ the set can have area greater than $1-\zeta$ for any
-prescribed $\zeta\in(0,1)$.
+The integer depends only on the fixed system. The set and $C_T$
+precede $e,n,\delta,u$; the second constant may also depend on $e$.
+In particular, for $K=Q$ the set can have area greater than
+$1-\zeta$ for any prescribed $\zeta\in(0,1)$.
 \end{theorem}
 
 \section{Local feasible geometry}\label{sec:geometry}
@@ -544,84 +561,196 @@ actual image. It does not require the wrong trajectory to remain
 outside afterwards. Any later reentry cannot erase constraint \eqref{eq:exitnecessary}
 at its first exit. A different exact feasible coding is not counted
 as an exit and has no role in \eqref{eq:exitarea}.
-\section{All feasible prefixes and actual covered area}\label{sec:area}
-\begin{proof}[Proof of Theorem~\ref{thm:area}]
-For any \(d>0\), the total weight \(\sum\lambda_w\) of length-\(m\)
-words with \(|\#0/m-a_0|>d\) is at most \(2e^{-2d^2m}\).
-To see this without importing a new result, regard the weights as
-Bernoulli probabilities. For a Bernoulli variable \(X\),
-\(\log\mathbb E e^{t(X-a_0)}\le t^2/8\), since the second
-derivative of this logarithm is a tilted Bernoulli variance, at most
-\(1/4\); apply the exponential Markov inequality with \(t=4d\)
-and with \(-4d\). By \eqref{eq:striparea}, the area of the union of the corresponding
-complete feasible regions is summable in \(m\). Overlaps do not
-invalidate the union bound. Borel–Cantelli for rational \(d>0\)
-shows that for area-almost every \(x\in Q_\rho\), \emph{all} feasible
-length-\(m\) prefixes at \(x\) have zero frequency tending to \(a_0\),
-uniformly over those prefixes. Here \(Q_\rho=Q\cap\{s\le\rho\}\).
-Controlled invariance guarantees at least one such prefix for every
-\(m\); the origin can be discarded as an area-zero point.
+\section{Finite transients and actual covered area}\label{sec:area}
+For a finite word \(w\), let
+\begin{equation}\label{eq:feasibledomains}
+D_w=\{x\in Q:F_{w|k}x\in Q\ (1\le k\le|w|)\},
+\qquad D_\varnothing=Q.
+\end{equation}
+These sets are compact. Write \(w^-\) for the word with its last
+letter removed. At a first true exit under \(w\), all derivative
+inputs still lie in \(Q\), so the relevant domain is \(D_{w^-}\).
+The last output need not belong to \(Q\).
 
-Choose \(J\ge1\) so large that
-\(\theta^J\sup_QV\le\rho\). Every exactly feasible length-\(J\)
-prefix then ends in \(Q_\rho\). For each of the finitely many such
-words \(\sigma\), let \(D_\sigma\subset Q\) be its complete feasible
-initial region. Each \(F_\sigma\) is a diffeomorphism, so the pullback
-of the local exceptional null set is null. Hence on almost every
-initial state of $Q$, all exact feasible transient prefixes and all
-their feasible length-\(m\) tails have frequencies tending uniformly
-to \(a_0\). The maximum over the finitely many transient choices
-has this same property. These maxima are measurable: they are
-maxima over finitely many closed finite-word feasibility regions.
+\begin{lemma}[Null pullbacks along feasible prefixes]\label{lem:nullpullback}
+For every Lebesgue null set \(B\subset\R^2\), every control \(i\),
+and every finite word \(w\),
+\begin{equation}\label{eq:nullpullback}
+\area(Q\cap F_i^{-1}B)=0,\qquad
+\area(D_w\cap F_w^{-1}B)=0.
+\end{equation}
+For each nonempty word the compact set
+\begin{equation}\label{eq:compositecritical}
+Z_w=D_{w^-}\cap\{x:\det DF_w(x)=0\}
+\end{equation}
+also has area zero.
+\end{lemma}
+\begin{proof}
+The inverse function theorem supplies an open inverse chart at
+every point of \(Q\setminus\mathcal C_i\). A countable family of
+these charts covers that set. Exhaust each image by relatively
+compact subcharts; its \(C^1\) inverse is Lipschitz on sufficiently
+small compact neighbourhoods. A Lipschitz map preserves null sets:
+cover a bounded null set by squares with arbitrarily small total
+area, and cover their images by discs whose total area is bounded
+by a constant times that sum. Thus every chart pullback of \(B\)
+is null. The omitted \(\mathcal C_i\) is null by
+\eqref{eq:critical}. A Borel null superset handles an arbitrary
+Lebesgue null set.
 
-Egorov followed by compact inner approximation gives a compact
-\(T\subset K\setminus\{0\}\) of positive area on which this convergence
-is uniform. For \(K=Q\) it gives \(|T|>1-\zeta\). This single set is
-chosen using frequency convergence, without choosing a precision
-exponent or sequence. For every \(e>0\) there is \(D_e\ge1\) such
-that every feasible tail \(w\), after every feasible \(\sigma\) from
-every state of \(T\), obeys
+For \(w=vi\), exact feasibility gives
+\[
+D_w\cap F_w^{-1}B
+\subset D_v\cap F_v^{-1}(Q\cap F_i^{-1}B).
+\]
+Induction proves the second assertion of \eqref{eq:nullpullback},
+including the empty word.
+Finally, on \(D_{w^-}\) the chain rule expresses \(\det DF_w\)
+as a product of determinants evaluated at states in \(Q\).
+If the factor at time \(j\) vanishes, the initial state belongs to
+\[
+D_{w|j-1}\cap F_{w|j-1}^{-1}\mathcal C_{w_j}.
+\]
+This is null by \eqref{eq:nullpullback}. Their finite union
+contains \(Z_w\), which is compact by continuity and closedness
+of the feasibility domain.
+\end{proof}
+
+Choose \(J\ge1\), depending only on the fixed system, so that
+\begin{equation}\label{eq:localentry}
+\theta^J\sup_Q V\le\rho .
+\end{equation}
+Every exactly feasible \(J\)-prefix ends in
+\(Q_\rho=Q\cap\{s\le\rho\}\).
+
+\begin{lemma}[One regular compact window]\label{lem:regularwindow}
+For every positive-area compact \(K\subset Q\) and
+\(0<\varepsilon<\area(K)\), there is a compact
+\(T\subset K\setminus\{0\}\), with
+\(\area(T)>\area(K)-\varepsilon\), and \(L_T<\infty\) such that
+\begin{equation}\label{eq:finitecharts}
+\area(T\cap D_{w^-}\cap F_w^{-1}B)\le L_T\area(B)
+\end{equation}
+for all \(1\le|w|\le J\) and all Lebesgue measurable
+\(B\subset\R^2\).
+On the same set, for every \(e\in(0,h)\) there is \(D_e\ge1\) such
+that every local exactly feasible tail \(v\), after any exactly
+feasible \(J\)-prefix from \(T\), satisfies
 \begin{equation}\label{eq:typicalproducts}
 \begin{split}
-D_e^{-1}e^{-(h+e)|w|}&\le\lambda_w\le D_e e^{-(h-e)|w|},\\
-D_e^{-1}e^{-(\chi_R+e)|w|}&\le P_w\le D_e e^{-(\chi_R-e)|w|}.
+D_e^{-1}e^{-(h+e)|v|}&\le\lambda_v\le D_e e^{-(h-e)|v|},\\
+D_e^{-1}e^{-(\chi_R+e)|v|}&\le P_v\le D_e e^{-(\chi_R-e)|v|}.
 \end{split}
 \end{equation}
-Both logarithmic costs are affine functions of word frequency.
-Finitely many short lengths are absorbed in \(D_e\), on the same
-set \(T\) for every \(e\).
+The set and \(L_T\) precede \(e\), every input, tolerance and horizon.
+\end{lemma}
+\begin{proof}
+For \(d>0\), the total weight \(\sum\lambda_v\) of length-\(m\)
+words with \(|\#0/m-a_0|>d\) is at most \(2e^{-2d^2m}\).
+Indeed, for a Bernoulli variable \(X\) of mean \(a_0\),
+the second derivative of
+\(\log\mathbb E e^{t(X-a_0)}\) is a tilted variance, at most
+\(1/4\). Its value and derivative at zero vanish, so it is at most
+\(t^2/8\). Exponential Markov with \(t=4d\) and \(t=-4d\)
+gives the bound.
+By \eqref{eq:striparea}, the unions of the corresponding complete
+local feasible regions have summable area. Borel--Cantelli for
+rational \(d>0\) gives a Borel null set \(B_{\rm loc}\subset Q_\rho\),
+including the origin, outside which all feasible length-\(m\)
+prefixes have zero frequency tending uniformly to \(a_0\).
+Overlaps do not invalidate this union bound. Controlled invariance
+supplies at least one feasible prefix at every length.
 
-The finite transient does not silently assume exact feasibility for
-an approximate input. The polygon $Q$ has
-\(|Q_\delta\setminus Q|\le C\delta\) for \(0<\delta\le1\).
-For all prefixes of length at most \(J\), the inverse Jacobian
-determinants are bounded on the compact \(\overline{Q_1}\).
-If an approximately feasible input first exits during these \(J\)
-steps, its initial state belongs to a pullback of this boundary tube.
-Summing over its at most \(J\) possible first-exit times, with the
-maximum over the finite prefix family, gives
-\begin{equation}
-|\{x\in Q:\text{this input first exits by time }J
-                 \text{ and }x\in A_u(n,\delta;K)\}|\le C_J\delta. \label{eq:transient}
+Lemma~\ref{lem:nullpullback} shows that
+\[
+B_J=\bigcup_{|\sigma|=J}
+       (D_\sigma\cap F_\sigma^{-1}B_{\rm loc})
+\]
+is null. The finite union
+\(Z_J=\bigcup_{1\le|w|\le J}Z_w\) is a compact null set.
+On \(Q\setminus B_J\), the maximum frequency deviation over all
+feasible transient choices and all their feasible length-\(m\)
+tails tends to zero. It is measurable: for each \(m\) there are
+finitely many words and their complete feasibility domains are
+closed. Egorov on \(K\), followed by removal of
+\(B_J\cup Z_J\cup\{0\}\) and compact inner approximation,
+gives \(T\) of the stated area with uniform convergence.
+Allocate less than \(\varepsilon/2\) loss to Egorov and less than
+\(\varepsilon/2\) to inner approximation.
+Both logarithmic products are affine functions of frequency.
+Uniform convergence gives \eqref{eq:typicalproducts}; finitely many
+early lengths are absorbed in \(D_e\). This selects one set before
+all precision choices, rather than a set for each exponent.
+
+For a word \(w\) with \(1\le|w|\le J\), the compact set
+\(M_w=T\cap D_{w^-}\) is disjoint from \(Z_w\).
+The composition \(F_w\) is therefore regular at every point of
+\(M_w\). Cover it by finitely many open inverse charts \(U_{w,k}\),
+with compact closures inside regular inverse charts. Change of
+variables on each chart gives
+\[
+\area(M_w\cap U_{w,k}\cap F_w^{-1}B)
+\le
+\left(\sup_{\overline U_{w,k}}|\det DF_w|^{-1}\right)\area(B).
+\]
+The supremum is finite. Sum over the charts and take the maximum
+over the finite word family, omitting empty \(M_w\)'s, to obtain
+\eqref{eq:finitecharts}. Chart overlaps only enlarge the bound;
+every local inverse branch meeting \(M_w\) is included.
+\end{proof}
+
+The lemma provides an inverse-area bound on a fixed regular window,
+not a Jacobian lower bound on all \(Q\) or a global multiplicity
+bound. Its constants may depend on the prescribed area loss.
+The upper catalogues below still cover every actual state, including
+the critical states omitted from this window.
+
+\begin{proof}[Proof of Theorem~\ref{thm:area}]
+Choose \(J,T,L_T\) from Lemma~\ref{lem:regularwindow}.
+Let \(Q_\delta=\{x:\dist(x,Q)<\delta\}\).
+For \(0<\delta\le1\), the tubes around the three edges of \(Q\) give
+\[
+\area(Q_\delta\setminus Q)\le C_Q\delta,\qquad
+C_Q=2(2+2\sqrt2)+3\pi .
+\]
+If a state in \(T\cap A_u(n,\delta;K)\) first truly exits at
+\(j\le J\), put \(w=u|j\). Its earlier states lie exactly in \(Q\),
+and it belongs to
+\[
+T\cap D_{w^-}\cap F_w^{-1}(Q_\delta\setminus Q).
+\]
+By \eqref{eq:finitecharts}, its class has area at most
+\(L_TC_Q\delta\). Summing over the \(J\) possible first-exit times
+gives
+\begin{equation}\label{eq:transient}
+\area\{x\in T\cap A_u(n,\delta;K):
+             \text{first true exit occurs by }J\}\le C_T\delta,
+\quad C_T=JL_TC_Q .
 \end{equation}
-No bounded-distortion assumption is hidden here: the determinant
-bound exists because these are finitely many actual diffeomorphisms.
-It is uniform in the continuation, horizon, and input.
+All derivative inputs here are in \(Q\); no nonsingularity condition
+is needed at the last output, which may be outside.
 
-Fix an arbitrary input and split its covered states into \eqref{eq:transient} and
-the states exact through time \(J\). On the latter, let \(\sigma\)
-be its actual length-\(J\) prefix and use \(F_\sigma\) to transport
-the states to \(Q_\rho\). Its inverse area distortion is a fixed
-constant. Exact feasibility through the next \(m\) steps has area
-at most \(C\lambda_{u_{J+1}\cdots u_{J+m}}\), bounded using \eqref{eq:typicalproducts}.
-For a first true exit at tail time \(j\le m\), its length-\(j-1\)
-prefix intersects the transported set, so \eqref{eq:typicalproducts} applies to that
-prefix and \eqref{eq:exitarea} bounds its area. The ratio of the two
-products in \eqref{eq:typicalproducts} is at most
-\(D_e^2e^{(\chi_R-h+2e)(j-1)}\).
-Since \(\chi_R>h\), summing the first-exit classes gives at most
-\(C_e\delta e^{(\chi_R-h+2e)m}\). This proves \eqref{eq:actualarea},
-including all inputs and all later reentries.
+For the remaining states, \(\sigma=u|J\) is exactly feasible.
+Transport them by \(F_\sigma\) to \(Q_\rho\), and use
+\eqref{eq:finitecharts} to pull back endpoint area estimates.
+If the next \(m\) prescribed digits are exactly feasible for at
+least one transported state, \eqref{eq:striparea} and
+\eqref{eq:typicalproducts} bound the area of the survival class by
+\(C_{T,e}e^{-(h-e)m}\). If no such state exists, that class is empty.
+For a first true local exit at time \(j\le m\), the prescribed
+\((j-1)\)-prefix is feasible for a transported state whenever the
+class is nonempty. Its pulled-back area, by \eqref{eq:exitarea},
+\eqref{eq:finitecharts} and both products in
+\eqref{eq:typicalproducts}, is at most
+\[
+C_{T,e}\delta e^{(\chi_R-h+2e)(j-1)}.
+\]
+Since \(\chi_R>h\), the sum is bounded by a fixed multiple of
+\(\delta e^{(\chi_R-h+2e)m}\). Together with
+\eqref{eq:transient} and exact survival, this proves
+\eqref{eq:actualarea}. A switch between feasible codes was never
+counted as an exit. Every covered state satisfies the constraint at
+its first true exit, regardless of subsequent reentry.
 \end{proof}
 \section{Physical trajectories with a wrong-control margin}\label{sec:shadow}
 \begin{lemma}[Bounded-run realisation]\label{lem:shadow}
@@ -919,8 +1048,8 @@ through time $n$. One additional input covers the origin.
 This gives an upper rate $h$ for every precision sequence,
 without selecting a strategy. Bound \eqref{eq:upper} also
 gives upper rate $\gamma/\beta$. The lower bound already proved
-gives \eqref{eq:high}. The construction of $T$ used uniform
-frequency convergence and compact inner approximation only;
+gives \eqref{eq:high}. The construction of $T$ used all-prefix frequency convergence,
+removal of null critical pullbacks, and compact inner approximation;
 it preceded every exponent, precision sequence and horizon.
 This completes Theorem~\ref{thm:main} subject to the following
 elementary evaluation.
@@ -1080,116 +1209,16 @@ such an exponent, contradicting the common-rate property.
 \end{proof}
 
 The criterion concerns precisely the first derivatives
-\eqref{eq:jets}, global invertibility, controlled feasibility of $Q$,
-and the common norm inequality. The proof does not extend this
+\eqref{eq:jets}, nonsingularity almost everywhere in $Q$,
+controlled feasibility, and the common norm inequality. The proof does not extend this
 necessity statement to arbitrary feedback systems, classify
 high-precision mismatch rates, or compare a fixed strategy with
 the optimal catalogue.
 
 \section{Applications of the criterion}\label{sec:examples}
-The next two subfamilies use $\beta_0=\beta_1=\beta$ and illustrate
-the matched theorem beyond exact linear or boundary-ray geometry.
-\subsection{Independent factors and vanishing overlap}\label{sec:cutoff}
-This subfamily shows how the criterion applies to separately varying
-branch lengths and radial factors. Fix a smooth function
-$0\le\kappa\le1$ equal to one on $\overline B(0,3/2)$ and with
-support contained in $B(0,7/4)$. For example, with
-$E(v)=e^{-1/v}$ for $v>0$ and $E(v)=0$ otherwise, take
-\[
-\kappa(x)=\frac{E(169/64-|x|^2)}
- {E(169/64-|x|^2)+E(|x|^2-9/4)}.
-\]
-Its denominator is positive and its support is the closed ball of
-radius $13/8$. Set
-\begin{gather*}
-C_\kappa=\max\{1,\max_{|\alpha|\le2}\|\partial^\alpha(s\kappa)\|_\infty\},
-\quad C=1+C_\kappa,\quad d=-\log a^*,\\
-\nu_0=\frac1C\min\left\{\frac{a_*}{1000},
-             \frac{(\beta-1)d}{4(1+2/a_*)}\right\}>0.
-\end{gather*}
-For $0<\nu<\nu_0$, take $\eta,\xi_0,\xi_1\in C_c^\infty(B(0,2))$,
-zero at the origin, with all partial derivatives through order two
-bounded by $\nu$. Take $0\le u<\nu$ and define at the input state
-\[
-P_0=a_0+\eta+us\kappa,\quad P_1=a_1-\eta+us\kappa,
-\qquad \mathcal R_i=a_i^\beta e^{\xi_i}.
-\]
-Consider
-\begin{align}
-\widetilde F_0(s,z)&=(s\mathcal R_0,
-             (\mathcal R_0/P_0)[z+(1-P_0)s]),\nonumber\\
-\widetilde F_1(s,z)&=(s\mathcal R_1,
-             (\mathcal R_1/P_1)[z-(1-P_1)s]).\label{eq:perturbmodels}
-\end{align}
-The transverse coefficient is $1-P_i$. No identity
-$\mathcal R_i=P_i^\beta$ is imposed.
-
-\begin{corollary}\label{cor:overlap}
-Every pair \eqref{eq:perturbmodels} satisfies the hypotheses and
-conclusions of Theorems~\ref{thm:main} and \ref{thm:area}.
-For $u>0$, both inputs are feasible on a set with nonempty interior,
-whose fibre width near the origin is of order $us^2$.
-\end{corollary}
-\begin{proof}
-Put $\mu=C\nu$, $p_-=a_*-\mu$, $p_+=1-p_-$,
-$r=e^\mu(a^*)^\beta$ and
-$t=e^\mu(a^*)^{\beta-1}/(1-\mu/a_*)$.
-All perturbations $P_i-a_i$ and $\xi_i$, including their first two
-derivatives, are bounded by $\mu$. They vanish at the origin.
-Globally $p_-\le P_i\le p_+$, $\mathcal R_i\le r$ and
-$\mathcal R_i/P_i\le t$. Since
-$-\log(1-\mu/a_*)\le2\mu/a_*$,
-\[
-\log t\le-(\beta-1)d+(1+2/a_*)\mu<0,\qquad \log r<0.
-\]
-For $\Lambda=(1+t)/(1-t)$, the transverse coefficients on $z$ and
-$s$ are at most $t$, giving the global norm factor
-$\max\{r,2t/(1+t)\}<1$.
-
-For invertibility use $J_i(s,z)=(s,z-\sigma_i s)=(s,v)$, where
-$\sigma_0=-1$, $\sigma_1=1$. Both shear norms are less than two.
-The sheared map is $(s\mathcal R_i,v\mathcal R_i/P_i)$.
-For $g_i=\mathsf A_i^{-1}\widetilde F_i-\operatorname{id}$,
-\[
-J_i g_i=(s\alpha_i,v\omega_i),\quad
-\alpha_i=e^{\xi_i}-1,\quad \omega_i=e^{\xi_i}a_i/P_i-1.
-\]
-It vanishes outside $B(0,2)$. On its support $|s|\le2$,
-$|v|\le2\sqrt2$, and
-\begin{align*}
-|\alpha_i|&\le e^\mu\mu,&
-\|\nabla\alpha_i\|_2&\le e^\mu\sqrt2\mu,\\
-|\omega_i|&\le e^\mu\mu(1+1/p_-),&
-\|\nabla\omega_i\|_2&\le2e^\mu\sqrt2\mu(1+1/p_-).
-\end{align*}
-Differentiating the two components and applying the inverse shear yields
-\[
-\|Dg_i\|_2\le2e^\mu\mu
- [(1+2\sqrt2)+(8+\sqrt2)(1+1/p_-)]<200\mu/a_*<1/5.
-\]
-The final coarse estimate follows from $p_->a_*/2$, $e^\mu<3$,
-and $a_*\le1/2$. Thus, for every target $b$, the equation
-$x=\mathsf A_i^{-1}b-g_i(x)$ has a unique solution by contraction
-on the complete plane. Also $D\widetilde F_i$ is nonsingular.
-This proves a smooth global inverse. The zero perturbation values
-give the required first derivatives.
-
-On $Q$, $\kappa=1$ and the angular maps are
-$Y=\sigma_i+(y-\sigma_i)/P_i(s,sy)$.
-For $f_s(y)=y-2\eta(s,sy)$ and $\vartheta=a_0-a_1$, define
-$\vartheta_\pm$ by $f_s(\vartheta_\pm)=\vartheta\pm2us$.
-The derivative of $f_s$ lies in $[1-2\nu s,1+2\nu s]$.
-The roots are inside $(-1,1)$ because $0<P_i<1$ at the endpoints.
-The complete feasible domains are $[-1,\vartheta_+]$ and
-$[\vartheta_-,1]$, and
-\[
-\frac{4us}{1+2\nu s}\le\vartheta_+-\vartheta_-\le
-\frac{4us}{1-2\nu s}.
-\]
-The radial factor is less than one, so there is no cap violation.
-The domains cover the whole fibre, including the vertex.
-Theorems~\ref{thm:main} and \ref{thm:area} now apply.
-\end{proof}
+The examples distinguish truncated local feasible images from folding
+during a finite transient. The final example in this section also
+exhibits angle-dependent radial motion under mismatch.
 
 \subsection{Inward boundary images and empty fixed-radius slices}
 \label{sec:inward}
@@ -1258,14 +1287,15 @@ and crosses the opposite angular boundary exactly once. Thus
 F_i(\partial Q)\cap\partial Q
                   \text{ consists of exactly two points}.  \label{eq:inwardboundary}
 \end{equation}
-For every pair in \eqref{eq:perturbmodels}, control zero preserves
-the whole lower edge as a boundary continuum and control one preserves
-the whole upper edge. A homeomorphism \(H\) of the plane with
+In contrast, for any target pair whose zero control sends the whole
+lower edge of $Q$ into $\partial Q$ and whose one control sends the
+whole upper edge into $\partial Q$, both corresponding intersections
+contain a continuum. A homeomorphism \(H\) of the plane with
 \(H(Q)=Q\), simultaneously conjugating the two labelled controls
 (even allowing a label permutation), would map each intersection
 in \eqref{eq:inwardboundary} onto the corresponding target intersection. Finite versus
 continuum is impossible. Thus this example is not reducible to
-the class \eqref{eq:perturbmodels} by a fixed $Q$-preserving simultaneous
+such a boundary-edge-preserving pair by a fixed $Q$-preserving simultaneous
 control homeomorphism, and in particular not by such a \(C^1\)
 or bi-Lipschitz map. No assertion about unconstrained coordinate
 changes or every member of the new class is made.
@@ -1284,9 +1314,107 @@ The first inequality follows from $(4/3)^3>2$ and the second
 from $4<9/2$. It is an evaluation of the spectrum, not a claim
 that missing fixed-radius words require a different count.
 
+\subsection{A feasible fold with a null critical set}\label{sec:fold}
+The next example shows that nonsingularity almost everywhere in
+\(Q\) genuinely allows noninjective feasible branches.
+
+\begin{proposition}\label{prop:fold}
+For every parameter choice \eqref{eq:parameters}, matched or
+mismatched, there are global smooth maps satisfying all standing
+assumptions which identify two distinct interior points of \(Q\).
+For at least one control the common image belongs to \(Q\).
+The maps have critical points in \(Q\), but their critical sets
+there have area zero.
+\end{proposition}
+\begin{proof}
+Fix \(c=1/5\), let \(E(v)=e^{-1/v}\) for \(v>0\) and zero
+otherwise, and put
+\[
+\psi(s)=\frac{E(s-1/4)}{E(s-1/4)+E(1/2-s)}.
+\]
+The denominator is positive, \(0\le\psi\le1\),
+\(\psi=0\) for \(s\le1/4\), and \(\psi=1\) for \(s\ge1/2\).
+Define
+\begin{equation}\label{eq:fold}
+H(s,z)=
+\begin{cases}
+(s,z),&s\le1/4,\\
+(s,z+cs\psi(s)\sin(2\pi z/s)),&s>1/4,
+\end{cases}
+\qquad F_i=\mathsf A_iH .
+\end{equation}
+The quotient is used only away from \(s=0\); flatness at
+\(s=1/4\) gives a global smooth map. Near the origin \(H\) is
+the identity, so the required first derivatives agree.
+
+On \(Q\), the angular action of \(H\) is
+\(g_\tau(y)=y+c\tau\sin(2\pi y)\), \(\tau=\psi(s)\).
+For \(0\le y\le1/2\), it lies in \([0,1/2+c]\);
+for \(1/2\le y\le1\), it lies in \([1/2-c,1]\).
+Oddness handles negative angles, and \(g_\tau(\pm1)=\pm1\).
+Thus \(H(Q)\subset Q\). At every \(H(x)\), one of the linear
+controls is feasible because their angular domains cover
+\([-1,1]\). Their radial factors are less than one. Consequently
+\(Q\) is controlled invariant for \(F_i\), including its boundary.
+
+Put \(m_*=\max\{r_0,r_1,t_0,t_1\}<1\) and choose
+\[
+\Lambda=1+\frac{2m_*(1+2c)}{1-m_*}.
+\]
+For every state of the plane, \(|H^z-z|\le c|s|\), hence
+\[
+V(Hx)\le(1+c/\Lambda)V(x),\qquad
+V(\mathsf A_i x)\le m_*(1+1/\Lambda)V(x).
+\]
+It follows that \eqref{eq:contract} holds globally with
+\[
+\theta=m_*(1+1/\Lambda)(1+c/\Lambda)
+\le m_*[1+(1+2c)/\Lambda]<(1+m_*)/2<1 .
+\]
+This controls arbitrary tails as well as exactly feasible orbits.
+
+For \(s>1/4\),
+\begin{equation}\label{eq:foldcritical}
+\det DH=1+2\pi c\psi(s)\cos(2\pi z/s),\qquad
+\det DF_i=(r_i^2/a_i)\det DH .
+\end{equation}
+At each fixed \(s\), the determinant is either identically one
+or has finitely many zeros on \(|z|\le s\).
+Fubini therefore proves \eqref{eq:critical}.
+At \(s=3/4\) it is positive at \(y=0\) and negative at
+\(y=1/2\), since \(2\pi/5>1\), so actual critical points exist.
+
+At this same radius write \(g(y)=y+c\sin(2\pi y)\).
+Then
+\[
+g(1/4)=9/20<1/2,\qquad
+g(2/5)=2/5+(1/5)\sin(\pi/5)>1/2,\qquad g(1/2)=1/2 .
+\]
+The middle inequality uses \(\sin(\pi/5)>\sin(\pi/6)=1/2\).
+There is \(y_1\in(1/4,2/5)\) with \(g(y_1)=1/2\).
+The distinct interior points
+\((3/4,(3/4)y_1)\) and \((3/4,3/8)\) have the same
+image under both controls. At least one control is feasible at
+their common intermediate state \((3/4,3/8)\), proving the claim.
+\end{proof}
+
+Injectivity is preserved by coordinate conjugacy. These collisions
+exclude a simultaneous \(Q\)-preserving control homeomorphism to
+injective controls. Theorem~\ref{thm:main} or
+\ref{thm:mismatch} applies according to the chosen powers.
+The critical points show why the inverse-area estimate belongs
+on a regular compact window rather than on all \(Q\).
+
 \subsection{Angular feedback in an admissible mismatched pair}
 Choose unequal $\beta_0,\beta_1$ in \eqref{eq:parameters}, and
-let $\kappa$ be the fixed cutoff in Section~\ref{sec:cutoff}.
+choose a nonnegative smooth cutoff $\kappa$ equal to one on
+$\overline B(0,3/2)$ and supported inside $B(0,7/4)$.
+For example, with $E$ as in \eqref{eq:fold}, take
+\[
+\kappa(x)=\frac{E(169/64-|x|^2)}
+ {E(169/64-|x|^2)+E(|x|^2-9/4)}.
+\]
+Its denominator is positive and its support has radius $13/8$.
 Put $\phi(s,z)=z^2\kappa(s,z)$,
 $M_\phi=\max\{1,\|x\cdot\nabla\phi\|_\infty\}$, and fix
 $0<c<1/(2M_\phi)$. Define
@@ -1316,8 +1444,8 @@ excludes every simultaneous coordinate reduction is made.
 
 The following example keeps the common attracting origin
 and even agrees with the linear maps on a neighbourhood
-of it. It violates global injectivity by collapsing
-positive-area regions onto an invariant ray.
+of it. It collapses positive-area regions onto an invariant
+ray, violating the null-critical-set hypothesis.
 
 \begin{proposition}\label{prop:collapse}
 For every matched choice $\beta_0=\beta_1=\beta$ in
@@ -1439,8 +1567,10 @@ area arbitrarily close to one changes $\sigma$ and the
 system. This differs from Theorem \ref{thm:main}, where
 all $K_\zeta$ are chosen inside a single fixed system.
 The collapse example is a counterexample to sufficiency
-of local matching and uniform convergence; it is not a
-counterexample to the diffeomorphism theorem.
+of local matching and uniform convergence. Its critical set has
+positive area, so it lies outside the standing assumptions.
+In particular the null target ray has a positive-area feasible
+pullback, unlike the fold in Proposition~\ref{prop:fold}.
 
 
 
@@ -1459,7 +1589,10 @@ record different features: $\lambda_w$ controls feasible angular
 size and $P_w$ controls the physical radius at a first true exit.
 Typicality of all feasible prefixes handles overlap, and the
 constraint at that first exit handles later reentry.
-Finite inverse Jacobians control the transient.
+On one fixed regular compact window, finite local inverse charts
+control all feasible transients and early true exits. Their constants
+may depend on the chosen area loss, but precede every precision
+sequence. No inverse Jacobian bound is required on the full triangle.
 No positive length or full image is required of each feasible slice.
 
 The full-set lower bounds use rare actual states at a fixed small
@@ -1472,13 +1605,16 @@ the near-full initial set precedes all stated precision choices.
 
 The results retain binary planar dynamics, a particular triangular
 constraint, the displayed first-jet family, controlled feasibility,
-global invertibility, and contraction toward a common origin.
+nonsingularity almost everywhere in $Q$, and contraction toward a
+common origin.
 They allow truncated feasible images and vanishing overlap, but
 do not treat constant overlap in the limiting angular maps.
-The collapse example explains why the noncollapse hypothesis
-cannot simply be omitted. The inward example proves a
-constraint-preserving conjugacy obstruction only for its displayed
-target class; no claim of nonreducibility is made for every member.
+The feasible fold shows that global invertibility is unnecessary.
+The collapse example explains why local matching and all-input
+convergence alone are insufficient; it does not show that null
+critical sets are necessary for every possible cost theorem.
+The inward and folded examples prove only their stated
+constraint-preserving conjugacy obstructions.
 The high-precision spectrum under mismatch and the high-side rates
 of arbitrary compact initial sets are not classified.
 No fixed-strategy optimality or new pressure principle is asserted.
