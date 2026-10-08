@@ -2,9 +2,22 @@
 
 基线论文：*Positive invariance entropy under uniform state convergence*。
 
-当前唯一英文稿：*Precision and reliability costs in contracting control systems*，已完成R40必要核验、主贡献整合及对应25页PDF。以非线性精度—可靠性转移为主结果，以零面积临界反例区分通常成本与可靠性所需条件；匹配—失配判据、完整精度谱及固定初始集分裂作为基础保留。只有一份现行论文。
+当前唯一英文稿：*Control information under state convergence: entropy, precision and reliability*。
+已按用户明确要求将初始P6与最新R40合为完整48页论文，只保留一份
+[TeX](paper/P6_PRECISION_COST.tex)和[PDF](paper/P6_PRECISION_COST.pdf)。
+原稿14项与R40的16项结果及全部证明保留，统一问题、引言、引用和量词，
+分别陈述假设，不把整合算作新的数学升级。
 
-R40已将R37–R39完整证明落实到正文：全Q全部可行瞬态概率domination、正面积强制区域及任意近似输入下界，与严格反例配对。数学增量归R37–R39，整合不新增证明。编译、引用及全部25页检查通过。新增可靠性用途缓解R35的用途集中限制；JDE仍选B，主要未决项现为Wang–Huang（2022，DOI10.1088/1361-6544/ac4f33）的正式概率spanning正文，只有首页预览，未排除覆盖。已单独请求原件；不机械追加定理，不自动R41或投稿。
+[整合记录](research/COMBINED_PAPER/INTEGRATION_NOTES.md)、
+[结果页码对应](research/COMBINED_PAPER/RESULT_COVERAGE.md)、
+[来源范围](research/COMBINED_PAPER/SOURCES.md)记录内容保留与限度。
+全部48页检查及编译通过；原稿和历史不变，作者待填与AI披露准确。
+JDE保持B，正式概率spanning覆盖缺口没有因整合消失，不自动R41或投稿。
+
+R40历史上完整整合R37–R39的可靠性证明及严格反例，新增独立用途
+缓解R35的用途集中限制；这些内容现均保留在完整合并稿中。
+Wang–Huang2022（DOI10.1088/1361-6544/ac4f33）仍只读首页与摘要，
+未排除正式覆盖，既有原件请求不重复。以下研究说明保留为历史。
 
 R34阶段稿的数学增量来自R33：可行瞬态零集拉回、同一个固定紧集的多局部逆图和早期首真越界面积，允许Q内真实可行折叠而保留全部声明范围内的率。R34完整收入这些证明及实例，不假设全Q统一逆Jacobian下界，完成全文、编译及19页渲染核对；整合不算新证明。
 

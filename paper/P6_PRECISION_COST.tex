@@ -3,9 +3,12 @@
 \usepackage{lmodern}
 \usepackage[a4paper,margin=30mm]{geometry}
 \usepackage{amsmath,amssymb,mathtools}
-\usepackage{microtype}
-\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
-
+\usepackage[expansion=false]{microtype}
+\usepackage{enumitem,booktabs,array,longtable,needspace}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\urlstyle{same}
+\setlist[enumerate]{label=\textup{(\roman*)},leftmargin=2em}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -20,175 +23,1197 @@
 \newcommand{\dist}{\operatorname{dist}}
 \newcommand{\diam}{\operatorname{diam}}
 \newcommand{\ee}{\varepsilon}
-\newcommand{\doi}[1]{\href{https://doi.org/#1}{doi:#1}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{doi:\nolinkurl{#1}}}
 \numberwithin{equation}{section}
-
-
-
-
-\hypersetup{pdftitle={Precision and reliability costs in contracting control systems}}
-\title[Precision and reliability costs]{Precision and reliability costs\\in contracting control systems}
+\setlength{\emergencystretch}{2em}
+\hypersetup{pdftitle={Control information under state convergence: entropy, precision and reliability}}
+\title[Control information under state convergence]{Control information under state convergence:\\entropy, precision and reliability}
 \author{Author information pending}
 \date{}
-\subjclass[2020]{Primary 93C55, 37B40; Secondary 94A24, 93D15}
-\keywords{Control catalogues, precision spectrum, reliability exponent,
-physical initial-state probability, nondegenerate transients}
+\subjclass[2020]{Primary 37B40, 93C55; Secondary 37B05, 93D15, 94A24}
+\keywords{Invariance entropy, state convergence, control catalogues,
+precision spectrum, reliability exponent, physical initial-state probability}
 \begin{document}
 \begin{abstract}
-We study finite catalogues of open-loop controls that keep assigned
-initial states within a prescribed Euclidean tolerance of a controlled
-invariant triangle at every time up to a given horizon. For two planar
-$C^2$ maps contracting toward a common origin, matched first derivatives
-determine a precision spectrum $S(\gamma)$, where the tolerance is
-$\exp(-\gamma n+o(n))$. We prove that if neither map has a critical
-point in the triangle, the catalogue rate for failure probability
-$\exp(-\alpha n+o(n))$ is $\min\{S(\gamma),L_a(\alpha)\}$.
-Here $L_a$ is the classical binary source-coding reliability function.
-The probability is uniform physical area, and no coding or feedback
-strategy is prescribed. The proof transports probability through all
-feasible transient branches and constructs disjoint positive-area
-regions that force arbitrary successful approximate inputs to retain
-specified prefixes. Critical sets of area zero suffice for ordinary
-precision costs but not for this reliability conclusion: we construct
-an injective $C^2$ example with exactly the same full-state catalogue
-counts as its linear counterpart and a strictly larger reliability
-cost. This separates qualitative noncollapse from the probability
-control needed at exponentially small failure budgets. We also identify
-the first-order matching criterion for common low-precision costs
-and the cost difference between all states and one fixed nearly
-full-area compact initial set.
+We study the information required to maintain a state constraint
+when every feasible state trajectory converges to a common point.
+For smooth systems on solid cones, we prove exact finite-horizon
+transference to a normalized affine system and spectral formulas
+for exact, outer, and reference-trajectory tracking invariance
+entropies. Their planar formulas persist under smooth perturbations
+with fixed first jet. Subexponential radial decay gives equal
+positive control entropies, although the state-trajectory entropy,
+input-fibre entropy, and conditional entropy of every invariant
+lift measure vanish. We then consider binary planar systems
+contracting toward the origin under every input and let the
+Euclidean tolerance decrease as \(\exp(-\gamma n+o(n))\).
+Matched first derivatives determine the complete full-state
+precision spectrum and a strict cost difference from one fixed
+nearly full-area compact initial set; unequal radial powers
+produce this difference already at small positive precision.
+At failure probability \(\exp(-\alpha n+o(n))\), nonsingular
+derivatives on the constraint give the rate
+\(\min\{S(\gamma),L_a(\alpha)\}\), where \(L_a\) is the
+classical binary source-coding reliability function.
+An injective example with null critical sets preserves every
+full-state catalogue count but changes the reliability cost.
+The proofs connect arbitrary approximate inputs to actual covered
+state regions and physical area, rather than presupposing an
+optimal symbolic coding.
 \end{abstract}
 \maketitle
+
 \section{Introduction}
-Invariance entropy quantifies the number of control signals needed
-to maintain a state constraint; see Kawan \cite{Kawan2013}.
-When every input contracts toward a common origin, a fixed positive
-environment tolerance can lead to zero asymptotic information cost.
-Two requirements reveal more of the control geometry: let the
-tolerance decrease with the horizon, and let the allowed initial-state
-failure probability decrease as well. We ask what dynamical conditions
-preserve the resulting precision--reliability cost.
+Invariance entropy counts the control signals that must be available
+to maintain a prescribed state constraint. It measures a choice
+problem over initial states, rather than the orbit complexity of
+one autonomous state map. The distinction matters when viable
+trajectories all converge: increasingly precise control choices can
+still be required to prevent departure. We examine this information
+cost at three levels---exact viability, a fixed environmental
+tolerance, and a tolerance and failure probability that decrease
+with the horizon.
 
-Our catalogues assign an entire input to an actual initial state.
-For $u\in\{0,1\}^{\N}$, the successful states satisfy
-$\dist(F_u^k x,Q)<\delta$ at every $0\le k\le n$.
-An input may leave and reenter $Q$, but cannot omit any intermediate
-constraint. Initial states have uniform area distribution on the same
-triangle $Q=\{0\le s\le1,\ |z|\le s\}$ throughout the paper.
-The success set may depend on the horizon. This differs from covering
-a single fixed compact set of almost full area.
+The common object is a finite catalogue of open-loop inputs.
+The catalogue is fixed before the initial state is selected; its
+assigned member may depend on that actual state. An approximate
+input must satisfy the Euclidean distance constraint at every
+intermediate time. Leaving and reentering the constraint does not
+remove an earlier violation. For probability costs, success is
+measured using uniform physical area on a fixed triangle; a
+horizon-dependent success set is different from one fixed compact
+initial set of nearly full area.
 
-The main positive result, Theorem~\ref{thm:reliability}, concerns
-nonlinear maps whose first derivatives have angular branch proportions
-$a_0+a_1=1$ and radial factors $a_i^\beta$, $\beta>1$.
-The maps need not be globally injective, triangular, or radially
-autonomous. They make $Q$ controlled invariant and contract toward
-the origin in a common norm. If both derivatives are nonsingular
-on $Q$, then for every finite precision exponent $\gamma\ge0$,
-every failure exponent $\alpha>0$, and all sequences with these
-exponents, the minimum successful catalogue has rate
-$\min\{S(\gamma),L_a(\alpha)\}$.
-The function $S$ is the full-state precision spectrum, while
-$L_a(\alpha)=\max_{I_a(p)\le\alpha}H_b(p)$ is the classical
-binary reliability function, with $I_a$ the relative entropy.
-The formula is not a new source-coding function. The assertion is
-its validity for unrestricted approximate controls and physical area
-under a nonlinear transient.
+\subsection{Two levels of convergence and their information costs}
+Our first results concern smooth invertible controlled maps on a
+full-dimensional solid cone. A common radial motion forces every
+feasible trajectory to approach the apex, while normalized transverse
+motion can expand. Theorem~\ref{cone:thm:cone} transfers the exact
+finite-horizon catalogue to an affine system and computes outer and
+tracking rates on every positive-volume compact initial set.
+Theorem~\ref{cone:thm:nonlinear} preserves the planar rates under
+an infinite-dimensional class of smooth perturbations with fixed
+first jet. With radial map \(\operatorname{arsinh}\), all three
+control entropies can be positive and equal. The common Lyapunov
+theorem, Theorem~\ref{cone:thm:lyapunov}, identifies the separation
+from state complexity: the state-trajectory shift and input fibres
+have zero entropy, and every invariant lift measure is supported
+on the fixed state. The input shift accounts for the entropy of
+the complete constrained lift. We also give arbitrary-dimensional
+finite-alphabet counts, prescribed exact and outer rates, and a
+feedback regularity obstruction.
 
-Theorem~\ref{thm:counter} shows why a stronger probability hypothesis
-is needed than for ordinary precision costs. We construct an injective
-$C^2$ pair whose critical sets in $Q$ have area zero, with no
-positive-area collapse. Its full-state catalogue count agrees with
-the matched linear count for every horizon and tolerance. Nevertheless,
-at fixed precision and failure exponents its reliability rate has
-lower limit strictly larger than the displayed formula. A single
-transient sends relatively large physical regions into small angular
-regions requiring many different controls. Those physical regions
-have vanishing total area, but cannot be discarded at the specified
-exponential failure budget.
+The second group of results imposes the stronger requirement that
+every input contract toward the origin in a common norm, including
+trajectories outside the constraint. Fixed positive tolerance then
+has zero outer and tracking entropy, as
+Proposition~\ref{prop:fixedtolerance} records. Shrinking the tolerance
+reveals information not seen by that limit order. For binary planar
+maps with matched first derivatives, Theorem~\ref{thm:main} gives
+the complete spectrum
+\[
+S(\gamma)=\max_{p\in[0,1]}H_b(p)
+                 \min\{1,\gamma/[\beta\chi(p)]\}.
+\]
+All positive-area compact sets share the rate \(\gamma/\beta\)
+up to \(\beta h\). A single compact set of arbitrarily nearly
+full area has rate \(\min\{h,\gamma/\beta\}\) at every finite
+precision exponent, whereas the full-triangle spectrum grows to
+\(\log2\). Within the stated first-order matrix family, unequal
+radial powers separate the two costs already near zero
+(Theorems~\ref{thm:mismatch} and~\ref{thm:criterion}).
+These conclusions allow nonlinear feedback and folds; null
+critical sets suffice for their finite-transient area argument.
 
-The connection to the true minimum catalogue requires two estimates.
-First, all finite feasible transient branches have a common inverse-area
-bound when there are no critical points on $Q$.
-Together with local complete-word area bounds, this dominates physical
-word-family probabilities by reference product weights. It provides
-a reliable catalogue using exactly feasible prefixes, without charging
-an $O(\delta_n)$ escape layer to the smaller failure budget $e_n$.
-Second, bounded-run words are realised on a whole band of positive
-radii and thickened to disjoint regions of area proportional to their
-angular product. Every point has a physical wrong-control margin.
-Thus any successful approximate input must retain the word while its
-radial scale exceeds the tolerance. These two statements, proved in
-Section~\ref{sec:reliability}, connect classical type counting to
-actual probability and arbitrary inputs.
+Exponential reliability requires a stronger comparison.
+Theorem~\ref{thm:reliability} assumes no critical points on the
+triangle and obtains the rate
+\(\min\{S(\gamma),L_a(\alpha)\}\) at failure exponent
+\(\alpha>0\). The function \(L_a\) is classical; the assertion
+is its validity for physical area and arbitrary approximate
+controls after a nonlinear transient. The proof transports
+probability through all feasible transient branches and constructs
+disjoint positive-area regions that force every successful input
+to retain specified prefixes. Theorem~\ref{thm:counter} gives
+an injective \(C^2\) example with null critical sets, no
+positive-area collapse, and unchanged full-state counts at
+every horizon and tolerance, but a strictly larger reliability
+cost. Thus preservation of ordinary precision costs does not
+imply preservation of a reliability exponent.
 
-The precision results underlying this comparison also explain
-initial-set dependence. Critical sets of area zero allow area
-transport on one fixed regular compact window.
-Under matching, all positive-area compact initial sets have rate
-$\gamma/\beta$ up to $\beta h$, where $h=-\sum_i a_i\log a_i$.
-One fixed compact set of arbitrarily nearly full area has rate
-$\min\{h,\gamma/\beta\}$ at every finite exponent, whereas the
-full-state rate grows to $\log2$.
-Within the prescribed first-order family, unequal radial powers
-already separate these costs for every sufficiently small positive
-exponent. These results describe ordinary precision costs; they do
-not replace the probability estimates required for reliability.
+The two groups are connected by their catalogue problem, not by
+an inclusion of all hypotheses. In the cone family, convergence
+is imposed on feasible states and unsuccessful transverse errors
+may expand. In the planar precision family, contraction is global
+under every input. The former also allows subexponential radial
+decay and arbitrary dimension. The latter has specified binary
+first-order geometry and a triangular constraint. No theorem
+identifies these classes by a singular normalization at the apex
+or extends a conclusion beyond its own assumptions.
 
-\subsection{Related work}
-The finite-horizon full-cover object is outer invariance complexity
-\cite[Section 2.2]{CZ2024}. This framework already permits
-noninjective continuous maps. Stabilization entropies
-\cite{Colonius2012,CH2021} concern related costs with prescribed
-decay or practical stabilization requirements. Our constraints are
-environment distances at all times, with both tolerance and allowed
-initial-state failure varying with the horizon.
+\subsection{Relation to earlier work}
+Invariance entropy was introduced and developed in
+\cite{CK2009,K2009,K2011,Kawan2013}.
+Exact, strict, outer, and strong terminology varies across sources;
+our tracking definition is the discrete-time counterpart of the
+reference-trajectory quantity in \cite[Definition 3.1.1]{K2009}.
+Linear Bowen coverings, spectral expressions, and unstable-volume
+estimates are established tools \cite{K2009,KStrict2011}.
+We do not claim a new volume method or novelty for an expanding
+determinant. Stabilization and network data-rate problems
+\cite{Colonius2012,CH2021,KD2016} optimize related costs for
+prescribed objectives. Our first family instead makes every
+feasible trajectory converge, independently of a selected
+stabilizing controller.
 
-Wang, Huang and Sun \cite{WHS2019} develop measure-theoretic
-invariance entropies using invariant-partition cylinder probabilities.
-Their conjugacy theorem transports the initial measure together with
-the system. Colonius \cite{Colonius2018} connects quasi-stationary
-metric invariance entropy to coder-controllers and proves entropy
-relations under measure-preserving transformations.
-Wang and Huang \cite{WH2022} study spanning-based measure-theoretic
-entropy and inverse variational principles.
-We do not claim that probability-dependent control entropy or
-measure transport is new. Here one must control the mass actually
-covered by any approximate input, at shrinking tolerance and
-exponentially small failure, under uniform physical area.
-The finite-transient probability domination and the positive-area
-forced regions supply this control.
+Control-set and hyperbolic formulas \cite{DSK2016}, partially
+hyperbolic bounds \cite{KD2018}, and the discrete hyperbolic
+theory \cite{KChaos} are conceptual precedents for distinguishing
+control information from state complexity. Their full-time lifts
+and controllability or hyperbolicity assumptions do not directly
+give the forward-cone counts here. The cones are not approximately
+controllable control sets, and their full-time state core is the
+apex. The neutral radial derivative in the equal-entropy examples
+also lies outside a hyperbolic splitting without centre.
+Yao's preprint \cite{Yao2026} already provides positive exact
+entropy on a thin constraint with zero approximate entropy;
+its feasible state coordinates have limiting pair distances.
+Our contribution is not the weak assertion that positive exact
+entropy can coexist with an absence of state Li--Yorke pairs.
+The solid-cone calculation, simultaneous positive outer and
+tracking rates, and specified nonlinear persistence are the
+additional statements.
 
-Nie, Wang and Huang \cite{NWH2022} derive measure entropy by
-convex duality from invariance pressure. Chen, Huang and Zhong
-\cite{CHZ2026} use fixed invariant-partition cylinders and time-power
-weights for entropy dimensions. These tools describe an already
-specified pressure or cylinder family; their use for the present
-catalogue requires a quantitative relation to the actual covered
-sets. We prove that relation rather than identifying a feasible
-coding with an optimal approximate catalogue.
+Positive state entropy has established consequences for chaos
+\cite{BGKM}; relative and random entropy theories likewise use
+their stated state or conditional entropy hypotheses
+\cite{Zhang2006,LTZ2024}. We calculate the actual state factor
+and input fibres instead of inferring those hypotheses from a
+control catalogue. Affine homogenization is familiar
+\cite{CST2023}, but the coordinate \(y=z/s\) deletes the apex
+and is not a compact-constraint conjugacy. The Lie-group
+representation obstruction to applying \cite{CCS2021}
+directly is stated in Remark~\ref{cone:rem:lie}.
+Equi-invariability and invariance complexity
+\cite{ZCH2021,ZC2023,CZ2024} describe nearby states and finite
+input families; departure of a nearby state is compatible with
+convergence of all states that remain feasible. The measurable
+data-rate and entropy-dimension theories
+\cite{WH2024,ZH2025,CHZ2026} concern other optimizations and
+growth scales, rather than the conditional lift entropy computed
+here. Recurrence catalogues \cite{SM2026} and nonautonomous
+skew products \cite{CF2026} supply further context without
+identifying control cost with state-trajectory entropy.
 
-Local graph estimates, summable distortion, product stopping scales
-and typical-set arguments are classical tools
+For the planar precision results, the finite-horizon full-cover
+object is outer invariance complexity \cite[Section 2.2]{CZ2024};
+that framework already permits noninjective continuous maps.
+Wang, Huang and Sun \cite{WHS2019} use invariant-partition
+cylinder probabilities, and their conjugacy result transports
+the initial measure with the system. Colonius
+\cite{Colonius2018} relates quasi-stationary metric invariance
+entropy to coder-controllers. Wang and Huang \cite{WH2022}
+study spanning-based measure entropy and inverse variational
+principles. Probability-dependent control entropy and measure
+transport are therefore not new in themselves. Nie, Wang and
+Huang \cite{NWH2022} obtain measure entropy by convex duality
+from invariance pressure; Chen, Huang and Zhong
+\cite{CHZ2026} use specified partition cylinders and time-power
+weights. Those descriptions do not by themselves settle coverage:
+application to our catalogue still requires quantitative control
+of the sets actually covered by arbitrary approximate inputs.
+The complete-region estimates, all-branch probability transport,
+and physical forcing below provide that relation. Uniform physical
+area remains fixed; a transported-measure identity alone does
+not give this comparison.
+
+Graph estimates, summable distortion, product stopping scales,
+typical sets, and source-coding reliability are classical tools
 \cite{KD2018,Hutchinson1981,Csiszar1998}.
-Cost-threshold pressure and Bowen equations for invariant partitions
-are developed in \cite{YCYZ2025}. Our type estimates and reliability
-optimisation are elementary instances of these established ideas.
-The independent control steps are the complete-region estimates,
-the all-branch probability transport, and the physical forcing
-of arbitrary successful inputs. All required estimates are proved
-below, without assuming a symbolic partition or a pressure formula
-for the true catalogue.
+Cost-threshold pressure and partition formulas are developed in
+\cite{YCYZ2025,ZHZ2023}. Our type optimisation is an elementary
+application of these tools. The extra control arguments concern
+complete physical feasible regions, arbitrary approximate inputs,
+and their mass under the original initial-state distribution.
+Appendix~\ref{cone:app:partition} makes explicit what symbolic
+counting proves and the realizability assumptions it requires.
 
-Section~2 states the probability result, its obstruction, and the
-precision results used for comparison. Sections~\ref{sec:geometry}--
-\ref{sec:rates} prove the local geometry and precision bounds.
-Section~\ref{sec:reliability} proves the main probability theorem;
-Section~\ref{sec:counter} constructs the obstruction.
-The final examples and scope distinguish the hypotheses of these
-statements.
+\subsection{Organization}
+Section~\ref{cone:sec:definitions} defines the entropy quantities
+and state factors. Sections~\ref{sec:coneresults}--%
+\ref{cone:sec:separation} give the cone formulas, their complete
+proofs, finite-alphabet examples, and entropy separation.
+Section~\ref{sec:transition} explains the change from fixed
+tolerance to shrinking precision.
+Section~\ref{sec:planar} states the planar hypotheses and results;
+Sections~\ref{sec:geometry}--\ref{sec:rates} establish their
+physical geometry and precision costs.
+Sections~\ref{sec:reliability} and~\ref{sec:counter} prove the
+reliability theorem and construct its obstruction.
+Sections~\ref{sec:mismatch} and~\ref{sec:examples} give the
+mismatch criterion and examples. The final section collects
+the consequences and scope. The appendices retain the precise
+partition-counting interface, a continuous-time scalar baseline,
+and comparisons for different control ranges.
+\section{Control catalogues and state factors}\label{cone:sec:definitions}
 
-\section{The catalogue and main results}
+
+\subsection{Control catalogues and state chaos}
+
+Let \(X\) be a metric space and let \(U\) be a nonempty compact metric space. Throughout the main text \(f:X\times U\to X\) is continuous, \(\mathcal U=U^{\mathbb N_0}\) has its product topology, and every sequence is admissible. The uniquely defined forward solution is
+\begin{align*}
+ \varphi(0,x,u)=x,\qquad
+ \varphi(n+1,x,u)=f(\varphi(n,x,u),u_n).
+\end{align*}
+No negative-time admissibility is presumed, even when individual maps \(f_v=f(\,\cdot\,,v)\) are invertible.
+A nonempty compact set \(Q\subset X\) is \emph{controlled invariant} if
+\begin{align*}
+ \forall x\in Q\quad\exists u\in\mathcal U\quad
+ \forall n\in\mathbb N_0:\ \varphi(n,x,u)\in Q.
+\end{align*}
+With unrestricted concatenation this is equivalent to the one-step condition
+\(\forall x\in Q\ \exists v\in U:\ f(x,v)\in Q\).
+We never use the term strong invariance to mean an unspecified strengthening of this statement. The different universal condition
+\(\forall x\in Q\ \forall v\in U:\ f(x,v)\in Q\)
+is not assumed.
+
+For a nonempty compact \(K\subset Q\), an \((n,K,Q)\)-spanning family is a finite set \(\mathcal S\subset\mathcal U\) satisfying
+\begin{align}\label{cone:eq:quantifiers}
+ \forall x\in K\quad\exists u\in\mathcal S\quad
+ \forall k\in\{0,\ldots,n\}:\ \varphi(k,x,u)\in Q.
+\end{align}
+The family is fixed before the initial state is selected; only its assigned member may depend on that state. Its minimum cardinality is \(r_{\mathrm{inv}}(n,K,Q)\), with value \(+\infty\) if no finite family exists. Only the first \(n\) symbols matter. All logarithms are natural, and \(\log(+\infty)=+\infty\). Define
+\begin{align}\label{cone:eq:exact}
+ h_{\mathrm{inv}}(K,Q)=\limsup_{n\to\infty}\frac1n\log r_{\mathrm{inv}}(n,K,Q).
+\end{align}
+We call this \emph{exact} invariance entropy; it is also called strict invariance entropy in some continuous-time sources. It does not require interior containment.
+
+For \(Q^\varepsilon=\{x\in X:\operatorname{dist}(x,Q)<\varepsilon\}\), define
+\begin{align}\label{cone:eq:outer}
+ h_{\mathrm{out}}(K,Q)=\lim_{\varepsilon\downarrow0}\limsup_{n\to\infty}
+ \frac1n\log r_{\mathrm{inv}}(n,K,Q^\varepsilon).
+\end{align}
+The outer limit exists in \([0,+\infty]\) by monotonicity. The time limit is taken first. Neighborhoods are measured in the ambient state metric, not in a rescaled projective metric. In particular \(h_{\mathrm{out}}(K,Q)\leq h_{\mathrm{inv}}(K,Q)\).
+
+We also use the discrete-time counterpart of strong invariance entropy in \cite[Definition 3.1.1]{K2009}. A \emph{tracking catalogue} consists of finitely many pairs \((a_i,u^i)\), \(a_i\in Q\), whose reference trajectories are feasible in \(Q\) for all nonnegative times, and for which
+\begin{align*}
+ \forall x\in K\quad\exists i\quad
+ \max_{0\leq k\leq n}
+ d(\varphi(k,x,u^i),\varphi(k,a_i,u^i))<\varepsilon.
+\end{align*}
+Let \(r_{\mathrm{inv}}^{+}(n,\varepsilon,K,Q)\) be the least number of such pairs and put
+\begin{align*}
+ h_{\mathrm{inv}}^{+}(K,Q)=\lim_{\varepsilon\downarrow0}\limsup_{n\to\infty}
+ \frac1n\log r_{\mathrm{inv}}^{+}(n,\varepsilon,K,Q).
+\end{align*}
+Requiring reference viability only up to \(n\) gives the same number: a feasible finite reference trajectory can be continued from its endpoint by controlled invariance. The \emph{actual} trajectory in this definition is required to track its reference, and need not itself stay in \(Q\). Forgetting reference states gives
+\begin{align}\label{cone:eq:outer-tracking}
+ r_{\mathrm{inv}}(n,K,Q^\varepsilon)\leq r_{\mathrm{inv}}^{+}(n,\varepsilon,K,Q).
+\end{align}
+There is no general identification of tracking entropy with exact entropy in our definitions. Measure-theoretic invariance entropy, including partition and quasi-stationary versions \cite{WHS2019,NWH2022,Colonius2018}, is another object. We do not calculate it by computing a conditional Kolmogorov--Sinai entropy.
+
+A pair of feasible state trajectories \(x_n,y_n\) is a \emph{state Li--Yorke pair} if
+\begin{align*}
+ \liminf_{n\to\infty}d(x_n,y_n)=0,\qquad
+ \limsup_{n\to\infty}d(x_n,y_n)>0.
+\end{align*}
+The same input may be imposed on both trajectories, or distinct inputs may be allowed. For a scrambled set with state-dependent open-loop inputs, a single assignment \(x\mapsto u_x\) must first be fixed on the whole set; it cannot be reselected for each pair. A unified causal controller, including one with memory, gives another fixed rule. Our negative conclusion quantifies over \emph{all} pairs of feasible trajectories with arbitrary separate inputs, and hence covers all these more restrictive choices.
+
+\subsection{The true lift and its entropies}
+
+Let \(\sigma:\mathcal U\to\mathcal U\) be the one-sided shift and define
+\begin{align}\label{cone:eq:lift}
+ \Lambda_Q=\{(u,x)\in\mathcal U\times Q:
+       \varphi(n,x,u)\in Q\text{ for all }n\geq0\},\quad
+ F(u,x)=(\sigma u,f(x,u_0)).
+\end{align}
+Each finite-time solution is continuous in \((u,x)\). Therefore \(\Lambda_Q\) is closed in the compact space \(\mathcal U\times Q\), and \(F\) is a continuous self-map of \(\Lambda_Q\). It is positively invariant; surjectivity does not follow. The input projection \(\pi(u,x)=u\) satisfies \(\pi F=\sigma\pi\). Its image need not in general be all of \(\mathcal U\).
+
+Use a bounded metric \(d_U\leq1\) on \(U\), and the compatible input metric
+\begin{align*}
+ d_{\mathcal U}(u,v)=\sum_{j=0}^\infty 2^{-j-1}d_U(u_j,v_j).
+\end{align*}
+We equip the lift with the maximum of the input metric and the bounded state metric \(\min\{1,d\}\). For a compact system \(T:Z\to Z\), let \(s_n(T,\varepsilon)\) denote the maximum cardinality of a set separated by more than \(\varepsilon\) in the Bowen metric
+\(\max_{0\leq k<n}d_Z(T^kz,T^kw)\). Then
+\begin{align*}
+ h_{\mathrm{top}}(T)=\lim_{\varepsilon\downarrow0}\limsup_{n\to\infty}
+          n^{-1}\log s_n(T,\varepsilon).
+\end{align*}
+For nonempty input fibers use the same Bowen metric restricted to \(\pi^{-1}(u)\), and define the uniform fiber growth rate
+\begin{align}\label{cone:eq:fiber-definition}
+ h_{\mathrm{fib}}(F\mid\pi)=
+ \lim_{\varepsilon\downarrow0}\limsup_{n\to\infty}\frac1n
+ \log\sup_{u\in\pi(\Lambda_Q)}s_n(F,\varepsilon,\pi^{-1}(u)).
+\end{align}
+This is the precise input-relative topological quantity used below. We do not use the informal subtraction \(h_{\mathrm{top}}(F)-h_{\mathrm{top}}(\sigma)\), particularly when the latter is infinite.
+
+The state-trajectory space is
+\begin{align*}
+ \mathcal T_Q=\{(\varphi(k,x,u))_{k\geq0}:(u,x)\in\Lambda_Q\}
+       \subset Q^{\mathbb N_0}.
+\end{align*}
+With its product topology and left shift \(S\), it is a compact dynamical system: the trajectory map from \(\Lambda_Q\) is continuous and intertwines \(F\) and \(S\). A compatible metric on \(\mathcal T_Q\) is
+\(\sum_{j\geq0}2^{-j-1}\min\{1,d(x_j,y_j)\}\).
+For an \(F\)-invariant probability measure \(\mu\), the conditional metric entropy used here is the usual
+\(h_\mu(F\mid\pi^{-1}\mathcal B_{\mathcal U})\). This notation refers to the input factor of the measure-preserving lift, not to an optimized control entropy.
+
+\section{Entropy under a common radial motion}\label{sec:coneresults}
+
+
+Here \(h_{\mathrm{inv}}\) denotes exact finite-catalogue invariance entropy, \(h_{\mathrm{out}}\) uses ambient neighborhoods of the constraint, and \(h_{\mathrm{inv}}^+\) uses finite catalogues of viable reference-input pairs. Their precise quantifiers and limit orders are given in \cref{cone:sec:definitions}. These conventions are fixed in the preceding section.
+
+Let \(A\in GL(d,\mathbb R)\), let \(B\subset\mathbb R^d\) be a compact convex body with \(0\in\operatorname{int}B\), and let \(U\subset\mathbb R^d\) be nonempty and compact. Assume that
+\(\forall y\in B\ \exists v\in U:\ Ay+v\in B\).
+Let \(R:\mathbb R\to\mathbb R\) be an increasing smooth diffeomorphism with \(R(0)=0\) and \(0<R(s)<s\) for \(0<s\leq1\). Write \(\rho=R'(0)\in(0,1]\), put
+\(Q_B=\{(s,sy):0\leq s\leq1,\ y\in B\}\), and consider
+\begin{align}\label{cone:eq:system-intro}
+ f((s,z),v)=\left(R(s),\frac{R(s)}s(Az+sv)\right),
+\end{align}
+using the smooth extension \(R(s)/s=\rho\) at \(s=0\). For \(L\in GL(d,\mathbb R)\), write
+\begin{align}\label{cone:eq:chi}
+ \chi^+(L)=\sum_{j=1}^d\max\{0,\log|\lambda_j(L)|\},
+\end{align}
+counting algebraic multiplicities. In the next theorem, superscripts \(f\) and \(g\) distinguish \eqref{cone:eq:system-intro} from its normalized affine system \(g(y,v)=Ay+v\).
+
+\begin{theorem}[Cone transference and spectral formulas]\label{cone:thm:cone}
+Under the preceding assumptions:
+\begin{enumerate}
+\item \(Q_B\) is a full-dimensional compact convex controlled invariant set, and every \(f_v\) is a global \(C^\infty\) diffeomorphism of \(\mathbb R^{d+1}\). For every integer \(n\geq0\), including possible infinite values,
+\begin{align}\label{cone:eq:transference}
+ r_{\mathrm{inv}}^{f}(n,Q_B,Q_B)=r_{\mathrm{inv}}^{g}(n,B,B).
+\end{align}
+\item For every compact \(K\subset Q_B\) with \(\operatorname{vol}_{d+1}(K)>0\),
+\begin{align}\label{cone:eq:spectral}
+ h_{\mathrm{out}}^{f}(K,Q_B)=h_{\mathrm{inv}}^{f,+}(K,Q_B)=\chi^+(\rho A),
+ \qquad
+ h_{\mathrm{inv}}^{f}(K,Q_B)\geq\chi^+(A).
+\end{align}
+For each fixed \(\varepsilon>0\), the normalized logarithms defining the outer and tracking counts have actual limits, both equal to \(\chi^+(\rho A)\).
+\item Suppose, additionally, that there is \(\eta_0>0\) such that
+\begin{align}\label{cone:eq:margin}
+ \forall y\in B\quad\exists v\in U:\quad
+ \operatorname{dist}(Ay+v,\mathbb R^d\setminus B)\geq\eta_0.
+\end{align}
+Then every such \(K\) satisfies
+\begin{align}\label{cone:eq:exact-spectral}
+ \lim_{n\to\infty}\frac1n\log r_{\mathrm{inv}}^{f}(n,K,Q_B)
+       =h_{\mathrm{inv}}^{f}(K,Q_B)=\chi^+(A).
+\end{align}
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Nonlinear perturbations preserving the entropy rates]\label{cone:thm:nonlinear}
+Let \(q>1\), let \(U\subset\mathbb R\) be finite and nonempty, and suppose that for some \(\eta>0\)
+\begin{align}\label{cone:eq:nonlinear-margin}
+ \forall y\in[-1,1]\quad\exists v\in U:
+       |qy+v|\leq1-2\eta.
+\end{align}
+Let \(R\) satisfy the radial assumptions above, put \(\rho=R'(0)\), and extend \(t(s)=R(s)/s\) smoothly at zero. For every \(v\in U\), let \(P_v:\mathbb R^2\to\mathbb R\) be smooth, with
+\begin{align}\label{cone:eq:zero-jet}
+ P_v(0,0)=0,\qquad DP_v(0,0)=0,\qquad
+ \|P\|_{C_b^2}<\min\{\eta,q/2\},
+\end{align}
+where \(\|P\|_{C_b^2}\) is the maximum, over \(v\in U\), of the global suprema of \(|P_v|\), the Euclidean operator norm of \(DP_v\), and that of \(D^2P_v\). Define
+\begin{align}\label{cone:eq:nonlinear-system}
+ f_v(s,z)=\bigl(R(s),t(s)[qz+sv+P_v(s,z)]\bigr),
+ \qquad Q=\{(s,z):0\leq s\leq1,\ |z|\leq s\}.
+\end{align}
+Then each \(f_v\) is a global smooth diffeomorphism, \(Q\) is controlled invariant, and for every compact \(K\subset Q\) of positive area,
+\begin{align}\label{cone:eq:nonlinear-entropies}
+ \lim_{n\to\infty}\frac1n\log r_{\mathrm{inv}}(n,K,Q)
+ &=h_{\mathrm{inv}}(K,Q)=\log q,\\
+ h_{\mathrm{out}}(K,Q)=h_{\mathrm{inv}}^+(K,Q)
+ &=\max\{0,\log(\rho q)\}.
+\end{align}
+All feasible states at time \(n\), uniformly over initial states and inputs, lie in \(R^n(1)Q\). Thus every pair of feasible state trajectories is asymptotic.
+\end{theorem}
+
+The perturbations form a nonempty open ball relative to the space of bounded \(C^2\) perturbations with zero first jet, intersected with the smooth functions. The radial map and the control alphabet are held fixed. This is a persistence statement in a specified infinite-dimensional class; it does not assert openness under arbitrary changes of the radial dynamics or of the linearization.
+\begin{corollary}[Equal positive control entropies with zero state entropy]\label{cone:cor:joint}
+Set \(R(s)=\operatorname{arsinh}s\), \(q=2\), \(U=\{-3/2,0,3/2\}\), and
+\begin{align}\label{cone:eq:explicit-nonlinear}
+ P_v(s,z)=e_v\tanh(s)\tanh(z),\qquad
+ \max_{v\in U}|e_v|<1/64.
+\end{align}
+The maps \eqref{cone:eq:nonlinear-system} are global smooth diffeomorphisms, and for every compact \(K\subset Q\) of positive area,
+\begin{align}
+ h_{\mathrm{inv}}(K,Q)=h_{\mathrm{out}}(K,Q)
+ =h_{\mathrm{inv}}^+(K,Q)=\log2.
+\end{align}
+Every pair of feasible state trajectories has distance at most
+\(2R^n(1)\to0\) at time \(n\), with \(R^n(1)\sim\sqrt{3/n}\).
+The true constrained lift has total topological entropy \(\log3\), uniform entropy over input fibers zero, and state-trajectory entropy zero. Every invariant lift measure is concentrated on the common fixed state and has zero conditional Kolmogorov--Sinai entropy over the input factor.
+\end{corollary}
+
+The two-symbol unperturbed example and its exact finite-horizon counts appear in \cref{cone:thm:digits,cone:cor:equal}; the proof of \cref{cone:cor:joint} is given in \cref{cone:sec:joint-proof}. The equalities in this corollary show that the phenomenon persists when all three control entropies are positive. It is not explained by an exact-versus-outer entropy gap.
+
+The proofs have three separate components. Linear Bowen coverings and unstable sectional volumes yield \cref{cone:thm:cone}, without diagonalizability or a hyperbolicity assumption. A finite-horizon reduction for tracking catalogues, proved in \cref{cone:prop:shortening}, supplies the nonlinear upper bound in \cref{cone:thm:nonlinear}; uniform small-radius blocks give its exact upper bound. Finally, \cref{cone:thm:lyapunov} uses a common Lyapunov inequality to identify the state factor, the input fibers, all invariant measures, and the eventual core of the true constrained lift. Positivity of control entropy is supplied by the spectral and perturbation theorems, not by the Lyapunov inequality alone. \Cref{cone:cor:rates} also realizes every prescribed pair of finite rates \(a>0\), \(0\leq b\leq a\), as exact and outer invariance entropies.
+
+\section{Covering estimates and control-horizon reduction}
+\subsection{Linear coverings and radial estimates}
+
+
+\begin{lemma}[Linear Bowen coverings]\label{cone:lem:matrix}
+Let \(L\in GL(d,\mathbb R)\) and let \(B\subset\mathbb R^d\) be compact. For each \(\delta>0\), there are finite sets \(E_n\subset B\) such that every \(y\in B\) has \(c\in E_n\) satisfying
+\begin{align*}
+ \max_{0\leq k\leq n}\left\lVert L^k(y-c)\right\rVert<\delta,
+ \qquad
+ |E_n|\leq C_\delta(n+1)^{d(d-1)}
+                 \exp(n\chi^+(L)).
+\end{align*}
+The constant may depend on \(L,B,\delta\), but not on \(n\).
+\end{lemma}
+\begin{proof}
+Work in real Jordan coordinates and group the real generalized eigenspaces according to eigenvalue modulus \(r>0\); a nonreal conjugate pair has its real dimension. On a group of dimension \(d_r\), the Jordan formula and equivalence of norms give
+\begin{align*}
+ \max_{0\leq k\leq n}\left\lVert L^kw\right\rVert
+ \leq C(n+1)^{d-1}\max\{1,r^n\}\lVert w\rVert.
+\end{align*}
+Cover a fixed coordinate box containing \(B\) by half-open rectangular cells. In each coordinate of the group of modulus \(r\), take side length
+\(\delta/[C'(n+1)^{d-1}\max\{1,r^n\}]\), where \(C'\) is large enough that two points in a cell have Bowen distance less than \(\delta\). Choose one point of \(B\) in each cell meeting \(B\). The number of cells is at most
+\begin{align*}
+ C_\delta(n+1)^{d(d-1)}
+ \prod_r\max\{1,r^n\}^{d_r}.
+\end{align*}
+The product is \(\exp(n\chi^+(L))\). This proves the assertion, including nontrivial Jordan blocks and unit-modulus eigenvalues.
+\end{proof}
+
+\begin{lemma}[Radial decay]\label{cone:lem:radial}
+Suppose \(R:\mathbb R\to\mathbb R\) is an increasing \(C^\infty\) diffeomorphism, \(R(0)=0\), and \(0<R(s)<s\) for \(0<s\leq1\). Write \(\rho=R'(0)\), so \(0<\rho\leq1\). Then \(R^n(1)\downarrow0\), uniformly bounding \(R^n(s)\) for \(s\in[0,1]\). For every \(0<\eta<\rho\) there is \(C_\eta<\infty\) such that
+\begin{align}\label{cone:eq:radial-upper}
+ 0<\frac{R^n(s)}s\leq C_\eta(\rho+\eta)^n
+       \quad(0<s\leq1,\ n\geq0).
+\end{align}
+For every \(s_0\in(0,1]\) there is \(c_{\eta,s_0}>0\) such that
+\begin{align}\label{cone:eq:radial-lower}
+ \frac{R^n(s)}s\geq c_{\eta,s_0}(\rho-\eta)^n
+       \quad(s_0\leq s\leq1,\ n\geq0).
+\end{align}
+The family \(\{R^n|_{[0,1]}:n\geq0\}\) is equicontinuous.
+\end{lemma}
+\begin{proof}
+The limit of the decreasing sequence \(R^n(1)\) is a fixed point of \(R\) in \([0,1]\), hence is zero. Monotonicity gives \(0\leq R^n(s)\leq R^n(1)\). Choose \(a>0\) such that
+\(\rho-\eta\leq R(t)/t\leq\rho+\eta\) for \(0<t\leq a\), and then \(N\) with \(R^N(1)\leq a\). In the product
+\begin{align*}
+ \frac{R^n(s)}s
+ =\prod_{j=0}^{n-1}\frac{R(R^j(s))}{R^j(s)},
+\end{align*}
+all factors with \(j\geq N\) have the indicated bounds. The finitely many initial products have a uniform upper bound for \(0<s\leq1\), using their continuous extensions at zero. They have a positive minimum on \([s_0,1]\). Absorbing these finite products proves \eqref{cone:eq:radial-upper} and \eqref{cone:eq:radial-lower}, also for \(n<N\).
+
+For equicontinuity, given \(\varepsilon>0\), choose \(N\) with \(R^N(1)<\varepsilon\). All maps with index at least \(N\) have range in \([0,\varepsilon)\). Uniform continuity of the finitely many preceding maps supplies a single initial-distance bound for the remaining indices.
+\end{proof}
+
+\subsection{Finite-horizon catalogues under uniform convergence}
+
+The following estimate will allow the tracking upper bound to survive nonlinear perturbations. It uses exact controls for only a fraction of the requested tracking horizon.
+
+\begin{proposition}[Shortening the exact-control horizon]\label{cone:prop:shortening}
+Let \(X\) be a normed vector space, let \(U\) be compact, let \(f:X\times U\to X\) be continuous, and let \(Q\subset X\) be compact and controlled invariant. Suppose that \(p\in Q\) and
+\begin{align}\label{cone:eq:uniform-collapse}
+ b_n:=\sup\{\|\varphi(n,x,u)-p\|:(u,x)\in\Lambda_Q\}
+ \longrightarrow0.
+\end{align}
+If \(H=h_{\mathrm{inv}}(Q,Q)<\infty\), then
+\begin{align}\label{cone:eq:tracking-exact-bound}
+ h_{\mathrm{out}}(Q,Q)\leq h_{\mathrm{inv}}^+(Q,Q)\leq H.
+\end{align}
+Suppose in addition that \(b_n\leq Ca^n\) for constants \(C>0\), \(0<a<1\), and that all maps \(f_v\) are \(L\)-Lipschitz on the same ball about \(p\), with \(L>1\). Then
+\begin{align}\label{cone:eq:shortening-rate}
+ h_{\mathrm{inv}}^+(Q,Q)
+ \leq \frac{\log L}{\log(L/a)}\,H.
+\end{align}
+The same upper bounds hold after restricting the initial set to any compact subset of \(Q\).
+\end{proposition}
+
+\begin{proof}
+Fix a sufficiently small \(\varepsilon>0\). Choose \(N\) so that \(2b_k<\varepsilon/2\) for every \(k\geq N\). Uniform continuity of the finitely many solution maps on \(Q\times U^N\) gives \(\delta>0\) such that two initial states at distance less than \(\delta\), subjected to the same input prefix, have distance less than \(\varepsilon/2\) at times \(0,\ldots,N\). Cover \(Q\) by \(C_\varepsilon\) sets of diameter less than \(\delta\).
+
+Take an exact spanning catalogue of horizon \(m\geq N\). For each catalogue word and each covering set that contains an initial state feasible for this word through time \(m\), choose one such state as a reference. Extend its word to an infinite feasible input by controlled invariance. The extension may depend on the chosen reference; the number of reference-input pairs is at most
+\begin{align}\label{cone:eq:refinement-count}
+ C_\varepsilon r_{\mathrm{inv}}(m,Q,Q).
+\end{align}
+Every initial state can be assigned a pair sharing its original catalogue word and its covering set. The actual and reference trajectories have distance less than \(\varepsilon/2\) through time \(N\). From time \(N\) through time \(m\), both trajectories are feasible, and their distance is at most \(2b_k<\varepsilon/2\). Here the bound for infinite feasible trajectories applies to each finite feasible prefix because that prefix can be continued in \(Q\). Taking \(m=n\), then normalized logarithms and the prescribed limits, proves \eqref{cone:eq:tracking-exact-bound}.
+
+For the sharper estimate let the common Lipschitz ball have radius \(r\). Decrease \(\varepsilon\) so that \(\varepsilon<r/4\), and increase \(N\) so that \(b_k<r/4\) for \(k\geq N\). Put
+\begin{align}\label{cone:eq:theta}
+ \theta=\frac{\log L}{\log L-\log a}\in(0,1),
+ \qquad m=\lceil\theta n+c_\varepsilon\rceil,
+\end{align}
+where \(c_\varepsilon>0\) is chosen so that
+\(2C\exp[-c_\varepsilon\log(L/a)]<\varepsilon/2\).
+For large \(n\), \(N\leq m\leq n\). Use the refined horizon-\(m\) catalogue just constructed. At time \(m\), the two assigned trajectories have distance at most \(2Ca^m\). For \(m\leq k\leq n\), iteration of the Lipschitz bound gives
+\begin{align}\label{cone:eq:tail-tracking}
+ \|\varphi(k,x,u)-\varphi(k,a_i,u)\|
+ \leq 2Ca^m L^{k-m}
+ \leq 2Ca^m L^{n-m}<\varepsilon/2.
+\end{align}
+This iteration is justified inductively: the reference remains within \(r/4\) of \(p\), and the asserted error puts the actual state inside the ball of radius \(r/2\); hence both states lie in the common Lipschitz domain at the next step. The last inequality follows from \eqref{cone:eq:theta}, since
+\(n\log L-m\log(L/a)\leq-c_\varepsilon\log(L/a)\).
+Consequently
+\begin{align}
+ r_{\mathrm{inv}}^+(n,\varepsilon,Q,Q)
+ \leq C_\varepsilon
+ r_{\mathrm{inv}}(\lceil\theta n+c_\varepsilon\rceil,Q,Q).
+\end{align}
+Because \(H<\infty\), the last spanning number is finite for all sufficiently large horizons. Dividing its logarithm by \(n\), using \(m/n\to\theta\), and taking the upper limit gives the bound \(\theta H\). Finally let \(\varepsilon\downarrow0\). Restriction of the initial set only decreases all the counts.
+\end{proof}
+
+\section{Entropy formulas on a solid cone}\label{cone:sec:cone}
+
+For this section fix the following assumptions:
+\begin{enumerate}
+\item \(A\in GL(d,\mathbb R)\), \(B\subset\mathbb R^d\) is compact and convex, and \(0\in\operatorname{int} B\);
+\item \(U\subset\mathbb R^d\) is nonempty and compact, and
+\begin{align}\label{cone:eq:viability}
+ \forall y\in B\quad\exists v\in U:\ Ay+v\in B;
+\end{align}
+\item \(R\) satisfies the assumptions of \cref{cone:lem:radial}, and \(\rho=R'(0)\).
+\end{enumerate}
+Write
+\begin{align*}
+ t(s)=
+ \begin{cases}R(s)/s,&s\ne0,\\ \rho,&s=0,\end{cases}
+ \quad
+ Q_B=\{(s,sy):0\leq s\leq1,\ y\in B\},
+ \quad p=(0,0).
+\end{align*}
+We use Euclidean distances in the ambient space \(\mathbb R^{d+1}\). The controlled maps are
+\begin{align}\label{cone:eq:cone-system}
+ f((s,z),v)=(R(s),t(s)(Az+sv)),\qquad v\in U.
+\end{align}
+The normalized affine system is \(g(y,v)=Ay+v\); superscripts \(f,g\) distinguish their spanning numbers when needed.
+
+\Needspace{6\baselineskip}
+The statement of \cref{cone:thm:cone} is proved in the next four subsections.
+
+
+The positive-volume hypothesis in part (ii) is a lower-bound hypothesis, not a controllability condition. The upper estimates hold even on the whole cone. Condition \eqref{cone:eq:margin} is used only for the exact upper bound. It is sufficient and is not asserted to be necessary; the finite digit systems below attain that bound without satisfying this condition.
+
+\subsection{Smoothness, normalization, and exact transference}
+
+\begin{proof}[Proof of \cref{cone:thm:cone}(i)]
+The identity \(t(s)=\int_0^1R'(\theta s)\,d\theta\) shows that \(t\) is smooth and strictly positive on \(\mathbb R\). For fixed \(v\), the inverse of \(f_v\) at \((s',z')\) is
+\begin{align*}
+ s=R^{-1}(s'),\qquad z=A^{-1}\bigl(z'/t(s)-sv\bigr).
+\end{align*}
+This is globally defined and smooth. The set \(Q_B\) is the convex hull of \(p\) and \(\{1\}\times B\), so is compact and convex; since \(B\) has interior, this hull has nonempty interior in \(\mathbb R^{d+1}\).
+
+For an initial state \((s,sy)\) with \(s>0\), let \(s_k=R^k(s)\). Direct substitution gives
+\begin{align}\label{cone:eq:normalized}
+ \varphi(k,(s,sy),u)=(s_k,s_k y_k),\quad
+ y_k=A^k y+b_k(u),\quad
+ b_k(u)=\sum_{j=0}^{k-1}A^{k-1-j}u_j.
+\end{align}
+Here \(b_0=0\). Thus this state trajectory belongs to \(Q_B\) exactly when \(y_k\in B\). Recursive use of \eqref{cone:eq:viability} gives an infinite viable normalized control from every \(y\in B\). The apex is fixed under every input.
+
+Any finite catalogue spanning \(B\) for \(g\) therefore spans every positive radial slice and the apex for \(f\). Conversely, any catalogue spanning \(Q_B\) must span the slice \(\{(1,y):y\in B\}\); normalization shows that precisely the same catalogue spans \(B\) for \(g\). Existence of a finite catalogue in one problem is equivalent to its existence in the other, and minimizing proves \eqref{cone:eq:transference}.
+\end{proof}
+
+\subsection{Finite outer and tracking catalogues}
+
+\begin{proof}[Upper bounds in \cref{cone:thm:cone}(ii)]
+Fix \(\varepsilon>0\) and \(0<\eta<\rho\), and put \(\alpha=\rho+\eta\). Apply \cref{cone:lem:matrix} to \(L=\alpha A\) and a radius \(\delta>0\) to be specified. For each of the finitely many centers \(c\in E_n\subset B\), choose once and for all an infinite normalized control \(u^c\) feasible from \(c\). Denote its normalized trajectory by \(c_k\in B\).
+
+For \(y\in B\), choose \(c\in E_n\) with Bowen distance less than \(\delta\). The trajectories from \((s,sy)\) and \((s,sc)\) under the same \(u^c\) differ by
+\begin{align*}
+ (0,R^k(s)A^k(y-c)).
+\end{align*}
+By \eqref{cone:eq:radial-upper}, \(s\leq1\), and the covering property, its norm is less than \(C_\eta\delta\) for \(0\leq k\leq n\). Choose \(\delta<\varepsilon/(2C_\eta)\). The reference trajectory from \((s,sc)\) is in \(Q_B\), so the actual trajectory is in \(Q_B^\varepsilon\). The same single control \(u^c\) works for all radial values associated with that center; the spanning catalogue is finite. Consequently
+\begin{align*}
+ \limsup_{n\to\infty}\frac1n
+ \log r_{\mathrm{inv}}^{f}(n,Q_B,Q_B^\varepsilon)
+ \leq\chi^+((\rho+\eta)A).
+\end{align*}
+
+For tracking, radial reference states must also belong to a \emph{finite} catalogue. Put \(C_B=\max_{y\in B}\left\lVert (1,y)\right\rVert\). Equicontinuity in \cref{cone:lem:radial} and compactness of \([0,1]\) give a finite set \(T\subset[0,1]\), independent of \(n\), such that every \(s\in[0,1]\) has \(t\in T\) satisfying
+\begin{align*}
+ \sup_{k\geq0}|R^k(s)-R^k(t)|<\varepsilon/(2C_B).
+\end{align*}
+Use the finite pairs \(((t,tc),u^c)\), \(c\in E_n,\ t\in T\).
+With \(t_k=R^k(t)\), their trajectory difference from \((s,sy)\) is
+\begin{align*}
+ (s_k-t_k,(s_k-t_k)c_k+s_kA^k(y-c)).
+\end{align*}
+Its norm is bounded by
+\(C_B|s_k-t_k|+C_\eta\delta<\varepsilon\).
+Every reference trajectory is feasible, including those with \(t=0\). Multiplication by the fixed number \(|T|\) does not change the exponential rate. Hence the tracking upper rate is also at most \(\chi^+((\rho+\eta)A)\), for every fixed \(\varepsilon>0\). Letting \(\eta\downarrow0\) gives the desired upper bound \(\chi^+(\rho A)\); the finite sum defining \(\chi^+\) is continuous under this scalar variation. Restricting the initial set to \(K\) preserves both bounds.
+\end{proof}
+
+\subsection{Unstable-volume lower bounds}
+
+\begin{proof}[Lower bounds in \cref{cone:thm:cone}(ii)]
+There exists \(s_0>0\) such that
+\begin{align*}
+ K_0=K\cap\{(s,z):s\geq s_0\}
+\end{align*}
+has positive \((d+1)\)-dimensional volume: the increasing union of these truncated sets as \(s_0\downarrow0\) differs from \(K\) by a subset of \(\{s=0\}\), which has zero ambient volume.
+
+Let \(E_+\) be the real sum of the generalized eigenspaces of \(A\) for which \(\rho|\lambda|>1\). Let \(E_-\) be the invariant complementary sum, let \(r=\dim E_+\), and write \(z=z_++z_-\). If \(r=0\), the claimed outer lower bound is simply nonnegativity. Suppose \(r>0\), and write \(A_+=A|_{E_+}\).
+
+Fix a control \(u\). For arbitrary initial \(z\), \eqref{cone:eq:normalized} gives the ambient last coordinate
+\begin{align}\label{cone:eq:ambient-final}
+ z_n=a_n(s)A^n z+R^n(s)b_n(u),\qquad
+ a_n(s)=R^n(s)/s.
+\end{align}
+Let \(W_n(u)\subset K_0\) consist of initial points whose trajectory stays in \(Q_B^\varepsilon\) at times \(0,\ldots,n\). Since \(Q_B^\varepsilon\) is bounded, its final \(E_+\)-coordinate belongs to a fixed ball, with radius depending on \(\varepsilon\) but not on \(n,u\). For each fixed \(s,z_-\), the map from \(z_+\) to that coordinate is an affine map with linear part \(a_n(s)A_+^n\). The \(r\)-dimensional volume of the corresponding section of \(W_n(u)\) is therefore at most
+\begin{align*}
+ C_\varepsilon\,a_n(s)^{-r}|\det A_+|^{-n}
+ \leq C_{\varepsilon,\eta,s_0}
+       \bigl((\rho-\eta)^r|\det A_+|\bigr)^{-n},
+\end{align*}
+where \eqref{cone:eq:radial-lower} was used. This bound is unaffected by the translation, which may depend on \(u,s\).
+
+The \(s,z_-\) projection of \(K_0\) is contained in a fixed bounded box. The change to the chosen linear coordinates has a constant nonzero Jacobian. Fubini's theorem consequently gives
+\begin{align*}
+ \operatorname{vol}_{d+1}(W_n(u))\leq
+ C'_{\varepsilon,\eta,K}\bigl((\rho-\eta)^r|\det A_+|\bigr)^{-n}.
+\end{align*}
+The sets are measurable, since finite-time trajectories are continuous. If \(M\) controls span \(K\), their sets \(W_n(u)\) cover \(K_0\). Thus
+\begin{align*}
+ M\geq \frac{\operatorname{vol}_{d+1}(K_0)}{C'_{\varepsilon,\eta,K}}
+          \bigl((\rho-\eta)^r|\det A_+|\bigr)^n.
+\end{align*}
+Taking the lower limit of normalized logarithms and then letting \(\eta\downarrow0\) yields
+\begin{align*}
+ \liminf_{n\to\infty}\frac1n
+ \log r_{\mathrm{inv}}^{f}(n,K,Q_B^\varepsilon)
+ \geq r\log\rho+\log|\det A_+|
+ =\chi^+(\rho A).
+\end{align*}
+Together with the upper bound this proves an actual time limit for every \(\varepsilon>0\). Inequality \eqref{cone:eq:outer-tracking} and the tracking upper bound give the same conclusion for tracking counts. The subsequent limit \(\varepsilon\downarrow0\) has the stated value.
+
+For exact containment use instead the unstable subspace of \(A\), with \(|\lambda|>1\). From \(z_n/R^n(s)\in B\) we obtain
+\begin{align*}
+ A^nz+s b_n(u)\in sB\subset B.
+\end{align*}
+For fixed \(s,z_-\), the relevant linear part on the unstable subspace is now \(A_+^n\), without a radial factor. The same sectional-volume and Fubini argument gives
+\begin{align*}
+ \liminf_{n\to\infty}\frac1n
+ \log r_{\mathrm{inv}}^{f}(n,K,Q_B)\geq\chi^+(A).
+\end{align*}
+This statement also covers infinite exact spanning numbers. It finishes part (ii).
+\end{proof}
+
+\subsection{The exact upper bound with an interior margin}
+
+\begin{proof}[Proof of \cref{cone:thm:cone}(iii)]
+Choose \(\delta<\eta_0\) and a Bowen covering \(E_n\subset B\) for the matrix \(A\) from \cref{cone:lem:matrix}. At each center \(c\), recursively use \eqref{cone:eq:margin} to choose an infinite normalized control with
+\begin{align*}
+ \operatorname{dist}(c_k,\mathbb R^d\setminus B)\geq\eta_0
+       \quad\text{for every }k\geq1.
+\end{align*}
+For any \(y\) assigned to \(c\), its normalized trajectory under that same control satisfies
+\(\left\lVert y_k-c_k\right\rVert=\left\lVert A^k(y-c)\right\rVert<\delta\) for \(0\leq k\leq n\).
+It follows that \(y_k\in B\) for \(k\geq1\), and \(y_0\in B\) already holds. Thus these finitely many controls span \(B\), and by exact transference they span \(Q_B\). Their number has upper exponential rate at most \(\chi^+(A)\). The exact lower bound just proved gives \eqref{cone:eq:exact-spectral}.
+\end{proof}
+
+\begin{remark}[Where the assumptions enter]\label{cone:rem:assumptions}
+Convexity and \(0\in\operatorname{int} B\) make the constraint a solid convex cone; the proof uses boundedness for outer estimates and positive volume for lower estimates. No diagonalizability or hyperbolicity of \(A\) is needed. The smooth radial hypotheses ensure global invertibility, the estimates in \cref{cone:lem:radial}, and uniform decay. Condition \eqref{cone:eq:margin} is automatic if \(U\supset -AB\), since each normalized state can be reset to zero. It also holds for appropriate finite redundant alphabets. The theorem does not assert that an arbitrary viable compact affine system has finite exact invariance entropy without this condition.
+\end{remark}
+
+\begin{remark}[Why a Lie-group formula is not a direct substitute]\label{cone:rem:lie}
+In the author version of \cite[Definition 1]{CCS2021}, a discrete-time linear system on a Lie group has the form \(f_v(g)=a_v f_0(g)\), with \(f_0\) an automorphism. If all such maps fix one point \(p\), then \(a_v=p f_0(p)^{-1}\) is independent of \(v\), and all controlled maps coincide. The cone maps have a common fixed apex and are distinct for distinct \(v\). Thus they do not have this representation on any group structure that represents the same maps on the whole state space. The normalization \(y=z/s\) is defined only for \(s>0\); deleting the apex removes compactness of the viable constraint and does not justify transferring a compact-constraint entropy formula. This observation excludes that direct application, not every possible use of homogeneous-space theory.
+\end{remark}
+
+\subsection{Nonlinear perturbations with fixed first jet}
+
+We prove \cref{cone:thm:nonlinear}. Exact transference no longer holds for these systems: the normalized dynamics depends on the current radius. Its entropy can nevertheless be computed by combining finite blocks at small radii with one-dimensional sectional-volume estimates.
+
+\begin{proof}[Proof of \cref{cone:thm:nonlinear}]
+Choose \(\delta\) with
+\(\|P\|_{C_b^2}<\delta<\min\{\eta,q/2\}\).
+Taylor's formula at the origin gives, for \(0<s\leq1\) and \(|y|\leq1\),
+\begin{align}\label{cone:eq:perturbation-small}
+ |P_v(s,sy)|\leq\tfrac12\delta s^2(1+y^2)\leq\delta s^2,
+ \qquad |\partial_zP_v(s,z)|\leq\delta\sqrt{s^2+z^2}.
+\end{align}
+The second inequality holds for all \((s,z)\); the global bound \(|\partial_zP_v|<\delta\) also holds.
+
+\emph{Smoothness and viability.}
+The first coordinate determines \(s\) uniquely from the image. For this \(s\), the map
+\(z\mapsto qz+sv+P_v(s,z)\) has derivative at least \(q-\delta>0\), tends to the two respective infinities at the ends of the real line, and is therefore a bijection. The implicit function theorem gives a smooth inverse depending on \(s\) and the image coordinate. Positivity and smoothness of \(t\), already established above, prove global smooth invertibility.
+
+At positive radius the normalized coordinate satisfies
+\begin{align}\label{cone:eq:nonlinear-normalized}
+ y_{k+1}=qy_k+u_k+
+ \frac{P_{u_k}(s_k,s_ky_k)}{s_k},\qquad
+ s_k=R^k(s).
+\end{align}
+At any \(|y_k|\leq1\), choose \(u_k\) by \eqref{cone:eq:nonlinear-margin}. The perturbation term has absolute value at most \(\delta s_k\leq\delta<\eta\), so \(|y_{k+1}|\leq1-\eta\). The apex is fixed under every input. This proves controlled invariance, with a uniform normalized interior margin. Every finite feasible trajectory satisfies \(0\leq s_k\leq R^k(1)\) and \(|z_k|\leq s_k\). Hence all its time-\(k\) states lie in \(R^k(1)Q\).
+
+\emph{Exact upper bound.}
+Fix an integer block length \(N\geq1\). Cover \([-1,1]\) by intervals of radius
+\(\gamma_N=(\eta/4)q^{-N}\), with centers in \([-1,1]\), using at most \(C_\eta q^N\) intervals, where \(C_\eta\) is independent of \(N\). In the unperturbed affine system \(y^+=qy+v\), choose from each center a length-\(N\) word whose reference states at positive times all satisfy \(|c_k|\leq1-2\eta\). This is possible by recursive use of \eqref{cone:eq:nonlinear-margin}.
+
+Choose \(a_N\in(0,1]\) so small that
+\begin{align}\label{cone:eq:small-radius-block}
+ \delta a_N\sum_{j=0}^{N-1}q^j\leq\eta/4.
+\end{align}
+For initial radius \(0<s\leq a_N\) and an initial ratio \(y\) assigned to a center, apply its unperturbed word to the perturbed system. As long as the perturbed ratios remain in \([-1,1]\), their errors relative to the unperturbed reference obey
+\begin{align}
+ |y_k-c_k|
+ \leq q^k\gamma_N+\delta a_N\sum_{j=0}^{k-1}q^j
+ \leq\eta/2\qquad(0\leq k\leq N).
+\end{align}
+This estimate proves its own feasibility premise by induction: the reference at each positive time has margin \(2\eta\), while the error is at most \(\eta/2\). Thus these same \(C_\eta q^N\) words work simultaneously for all radii at most \(a_N\). No radius-dependent infinite catalogue has been introduced.
+
+Choose \(N_0\) with \(R^{N_0}(1)\leq a_N\). All words in \(U^{N_0}\) form a finite exact catalogue for this transient, by controlled invariance. Thereafter concatenate arbitrary words from the small-radius block catalogue. Each current radius is still at most \(a_N\), so the argument can be applied successively to every block. For \(n\geq N_0\), using a prefix of the final block if necessary, this gives
+\begin{align}
+ r_{\mathrm{inv}}(n,Q,Q)
+ \leq |U|^{N_0}(C_\eta q^N)^{\lceil(n-N_0)/N\rceil}.
+\end{align}
+Consequently the upper entropy is at most
+\(\log q+N^{-1}\log C_\eta\). Letting \(N\to\infty\) proves the exact upper bound \(\log q\).
+
+\emph{Exact lower bound.}
+For fixed \(s>0\) and a fixed input word \(u\), let \(I_n(s,u)\) be the set of \(z\in[-s,s]\) whose states satisfy \(Q\) through time \(n\). This set is an interval, possibly empty or a singleton: every vertical solution map is strictly increasing, and \(I_n(s,u)\) is the intersection of inverse images of vertical intervals. In particular every point between two members has a feasible trajectory through time \(n\).
+
+Write \(Z_n(s,z,u)\) for the second state coordinate. Along this interval the chain rule yields
+\begin{align}\label{cone:eq:vertical-derivative}
+ \partial_z Z_n(s,z,u)
+ =\frac{R^n(s)}s
+   \prod_{j=0}^{n-1}
+       \bigl[q+\partial_zP_{u_j}(s_j,z_j)\bigr].
+\end{align}
+The product of the factors \(t(s_j)\) telescopes to \(R^n(s)/s\).
+For any \(\zeta\in(0,q-1)\), uniform feasible convergence and \eqref{cone:eq:perturbation-small} imply that every factor after a fixed time \(N_\zeta\) is at least \(q-\zeta\), independently of \(s,z,u\). The finitely many preceding factors are at least \(q-\delta\). There is therefore a constant \(c_\zeta>0\), independent of the word and of \(n,s\), such that
+\begin{align}
+ \partial_z Z_n(s,z,u)
+ \geq c_\zeta\frac{R^n(s)}s(q-\zeta)^n
+ \quad\text{on }I_n(s,u).
+\end{align}
+The image interval at time \(n\) has length at most \(2R^n(s)\). Integrating the derivative between any two points of \(I_n(s,u)\) proves
+\begin{align}\label{cone:eq:exact-section-nonlinear}
+ |I_n(s,u)|\leq \frac{2s}{c_\zeta}(q-\zeta)^{-n}.
+\end{align}
+The feasible set of one word is closed and hence measurable. Fubini's theorem, applied over \(0<s\leq1\), bounds its area in \(Q\) by a constant times \((q-\zeta)^{-n}\). The slice \(s=0\) has zero area. Covering a compact \(K\subset Q\) of positive area consequently requires at least \(c_K(q-\zeta)^n\) words. Taking the lower time limit and then \(\zeta\downarrow0\), and combining with the upper bound, proves the first line of \eqref{cone:eq:nonlinear-entropies}, including existence of its time limit.
+
+\emph{Outer lower bound.}
+Choose \(s_0>0\) so that \(K_0=K\cap\{s\geq s_0\}\) has positive area. Fix small \(\varepsilon>0\). Replace \(I_n(s,u)\) by the initial interval of points in \([-s,s]\) whose trajectory remains in \(Q^\varepsilon\) through time \(n\). This is still an interval: \(Q^\varepsilon\) is convex, all its vertical sections are intervals, and all vertical solution maps are increasing. For an outer-feasible state with radial coordinate \(s_j\), comparison with a point \((r,w)\in Q\) at distance less than \(\varepsilon\) gives
+\begin{align}
+ |z_j|<s_j+2\varepsilon.
+\end{align}
+After a time depending only on \(\varepsilon\), \(s_j\leq R^j(1)\leq\varepsilon\), and hence \(|z_j|\leq3\varepsilon\). By \eqref{cone:eq:perturbation-small}, the late factors in \eqref{cone:eq:vertical-derivative} are bounded below by
+\(q-\omega_\varepsilon\), where
+\(\omega_\varepsilon=\delta\sqrt{10}\,\varepsilon\to0\).
+Take \(\varepsilon\) small enough that this number is positive. Absorbing the finitely many earlier factors into \(c_\varepsilon>0\), the derivative on the entire outer-feasible initial interval is at least
+\begin{align}
+ c_\varepsilon\frac{R^n(s)}s(q-\omega_\varepsilon)^n.
+\end{align}
+Its time-\(n\) image has length at most \(2(1+2\varepsilon)\). For \(s\geq s_0\), the radial lower bound in \cref{cone:lem:radial} then bounds its initial length by
+\begin{align}
+ C_{\varepsilon,\xi,s_0}
+ \bigl[(\rho-\xi)(q-\omega_\varepsilon)\bigr]^{-n},
+ \qquad 0<\xi<\rho.
+\end{align}
+The mean-value estimate remains valid for open or half-open intervals by applying it between any two of their points. Fubini on \(K_0\), followed by the covering argument, gives a lower time rate at least
+\(\log[(\rho-\xi)(q-\omega_\varepsilon)]\).
+Nonnegativity supplies the maximum with zero. Let \(\xi\downarrow0\) and then \(\varepsilon\downarrow0\), in that order after the time limit, to obtain
+\begin{align}\label{cone:eq:nonlinear-outer-lower}
+ h_{\mathrm{out}}(K,Q)\geq\max\{0,\log(\rho q)\}.
+\end{align}
+
+\emph{Tracking upper bound.}
+If \(\rho=1\), uniform feasible convergence and \cref{cone:prop:shortening} give
+\(h_{\mathrm{inv}}^+(Q,Q)\leq h_{\mathrm{inv}}(Q,Q)=\log q\), which matches \eqref{cone:eq:nonlinear-outer-lower}.
+Suppose \(0<\rho<1\). For any \(a\in(\rho,1)\), \cref{cone:lem:radial} and feasibility give a uniform bound \(b_n\leq C_a a^n\).
+At the apex,
+\begin{align}\label{cone:eq:apex-derivative}
+ Df_v(p)=
+ \begin{pmatrix}
+ \rho&0\\
+ \rho v&\rho q
+ \end{pmatrix}.
+\end{align}
+For \(M>0\), equip \(\mathbb R^2\) with the equivalent norm
+\(\|(s,z)\|_M=\max\{M|s|,|z|\}\).
+The corresponding operator norm of \eqref{cone:eq:apex-derivative} is at most
+\(\rho q+\rho\max_{v\in U}|v|/M\).
+For any \(L>\max\{1,\rho q\}\), choose \(M\) large and then a common convex neighborhood of \(p\) small enough that all \(f_v\) are \(L\)-Lipschitz there. Finiteness of \(U\) makes the neighborhood uniform. Equivalent norms leave these entropy definitions unchanged, since each metric tolerance can be bounded by a constant multiple of the other.
+
+Applying \cref{cone:prop:shortening} in this norm yields
+\begin{align}
+ h_{\mathrm{inv}}^+(Q,Q)
+ \leq \log q\,\frac{\log L}{\log L-\log a}.
+\end{align}
+Let \(a\downarrow\rho\) and \(L\downarrow\max\{1,\rho q\}\).
+If \(\rho q>1\), the right-hand side tends to \(\log(\rho q)\); if \(\rho q\leq1\), it tends to zero. This includes the critical case \(\rho q=1\). Restricting the initial set to \(K\) and using \(h_{\mathrm{out}}\leq h_{\mathrm{inv}}^+\) completes the proof.
+\end{proof}
+
+\begin{remark}[What the nonlinear calculation does and does not preserve]\label{cone:rem:nonlinear-scope}
+The exact entropy is determined by the limiting normalized expansion \(q\). Its upper bound uses finite blocks that work uniformly for a whole radial interval, whereas its lower bound uses derivatives on vertical intervals. The outer lower bound additionally uses the smallness of the derivative perturbation near the apex; the tracking upper bound uses \cref{cone:prop:shortening}. Exact finite-horizon transference and the digit tiling are not claimed for the perturbed system. Nor do we assert a common fixed-\(\varepsilon\) time limit for its outer or tracking counts. The entropy identities use exactly the iterated limits in \cref{cone:sec:definitions}.
+\end{remark}
+
+\section{Finite alphabets and equal positive entropies}\label{cone:sec:examples}
+
+\subsection{Exact counts in arbitrary dimension}
+
+For integers \(q_1,\ldots,q_d\geq2\), set
+\begin{align*}
+ U_{q_i}=\{q_i-1-2j:0\leq j<q_i\},\quad
+ A=\operatorname{diag}(q_1,\ldots,q_d),\quad
+ U=\prod_{i=1}^d U_{q_i},\quad M=\prod_{i=1}^d q_i.
+\end{align*}
+Take \(B=[-1,1]^d\), \(Q=Q_B\), and
+\begin{align}\label{cone:eq:K}
+ K_d=[1/2,3/4]\times[-1/4,1/4]^d.
+\end{align}
+This compact set is contained in \(\operatorname{int} Q\) and has positive ambient volume. In particular, \(|z_i|\leq1/4<1/2\leq s<1\) on \(K_d\).
+
+\begin{theorem}[Finite digit family]\label{cone:thm:digits}
+For every radial map \(R\) satisfying \cref{cone:lem:radial}, the preceding finite-alphabet cone system satisfies, for all integers \(n\geq0\),
+\begin{align}\label{cone:eq:digit-counts}
+ r_{\mathrm{inv}}(n,Q,Q)=M^n,\qquad
+ 2^{-d}M^n\leq r_{\mathrm{inv}}(n,K_d,Q)\leq M^n.
+\end{align}
+Consequently
+\begin{align*}
+ h_{\mathrm{inv}}(K_d,Q)=h_{\mathrm{inv}}(Q,Q)=\sum_{i=1}^d\log q_i,
+\end{align*}
+and
+\begin{align}\label{cone:eq:digit-outer}
+ h_{\mathrm{out}}(K_d,Q)=h_{\mathrm{out}}(Q,Q)
+ =h_{\mathrm{inv}}^{+}(K_d,Q)=h_{\mathrm{inv}}^{+}(Q,Q)
+ =\sum_{i=1}^d\max\{0,\log(\rho q_i)\}.
+\end{align}
+For any two initial states \(x,y\in Q\) and any two controls \(u,v\) respectively feasible for all nonnegative times,
+\begin{align}\label{cone:eq:uniform-digit}
+ \left\lVert \varphi(n,x,u)-\varphi(n,y,v)\right\rVert
+ \leq 2\sqrt d\,R^n(1)\longrightarrow0.
+\end{align}
+All individual controlled maps are global smooth diffeomorphisms.
+\end{theorem}
+\begin{proof}
+For one coordinate with expansion \(q\), the intervals
+\begin{align*}
+ I_v=\left[\frac{-1-v}{q},\frac{1-v}{q}\right],
+       \quad v\in U_q,
+\end{align*}
+tile \([-1,1]\) with disjoint interiors. The map \(y\mapsto qy+v\) sends \(I_v\) onto \([-1,1]\), and its inverse branch sends all of \([-1,1]\) into \(I_v\). Hence every point admits an infinite viable sequence, and every word of length \(n\) has a viable interval of length \(2q^{-n}\). More explicitly, composing the inverse branches maps \([-1,1]\) to the set viable for that word; all intermediate inverse images remain in \([-1,1]\).
+
+Products give one viable box for each length-\(n\) word over \(U\), of volume \(2^dM^{-n}\). The \(M^n\) words span the entire cube \(B\). Conversely, for any fixed word the final-time condition alone confines its viable initial points to an affine preimage of \(B\) of volume \(2^dM^{-n}\). Covering \(B\), of volume \(2^d\), requires at least \(M^n\) words. Transference proves the first identity in \eqref{cone:eq:digit-counts}.
+
+To obtain the lower bound for \(K_d\), restrict any spanning family to the slice \(s=1/2\). Its normalized initial coordinates contain exactly \([-1/2,1/2]^d\), of \(d\)-volume \(1\). One control word covers at most \(2^dM^{-n}\) of that slice in normalized coordinates. At least \(2^{-d}M^n\) words are required. The upper bound follows by restricting a catalogue for \(Q\). This gives the exact entropy formula without an interior margin assumption. Formula \eqref{cone:eq:digit-outer} follows from \cref{cone:thm:cone}(ii).
+
+Every feasible state at time \(n\) belongs to
+\(\{(s,z):0\leq s\leq R^n(1),\ |z_i|\leq s\}=R^n(1)Q\).
+The diameter of \(Q\) is \(2\sqrt d\): its vertices are the apex and the vertices \((1,\pm1,\ldots,\pm1)\), and the largest distance between them is \(2\sqrt d\). A convex hull has the same diameter as the supremum of the distances between its generating vertices. This proves \eqref{cone:eq:uniform-digit}. Smooth invertibility was proved in \cref{cone:thm:cone}(i).
+\end{proof}
+
+\begin{remark}[The planar linear-radial system]
+With \(d=1\) and \(R(s)=\rho s\), \(0<\rho<1\), the system is
+\begin{align*}
+ f((s,z),v)=(\rho s,\rho(qz+sv)),\quad v\in U_q,
+ \quad Q=\{0\leq s\leq1,\ |z|\leq s\}.
+\end{align*}
+Its fixed-input maps are linear isomorphisms with determinant \(\rho^2q\); its dependence on state and input is bilinear. The counts reduce to
+\begin{align*}
+ r_{\mathrm{inv}}(n,Q,Q)=q^n,\qquad
+ q^n/2\leq r_{\mathrm{inv}}(n,K_1,Q)\leq q^n.
+\end{align*}
+The exact rate is \(\log q\), the outer and tracking rates are \(\max\{0,\log(q\rho)\}\), and the distance of any two feasible trajectories is at most \(2\rho^n\). In particular both control entropies are positive for \(1/q<\rho<1\).
+\end{remark}
+
+\subsection{Subexponential radial decay removes the entropy gap}
+
+\begin{corollary}[Equal positive entropies]\label{cone:cor:equal}
+Let \(R(s)=\operatorname{arsinh}s\), \(d=1\), and \(q=2\), with \(U_2=\{-1,1\}\). On the same solid triangle \(Q\) and interior rectangle \(K_1\), every controlled map is a global smooth diffeomorphism and
+\begin{align}\label{cone:eq:equal}
+ h_{\mathrm{inv}}(K_1,Q)=h_{\mathrm{out}}(K_1,Q)=h_{\mathrm{inv}}^{+}(K_1,Q)=\log2.
+\end{align}
+The same equalities hold for \(K_1\) replaced by \(Q\). All pairs of feasible state trajectories are asymptotic. Moreover,
+\begin{align*}
+ R^n(1)\sim\sqrt{3/n}.
+\end{align*}
+\end{corollary}
+\begin{proof}
+The function \(R=\operatorname{arsinh}\) is a smooth increasing bijection of \(\mathbb R\) with smooth inverse \(\sinh\), satisfies \(0<R(s)<s\) for \(s>0\), and has \(R'(0)=1\). Thus \cref{cone:thm:digits} applies with \(\rho=1\), proving \eqref{cone:eq:equal} and asymptoticity.
+
+For the rate, write \(s_n=R^n(1)\). Since
+\(R(s)=s-s^3/6+O(s^5)\) at zero, and \(s_n\downarrow0\),
+\begin{align*}
+ s_{n+1}^{-2}-s_n^{-2}
+ =s_n^{-2}\bigl[(1-s_n^2/6+O(s_n^4))^{-2}-1\bigr]
+ \longrightarrow1/3.
+\end{align*}
+Telescoping and taking Ces\`aro averages gives \(s_n^{-2}/n\to1/3\), which proves the asserted asymptotic formula.
+\end{proof}
+
+The equality case shows that a discrepancy between exact and neighborhood constraints is not responsible for the failure of a state Li--Yorke conclusion. A fixed positive ambient tolerance still requires exponentially many control signals. Nevertheless every signal that is infinitely feasible produces a state converging to the apex.
+
+\subsection{A nonlinear equality family}\label{cone:sec:joint-proof}
+
+\begin{proof}[Proof of \cref{cone:cor:joint}]
+For \(q=2\) and \(U=\{-3/2,0,3/2\}\), the intervals of points for which one of \(|2y+v|\) is at most \(3/4\) cover \([-1,1]\). Equivalently, the nearest of the three centers \(-3/4,0,3/4\) is at distance at most \(3/8\) from every \(y\in[-1,1]\). Thus \eqref{cone:eq:nonlinear-margin} holds with \(\eta=1/8\).
+
+The function \(\tanh(s)\tanh(z)\) and its first two derivatives are bounded; its value and first derivative at the origin vanish. The absolute values of its two pure second derivatives are at most \(2\), and that of its mixed derivative is at most \(1\), so its Hessian operator norm is at most \(3\). In particular the bound \(4\max_v|e_v|<1/16<\eta\) dominates the required \(C_b^2\) norm. \Cref{cone:thm:nonlinear} therefore gives the three entropy values and uniform feasible convergence. The diameter of \(Q\) is \(2\), giving the pair-distance bound. The radial asymptotic is proved in \cref{cone:cor:equal}.
+
+On \(Q\), the function \(V(s,z)=s\) vanishes only at the apex and satisfies
+\(V(f_v(s,z))=R(V(s,z))\) for every feasible step. Apply \cref{cone:thm:lyapunov} with \(\psi=R|_{[0,1]}\). Since \(|U|=3\), its lift, fiber, state-factor, and measure conclusions give all remaining assertions.
+\end{proof}
+
+Taking at least one \(e_v\ne0\) makes the vertical controlled map nonlinear. More generally the entire perturbation ball in \cref{cone:thm:nonlinear}, with this fixed alphabet and \(R=\operatorname{arsinh}\), has the same entropy equalities and the same Lyapunov conclusions. Redundancy of the alphabet supplies the interior margin that allows this perturbation argument; the minimal digit alphabet is used for exact counting, not for this persistence statement.
+
+\subsection{Prescribing the two control entropy rates}
+
+\begin{corollary}[Arbitrary ordered rates]\label{cone:cor:rates}
+For every \(a>0\) and \(b\in[0,a]\), there is a planar system of the form \eqref{cone:eq:cone-system} with a finite input alphabet, global smooth invertible controlled maps, the triangle \(Q\), and the rectangle \(K_1\), such that
+\begin{align*}
+ h_{\mathrm{inv}}(K_1,Q)=h_{\mathrm{inv}}(Q,Q)=a,\qquad
+ h_{\mathrm{out}}(K_1,Q)=h_{\mathrm{out}}(Q,Q)=b.
+\end{align*}
+Its tracking entropies also equal \(b\), and all pairs of feasible state trajectories are asymptotic.
+\end{corollary}
+\begin{proof}
+Put \(L=e^a>1\), \(m=\lceil L\rceil+2\), and
+\begin{align*}
+ c_j=-1+\frac{2j}{m-1},\qquad
+ U=\{-Lc_j:0\leq j<m\},\qquad A=L,\quad B=[-1,1].
+\end{align*}
+For every \(y\in B\), a nearest center satisfies \(|y-c_j|\leq1/(m-1)\), so
+\begin{align*}
+ |Ly-Lc_j|\leq\frac L{m-1}<1.
+\end{align*}
+Thus \eqref{cone:eq:margin} holds with \(\eta_0=1-L/(m-1)>0\). Exact entropy equals \(\log L=a\) by \cref{cone:thm:cone}(iii). If \(b<a\), choose \(R(s)=e^{b-a}s\). Then \(\rho L=e^b\) and the outer and tracking formula is \(b\), including the threshold case \(b=0\). If \(b=a\), choose \(R(s)=\operatorname{arsinh}s\); then \(\rho=1\) gives the same conclusion. Uniform radial decay and feasibility place all trajectories in \(R^n(1)Q\), proving asymptoticity.
+\end{proof}
+
+This realizes the full range of ordered finite values in dimension two, with a finite alphabet depending on \(a\). It is not an assertion that the chosen alphabet size is minimal. Exact entropy cannot be smaller than outer entropy by definition, so the ordering in the corollary is the relevant restriction.
+
+\section{A Lyapunov condition and entropy separation}\label{cone:sec:separation}
+
+\subsection{A system-level obstruction}
+
+The next result uses a one-step inequality for a scalar function. It does not assume shrinking trajectory diameters or any positive invariance entropy. The cone formula supplies positive control entropy separately, under explicit algebraic and viability assumptions.
+
+\begin{theorem}[Common Lyapunov obstruction]\label{cone:thm:lyapunov}
+Let \(X,U,f,Q\) be as in \cref{cone:sec:definitions}, and suppose \(p\in Q\) satisfies \(f(p,v)=p\) for every \(v\in U\). Suppose there is a continuous function \(V:Q\to[0,L]\), with \(L=\max_QV\), such that \(V^{-1}(0)=\{p\}\), and a continuous nondecreasing function \(\psi:[0,L]\to[0,L]\) with \(\psi(0)=0\) and \(\psi(t)<t\) for \(t>0\), satisfying
+\begin{align}\label{cone:eq:lyapunov}
+ V(f(x,v))\leq\psi(V(x))
+ \quad\text{whenever }x\in Q,\ v\in U,\ f(x,v)\in Q.
+\end{align}
+Then:
+\begin{enumerate}
+\item all infinite feasible trajectories converge to \(p\), uniformly over their initial states and their controls; every two such trajectories are asymptotic;
+\item the state-trajectory shift has \(h_{\mathrm{top}}(S)=0\), and the uniform fiber entropy in \eqref{cone:eq:fiber-definition} satisfies \(h_{\mathrm{fib}}(F\mid\pi)=0\);
+\item \(\pi(\Lambda_Q)=\mathcal U\) and
+\begin{align*}
+ h_{\mathrm{top}}(F)=h_{\mathrm{top}}(\sigma:\mathcal U\to\mathcal U)
+ =\begin{cases}\log m,&|U|=m<\infty,\\+\infty,&U\text{ infinite};\end{cases}
+\end{align*}
+\item every \(F\)-invariant Borel probability measure is supported on \(\mathcal U\times\{p\}\). On that set \(\pi\) is a conjugacy to the input shift. In particular
+\begin{align*}
+ h_\mu(F\mid\pi^{-1}\mathcal B_{\mathcal U})=0;
+\end{align*}
+\item the eventual core is
+\begin{align*}
+ \bigcap_{n\geq0}F^n(\Lambda_Q)=\mathcal U\times\{p\}.
+\end{align*}
+If \(Q\ne\{p\}\), then \(F\) is not surjective.
+\end{enumerate}
+Every continuous self-map \(G:Q\to Q\) obtained from a feasible memoryless feedback has zero topological entropy. All feasible trajectories of any fixed causal controller, whether continuous or not and whether or not it uses memory, satisfy the asymptotic conclusion in (i).
+\end{theorem}
+
+\begin{proof}
+If \(L=0\), then \(Q=\{p\}\), and all assertions follow directly; assume \(L>0\). The numbers \(\psi^n(L)\) decrease to a fixed point of \(\psi\). Continuity and strict decrease away from zero force this limit to be zero. Iterating \eqref{cone:eq:lyapunov} along a feasible trajectory gives
+\begin{align*}
+ V(\varphi(n,x,u))\leq\psi^n(L).
+\end{align*}
+For any \(\varepsilon>0\), the compact set
+\(\{x\in Q:d(x,p)\geq\varepsilon\}\), if nonempty, has a strictly positive minimum of \(V\). Thus there are numbers \(\beta_n\downarrow0\) with
+\begin{align}\label{cone:eq:beta}
+ \sup_{(u,x)\in\Lambda_Q}d(\varphi(n,x,u),p)\leq\beta_n.
+\end{align}
+For example take the maximum distance to \(p\) over \(V^{-1}([0,\psi^n(L)])\).
+This proves (i), including the quantification over different controls.
+
+We give uniform covering arguments for (ii) and (iii) to avoid identifying different relative entropy conventions. Fix \(0<\varepsilon<1\) and choose \(N\) such that \(2\beta_k<\varepsilon/2\) for \(k\geq N\). The finitely many maps
+\((x,u_0,\ldots,u_{N-1})\mapsto\varphi(k,x,u)\), \(0\leq k<N\), are uniformly continuous on the compact domain \(Q\times U^N\). This remains true even though intermediate states for some controls may leave \(Q\); each finite-time image of the compact domain is compact, and \(f\) is continuous on \(X\times U\). There exists \(\delta>0\), independent of the control prefix, such that
+\begin{align}\label{cone:eq:prefix-uc}
+ d(x,y)<\delta\quad\Longrightarrow\quad
+ \max_{0\leq k<N}d(\varphi(k,x,u),\varphi(k,y,u))<\varepsilon/2
+\end{align}
+for every common prefix.
+
+Cover \(Q\) by finitely many sets of diameter less than \(\delta\), say \(C\) sets. Within one input fiber, two feasible initial states in the same such set have state distance less than \(\varepsilon/2\) up to time \(N-1\) by \eqref{cone:eq:prefix-uc}. At later times their distance is less than \(\varepsilon/2\) by \eqref{cone:eq:beta}. Their input coordinates are identical at all shifted times. Consequently every \((n,\varepsilon)\)-separated subset of every fiber has cardinality at most \(C\), uniformly in \(n\) and \(u\). This proves \(h_{\mathrm{fib}}(F\mid\pi)=0\).
+
+For the state-trajectory system, \eqref{cone:eq:beta} implies
+\begin{align*}
+ \sup_{\xi\in\mathcal T_Q}d_{\mathcal T_Q}(S^n\xi,(p,p,\ldots))
+ \leq\beta_n\longrightarrow0.
+\end{align*}
+Any continuous map on a compact metric space whose iterates converge uniformly to a constant has zero entropy: for a given separation scale, all sufficiently late images have diameter smaller than that scale, while uniform continuity of the finitely many earlier iterates gives a finite cover of bounded Bowen diameter for every horizon. Applying this argument proves \(h_{\mathrm{top}}(S)=0\).
+
+The set \(\mathcal U\times\{p\}\) belongs to \(\Lambda_Q\), and \(F\) restricted to it is conjugate to the full input shift. This proves surjectivity of \(\pi\) and the lower entropy bound in (iii). If \(|U|=m<\infty\), choose \(\ell\) so that \(2^{-\ell}<\varepsilon/2\). For large \(n\), group lift points by their first \(n+\ell\) input symbols and by a member of the above finite state cover. Points in one group have close initial state evolution until time \(N\), since their input prefixes agree and \(n+\ell\geq N\). Their later feasible state evolutions are close by \eqref{cone:eq:beta}. At each shifted time \(0\leq k<n\), agreement of the input prefix gives input distance at most \(2^{-\ell}<\varepsilon/2\). Thus each group has Bowen diameter less than \(\varepsilon\), and
+\begin{align*}
+ s_n(F,\varepsilon)\leq C m^{n+\ell}.
+\end{align*}
+This proves the upper bound \(\log m\). If \(U\) is infinite, it contains finite subsets of every cardinality \(m\). Each corresponding full shift at the apex is a compact invariant subsystem of entropy \(\log m\). Letting \(m\to\infty\) proves that both full input entropy and total lift entropy are infinite.
+
+For (iv), regard \(V\) also as a function on the lift. Invariance of \(\mu\) gives
+\begin{align*}
+ 0=\int_{\Lambda_Q}(V-V\circ F)\,d\mu
+ \geq\int_{\Lambda_Q}(V-\psi\circ V)\,d\mu\geq0.
+\end{align*}
+The last integrand is nonnegative and vanishes only when the state is \(p\). Hence \(\mu(\mathcal U\times\{p\})=1\). Projection and \(u\mapsto(u,p)\) are inverse measurable maps on this full-measure set and intertwine the transformations. The input factor therefore contains the whole state information modulo \(\mu\), and its conditional Kolmogorov--Sinai entropy is zero. Conversely, any invariant input measure lifts in this way.
+
+For (v), every point of \(F^n(\Lambda_Q)\) has \(V\)-value at most \(\psi^n(L)\), so a point in the intersection has state \(p\). Conversely every \((u,p)\) admits arbitrarily long prehistories in the lift: prepend any \(n\) input values to \(u\) and keep the state at \(p\). This proves the core formula. Finally some \(x\in Q\) attains \(V(x)=L>0\); it has an infinite feasible control by controlled invariance. Its lift point cannot be in \(F(\Lambda_Q)\), whose \(V\)-values are at most \(\psi(L)<L\). Hence \(F\) is not onto.
+
+A feasible controller generates only trajectories already covered by (i), regardless of how it makes its choices. If it induces a continuous self-map \(G\) of \(Q\), then \(G^n\to p\) uniformly; the same bounded-Bowen-cover argument used for \(S\) gives \(h_{\mathrm{top}}(G)=0\).
+\end{proof}
+
+For cone systems, take \(V(s,z)=s\), \(L=1\), and \(\psi=R|_{[0,1]}\). On \(Q_B\), zero radial coordinate occurs only at the apex and \eqref{cone:eq:lyapunov} holds with equality. The preceding theorem therefore applies to every system in \cref{cone:thm:cone}, independently of its spectral assumptions for positive entropy.
+
+\subsection{The entire digit lift}
+
+\begin{proposition}[Explicit coding of the true lift]\label{cone:prop:coding}
+For the digit system of \cref{cone:thm:digits}, let \(\Sigma=U^{\mathbb N_0}\) and define
+\begin{align*}
+ Y_i(u)=-\sum_{j=0}^{\infty}\frac{u_{j,i}}{q_i^{j+1}},
+       \qquad Y(u)=(Y_1(u),\ldots,Y_d(u)).
+\end{align*}
+Then
+\begin{align}\label{cone:eq:H}
+ H:\Sigma\times[0,1]\longrightarrow\Lambda_Q,\qquad
+ H(u,s)=(u,(s,sY(u)))
+\end{align}
+is a homeomorphism, and
+\begin{align*}
+ F\circ H=H\circ(\sigma\times R).
+\end{align*}
+In particular the total lift entropy is \(\log M\), its uniform input-fiber entropy is zero, its state-trajectory entropy is zero, and every invariant lift measure is \(H_*(\nu\times\delta_0)\) for a shift-invariant probability measure \(\nu\) on \(\Sigma\).
+\end{proposition}
+\begin{proof}
+Since \(|u_{j,i}|\leq q_i-1\), the series converge uniformly and \(|Y_i(u)|\leq1\); \(Y\) is continuous in the product topology. The identity
+\begin{align*}
+ q_iY_i(u)+u_{0,i}=Y_i(\sigma u)
+\end{align*}
+shows that \(H(u,s)\) is feasible and proves equivariance.
+
+Conversely, let \((u,(s,z))\in\Lambda_Q\) with \(s>0\), and put \(y=z/s\). The normalized trajectory remains in \([-1,1]^d\). For each coordinate, dividing the \(n\)-step equation by \(q_i^n\) gives
+\begin{align*}
+ y_i=-\sum_{j=0}^{n-1}\frac{u_{j,i}}{q_i^{j+1}}
+           +q_i^{-n}y_{n,i}.
+\end{align*}
+The final term tends to zero. Thus \(y=Y(u)\). If \(s=0\), the state is the apex and is \(H(u,0)\). This proves surjectivity onto the \emph{entire} feasible lift, not merely onto a selected invariant subset. The input and radial coordinates recover \(u,s\) uniquely, so \(H\) is injective. A continuous bijection from the compact domain to the Hausdorff lift is a homeomorphism.
+
+The entropy and measure assertions follow from \cref{cone:thm:lyapunov}. Alternatively each fiber is parameterized by one radial interval with an equicontinuous family of iterates, giving a direct uniform finite Bowen cover. Under \(H\), the eventual core is precisely \(\Sigma\times\{0\}\); no assertion of surjectivity on \(\Sigma\times[0,1]\) is made.
+\end{proof}
+
+The full shift on \(M\geq2\) symbols is a continuous surjection of a compact metric space with positive topological entropy. The classical theorem \cite[Corollary 2.4(2)]{BGKM} applies on the apex subsystem and supplies Li--Yorke chaos there. Every one of its state projections is the same fixed state \(p\). In a common input fiber, even the full lift trajectories are asymptotic, because their input coordinates agree at all times and their state coordinates converge to \(p\). Thus total lift chaos and absence of state Li--Yorke pairs coexist without a contradiction.
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Quantity for the finite digit family & Value\\
+\midrule
+Exact invariance entropy on \(K_d\) or \(Q\) & \(\sum_i\log q_i\)\\
+Outer and tracking invariance entropies & \(\sum_i\max\{0,\log(\rho q_i)\}\)\\
+Total entropy of the true lift & \(\log M\)\\
+Uniform entropy over the full input fibers & \(0\)\\
+Entropy of the state-trajectory shift & \(0\)\\
+Conditional KS entropy over input, any invariant measure & \(0\)\\
+Entropy of any continuous feasible closed-loop state map & \(0\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Feedback regularity and the control-set boundary}
+
+\begin{proposition}[A feedback regularity obstruction]\label{cone:prop:feedback}
+For the cone system in \cref{cone:thm:cone}, if \(\chi^+(A)>0\), no memoryless feedback \(\kappa:Q_B\to U\) continuous at \(p\) can satisfy \(f(x,\kappa(x))\in Q_B\) for every \(x\in Q_B\). If \(U\supset -AB\), there is nevertheless a Borel feedback whose induced state map is the restriction of a global smooth map,
+\begin{align*}
+ G(s,z)=(R(s),0).
+\end{align*}
+\end{proposition}
+\begin{proof}
+Suppose such a continuous-at-\(p\) feedback exists and write \(v_0=\kappa(p)\). For every \(y\in B\) and every \(0<s\leq1\), feasibility implies
+\(Ay+\kappa(s,sy)\in B\).
+Letting \(s\downarrow0\) and using closedness of \(B\) gives \(Ay+v_0\in B\) for all \(y\in B\). Thus the affine map \(T_0(y)=Ay+v_0\) sends \(B\) into itself. Iteration and subtraction give
+\begin{align*}
+ A^n(B-B)=T_0^n(B)-T_0^n(B)\subset B-B.
+\end{align*}
+Since \(B-B\) is bounded and contains a neighborhood of zero, the operators \(A^n\) are uniformly bounded. This excludes eigenvalues of modulus greater than one and contradicts \(\chi^+(A)>0\).
+
+If \(U\supset -AB\), define \(\kappa(s,sy)=-Ay\) for \(s>0\) and \(\kappa(p)=0\). This is Borel and has values in \(U\). Substitution gives \(G(s,z)=(R(s),0)\) on \(Q_B\), which extends smoothly to the ambient space. Its feedback values depend on direction at the apex; continuity of the induced state map must not be confused with continuity of the feedback itself.
+\end{proof}
+
+For the nonlinear systems of \cref{cone:thm:nonlinear}, the same obstruction to continuity of a viable feedback holds. Indeed feasibility at \((s,sy)\) would give
+\begin{align*}
+ qy+\kappa(s,sy)+P_{\kappa(s,sy)}(s,sy)/s\in[-1,1].
+\end{align*}
+The last term tends to zero uniformly in \(y\in[-1,1]\) and the finite input alphabet. Continuity at the apex would therefore force \(q[-1,1]+\kappa(p)\subset[-1,1]\), impossible for \(q>1\).
+
+The common Lyapunov theorem excludes state Li--Yorke chaos for \emph{every} feasible controller in this family, not merely for the displayed resetting feedback. The scalar baseline in \cref{cone:app:scalar} illustrates why a property of one chosen feedback is logically different from a conclusion quantified over all feasible inputs.
+
+A control set ordinarily includes a controlled invariance condition together with approximate controllability: for every \(x\) in the set, the set is contained in the closure of the forward reachable set from \(x\), with a maximality condition. The cones here fail approximate controllability. The radial coordinate of every forward trajectory starting at \(s\in(0,1]\) is \(R^n(s)\leq s\), regardless of control and even if the other coordinates leave the cone. Points with larger radial coordinate cannot be approximated from such a state. Therefore \(Q_B\) is not a genuine control set. This is a substantive boundary, not a removable technical omission.
+
+The equi-invariance/instability alternative discussed in the author version of \cite{ZCH2021} does not repair the missing implication: its instability condition allows a nearby state under a fixed selected input to leave a neighborhood of the constraint. The two trajectories need not both remain feasible. In the cone family, strong expansion of an error in \(y=z/s\) is consistent with the fact that all \emph{feasible} ambient states eventually become close. Neither a single escape nor ordinary sensitivity supplies recurrent proximality.
+
+Likewise, return to \(Q_B\) alone is not an additional recurrence hypothesis here, since feasible trajectories remain there at every time. A condition requiring repeated return to a nondegenerate interior region bounded away from the apex would exclude the present construction. Recurrence entropy \cite{SM2026} studies a different catalogue problem involving bounded-time returns; it cannot by itself be read as a statement about two feasible state trajectories.
+
+
+These distinctions do not assert a positive common-input chaos
+theorem for control sets. Approximate controllability, a selected
+input shift, or one departure estimate alone does not establish
+recurrent proximality and persistent separation of feasible state
+trajectories. The scalar calculation in
+\cref{cone:app:scalar} gives a separate obstruction to identifying
+positive invariance entropy with common-input proximality.
+
+\section{From a fixed tolerance to shrinking precision}\label{sec:transition}
+The common radial family and the globally contracting planar family
+use the same assignment rule, but impose different conditions on
+unsuccessful trajectories. The following elementary consequence
+isolates that distinction.
+
+\begin{proposition}[Fixed-tolerance costs under all-input contraction]
+\label{prop:fixedtolerance}
+Let \(Q\subset\R^d\) be compact and controlled invariant, let
+\(0\in Q\), and suppose every continuous controlled map fixes zero.
+Assume there are a norm \(V\) and \(0<\theta<1\) such that
+\[
+V(f(x,v))\le\theta V(x)\qquad(x\in\R^d,\ v\in U).
+\]
+For each fixed \(\varepsilon>0\), there is a finite tracking
+catalogue for all horizons and all initial states in \(Q\).
+Consequently
+\[
+h_{\mathrm{out}}(K,Q)=h_{\mathrm{inv}}^+(K,Q)=0
+\qquad(\varnothing\ne K\subset Q\text{ compact}).
+\]
+All feasible state-trajectory pairs are uniformly asymptotic, and
+the zero state and fibre conclusions of
+Theorem~\ref{cone:thm:lyapunov} apply.
+\end{proposition}
+\begin{proof}
+By equivalence of norms and compactness, choose \(J\) such that
+any two trajectories starting in \(Q\), under any inputs, are
+at Euclidean distance less than \(\varepsilon/2\) at every
+time \(k\ge J\). For each \(x\in Q\), select one exactly
+feasible infinite input \(u^x\). Continuity at the finitely many
+times \(0,\ldots,J\) gives a relative neighbourhood \(O_x\)
+in \(Q\) on which the trajectory under \(u^x\) remains within
+\(\varepsilon\) of the reference from \(x\) during those times.
+Take a finite subcover \(O_{x_1},\ldots,O_{x_M}\).
+The pairs \((x_j,u^{x_j})\) work at the early times by construction
+and at all later times by the global norm estimate, whether
+the actual trajectory remains feasible or not. The number
+\(M\) is independent of the horizon. The outer inequality
+\eqref{cone:eq:outer-tracking} gives the second zero rate.
+The Lyapunov choice \(V|_Q\) and \(\psi(t)=\theta t\) gives
+the final assertion.
+\end{proof}
+
+The nonlinear equal-entropy cone examples have converging
+\emph{feasible} trajectories but need not satisfy the global
+estimate in this proposition. There is therefore no conflict
+between their positive fixed-tolerance rates and the zero rates
+of the globally contracting systems. For the latter, the next
+sections shrink the tolerance with the horizon and, subsequently,
+also shrink the admissible failure probability. None of these
+changes identifies a state entropy with a control cost.
+\section{Shrinking precision and reliability: assumptions and results}\label{sec:planar}
+
 \subsection{Catalogue and precision}
 Let
 \[
@@ -196,7 +1221,9 @@ Q=\{(s,z)\in\R^2:0\le s\le1,\ |z|\le s\},\qquad \area(Q)=1.
 \]
 For an infinite binary input $u=(u_1,u_2,\ldots)$ set
 $F_u^0=\operatorname{id}$ and
-$F_u^k=F_{u_k}\circ\cdots\circ F_{u_1}$. All binary inputs are
+$F_u^k=F_{u_k}\circ\cdots\circ F_{u_1}$.
+The one-based input indexing here shifts the zero-based convention
+in Section~\ref{cone:sec:definitions} by one and changes no count. All binary inputs are
 allowed. Distances are Euclidean, and all logarithms are natural.
 For a nonempty compact $K\subset Q$ define
 \begin{equation}\label{eq:catalogue}
@@ -207,7 +1234,10 @@ Let $r_F(n,\delta;K)$ be the smallest number of infinite inputs
 whose sets \eqref{eq:catalogue} cover $K$. The assignment may depend
 on the actual initial state. Exit and reentry are allowed subject
 to every displayed constraint. Only the first $n$ letters affect
-this count. Controlled feasibility makes it finite.
+this count. Controlled feasibility makes it finite. In the notation of
+Section~\ref{cone:sec:definitions}, this is exactly
+$r_{\mathrm{inv}}(n,K,Q^\delta)$ for these planar maps;
+the symbol $r_F$ records the actual controlled system.
 
 A precision sequence means $\delta_n>0$, $\delta_n\to0$ and
 $-\log\delta_n/n\to\gamma$ for a finite $\gamma\ge0$.
@@ -240,7 +1270,8 @@ Write
 \qquad
 \mathsf A_1=\begin{pmatrix}r_1&0\\-t_1a_0&t_1\end{pmatrix}.
 \end{equation}
-The standing assumptions on the actual maps are:
+For the planar results in the rest of the main text, the standing
+assumptions on the actual maps are:
 \begin{enumerate}
 \item $F_0,F_1:\R^2\to\R^2$ are $C^2$ maps,
 $F_i(0)=0$ and $DF_i(0)=\mathsf A_i$.
@@ -2002,42 +3033,69 @@ The first inequality follows from $(4/3)^3>2$ and the second
 from $4<9/2$. It is an evaluation of the spectrum, not a claim
 that missing fixed-radius words require a different count.
 
+
 \section{Consequences and scope}
-The precision and reliability costs use the same actual initial-state
-space and the same all-time distance constraints, but require different
-probability control. Under matched first derivatives and null critical
-sets, all positive-area compact sets share the low-precision rate,
-while one fixed nearly full-area set omits the high-cost rare states.
-Its selection precedes every finite precision exponent and sequence.
-The full-triangle spectrum continues to grow above $\beta h$ and
-saturates at the distinct threshold $-(\beta/2)\log(a_0a_1)$.
-Unequal first-order radial powers separate the costs already near zero
-within the prescribed matrix family.
+Exact viability, fixed-tolerance maintenance, shrinking precision,
+and exponential reliability measure different aspects of the same
+initial-state assignment problem. The solid-cone results compute
+positive exact, outer, and tracking information costs even when
+all feasible state trajectories converge uniformly. Their common
+Lyapunov structure rules out state Li--Yorke pairs under arbitrary
+separate feasible inputs, and separates the state factor and
+input fibres from entropy retained by the input shift. The
+normalization at a positive radius explains the catalogue
+calculation but is singular at the common fixed state.
 
-At exponentially decreasing failure, these rare states cannot be
-treated as a fixed area loss. With no critical points on $Q$, the
-finite-transient transport bound holds on the whole probability space.
-Together with positive-area forced prefixes, it gives the exact
-precision--reliability rate. In the Cantor transient, the ordinary
-full-state catalogues are identical to the linear ones, but physical
-tail probabilities change their exponent. Thus preservation of an
-ordinary precision spectrum does not imply preservation of reliability.
-The nonsingular condition is sufficient, and the weaker null-critical
-condition is insufficient for a universal probability transfer;
-no necessary and sufficient classification is claimed.
+For all-input norm contraction, fixed tolerance instead has zero
+outer and tracking rates. Shrinking tolerance retains a nontrivial
+precision spectrum. Under matched first derivatives and null
+critical sets, every positive-area compact set shares the
+low-precision rate, while one fixed nearly full-area set omits
+the costly rare states. Its selection precedes every finite
+precision exponent and sequence. The full-triangle spectrum
+continues to grow above \(\beta h\) and saturates at the
+distinct threshold \(-(\beta/2)\log(a_0a_1)\).
+Unequal first-order radial powers separate the costs already
+near zero within the specified matrix family.
 
-The results concern binary planar maps with the specified first-order
-matrices, a controlled invariant triangle, and common norm contraction
-toward the origin. Radial feedback, vanishing local overlap, and
-truncated feasible images are permitted. The norm condition is not
-pairwise distance contraction. The reliability theorem fixes uniform
-physical area on $Q$; transporting a measure is a different assertion.
-No causal communication capacity, optimality of a prescribed strategy,
-high-precision mismatch spectrum, or classification of every compact
-initial set is deduced. The conjugacy obstruction is limited to the
-stated inward example and $Q$-preserving simultaneous control maps.
-The counterexample's exact reliability rate remains outside the claims.
+At exponentially decreasing failure, rare states cannot be
+treated as a fixed area loss. With no critical points on \(Q\),
+the finite-transient transport bound holds on the whole
+probability space. Together with positive-area forced prefixes,
+it gives the exact precision--reliability rate. In the Cantor
+transient, ordinary full-state catalogues remain identical to
+the linear ones, but physical tail probabilities change their
+exponent. Thus preservation of an ordinary precision spectrum
+does not imply preservation of reliability. Nonsingularity is
+a sufficient condition; null critical sets are insufficient for
+universal probability transfer. No necessary and sufficient
+probability classification is claimed.
 
+The scope restrictions differ between the two parts. The cone
+results permit arbitrary transverse dimension and general compact
+control alphabets, but fix the common radial form; the nonlinear
+persistence theorem keeps its radial map and first jet fixed.
+The planar precision results permit angular feedback, folds,
+vanishing local overlap, and truncated feasible images, but
+retain binary controls, the prescribed first-order matrices,
+a triangular controlled invariant constraint, and global
+contraction toward the origin in a common norm. That norm
+condition is not contraction of distances between arbitrary
+points. We make no general claim about dynamics outside the
+feasible constraint in the cone family.
+
+Uniform physical area is fixed in the reliability result;
+transporting a measure proves a different statement. A
+success subset allowed to vary with the horizon is not the
+single fixed compact set in the initial-set theorems.
+No causal communication capacity, optimality of a prescribed
+strategy, high-precision mismatch spectrum, or classification
+of every compact initial set is deduced. The conjugacy
+obstruction in the inward example is restricted to
+\(Q\)-preserving simultaneous control maps, and the Cantor
+example's exact reliability rate is outside our claims.
+The appendices give the symbolic-counting and scalar baselines
+used to distinguish these assertions.
 \subsection*{Generative AI disclosure}
 Generative AI was used extensively in developing mathematical
 arguments, checking proof chains and related literature, drafting
@@ -2046,89 +3104,290 @@ source. These activities do not constitute verification by a
 human author. Author identity, affiliations, authorship approval
 and the scope of human mathematical review remain to be supplied
 and confirmed before any submission.
+\appendix
+
+\section{Invariant partitions: what symbolic counting proves}\label{cone:app:partition}
+
+This appendix records the precise implication from an invariant partition and the two realizability failures relevant to the main question. It is supplementary material, not an additional novelty claim.
+
+\begin{definition}
+An invariant partition is a triple \(\mathcal C=(\mathcal P,\tau,w)\), where \(\mathcal P\) is a finite Borel partition of \(Q\), \(\tau\geq1\) is an integer, and \(w\) assigns to each cell \(P\) a control word \(w(P)\in U^\tau\) such that every \(x\in P\) stays in \(Q\) through times \(0,\ldots,\tau\) under that word. Define the sampled state map
+\begin{align*}
+ G_{\mathcal C}(x)=\varphi(\tau,x,w(P))\quad(x\in P).
+\end{align*}
+For \(x\in Q\), let \(I_{\mathcal C}(x)=(P_k)_{k\geq0}\), where \(G_{\mathcal C}^k(x)\in P_k\). Write
+\(\Sigma_{\rm real}=I_{\mathcal C}(Q)\) and
+\(\Sigma_{\mathcal C}=\overline{\Sigma_{\rm real}}\subset\mathcal P^{\mathbb N_0}\).
+\end{definition}
+
+\begin{proposition}\label{cone:prop:partition}
+The map \(G_{\mathcal C}\) is Borel, \(\Sigma_{\rm real}\) is forward shift invariant, and \(\Sigma_{\mathcal C}\) is a compact forward shift-invariant set. If \(N_n\) is the number of length-\(n\) prefixes in \(\Sigma_{\rm real}\), then
+\begin{align*}
+ r_{\mathrm{inv}}(n\tau,Q,Q)\leq N_n,\qquad
+ h_{\mathrm{inv}}(Q,Q)\leq\tau^{-1}h_{\mathrm{top}}(\sigma|_{\Sigma_{\mathcal C}}).
+\end{align*}
+If the cells are clopen, \(G_{\mathcal C}\) and \(I_{\mathcal C}\) are continuous, \(\Sigma_{\rm real}=\Sigma_{\mathcal C}\), and
+\begin{align*}
+ \tau h_{\mathrm{inv}}(Q,Q)\leq
+ h_{\mathrm{top}}(\sigma|_{\Sigma_{\mathcal C}})
+ \leq h_{\mathrm{top}}(G_{\mathcal C}).
+\end{align*}
+\end{proposition}
+\begin{proof}
+On each Borel cell the formula for \(G_{\mathcal C}\) is a continuous finite-time solution map, so the finite pasting is Borel. The identity
+\(I_{\mathcal C}(G_{\mathcal C}x)=\sigma I_{\mathcal C}(x)\)
+gives forward invariance. Continuity of the shift passes that property to the closure.
+
+For each realized prefix \((P_0,\ldots,P_{n-1})\), concatenate \(w(P_0),\ldots,w(P_{n-1})\) and extend arbitrarily to an infinite sequence. Every initial state having this itinerary prefix stays in \(Q\) through time \(n\tau\) under that one concatenated word. Thus \(N_n\) such controls span \(Q\). Taking closure creates no new finite prefixes: each prefix cylinder is open, so every cylinder meeting the closure already meets \(\Sigma_{\rm real}\).
+
+The word counts are submultiplicative, \(N_{n+m}\leq N_nN_m\), and their normalized logarithms have a limit. The entropy of the one-sided subshift is this limit. Indeed distinct length-\(n\) prefixes give a uniformly separated set, while length-\((n+\ell)\) prefixes bound spanning numbers at a scale fixed by \(\ell\). Finally, for arbitrary horizon \(k\), monotonicity gives
+\begin{align*}
+ r_{\mathrm{inv}}(k,Q,Q)\leq
+ r_{\mathrm{inv}}(\tau\lceil k/\tau\rceil,Q,Q)
+ \leq N_{\lceil k/\tau\rceil}.
+\end{align*}
+This proves the sampling factor \(\tau^{-1}\) without discarding nonsampled horizons.
+
+For clopen cells, finite pasting gives continuity of \(G_{\mathcal C}\). Each finite itinerary prefix has clopen preimage, so the itinerary map is continuous in the product topology. Its image is compact and hence closed; it is an onto factor map to \(\Sigma_{\mathcal C}\). The factor entropy inequality proves the last bound.
+\end{proof}
+
+If in the last case \(G_{\mathcal C}\) is also onto and \(h_{\mathrm{inv}}(Q,Q)>0\), the classical theorem \cite{BGKM} applies to \(G_{\mathcal C}\). This is a direct consequence of a known theorem under a continuous closed-loop hypothesis, not a new control-specific Li--Yorke principle. On connected \(Q\), a finite partition into nonempty clopen cells has just one cell. Its assigned word can be repeated forever from every state, so \(r_{\mathrm{inv}}(n,Q,Q)=1\) for all \(n\) and the exact entropy is zero. Thus that simple clopen route cannot apply to the positive-entropy solid cones.
+
+\begin{remark}[A closure itinerary need not be realized]\label{cone:rem:unrealized}
+Let \(Q=[0,1]\), \(f(x,v)=2x+v\), and use the three cells
+\begin{align*}
+ P_0=[0,1/2),\quad P_1=[1/2,1),\quad P_2=\{1\},
+\end{align*}
+with one-step assigned controls \(0,-1,-2\), respectively. This is an invariant Borel partition. For each \(n\), the state \(x_n=1-2^{-(n+1)}\) remains in \(P_1\) for at least its first \(n\) sampled positions. Hence the constant sequence \(P_1P_1\cdots\) belongs to the itinerary closure. If it were realized by \(x\), iteration of \(x\mapsto2x-1\) would give
+\(1-2^k(1-x)\in[1/2,1)\) for all \(k\), forcing \(x=1\). But \(1\in P_2\), a contradiction. Compactness of \(Q\) does not make a Borel itinerary map continuous.
+\end{remark}
+
+\begin{remark}[One-step graph edges need not concatenate]\label{cone:rem:graph}
+On the discrete compact space \(Q=\{a,b,c\}\), let a single control induce
+\(a\mapsto b,\ b\mapsto b,\ c\mapsto a\).
+For the partition \(A=\{a\}\), \(B=\{b,c\}\), the one-step intersection graph has edges \(A\to B\) and \(B\to A\). The graph therefore admits the path \(ABA\). Its only possible initial state is \(a\), whose actual orbit is \(a,b,b,\ldots\), so that path is unrealizable. Even an irreducible graph of one-step intersections can overcount actual paths. A Markov formula needs a separate path-realization hypothesis; it is not supplied by the existence of each edge. This is why the technical partition assumptions in \cite{ZHZ2023,YCYZ2025} cannot be omitted.
+\end{remark}
+
+\section{Scalar baselines and changes of control range}\label{cone:app:scalar}
+
+\subsection{Continuous time: an exact finite-horizon computation}
+
+Only this subsection uses continuous time. Consider
+\begin{align*}
+ \dot x=\lambda x+u,\qquad \lambda>0,\quad
+ u(t)\in[-\lambda,\lambda],\qquad Q=[-1,1].
+\end{align*}
+Controls are measurable essentially bounded functions. The variation-of-constants formula gives a unique solution for all \(t\geq0\). Define \(r_{\mathrm{inv}}(T,Q,Q)\) by the finite-catalogue quantifiers of \eqref{cone:eq:quantifiers}, with every real \(t\in[0,T]\) in place of the integer indices; define exact and outer rates per unit of continuous time.
+
+\begin{proposition}\label{cone:prop:ct}
+For every \(T\geq0\),
+\begin{align*}
+ r_{\mathrm{inv}}(T,Q,Q)=\lceil e^{\lambda T}\rceil,\qquad
+ h_{\mathrm{inv}}(Q,Q)=h_{\mathrm{out}}(Q,Q)=\lambda.
+\end{align*}
+For any common input and distinct initial states the distance is
+\(e^{\lambda t}|x-y|\), so no unconstrained common-input pair is proximal. The admissible feedback \(u=-\lambda x\) induces the identity flow on \(Q\).
+\end{proposition}
+\begin{proof}
+For a fixed input, the time-\(T\) solution is an affine function of the initial state with slope \(e^{\lambda T}\). Initial states satisfying the final constraint therefore form an interval of length at most \(2e^{-\lambda T}\). Covering \(Q\), of length \(2\), requires at least \(\lceil e^{\lambda T}\rceil\) controls.
+
+For \(T>0\), put \(\delta=e^{-\lambda T}\) and \(N=\lceil1/\delta\rceil\geq2\). Choose
+\(c_j=-1+2j/(N-1)\), \(0\leq j<N\), and use the \(N\) constant inputs \(u_j=-\lambda c_j\). The associated solution is
+\begin{align*}
+ \varphi(t,x,u_j)=c_j+e^{\lambda t}(x-c_j).
+\end{align*}
+Its final state lies in \(Q\) exactly when
+\begin{align*}
+ x\in[(1-\delta)c_j-\delta,(1-\delta)c_j+\delta].
+\end{align*}
+These intervals cover \([-1,1]\): the first starts at \(-1\), the last ends at \(1\), and consecutive center gaps are
+\(2(1-\delta)/(N-1)\leq2\delta\).
+For each covered initial state the trajectory lies between its initial and final values, so remains in \(Q\) for the whole real interval \([0,T]\). This proves the upper bound. At \(T=0\), one arbitrary input suffices.
+
+For \(Q^\varepsilon=(-1-\varepsilon,1+\varepsilon)\), the final-time lower bound becomes
+\begin{align*}
+ r_{\mathrm{inv}}(T,Q,Q^\varepsilon)\geq
+             e^{\lambda T}/(1+\varepsilon).
+\end{align*}
+The exact catalogue remains an outer catalogue, proving outer rate \(\lambda\) for each fixed \(\varepsilon>0\). Subtracting two solutions with the same input proves their distance formula. Finally \(|-\lambda x|\leq\lambda\) on \(Q\), and the stated feedback gives \(\dot x=0\).
+\end{proof}
+
+Two distinct initial states cannot share an infinitely feasible input in this bounded interval, since their distance would become unbounded. The stronger unconstrained calculation in \cref{cone:prop:ct} prevents the common-control conclusion from being a merely vacuous consequence of feasibility.
+More generally, an autonomous Lipschitz scalar closed-loop vector field preserving a compact interval has convergent trajectories. A nonstationary solution cannot cross an equilibrium by uniqueness, so its derivative has a constant sign along its orbit and it is bounded and monotone. Pair distances therefore have limits, precluding Li--Yorke pairs. This observation is about autonomous scalar feedbacks; it is not a theorem about all time-dependent controllers.
+
+\subsection{Interval controls and interior containment in the cone}
+
+In the planar digit cone, enlarge \(U_q\) to its convex hull
+\(\widehat U_q=[-(q-1),q-1]\).
+The exact lower bounds in \cref{cone:thm:digits} use only the slope of a fixed-word map, and remain valid for this enlarged range. The original digit controls still give the upper bounds. Thus all the exact rates and counts in the planar case remain unchanged. \Cref{cone:thm:cone}(ii) likewise gives the same outer and tracking rates.
+
+For initial states in \(K_1\), the exact rate is unchanged if strict interior containment is required at every positive integer time. Indeed their ratios \(y=z/s\) lie in \([-1/2,1/2]\). Cover this interval by finitely many open intervals of radius \(q^{-n}\), with centers \(c\in[-1/2,1/2]\), using \(O(q^n)\) centers. For each center take \(u_0=-qc\), \(u_k=0\) for \(k\geq1\). These controls lie in \(\widehat U_q\), since \(q/2\leq q-1\). For an assigned initial ratio,
+\begin{align*}
+ |y_k|=q^k|y-c|<1\quad(1\leq k\leq n).
+\end{align*}
+The radial coordinate remains strictly between \(0\) and \(1\), so the ambient states lie in \(\operatorname{int} Q\). This proves an upper rate \(\log q\), while exact containment gives the matching lower bound. This assertion is for \(K_1\); requiring interior containment from a boundary point of the whole cone is a different question.
+
+Finally, the continuous state map \((s,z)\mapsto(R(s),t(s)z)\) is induced on \(Q\) by
+\(\kappa(s,z)=-(q-1)z/s\) for \(s>0\), with \(\kappa(p)=0\).
+It is feasible and smooth as a state map, although \(\kappa\) is discontinuous at \(p\). This gives a zero-entropy continuous closed loop using the smaller convexified digit range, without the larger range needed for one-step resetting.
+
+
 \begin{thebibliography}{99}
 \raggedright
+\bibitem{BGKM}F. Blanchard, E. Glasner, S. Kolyada, and A. Maass,
+On Li-Yorke pairs, \emph{J. Reine Angew. Math.} \textbf{547} (2002), 51--68.
+\href{https://doi.org/10.1515/crll.2002.053}{doi:\nolinkurl{10.1515/crll.2002.053}}.
 
-\bibitem{CZ2024}
-Z. Chen and X. Zhong,
-Invariance complexity and equi-invariability for control systems,
-\emph{J. Math. Anal. Appl.}, \textbf{539} (2024), 128533.
-\doi{10.1016/j.jmaa.2024.128533}.
+\bibitem{CK2009}F. Colonius and C. Kawan,
+Invariance entropy for control systems, \emph{SIAM J. Control Optim.} \textbf{48} (2009), no.~3, 1701--1721.
+\href{https://doi.org/10.1137/080713902}{doi:\nolinkurl{10.1137/080713902}}.
 
-\bibitem{CHZ2026}
-H. Chen, Y. Huang and X. Zhong,
-Variational principles of invariance entropy dimension,
-\emph{J. Differential Equations}, \textbf{453}, Part 1 (2026), 113819.
-\doi{10.1016/j.jde.2025.113819}.
+\bibitem{K2009}C. Kawan, \emph{Invariance Entropy for Control Systems},
+doctoral dissertation, Universit\"at Augsburg, 2009.
+\href{https://d-nb.info/1000462749/34}{German National Library full text}.
 
-\bibitem{Colonius2012}
-F. Colonius,
-Minimal bit rates and entropy for exponential stabilization,
-\emph{SIAM J. Control Optim.}, \textbf{50} (2012), 2988--3010.
-\doi{10.1137/110829271}.
+\bibitem{K2011}C. Kawan, Invariance entropy of control sets,
+\emph{SIAM J. Control Optim.} \textbf{49} (2011), no.~2, 732--751.
+\href{https://doi.org/10.1137/100783340}{doi:\nolinkurl{10.1137/100783340}}.
 
-\bibitem{CH2021}
-F. Colonius and B. Hamzi,
-Entropy for practical stabilization,
-\emph{SIAM J. Control Optim.}, \textbf{59} (2021), 2195--2222.
-\doi{10.1137/20M1367775}.
+\bibitem{KStrict2011}C. Kawan, Lower bounds for the strict invariance entropy,
+\emph{Nonlinearity} \textbf{24} (2011), no.~7, 1909--1935.
+\href{https://doi.org/10.1088/0951-7715/24/7/001}{doi:\nolinkurl{10.1088/0951-7715/24/7/001}}.
 
-\bibitem{Csiszar1998}
-I. Csisz\'ar,
-The method of types,
-\emph{IEEE Trans. Inform. Theory}, \textbf{44} (1998), 2505--2523.
-\doi{10.1109/18.720546}.
+\bibitem{DSK2016}A. Da Silva and C. Kawan, Invariance entropy of hyperbolic control sets,
+\emph{Discrete Contin. Dyn. Syst.} \textbf{36} (2016), no.~1, 97--136.
+\href{https://doi.org/10.3934/dcds.2016.36.97}{doi:\nolinkurl{10.3934/dcds.2016.36.97}}. Author version: \href{https://arxiv.org/abs/1408.2416v1}{arXiv:\nolinkurl{1408.2416v1}}.
 
-\bibitem{Hutchinson1981}
-J. E. Hutchinson,
-Fractals and self-similarity,
-\emph{Indiana Univ. Math. J.}, \textbf{30} (1981), 713--747.
-\doi{10.1512/iumj.1981.30.30055}.
-
-
-\bibitem{KD2018}
-C. Kawan and A. Da Silva,
+\bibitem{KD2018}C. Kawan and A. Da Silva,
 Invariance entropy for a class of partially hyperbolic sets,
 \emph{Math. Control Signals Syst.}, \textbf{30} (2018), Article 18.
 \doi{10.1007/s00498-018-0224-2}.
 
-\bibitem{Kawan2013}
-C. Kawan,
-\emph{Invariance Entropy for Deterministic Control Systems:
-An Introduction}, Lecture Notes in Mathematics, 2089,
-Springer, 2013.
-\doi{10.1007/978-3-319-01288-9}.
+\bibitem{KChaos}
+C. Kawan, Control of chaos with minimal information transfer,
+preprint, version 5, 2026.
+\href{https://arxiv.org/abs/2003.06935v5}{arXiv:\nolinkurl{2003.06935v5}}.
+\doi{10.48550/arXiv.2003.06935}.
 
-\bibitem{NWH2022}
-X. Nie, T. Wang and Y. Huang,
+\bibitem{Yao2026}S. Yao, Invariance entropy in the dust,
+preprint, version 1, 2026. \href{https://arxiv.org/abs/2607.02279v1}{arXiv:\nolinkurl{2607.02279v1}}.
+\doi{10.48550/arXiv.2607.02279}.
+
+\bibitem{CH2021}F. Colonius and B. Hamzi,
+Entropy for practical stabilization,
+\emph{SIAM J. Control Optim.}, \textbf{59} (2021), 2195--2222.
+\doi{10.1137/20M1367775}.
+
+\bibitem{KD2016}C. Kawan and J.-C. Delvenne, Network entropy and data rates required for networked control,
+\emph{IEEE Trans. Control Netw. Syst.} \textbf{3} (2016), no.~1, 57--66.
+\href{https://doi.org/10.1109/TCNS.2015.2440551}{doi:\nolinkurl{10.1109/TCNS.2015.2440551}}. Author version: \href{https://arxiv.org/abs/1409.6037v1}{arXiv:\nolinkurl{1409.6037v1}}.
+
+\bibitem{CST2023}F. Colonius, A. J. Santana, and E. C. Viscovini,
+Chain controllability of linear control systems,
+\emph{SIAM J. Control Optim.} \textbf{62} (2024), no.~4, 2387--2411.
+\href{https://doi.org/10.1137/23M1626347}{doi:\nolinkurl{10.1137/23M1626347}}. Author version: \href{https://arxiv.org/abs/2312.14595v1}{arXiv:\nolinkurl{2312.14595v1}}.
+
+\bibitem{CCS2021}F. Colonius, J. A. N. Cossich, and A. J. Santana,
+Outer invariance entropy for discrete-time linear systems on Lie groups,
+\emph{ESAIM Control Optim. Calc. Var.} \textbf{27} (2021), article 55.
+\href{https://doi.org/10.1051/cocv/2021054}{doi:\nolinkurl{10.1051/cocv/2021054}}. Author version: \href{https://arxiv.org/abs/2008.03219v2}{arXiv:\nolinkurl{2008.03219v2}}.
+
+\bibitem{ZCH2021}X.-F. Zhong, Z.-J. Chen, and Y. Huang,
+Equi-invariability, bounded invariance complexity and L-stability for control systems,
+\emph{Sci. China Math.} \textbf{64} (2021), no.~10, 2275--2294.
+\href{https://doi.org/10.1007/s11425-020-1693-7}{doi:\nolinkurl{10.1007/s11425-020-1693-7}}. Author version: \href{https://arxiv.org/abs/2005.10457v1}{arXiv:\nolinkurl{2005.10457v1}}.
+
+\bibitem{ZC2023}X.-F. Zhong and Z.-J. Chen, Equi-invariability and bounded invariance complexity for control systems,
+\emph{J. Dyn. Differential Equations} \textbf{35} (2023), no.~3, 2261--2277.
+\href{https://doi.org/10.1007/s10884-022-10161-2}{doi:\nolinkurl{10.1007/s10884-022-10161-2}}.
+
+\bibitem{CZ2024}Z. Chen and X. Zhong,
+Invariance complexity and equi-invariability for control systems,
+\emph{J. Math. Anal. Appl.}, \textbf{539} (2024), 128533.
+\doi{10.1016/j.jmaa.2024.128533}.
+
+\bibitem{WH2024}T. Wang and Y. Huang, The measurable data rate theorem for discrete-time control systems,
+\emph{J. Dyn. Differential Equations} \textbf{36} (2024), no.~4, 3259--3279.
+\href{https://doi.org/10.1007/s10884-023-10269-z}{doi:\nolinkurl{10.1007/s10884-023-10269-z}}.
+
+\bibitem{ZH2025}X. Zhong and Y. Huang, Dimension types of invariance entropies for uncertain control systems,
+\emph{Sci. China Math.} \textbf{68} (2025), no.~12, 2917--2932.
+\href{https://doi.org/10.1007/s11425-024-2422-2}{doi:\nolinkurl{10.1007/s11425-024-2422-2}}.
+
+\bibitem{CHZ2026}H. Chen, Y. Huang and X. Zhong,
+Variational principles of invariance entropy dimension,
+\emph{J. Differential Equations}, \textbf{453}, Part 1 (2026), 113819.
+\doi{10.1016/j.jde.2025.113819}.
+
+\bibitem{Zhang2006}G. Zhang, Relative entropy, asymptotic pairs and chaos,
+\emph{J. London Math. Soc.} \textbf{73} (2006), no.~1, 157--172.
+\href{https://doi.org/10.1112/S0024610705022520}{doi:\nolinkurl{10.1112/S0024610705022520}}.
+
+\bibitem{LTZ2024}C. Liu, F. Tan, and J. Zhang,
+Mean Li-Yorke chaos along any infinite sequence for infinite-dimensional random dynamical systems,
+\emph{J. Differential Equations} \textbf{403} (2024), 548--575.
+\href{https://doi.org/10.1016/j.jde.2024.05.035}{doi:\nolinkurl{10.1016/j.jde.2024.05.035}}. Author version: \href{https://arxiv.org/abs/2207.08505v3}{arXiv:\nolinkurl{2207.08505v3}}.
+
+\bibitem{YCYZ2025}R. Yang, E. Chen, J. Yang and X. Zhou,
+Bowen's equations for invariance pressure of control systems,
+\emph{SIAM J. Control Optim.}, \textbf{63} (2025), 1104--1128.
+\doi{10.1137/23M1607684}.
+
+\bibitem{ZHZ2023}X. Zhong, Y. Huang, and X. Zou,
+Invariance entropy for uncertain control systems,
+\emph{Systems Control Lett.} \textbf{180} (2023), article 105623.
+\href{https://doi.org/10.1016/j.sysconle.2023.105623}{doi:\nolinkurl{10.1016/j.sysconle.2023.105623}}.
+
+\bibitem{SM2026}H. Sibai and E. Mallada,
+Recurrence of nonlinear control systems: Entropy, bit rates, and finite alphabet controllers,
+\emph{Nonlinear Anal. Hybrid Syst.} \textbf{59} (2026), article 101649.
+\href{https://doi.org/10.1016/j.nahs.2025.101649}{doi:\nolinkurl{10.1016/j.nahs.2025.101649}}.
+
+\bibitem{CF2026}F. Colonius and R. Fabbri,
+Nonautonomous control systems and skew product flows,
+\emph{J. Dyn. Control Syst.} \textbf{32} (2026), no.~1, article 3.
+\href{https://doi.org/10.1007/s10883-025-09750-3}{doi:\nolinkurl{10.1007/s10883-025-09750-3}}.
+
+\bibitem{WHS2019}T. Wang, Y. Huang and H.-W. Sun,
+Measure-theoretic invariance entropy for control systems,
+\emph{SIAM J. Control Optim.}, \textbf{57} (2019), 310--333.
+\doi{10.1137/18M1197862}.
+
+\bibitem{NWH2022}X. Nie, T. Wang and Y. Huang,
 Measure-theoretic invariance entropy and variational principles
 for control systems,
 \emph{J. Differential Equations}, \textbf{321} (2022), 318--348.
 \doi{10.1016/j.jde.2022.03.013}.
 
-\bibitem{Colonius2018}
-F. Colonius,
+\bibitem{Colonius2018}F. Colonius,
 Invariance entropy, quasi-stationary measures and control sets,
 \emph{Discrete Contin. Dyn. Syst.}, \textbf{38} (2018), 2093--2123.
 \doi{10.3934/dcds.2018086}.
 
-\bibitem{WH2022}
-T. Wang and Y. Huang,
+\bibitem{Colonius2012}F. Colonius,
+Minimal bit rates and entropy for exponential stabilization,
+\emph{SIAM J. Control Optim.}, \textbf{50} (2012), 2988--3010.
+\doi{10.1137/110829271}.
+
+\bibitem{Csiszar1998}I. Csisz\'ar,
+The method of types,
+\emph{IEEE Trans. Inform. Theory}, \textbf{44} (1998), 2505--2523.
+\doi{10.1109/18.720546}.
+
+\bibitem{Hutchinson1981}J. E. Hutchinson,
+Fractals and self-similarity,
+\emph{Indiana Univ. Math. J.}, \textbf{30} (1981), 713--747.
+\doi{10.1512/iumj.1981.30.30055}.
+
+\bibitem{Kawan2013}C. Kawan,
+\emph{Invariance Entropy for Deterministic Control Systems:
+An Introduction}, Lecture Notes in Mathematics, 2089,
+Springer, 2013.
+\doi{10.1007/978-3-319-01288-9}.
+
+\bibitem{WH2022}T. Wang and Y. Huang,
 Inverse variational principles for control systems,
 \emph{Nonlinearity}, \textbf{35} (2022), 1610--1633.
 \doi{10.1088/1361-6544/ac4f33}.
-
-\bibitem{WHS2019}
-T. Wang, Y. Huang and H.-W. Sun,
-Measure-theoretic invariance entropy for control systems,
-\emph{SIAM J. Control Optim.}, \textbf{57} (2019), 310--333.
-\doi{10.1137/18M1197862}.
-
-\bibitem{YCYZ2025}
-R. Yang, E. Chen, J. Yang and X. Zhou,
-Bowen's equations for invariance pressure of control systems,
-\emph{SIAM J. Control Optim.}, \textbf{63} (2025), 1104--1128.
-\doi{10.1137/23M1607684}.
-
 \end{thebibliography}
 \end{document}
