@@ -34,6 +34,7 @@
 \keywords{Invariance entropy, state convergence, control catalogues,
 precision spectrum, reliability exponent, physical initial-state probability}
 \begin{document}
+\raggedbottom
 \begin{abstract}
 We study the information required to maintain a state constraint
 when every feasible state trajectory converges to a common point.
@@ -150,6 +151,40 @@ decay and arbitrary dimension. The latter has specified binary
 first-order geometry and a triangular constraint. No theorem
 identifies these classes by a singular normalization at the apex
 or extends a conclusion beyond its own assumptions.
+
+The following guide separates the assumptions used for the different
+costs. Each row refers to the complete hypotheses in the cited result;
+the shared catalogue definition does not identify the system classes.
+\begin{center}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.23\linewidth}
+>{\raggedright\arraybackslash}p{0.42\linewidth}
+>{\raggedright\arraybackslash}p{0.27\linewidth}@{}}
+\toprule
+Question & Dynamical setting & Main result\\
+\midrule
+Exact, outer and tracking entropy &
+Common radial cone motion; the perturbation theorem keeps the radial
+map and first jet fixed &
+Theorems~\ref{cone:thm:cone}, \ref{cone:thm:nonlinear}\\[3pt]
+State and input entropy &
+Common Lyapunov decrease along every feasible step &
+Theorem~\ref{cone:thm:lyapunov}\\[3pt]
+Precision and initial-set dependence &
+Specified binary first derivatives, all-input contraction toward the
+origin, and null critical sets on $Q$ &
+Theorems~\ref{thm:main}, \ref{thm:mismatch}\\[3pt]
+Exponential reliability &
+Matched first derivatives and the planar contraction hypotheses,
+with no critical points on $Q$ &
+Theorem~\ref{thm:reliability}\\[3pt]
+Failure of universal reliability transfer &
+Null critical sets without positive-area collapse, but a degenerate
+transient probability transport &
+Theorem~\ref{thm:counter}\\
+\bottomrule
+\end{tabular}
+\end{center}
 
 \subsection{Relation to earlier work}
 Invariance entropy was introduced and developed in
@@ -2500,17 +2535,25 @@ This proves
 \end{equation}
 
 To evaluate this lower bound, let $a=a_*<1/2$ and use $q$ for
-the frequency of the smaller branch. Put
-$c_b=-\log(1-a)$, $d=\log((1-a)/a)$, and
-$J_a=I_a(1/2)>0$ in this relabelled notation.
-Then $\chi(q)=c_b+dq$, $h=\chi(a)=H_b(a)$, and
+the frequency of the smaller branch. Define the relabelled functions
+\[
+\widehat\chi(q)=c_b+dq,\qquad
+\widehat I(q)=q\log(q/a)+(1-q)\log((1-q)/(1-a)),
+\]
+where $c_b=-\log(1-a)$ and $d=\log((1-a)/a)$, with the
+endpoint convention $0\log0=0$. If $a_0=a$, then $q=p$;
+otherwise $q=1-p$. Thus
+$\widehat\chi(q)=\chi(p)$, $\widehat I(q)=I_a(p)$, and
+$H_b(q)=H_b(p)$. This relabelling changes neither the dynamics
+nor either variational maximum. Put $J_a=\widehat I(1/2)>0$.
+Then $h=\widehat\chi(a)=H_b(a)$, and
 Corollary~\ref{cor:thresholds} gives the three pieces of $S$.
 Strict convexity of relative entropy, together with monotonicity
 of $H_b$ on $[0,1/2]$, gives
 \begin{equation}\label{eq:reliabilityclosed}
 L_a(\alpha)=
 \begin{cases}
-H_b(q_\alpha),&0<\alpha<J_a,\ I_a(q_\alpha)=\alpha,
+H_b(q_\alpha),&0<\alpha<J_a,\ \widehat I(q_\alpha)=\alpha,
                                       \ a<q_\alpha<1/2,\\
 \log2,&\alpha\ge J_a.
 \end{cases}
@@ -2934,6 +2977,8 @@ high-precision mismatch rates, or compare a fixed strategy with
 the optimal catalogue.
 
 \section{Applications of the criterion}\label{sec:examples}
+In this section the powers match: $\beta_0=\beta_1=\beta>1$,
+so $r_i=a_i^\beta$ and $t_i=a_i^{\beta-1}$.
 The following nonsingular example has nonlinear, truncated feasible
 images. It satisfies the reliability hypotheses and cannot be reduced
 to the matched linear pair by the stated constraint-preserving
@@ -3219,7 +3264,16 @@ More generally, an autonomous Lipschitz scalar closed-loop vector field preservi
 
 In the planar digit cone, enlarge \(U_q\) to its convex hull
 \(\widehat U_q=[-(q-1),q-1]\).
-The exact lower bounds in \cref{cone:thm:digits} use only the slope of a fixed-word map, and remain valid for this enlarged range. The original digit controls still give the upper bounds. Thus all the exact rates and counts in the planar case remain unchanged. \Cref{cone:thm:cone}(ii) likewise gives the same outer and tracking rates.
+The exact lower bounds in \cref{cone:thm:digits} use only the slope of a fixed-word map, and remain valid for this enlarged range. The original digit controls still give the upper bounds. Thus the full-cone count $r_{\mathrm{inv}}(n,Q,Q)=q^n$, the stated bounds on $K_1$, and the exact entropy rates remain unchanged. \Cref{cone:thm:cone}(ii) likewise gives the same outer and tracking rates.
+
+The minimum finite-horizon count on $K_1$ need not remain unchanged.
+For $q=2$ and $n=1$, its normalized initial angles fill
+$[-1/2,1/2]$. With the digit controls $\{-1,1\}$, neither control
+alone covers both signs, and two controls are necessary and sufficient.
+With the interval controls $[-1,1]$, the single input $u_0=0$
+sends every such angle to $2y\in[-1,1]$ and is feasible at that
+horizon. Thus this count decreases from two to one; the rate
+statement concerns exponential growth, not equality of all counts.
 
 For initial states in \(K_1\), the exact rate is unchanged if strict interior containment is required at every positive integer time. Indeed their ratios \(y=z/s\) lie in \([-1/2,1/2]\). Cover this interval by finitely many open intervals of radius \(q^{-n}\), with centers \(c\in[-1/2,1/2]\), using \(O(q^n)\) centers. For each center take \(u_0=-qc\), \(u_k=0\) for \(k\geq1\). These controls lie in \(\widehat U_q\), since \(q/2\leq q-1\). For an assigned initial ratio,
 \begin{align*}
@@ -3238,9 +3292,63 @@ It is feasible and smooth as a state map, although \(\kappa\) is discontinuous a
 On Li-Yorke pairs, \emph{J. Reine Angew. Math.} \textbf{547} (2002), 51--68.
 \href{https://doi.org/10.1515/crll.2002.053}{doi:\nolinkurl{10.1515/crll.2002.053}}.
 
+\bibitem{CHZ2026}H. Chen, Y. Huang and X. Zhong,
+Variational principles of invariance entropy dimension,
+\emph{J. Differential Equations}, \textbf{453}, Part 1 (2026), 113819.
+\doi{10.1016/j.jde.2025.113819}.
+
+\bibitem{CZ2024}Z. Chen and X. Zhong,
+Invariance complexity and equi-invariability for control systems,
+\emph{J. Math. Anal. Appl.}, \textbf{539} (2024), 128533.
+\doi{10.1016/j.jmaa.2024.128533}.
+
+\bibitem{Colonius2012}F. Colonius,
+Minimal bit rates and entropy for exponential stabilization,
+\emph{SIAM J. Control Optim.}, \textbf{50} (2012), 2988--3010.
+\doi{10.1137/110829271}.
+
+\bibitem{Colonius2018}F. Colonius,
+Invariance entropy, quasi-stationary measures and control sets,
+\emph{Discrete Contin. Dyn. Syst.}, \textbf{38} (2018), 2093--2123.
+\doi{10.3934/dcds.2018086}.
+
+\bibitem{CCS2021}F. Colonius, J. A. N. Cossich, and A. J. Santana,
+Outer invariance entropy for discrete-time linear systems on Lie groups,
+\emph{ESAIM Control Optim. Calc. Var.} \textbf{27} (2021), article 55.
+\href{https://doi.org/10.1051/cocv/2021054}{doi:\nolinkurl{10.1051/cocv/2021054}}. Author version: \href{https://arxiv.org/abs/2008.03219v2}{arXiv:\nolinkurl{2008.03219v2}}.
+
+\bibitem{CF2026}F. Colonius and R. Fabbri,
+Nonautonomous control systems and skew product flows,
+\emph{J. Dyn. Control Syst.} \textbf{32} (2026), no.~1, article 3.
+\href{https://doi.org/10.1007/s10883-025-09750-3}{doi:\nolinkurl{10.1007/s10883-025-09750-3}}.
+
+\bibitem{CH2021}F. Colonius and B. Hamzi,
+Entropy for practical stabilization,
+\emph{SIAM J. Control Optim.}, \textbf{59} (2021), 2195--2222.
+\doi{10.1137/20M1367775}.
+
 \bibitem{CK2009}F. Colonius and C. Kawan,
 Invariance entropy for control systems, \emph{SIAM J. Control Optim.} \textbf{48} (2009), no.~3, 1701--1721.
 \href{https://doi.org/10.1137/080713902}{doi:\nolinkurl{10.1137/080713902}}.
+
+\bibitem{CST2023}F. Colonius, A. J. Santana, and E. C. Viscovini,
+Chain controllability of linear control systems,
+\emph{SIAM J. Control Optim.} \textbf{62} (2024), no.~4, 2387--2411.
+\href{https://doi.org/10.1137/23M1626347}{doi:\nolinkurl{10.1137/23M1626347}}. Author version: \href{https://arxiv.org/abs/2312.14595v1}{arXiv:\nolinkurl{2312.14595v1}}.
+
+\bibitem{Csiszar1998}I. Csisz\'ar,
+The method of types,
+\emph{IEEE Trans. Inform. Theory}, \textbf{44} (1998), 2505--2523.
+\doi{10.1109/18.720546}.
+
+\bibitem{DSK2016}A. Da Silva and C. Kawan, Invariance entropy of hyperbolic control sets,
+\emph{Discrete Contin. Dyn. Syst.} \textbf{36} (2016), no.~1, 97--136.
+\href{https://doi.org/10.3934/dcds.2016.36.97}{doi:\nolinkurl{10.3934/dcds.2016.36.97}}. Author version: \href{https://arxiv.org/abs/1408.2416v1}{arXiv:\nolinkurl{1408.2416v1}}.
+
+\bibitem{Hutchinson1981}J. E. Hutchinson,
+Fractals and self-similarity,
+\emph{Indiana Univ. Math. J.}, \textbf{30} (1981), 713--747.
+\doi{10.1512/iumj.1981.30.30055}.
 
 \bibitem{K2009}C. Kawan, \emph{Invariance Entropy for Control Systems},
 doctoral dissertation, Universit\"at Augsburg, 2009.
@@ -3254,14 +3362,11 @@ doctoral dissertation, Universit\"at Augsburg, 2009.
 \emph{Nonlinearity} \textbf{24} (2011), no.~7, 1909--1935.
 \href{https://doi.org/10.1088/0951-7715/24/7/001}{doi:\nolinkurl{10.1088/0951-7715/24/7/001}}.
 
-\bibitem{DSK2016}A. Da Silva and C. Kawan, Invariance entropy of hyperbolic control sets,
-\emph{Discrete Contin. Dyn. Syst.} \textbf{36} (2016), no.~1, 97--136.
-\href{https://doi.org/10.3934/dcds.2016.36.97}{doi:\nolinkurl{10.3934/dcds.2016.36.97}}. Author version: \href{https://arxiv.org/abs/1408.2416v1}{arXiv:\nolinkurl{1408.2416v1}}.
-
-\bibitem{KD2018}C. Kawan and A. Da Silva,
-Invariance entropy for a class of partially hyperbolic sets,
-\emph{Math. Control Signals Syst.}, \textbf{30} (2018), Article 18.
-\doi{10.1007/s00498-018-0224-2}.
+\bibitem{Kawan2013}C. Kawan,
+\emph{Invariance Entropy for Deterministic Control Systems:
+An Introduction}, Lecture Notes in Mathematics, 2089,
+Springer, 2013.
+\doi{10.1007/978-3-319-01288-9}.
 
 \bibitem{KChaos}
 C. Kawan, Control of chaos with minimal information transfer,
@@ -3269,89 +3374,19 @@ preprint, version 5, 2026.
 \href{https://arxiv.org/abs/2003.06935v5}{arXiv:\nolinkurl{2003.06935v5}}.
 \doi{10.48550/arXiv.2003.06935}.
 
-\bibitem{Yao2026}S. Yao, Invariance entropy in the dust,
-preprint, version 1, 2026. \href{https://arxiv.org/abs/2607.02279v1}{arXiv:\nolinkurl{2607.02279v1}}.
-\doi{10.48550/arXiv.2607.02279}.
-
-\bibitem{CH2021}F. Colonius and B. Hamzi,
-Entropy for practical stabilization,
-\emph{SIAM J. Control Optim.}, \textbf{59} (2021), 2195--2222.
-\doi{10.1137/20M1367775}.
+\bibitem{KD2018}C. Kawan and A. Da Silva,
+Invariance entropy for a class of partially hyperbolic sets,
+\emph{Math. Control Signals Syst.}, \textbf{30} (2018), Article 18.
+\doi{10.1007/s00498-018-0224-2}.
 
 \bibitem{KD2016}C. Kawan and J.-C. Delvenne, Network entropy and data rates required for networked control,
 \emph{IEEE Trans. Control Netw. Syst.} \textbf{3} (2016), no.~1, 57--66.
 \href{https://doi.org/10.1109/TCNS.2015.2440551}{doi:\nolinkurl{10.1109/TCNS.2015.2440551}}. Author version: \href{https://arxiv.org/abs/1409.6037v1}{arXiv:\nolinkurl{1409.6037v1}}.
 
-\bibitem{CST2023}F. Colonius, A. J. Santana, and E. C. Viscovini,
-Chain controllability of linear control systems,
-\emph{SIAM J. Control Optim.} \textbf{62} (2024), no.~4, 2387--2411.
-\href{https://doi.org/10.1137/23M1626347}{doi:\nolinkurl{10.1137/23M1626347}}. Author version: \href{https://arxiv.org/abs/2312.14595v1}{arXiv:\nolinkurl{2312.14595v1}}.
-
-\bibitem{CCS2021}F. Colonius, J. A. N. Cossich, and A. J. Santana,
-Outer invariance entropy for discrete-time linear systems on Lie groups,
-\emph{ESAIM Control Optim. Calc. Var.} \textbf{27} (2021), article 55.
-\href{https://doi.org/10.1051/cocv/2021054}{doi:\nolinkurl{10.1051/cocv/2021054}}. Author version: \href{https://arxiv.org/abs/2008.03219v2}{arXiv:\nolinkurl{2008.03219v2}}.
-
-\bibitem{ZCH2021}X.-F. Zhong, Z.-J. Chen, and Y. Huang,
-Equi-invariability, bounded invariance complexity and L-stability for control systems,
-\emph{Sci. China Math.} \textbf{64} (2021), no.~10, 2275--2294.
-\href{https://doi.org/10.1007/s11425-020-1693-7}{doi:\nolinkurl{10.1007/s11425-020-1693-7}}. Author version: \href{https://arxiv.org/abs/2005.10457v1}{arXiv:\nolinkurl{2005.10457v1}}.
-
-\bibitem{ZC2023}X.-F. Zhong and Z.-J. Chen, Equi-invariability and bounded invariance complexity for control systems,
-\emph{J. Dyn. Differential Equations} \textbf{35} (2023), no.~3, 2261--2277.
-\href{https://doi.org/10.1007/s10884-022-10161-2}{doi:\nolinkurl{10.1007/s10884-022-10161-2}}.
-
-\bibitem{CZ2024}Z. Chen and X. Zhong,
-Invariance complexity and equi-invariability for control systems,
-\emph{J. Math. Anal. Appl.}, \textbf{539} (2024), 128533.
-\doi{10.1016/j.jmaa.2024.128533}.
-
-\bibitem{WH2024}T. Wang and Y. Huang, The measurable data rate theorem for discrete-time control systems,
-\emph{J. Dyn. Differential Equations} \textbf{36} (2024), no.~4, 3259--3279.
-\href{https://doi.org/10.1007/s10884-023-10269-z}{doi:\nolinkurl{10.1007/s10884-023-10269-z}}.
-
-\bibitem{ZH2025}X. Zhong and Y. Huang, Dimension types of invariance entropies for uncertain control systems,
-\emph{Sci. China Math.} \textbf{68} (2025), no.~12, 2917--2932.
-\href{https://doi.org/10.1007/s11425-024-2422-2}{doi:\nolinkurl{10.1007/s11425-024-2422-2}}.
-
-\bibitem{CHZ2026}H. Chen, Y. Huang and X. Zhong,
-Variational principles of invariance entropy dimension,
-\emph{J. Differential Equations}, \textbf{453}, Part 1 (2026), 113819.
-\doi{10.1016/j.jde.2025.113819}.
-
-\bibitem{Zhang2006}G. Zhang, Relative entropy, asymptotic pairs and chaos,
-\emph{J. London Math. Soc.} \textbf{73} (2006), no.~1, 157--172.
-\href{https://doi.org/10.1112/S0024610705022520}{doi:\nolinkurl{10.1112/S0024610705022520}}.
-
 \bibitem{LTZ2024}C. Liu, F. Tan, and J. Zhang,
 Mean Li-Yorke chaos along any infinite sequence for infinite-dimensional random dynamical systems,
 \emph{J. Differential Equations} \textbf{403} (2024), 548--575.
 \href{https://doi.org/10.1016/j.jde.2024.05.035}{doi:\nolinkurl{10.1016/j.jde.2024.05.035}}. Author version: \href{https://arxiv.org/abs/2207.08505v3}{arXiv:\nolinkurl{2207.08505v3}}.
-
-\bibitem{YCYZ2025}R. Yang, E. Chen, J. Yang and X. Zhou,
-Bowen's equations for invariance pressure of control systems,
-\emph{SIAM J. Control Optim.}, \textbf{63} (2025), 1104--1128.
-\doi{10.1137/23M1607684}.
-
-\bibitem{ZHZ2023}X. Zhong, Y. Huang, and X. Zou,
-Invariance entropy for uncertain control systems,
-\emph{Systems Control Lett.} \textbf{180} (2023), article 105623.
-\href{https://doi.org/10.1016/j.sysconle.2023.105623}{doi:\nolinkurl{10.1016/j.sysconle.2023.105623}}.
-
-\bibitem{SM2026}H. Sibai and E. Mallada,
-Recurrence of nonlinear control systems: Entropy, bit rates, and finite alphabet controllers,
-\emph{Nonlinear Anal. Hybrid Syst.} \textbf{59} (2026), article 101649.
-\href{https://doi.org/10.1016/j.nahs.2025.101649}{doi:\nolinkurl{10.1016/j.nahs.2025.101649}}.
-
-\bibitem{CF2026}F. Colonius and R. Fabbri,
-Nonautonomous control systems and skew product flows,
-\emph{J. Dyn. Control Syst.} \textbf{32} (2026), no.~1, article 3.
-\href{https://doi.org/10.1007/s10883-025-09750-3}{doi:\nolinkurl{10.1007/s10883-025-09750-3}}.
-
-\bibitem{WHS2019}T. Wang, Y. Huang and H.-W. Sun,
-Measure-theoretic invariance entropy for control systems,
-\emph{SIAM J. Control Optim.}, \textbf{57} (2019), 310--333.
-\doi{10.1137/18M1197862}.
 
 \bibitem{NWH2022}X. Nie, T. Wang and Y. Huang,
 Measure-theoretic invariance entropy and variational principles
@@ -3359,35 +3394,54 @@ for control systems,
 \emph{J. Differential Equations}, \textbf{321} (2022), 318--348.
 \doi{10.1016/j.jde.2022.03.013}.
 
-\bibitem{Colonius2018}F. Colonius,
-Invariance entropy, quasi-stationary measures and control sets,
-\emph{Discrete Contin. Dyn. Syst.}, \textbf{38} (2018), 2093--2123.
-\doi{10.3934/dcds.2018086}.
-
-\bibitem{Colonius2012}F. Colonius,
-Minimal bit rates and entropy for exponential stabilization,
-\emph{SIAM J. Control Optim.}, \textbf{50} (2012), 2988--3010.
-\doi{10.1137/110829271}.
-
-\bibitem{Csiszar1998}I. Csisz\'ar,
-The method of types,
-\emph{IEEE Trans. Inform. Theory}, \textbf{44} (1998), 2505--2523.
-\doi{10.1109/18.720546}.
-
-\bibitem{Hutchinson1981}J. E. Hutchinson,
-Fractals and self-similarity,
-\emph{Indiana Univ. Math. J.}, \textbf{30} (1981), 713--747.
-\doi{10.1512/iumj.1981.30.30055}.
-
-\bibitem{Kawan2013}C. Kawan,
-\emph{Invariance Entropy for Deterministic Control Systems:
-An Introduction}, Lecture Notes in Mathematics, 2089,
-Springer, 2013.
-\doi{10.1007/978-3-319-01288-9}.
+\bibitem{SM2026}H. Sibai and E. Mallada,
+Recurrence of nonlinear control systems: Entropy, bit rates, and finite alphabet controllers,
+\emph{Nonlinear Anal. Hybrid Syst.} \textbf{59} (2026), article 101649.
+\href{https://doi.org/10.1016/j.nahs.2025.101649}{doi:\nolinkurl{10.1016/j.nahs.2025.101649}}.
 
 \bibitem{WH2022}T. Wang and Y. Huang,
 Inverse variational principles for control systems,
 \emph{Nonlinearity}, \textbf{35} (2022), 1610--1633.
 \doi{10.1088/1361-6544/ac4f33}.
+
+\bibitem{WH2024}T. Wang and Y. Huang, The measurable data rate theorem for discrete-time control systems,
+\emph{J. Dyn. Differential Equations} \textbf{36} (2024), no.~4, 3259--3279.
+\href{https://doi.org/10.1007/s10884-023-10269-z}{doi:\nolinkurl{10.1007/s10884-023-10269-z}}.
+
+\bibitem{WHS2019}T. Wang, Y. Huang and H.-W. Sun,
+Measure-theoretic invariance entropy for control systems,
+\emph{SIAM J. Control Optim.}, \textbf{57} (2019), 310--333.
+\doi{10.1137/18M1197862}.
+
+\bibitem{YCYZ2025}R. Yang, E. Chen, J. Yang and X. Zhou,
+Bowen's equations for invariance pressure of control systems,
+\emph{SIAM J. Control Optim.}, \textbf{63} (2025), 1104--1128.
+\doi{10.1137/23M1607684}.
+
+\bibitem{Yao2026}S. Yao, Invariance entropy in the dust,
+preprint, version 1, 2026. \href{https://arxiv.org/abs/2607.02279v1}{arXiv:\nolinkurl{2607.02279v1}}.
+\doi{10.48550/arXiv.2607.02279}.
+
+\bibitem{Zhang2006}G. Zhang, Relative entropy, asymptotic pairs and chaos,
+\emph{J. London Math. Soc.} \textbf{73} (2006), no.~1, 157--172.
+\href{https://doi.org/10.1112/S0024610705022520}{doi:\nolinkurl{10.1112/S0024610705022520}}.
+
+\bibitem{ZC2023}X.-F. Zhong and Z.-J. Chen, Equi-invariability and bounded invariance complexity for control systems,
+\emph{J. Dyn. Differential Equations} \textbf{35} (2023), no.~3, 2261--2277.
+\href{https://doi.org/10.1007/s10884-022-10161-2}{doi:\nolinkurl{10.1007/s10884-022-10161-2}}.
+
+\bibitem{ZCH2021}X.-F. Zhong, Z.-J. Chen, and Y. Huang,
+Equi-invariability, bounded invariance complexity and L-stability for control systems,
+\emph{Sci. China Math.} \textbf{64} (2021), no.~10, 2275--2294.
+\href{https://doi.org/10.1007/s11425-020-1693-7}{doi:\nolinkurl{10.1007/s11425-020-1693-7}}. Author version: \href{https://arxiv.org/abs/2005.10457v1}{arXiv:\nolinkurl{2005.10457v1}}.
+
+\bibitem{ZH2025}X. Zhong and Y. Huang, Dimension types of invariance entropies for uncertain control systems,
+\emph{Sci. China Math.} \textbf{68} (2025), no.~12, 2917--2932.
+\href{https://doi.org/10.1007/s11425-024-2422-2}{doi:\nolinkurl{10.1007/s11425-024-2422-2}}.
+
+\bibitem{ZHZ2023}X. Zhong, Y. Huang, and X. Zou,
+Invariance entropy for uncertain control systems,
+\emph{Systems Control Lett.} \textbf{180} (2023), article 105623.
+\href{https://doi.org/10.1016/j.sysconle.2023.105623}{doi:\nolinkurl{10.1016/j.sysconle.2023.105623}}.
 \end{thebibliography}
 \end{document}

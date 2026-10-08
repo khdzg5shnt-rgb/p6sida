@@ -1,3 +1,11 @@
+# Historical DCDS cover letter — superseded
+
+This letter belongs to the earlier DCDS stage manuscript reviewed on 2026-10-04. Its title, contribution description and submission instructions do not describe the current combined paper. It is retained as history and is not a current submission letter. See [CURRENT.md](../CURRENT.md) and [the current paper](P6_PRECISION_COST.tex). No submission is authorized or has been made.
+
+The original draft follows unchanged.
+
+---
+
 # DCDS cover letter draft
 
 Complete the author fields and the declarations in [SUBMISSION_CHECKLIST.md](SUBMISSION_CHECKLIST.md) before using this letter. No submission or communication has been made.

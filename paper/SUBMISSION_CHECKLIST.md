@@ -1,3 +1,11 @@
+# 历史 DCDS 材料清单——已被后续研究替代
+
+本清单适用于2026-10-04的早期DCDS阶段稿。下文中的“当前状态”、篇目、投稿指南及编辑候选均指该历史阶段，不是最新整合稿的投稿包，也未在本次重新核实。以[CURRENT.md](../CURRENT.md)和[现行唯一论文](P6_PRECISION_COST.tex)为准。当前未授权投稿或准备投稿材料，作者事实和人工审读仍待确认。
+
+以下原清单原样保留。
+
+---
+
 # DCDS conditional submission checklist
 
 核对日期：2026-10-04。对象为 **Discrete and Continuous Dynamical Systems**（DCDS，ISSN 1078-0947），不是 DCDS-B 或 DCDS-S。材料已准备，尚未投稿；作者信息和真实声明未确认，不能标作可直接提交。
