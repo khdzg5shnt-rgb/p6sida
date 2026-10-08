@@ -2,26 +2,29 @@
 
 基线论文：*Positive invariance entropy under uniform state convergence*。
 
-当前唯一英文稿：*Control information under state convergence: entropy, precision and reliability*。
-已按用户明确要求将初始P6与最新R40合为完整论文，末次检查后的现行PDF为49页，只保留一份
+当前唯一英文稿：*Precision and reliability costs in contracting control systems*。
+已按授权从49页合并稿取舍为26页集中主线的
 [TeX](paper/P6_PRECISION_COST.tex)和[PDF](paper/P6_PRECISION_COST.pdf)。
-原稿14项与R40的16项结果及全部证明保留，统一问题、引言、引用和量词，
-分别陈述假设，不把整合算作新的数学升级。
+主贡献是非线性精度—可靠性转移及零面积临界不足的严格反例，
+完整保留实际覆盖几何、匹配准确谱和固定初始集分裂；失配判据放入附录。
+高维锥体、熵—混沌、lift与反馈等独立链从本篇撤下，原稿及全部历史保留。
+附录保留扩大控制集合后内部有限时域计数2到1的修正，不再声称所有计数不变。
 
-[末次检查与修订](research/COMBINED_PAPER/FINAL_REVIEW.md)、
-[原始整合记录（历史）](research/COMBINED_PAPER/INTEGRATION_NOTES.md)、
-[结果页码对应](research/COMBINED_PAPER/RESULT_COVERAGE.md)、
-[来源范围](research/COMBINED_PAPER/SOURCES.md)记录内容保留与限度。
-全部49页检查及编译通过；原稿和历史不变，作者待填与AI披露准确。
-末次修订纠正附录内部集有限时域计数不变的过强表述（q=2、n=1时
-扩大控制集可由2条降为1条），核心定理及渐近率保留；补清假设与频率记号，
-旧DCDS附信和清单已标为历史。
-JDE保持B，正式概率spanning覆盖缺口没有因整合消失，不自动R41或投稿。
+当前依据为[FINAL_SELECTION](research/COMBINED_PAPER/FINAL_SELECTION.md)：
+结果去留、实际修订、直接覆盖、作者待确认事项与JDE判断。
+15项正式陈述及完整证明保留；12条参考文献，编译、引用和全部26页检查通过。
+本次没有新增数学定理，篇幅缩短不等于贡献升级或退步。
 
-R40历史上完整整合R37–R39的可靠性证明及严格反例，新增独立用途
-缓解R35的用途集中限制；这些内容现均保留在完整合并稿中。
-Wang–Huang2022（DOI10.1088/1361-6544/ac4f33）仍只读首页与摘要，
-未排除正式覆盖，既有原件请求不重复。以下研究说明保留为历史。
+JDE仍为B（合理冲刺），数学内容值得送审评估；正式发出前仍需真实作者
+审读/批准、Wang–Huang2022正式正文定向覆盖核验，以及期刊专属指南确认。
+缺口是DOI10.1088/1361-6544/ac4f33的完整spanning定义与证明，不是要求
+机械再加定理。作者信息和AI披露保持事实准确，不预认一区/TOP。
+
+旧[FINAL_REVIEW](research/COMBINED_PAPER/FINAL_REVIEW.md)、
+[RESULT_COVERAGE](research/COMBINED_PAPER/RESULT_COVERAGE.md)、
+[INTEGRATION_NOTES](research/COMBINED_PAPER/INTEGRATION_NOTES.md)为49页稿历史记录；
+[SOURCES](research/COMBINED_PAPER/SOURCES.md)中的真实版本和阅读限制继续适用。
+完成后停止，不自动开启研究轮或投稿。以下为历轮历史说明。
 
 R34阶段稿的数学增量来自R33：可行瞬态零集拉回、同一个固定紧集的多局部逆图和早期首真越界面积，允许Q内真实可行折叠而保留全部声明范围内的率。R34完整收入这些证明及实例，不假设全Q统一逆Jacobian下界，完成全文、编译及19页渲染核对；整合不算新证明。
 
