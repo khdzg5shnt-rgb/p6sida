@@ -5,6 +5,7 @@
 \usepackage{amsmath,amssymb,mathtools}
 \usepackage[expansion=false]{microtype}
 \usepackage{enumitem}
+\usepackage{needspace}
 \usepackage[hidelinks]{hyperref}
 \usepackage[nameinlink,noabbrev]{cleveref}
 \urlstyle{same}
@@ -36,66 +37,67 @@ reliability exponent, noncollapse, initial-state probability}
 \begin{document}
 \raggedbottom
 \begin{abstract}
-We study finite catalogues of open-loop controls that keep trajectories
-within a shrinking neighbourhood of a constraint. The initial state
-selects a catalogue entry, and failure is measured by uniform area on
-the constraint. For a class of binary planar systems contracting toward
-the origin, we prove that the exponential catalogue rate at
-precision $\exp(-\gamma n+o(n))$ and failure probability
-$\exp(-\alpha n+o(n))$ is $\min\{S(\gamma),L_a(\alpha)\}$,
-provided the controlled maps have no critical points on the constraint.
-Here $S$ is the full-state precision spectrum determined by the matched
-first derivatives, and $L_a$ is the binary source-coding rate at a
-prescribed reliability exponent. The proof bounds probability transport
-through all feasible transient branches and constructs positive-area
-regions that force prescribed control prefixes under approximate
-feasibility. We also give an injective $C^2$ example with null critical
-sets that preserves every finite-horizon full-state catalogue count
-but has a strictly greater reliability cost. Thus preservation of
-full-state costs does not ensure preservation of exponential
-reliability. Under the weaker null-critical-set hypothesis, we also
-determine the full-state precision spectrum and the rate of one
-fixed, nearly full-area compact initial set.
+We study the size of a finite open-loop control catalogue when both
+the permitted distance from a state constraint and the failure
+probability decrease with the horizon. For a class of binary planar
+systems contracting toward the origin, with matched first derivatives
+and uniform initial-state area on a triangle, the exponential catalogue
+rate at precision
+$\exp(-\gamma n+o(n))$ and failure probability $\exp(-\alpha n+o(n))$
+is $\min\{S(\gamma),L_a(\alpha)\}$ when the controlled maps
+have no critical points on the constraint. The function $S$ is the
+full-state precision spectrum determined by the matched first
+derivatives; $L_a$ is the binary source-coding rate at reliability
+exponent $\alpha$. The proof compares symbolic word weights with
+the physical mass covered by arbitrary approximate inputs. It uses
+uniform probability transport through feasible transient branches
+and positive-area regions on which a prescribed control prefix is
+unavoidable. If critical sets merely have area zero, the full-state
+precision spectrum persists, and we also determine the ordinary
+precision cost on one fixed, nearly full-area compact set. This weaker hypothesis
+does not suffice for reliability: an injective $C^2$ transient
+preserves every finite-horizon full-state catalogue count while
+giving a strictly larger reliability lower rate.
 \end{abstract}
 \maketitle
 
 \section{Introduction}
-At time zero, a controller observes the initial state and selects
-one open-loop input from a finite catalogue. How large must that
-catalogue be to maintain a state constraint? Its size measures the
-information needed to make this initial choice.
-Invariance entropy describes its exponential growth with the horizon;
-see \cite{CK2009,Kawan2013}. When all inputs contract toward a common
-state, a fixed positive tolerance eventually makes the constraint
-automatic, and the required catalogue size stays bounded. Shrinking
-the tolerance with the horizon reveals a nonzero cost. Allowing
-failure on a set of small initial-state probability introduces a
-second scale, whose interaction with precision is the subject of
-this paper.
+At time zero, a controller observes the initial state and chooses
+an open-loop input from a finite catalogue. The catalogue size
+measures the information needed for this choice, and invariance
+entropy describes its exponential growth with the horizon
+\cite{CK2009,Kawan2013}. Suppose every input contracts the state
+toward a common point of the constraint. At any fixed positive
+tolerance, all sufficiently late constraints are then automatic,
+so a bounded catalogue suffices. A tolerance that decreases with
+the horizon can reveal an exponential cost. We ask how this cost
+changes when the catalogue may also fail on a set of exponentially
+small initial-state probability.
 
 We use the triangle
 $Q=\{(s,z):0\le s\le1,\ |z|\le s\}$ with uniform area probability.
 An input succeeds at an initial state if its trajectory stays within
 Euclidean distance $\delta_n$ of $Q$ at every time $0,\ldots,n$.
-It may leave and reenter $Q$ while satisfying this condition. Every
-binary input is available, and its assignment depends on the actual
-initial state. We study precision and failure sequences satisfying
+It may leave and reenter $Q$ while satisfying this condition.
+Every binary input is available, and its assignment depends on
+the observed initial state. The two budgets satisfy
 \[
 \delta_n\to0,\quad \delta_n=\exp(-\gamma n+o(n)),\qquad
 e_n=\exp(-\alpha n+o(n)),\qquad \gamma\ge0,\quad\alpha>0.
 \]
-The successful set may vary with $n$. We also compare this requirement
-with covering a compact initial set fixed before all horizons and
-precision sequences.
+The successful set may vary with $n$. A different requirement is
+to cover one compact initial set chosen before all horizons and
+precision sequences. Comparing these requirements will distinguish
+a fixed loss of area from an exponentially shrinking failure allowance.
 
 The systems are globally $C^2$, are controlled invariant on $Q$,
 and contract toward the origin in a common norm. Their first
-derivatives induce complementary angular branches with relative
+derivatives induce complementary angular branches of relative
 lengths $a_0,a_1$, where $a_0+a_1=1$, and matched radial factors
 $a_i^\beta$, $\beta>1$. Radial motion may depend on angle; the
 nonlinear feasible branches may overlap and have truncated images.
-Section~\ref{sec:planar} states the full assumptions, including the
-noncollapse conditions used for the different conclusions.
+Section~\ref{sec:planar} states the full assumptions, including
+the different noncollapse conditions used below.
 
 \subsection{Main results and proof mechanism}
 If neither controlled map has a critical point on $Q$,
@@ -104,31 +106,32 @@ Theorem~\ref{thm:reliability} gives
 \lim_{n\to\infty}n^{-1}\log r_{e_n}(n,\delta_n;Q)
        =\min\{S(\gamma),L_a(\alpha)\}.
 \]
-The two terms come from different constructions. Covering all initial
-states at the prescribed tolerance gives the precision spectrum $S$.
-Keeping exactly feasible words outside a sufficiently rare family
-gives $L_a$, the classical binary source-coding rate at reliability
-exponent $\alpha$. The smaller catalogue suffices. The lower bound
-shows that allowing arbitrary approximate inputs cannot improve its
-exponential rate. Both functions are evaluated explicitly.
-For $\gamma\le\beta h$, where $h=-\sum_i a_i\log a_i$, the rate
-is $\gamma/\beta$ regardless of $\alpha>0$. Above this threshold,
-exponentially reliable coverage costs strictly more than coverage
-with a fixed positive failure allowance, until the full-state rate
-is reached. The transmitted index selects a whole open-loop input at time
-zero; no subsequent communication is considered.
+Each term corresponds to a catalogue construction. Covering all
+initial states at the prescribed tolerance gives $S$. Retaining
+exactly feasible words whose discarded probability fits the failure
+budget gives $L_a$, the classical binary source-coding rate at
+reliability exponent $\alpha$. The lower bound shows that arbitrary
+approximate inputs cannot improve on the smaller of these two rates.
+For $\gamma\le\beta h$, where $h=-\sum_i a_i\log a_i$, the
+rate is $\gamma/\beta$ for every $\alpha>0$. Above this threshold,
+exponential reliability costs more than a fixed positive failure
+allowance, until the full-state rate is reached. Both functions and
+the two precision thresholds are evaluated explicitly. The transmitted
+index chooses the entire input at time zero.
 
 Ordinary precision costs require a weaker hypothesis. If the critical
-sets merely have area zero, the full-state rate remains $S$ and
+sets merely have area zero, the full-state rate remains $S$, and
 every positive-area compact initial set has rate $\gamma/\beta$
-below $\beta h$. There is a single compact set of area arbitrarily
-close to one with rate $\min\{h,\gamma/\beta\}$ for all finite
-precision exponents (Theorem~\ref{thm:main}). Theorem~\ref{thm:counter}
-shows why this weaker noncollapse does not suffice for reliability:
-an injective $C^2$ transient preserves every finite-horizon full-state
-catalogue count of the linear model while increasing its reliability
-cost. The transient changes the probability of states requiring
-many different inputs.
+below $\beta h$. For each fixed area allowance, one compact set
+has rate $\min\{h,\gamma/\beta\}$ for all finite precision exponents
+(Theorem~\ref{thm:main}). Reliability is more sensitive to the
+transient. In Theorem~\ref{thm:counter}, an injective $C^2$ change
+in the first step preserves every finite-horizon full-state count
+of the linear model, but increases the mass of states forcing many
+different inputs. Its reliability lower rate is strictly larger
+than the formula above. The same construction quantifies the
+exponential cost of an inverse-area bound on a window retaining
+mass $1-e_n$.
 
 The main difficulty is to pass from control words to the states
 that an arbitrary approximate input actually covers. At a fixed
@@ -139,20 +142,21 @@ violate the constraint. We instead partition covered states by
 their first actual exit from $Q$. An angular product measures the
 width of the preceding feasible region, while a radial product
 measures how much exit the tolerance permits. Their ratio yields
-Theorem~\ref{thm:area}. After a finite transient, this estimate
-holds on one fixed compact set with arbitrarily small area loss.
+the physical coverage estimate in Theorem~\ref{thm:area}.
+Null critical sets let us transport this estimate through the
+finite transient after removing an arbitrarily small fixed area.
+This is enough for the ordinary precision spectrum and fixed-set results.
 
-An exponentially small failure allowance cannot absorb an arbitrary
-fixed area loss, or even an error of order $\delta_n$. Two further
-estimates resolve this issue. Lemma~\ref{lem:probtransport} bounds
-probability transport through all feasible transient branches by
-one constant independent of the horizon and both budgets.
-Lemma~\ref{lem:massforcing} supplies disjoint positive-area regions
-of known mass on which any successful input must follow a prescribed
-prefix. At the first wrong control, the distance from $Q$ exceeds
-the tolerance; later reentry cannot undo that violation. These
-estimates supply the physical mass bounds needed to apply type
-counting to the optimal catalogue.
+For exponential reliability, that fixed area loss is too large;
+even an error of order $\delta_n$ need not fit the failure budget.
+Nonsingularity gives a uniform inverse-area bound on all feasible
+transient branches (Lemma~\ref{lem:probtransport}), which controls
+the mass discarded in the upper construction. For the lower bound,
+Lemma~\ref{lem:massforcing} gives disjoint regions of known positive
+mass on which every successful input must follow a prescribed prefix.
+The first wrong control already violates the tolerance. These two
+comparisons connect the physical catalogue problem to word counting;
+the remaining optimisation uses binary entropy and relative entropy.
 
 \subsection{Related work}
 Our full-cover quantity is the outer invariance complexity of
@@ -174,32 +178,33 @@ entropy and inverse variational principles. Probability-dependent
 control catalogues and transport of initial measures are therefore
 established parts of the subject.
 
-Nie, Wang and Huang \cite{NWH2022} obtain measure entropy through
-convex duality from invariance pressure. Chen, Huang and Zhong
-\cite{CHZ2026} study entropy dimension using invariant-partition
-cylinders and time-power normalisation, while Yang, Chen, Yang
+Nie, Wang and Huang \cite{NWH2022} use convex duality of invariance
+pressure to define a measure-theoretic entropy on the control region.
+That dual measure has a different role from the initial-state area
+in our catalogue problem. Chen, Huang and Zhong \cite{CHZ2026}
+study entropy dimension through invariant-partition cylinders and
+time-power normalisation; their high-probability coverings take the
+failure allowance to zero after the time limit. Yang, Chen, Yang
 and Zhou \cite{YCYZ2025} develop cost-threshold pressure formulas.
-Applying these methods to the present problem requires a
-quantitative comparison between symbolic weights and the physical
-sets covered by arbitrary approximate inputs. In particular,
-transporting a measure does not compare two systems both endowed
-with uniform area. Our probability domination and forced-region
-estimates provide this comparison for the stated structural class.
-The transient counterexample shows that null-set preservation
-alone cannot supply it.
+Our simultaneous precision and failure budgets require quantitative
+bounds for the physical sets served by arbitrary approximate inputs.
+Even invariance under transport of a measure does not compare two
+systems each endowed with uniform area. The probability domination
+and forced-region estimates establish that comparison for the stated
+class, while the transient counterexample explains why null-set
+preservation alone is insufficient.
 
 Volume estimates for the set served by a single control already give
 catalogue lower bounds in the invariance-pressure setting; see
-Colonius, Cossich and Santana \cite{CCS2020}. We use this general
-principle together with classical graph estimates, summable
-distortion, stopping scales and typical sets; related geometric
-methods appear in \cite{Hutchinson1981,KD2018}. The entropy
-optimisation is an application of the method of types
-\cite{Csiszar1998}. Here the estimates must retain the tolerance
-at the first true exit and the mass of regions whose failure cannot
-be absorbed by $e_n$. The area and probability comparisons above
-establish that connection. Once they are available, the explicit
-rates follow by counting.
+Colonius, Cossich and Santana \cite{CCS2020}. We use this principle
+together with classical graph estimates, summable distortion,
+stopping scales and typical sets; related geometric methods appear
+in \cite{Hutchinson1981,KD2018}. The entropy optimisation uses
+the method of types \cite{Csiszar1998}. The geometric work here
+is to retain the tolerance at the first true exit and to bound
+the mass of regions whose loss would exceed $e_n$. It is these
+estimates, rather than word counting alone, that identify the rate
+of the actual catalogue.
 
 \subsection{Organisation}
 Section~\ref{sec:planar} defines the catalogues and states the
@@ -207,17 +212,14 @@ results. Sections~\ref{sec:geometry}--\ref{sec:shadow} establish
 feasible-region bounds, transient area control and trajectories
 with a wrong-control margin. Section~\ref{sec:rates} derives the
 ordinary precision spectrum, and Section~\ref{sec:reliability}
-proves the reliability formula. Sections~\ref{sec:counter}
-and~\ref{sec:examples} give the transient counterexample and
-examples distinguishing folding, positive-area collapse and angular
-dependence of radial motion. Appendix~\ref{sec:mismatch}
-characterises first-order matching within the specified matrix
-family. Appendix~\ref{app:alphabet} distinguishes finite-horizon
-counts from rates when the control alphabet is enlarged.
-Appendix~\ref{app:linearfinite} gives a finite-horizon probability
-comparison for the matched linear pair. Appendix~\ref{app:arsinh}
-compares the present class with a subexponentially contracting
-system having positive control entropies and convergent feasible states.
+proves the reliability formula. Section~\ref{sec:counter} gives
+the transient obstruction, and Section~\ref{sec:examples} examines
+the roles of angular dependence, folding and positive-area collapse.
+The appendices treat the first-order matching criterion, changes
+of control alphabet, and a finite-horizon probability comparison
+for linear controls. The final appendix compares the present
+exponential contraction class with a slower radial system having
+positive fixed-tolerance control entropies.
 
 \section{Control catalogues and main results}\label{sec:planar}
 
@@ -1725,8 +1727,9 @@ calculus gives $g'=q_1$ and $g''=q_2$. Thus $g$ is $C^2$
 on $J_0$, flat to second order on $\mathcal D$, with positive
 first derivative on all gaps.
 
-For completeness, the exterior joins can be made without altering
-these properties. On $[L,R]$ with prescribed increment $T>0$, set
+To join this interpolation to the identity, we prescribe positive
+derivative densities on the two exterior intervals. On $[L,R]$
+with prescribed increment $T>0$, set
 $d=\min\{(R-L)/4,T/4\}$ and $v(x)=E(x-L)E(R-x)$.
 For the left join use $c(x)=1-\Sigma((x-L)/d)$, and for the right
 use $c(x)=\Sigma((x-R+d)/d)$. In either case $\int c\le d<T$.
@@ -1900,8 +1903,12 @@ gap suffices for the obstruction. Absolute continuity and null-set
 pullback preservation alone do not control exponential tail masses.
 
 \subsection{The cost of an exponentially reliable regular window}
-The same physical regions quantify the inverse-area obstruction,
-independently of how a window is selected.
+The regular window in Lemma~\ref{lem:regularwindow} retains a fixed
+amount of area. One might instead seek windows of mass $1-e_n$ with
+inverse-area constants of subexponential size. For this fixed
+counterexample, the forced regions rule out that approach: their
+retained mass is much larger than the mass of their first-control
+images. The following bound holds for every measurable choice of window.
 \begin{corollary}\label{cor:inversecost}
 For the fixed system of Theorem~\ref{thm:counter}, let
 $e_n=\exp(-n/8+o(n))$, with $0<e_n<1$, and
@@ -1966,9 +1973,13 @@ Lemma~\ref{lem:regularwindow} at fixed area loss cannot here be
 made subexponential while the area loss decreases as $e_n$.
 
 \section{Examples of noncollapse and its failure}\label{sec:examples}
-The examples below distinguish truncated feasible images, folds with
-null critical sets, angle-dependent radial motion and positive-area
-collapse. Their noncollapse hypotheses and cost conclusions differ.
+The assumptions allow considerable freedom in the feasible geometry.
+We first examine two nonsingular systems: one has empty fixed-radius
+word sections, and the other has radial motion depending on angle.
+A fold then shows that null critical sets permit collisions inside
+a feasible branch. Finally, a system with positive-area collapse
+shows how the fixed-set precision law can fail despite exact local
+agreement with the linear model.
 
 \subsection{Empty fixed-radius slices}
 \label{sec:inward}
@@ -2078,7 +2089,55 @@ from $4<9/2$. The spectrum therefore remains valid despite the
 empty fixed-radius sections.
 
 
+\subsection{Radial motion depending on angle}\label{sec:radialfeedback}
+The graph estimates did not require the radius to evolve independently
+of the angle. The following nonsingular example makes this dependence
+explicit while preserving all the standing assumptions.
+For any parameters \eqref{eq:parameters}, choose a nonnegative
+smooth cutoff $\kappa$ equal to one on $\overline B(0,3/2)$ and
+supported inside $B(0,7/4)$. An explicit choice, with the flat
+function $E$ above, is
+\[
+\kappa(x)=\frac{E(169/64-|x|^2)}
+ {E(169/64-|x|^2)+E(|x|^2-9/4)}.
+\]
+The denominator is positive, and $\kappa(x)=0$ for $|x|\ge13/8$.
+Put $\phi(s,z)=z^2\kappa(s,z)$,
+$M_\phi=\max\{1,\|x\cdot\nabla\phi\|_\infty\}$, choose
+$0<c<1/(2M_\phi)$, and define
+\begin{equation}\label{eq:radialfeedback}
+H(x)=e^{-c\phi(x)}x,\qquad F_i(x)=\mathsf A_iH(x).
+\end{equation}
+These are global smooth diffeomorphisms. Indeed, on each ray
+$x=te$, $t\ge0$, the image radius has derivative
+$e^{-c\phi(te)}[1-cte\cdot\nabla\phi(te)]>0$ and tends to
+infinity, since $H$ is identity outside a compact set. It maps
+each ray bijectively onto itself. Moreover
+\[
+\det DH(x)=e^{-2c\phi(x)}[1-cx\cdot\nabla\phi(x)]>0.
+\]
+The inverse function theorem gives a smooth inverse, including
+at zero, and $DH(0)=I$ because $\phi(x)=O(|x|^2)$ there.
+Thus the first derivatives are \eqref{eq:jets} and there are no
+critical points. Since $\phi\ge0$, $V(Hx)\le V(x)$ globally;
+the linear norm estimate in Section~\ref{sec:planar} verifies
+\eqref{eq:contract}. The scalar factor preserves angle and decreases
+radius. The linear feasible angular domains therefore still cover
+each fibre of $Q$, proving controlled invariance at all its states.
+
+The triangle lies in $B(0,3/2)$, so on $Q$ the first coordinate
+is $r_i s e^{-cz^2}$. At a fixed positive $s$ it varies with
+$z=sy$. Radial motion is consequently not autonomous. With
+matched powers both Theorems~\ref{thm:main} and
+\ref{thm:reliability} apply; with unequal powers the statements
+of Appendix~\ref{sec:mismatch} apply. The example directly verifies
+the hypotheses in the given coordinates; no assertion about other
+coordinate representations is needed.
+
 \subsection{A fold inside a feasible branch}\label{sec:fold}
+The ordinary precision theorem allows critical points on a null set.
+Here this freedom produces genuine collisions within an open feasible
+branch, even though every input still contracts the norm toward zero.
 \begin{proposition}\label{prop:fold}
 For every parameter choice \eqref{eq:parameters}, matched or
 mismatched, there are global $C^\infty$ maps satisfying the
@@ -2180,55 +2239,14 @@ of the initial and output points put each initial point in the
 interior of $Q\cap F_i^{-1}Q$ for the selected control.
 \end{proof}
 
-Theorem~\ref{thm:main} applies with matched powers; with unequal
-powers the low-precision statements of Appendix~\ref{sec:mismatch}
-apply. The actual critical points prevent direct application of
-Theorem~\ref{thm:reliability}. No reliability formula for this fold
-is inferred from its null critical set. Its feasible collisions also
-exclude a $Q$-preserving simultaneous coordinate conjugacy to
-injective controls, since injectivity is preserved by conjugacy.
-This does not exclude other semiconjugacies.
-
-\subsection{Radial motion depending on angle}\label{sec:radialfeedback}
-For any parameters \eqref{eq:parameters}, choose a nonnegative
-smooth cutoff $\kappa$ equal to one on $\overline B(0,3/2)$ and
-supported inside $B(0,7/4)$. An explicit choice, with the flat
-function $E$ above, is
-\[
-\kappa(x)=\frac{E(169/64-|x|^2)}
- {E(169/64-|x|^2)+E(|x|^2-9/4)}.
-\]
-Its denominator is positive; it vanishes for $|x|\ge13/8$.
-Put $\phi(s,z)=z^2\kappa(s,z)$,
-$M_\phi=\max\{1,\|x\cdot\nabla\phi\|_\infty\}$, choose
-$0<c<1/(2M_\phi)$, and define
-\begin{equation}\label{eq:radialfeedback}
-H(x)=e^{-c\phi(x)}x,\qquad F_i(x)=\mathsf A_iH(x).
-\end{equation}
-These are global smooth diffeomorphisms. Indeed, on each ray
-$x=te$, $t\ge0$, the image radius has derivative
-$e^{-c\phi(te)}[1-cte\cdot\nabla\phi(te)]>0$ and tends to
-infinity, since $H$ is identity outside a compact set. It maps
-each ray bijectively onto itself. Moreover
-\[
-\det DH(x)=e^{-2c\phi(x)}[1-cx\cdot\nabla\phi(x)]>0.
-\]
-The inverse function theorem gives a smooth inverse, including
-at zero, and $DH(0)=I$ because $\phi(x)=O(|x|^2)$ there.
-Thus the first derivatives are \eqref{eq:jets} and there are no
-critical points. Since $\phi\ge0$, $V(Hx)\le V(x)$ globally;
-the linear norm estimate in Section~\ref{sec:planar} verifies
-\eqref{eq:contract}. The scalar factor preserves angle and decreases
-radius. The linear feasible angular domains therefore still cover
-each fibre of $Q$, proving controlled invariance at all its states.
-
-The triangle lies in $B(0,3/2)$, so on $Q$ the first coordinate
-is $r_i s e^{-cz^2}$. At a fixed positive $s$ it varies with
-$z=sy$. Radial motion is consequently not autonomous. With
-matched powers both Theorems~\ref{thm:main} and
-\ref{thm:reliability} apply; with unequal powers the statements
-of Appendix~\ref{sec:mismatch} apply. This example requires no
-claim about excluding coordinate reductions.
+With matched powers, this fold has the precision spectrum of
+Theorem~\ref{thm:main}; with unequal powers it satisfies the
+low-precision conclusions of Appendix~\ref{sec:mismatch}.
+Its critical points leave the reliability theorem inapplicable,
+so its reliability spectrum remains undetermined. The feasible
+collisions also rule out a $Q$-preserving simultaneous coordinate
+conjugacy to injective controls, since conjugacy preserves
+injectivity. They give no obstruction to other semiconjugacies.
 
 \subsection{Local agreement with remote positive-area collapse}
 \label{sec:collapse}
@@ -2370,47 +2388,43 @@ make the null-critical-set hypothesis necessary for every system
 having that law. Finite catalogues serving a collapsed region are
 consistent with the general noninjective framework of \cite{CZ2024}.
 
-The three mechanisms are distinct. Positive-area collapse in
-Proposition~\ref{prop:collapse} defeats the fixed-set precision
-law. The fold in Proposition~\ref{prop:fold} satisfies its
-null-critical-set hypothesis. The injective transient in
-Theorem~\ref{thm:counter} preserves full-state counts but changes
-reliability through probability concentration. Nonsingularity on $Q$
-is the sufficient reliability condition proved here; these examples
-do not give a necessary and sufficient classification.
-
 \section{Consequences and scope}
-The distinction between ordinary precision cost and exponential
-reliability is quantitative. For the former, deleting an arbitrarily
-small fixed area leaves a compact set on which transient inverse
-area bounds suffice. For the latter, the discarded area would have
-to fit the shrinking failure budget. Nonsingularity on $Q$ avoids
-this loss by giving uniform probability domination on the whole
-triangle. The Cantor transient shows why null-set preservation
-alone is insufficient, even when every full-state finite-horizon
-catalogue count is preserved.
+The difference between ordinary precision cost and exponential
+reliability lies in the area one can afford to discard. For ordinary
+cost, an arbitrarily small fixed loss gives a regular compact window
+and a transient inverse-area bound. Exponential reliability instead
+requires covered mass $1-e_n$. Nonsingularity gives probability
+domination on the whole triangle, whereas the Cantor transient
+forces inverse-area constants on such windows to grow exponentially.
 
-The fixed-set and probabilistic conclusions concern different
-covering requirements. A single nearly full-area compact set has
-rate $\min\{h,\gamma/\beta\}$ at every finite exponent; a
-probability catalogue must cover mass $1-e_n$ on the same $Q$,
-although its successful subset may vary with $n$. This distinction
-is essential above the common-cost threshold.
+This distinction becomes visible above $\gamma=\beta h$. One fixed
+nearly full-area compact set has rate $\min\{h,\gamma/\beta\}$ at
+every finite exponent. A probability catalogue, whose successful set
+may change with the horizon, has rate $\min\{S(\gamma),L_a(\alpha)\}$
+under the stronger hypothesis. For $\gamma>\beta h$, this exceeds
+the rate with any fixed positive failure allowance; when
+$L_a(\alpha)\ge S(\gamma)$, it equals the full-state rate.
 
-The scope remains the stated binary planar first-order family,
-controlled invariance of the triangle and common contraction toward
-the origin. The inward-boundary and fold examples allow actual
-overlap, truncated feasible images and noninjectivity within this
-class; Section~\ref{sec:radialfeedback} also gives radial feedback.
-The collapse example lies outside its null-critical-set assumption.
-Appendix~\ref{app:arsinh} lies outside its uniform exponential
-contraction assumption and compares different control-entropy objects.
-Nonsingularity is a
-sufficient reliability condition; the counterexample does not
-classify all maps with critical points. The high-precision
-mismatch spectrum, the high-side rate of an arbitrary compact
-initial set, and the exact reliability spectrum of the counterexample
-are not determined here.
+The examples separate the geometric hypotheses behind these statements.
+Empty fixed-radius sections and angular dependence of radial motion
+are compatible with nonsingularity and the full reliability law.
+The fold retains null critical sets and the ordinary precision law,
+but has no reliability formula proved here. Positive-area collapse
+can destroy the positive-area fixed-set law even when the local maps
+are exactly linear. The injective transient preserves full-state
+counts while changing exponential reliability through concentration
+of probability. These are different mechanisms; together they do
+not constitute a necessary and sufficient classification.
+
+The results concern the stated binary planar first-order family,
+the triangle constraint and common contraction toward the origin.
+The finite-horizon comparison in Appendix~\ref{app:linearfinite}
+is confined to the matched linear pair. The slower radial example
+in Appendix~\ref{app:arsinh} uses fixed-tolerance entropy and lies
+outside the exponential contraction class. Within the present class,
+the high-precision mismatch spectrum, the high-side rate of an
+arbitrary positive-area compact initial set, and the counterexample's
+exact reliability spectrum and limit remain undetermined.
 
 \appendix
 
@@ -2612,7 +2626,11 @@ counts and rate bounds, not all finite-horizon counts.
 
 \section{A finite-horizon probability comparison for linear controls}
 \label{app:linearfinite}
-This appendix concerns only the matched linear pair
+For the matched linear pair, a weighted stopping tree describes the
+probability catalogue up to fixed changes in tolerance and failure
+allowance. The lower comparison must still allow arbitrary approximate
+inputs: the leaves are a reference partition, not an assumed optimal
+catalogue. Throughout this appendix the maps are exactly
 $\mathsf A_i$ in \eqref{eq:jets}, with $r_i=a_i^\beta$.
 For its inverse angle maps $f_0(y)=a_0y-a_1$ and
 $f_1(y)=a_1y+a_0$, define for a word $w=i_1\cdots i_\ell$
@@ -2667,9 +2685,11 @@ $0<\delta<1$, and $0<e<3/4$,
 The constants do not depend on the horizon or either budget.
 \end{lemma}
 \begin{proof}
-For the lower bound use the slab $1/2\le s\le1$, whose
-probability is $3/4$, and put $t=\delta^{1/\beta}$.
-For any infinite input $u$, let $v$ be its stopped prefix in
+For the lower bound, we show that one arbitrary input can serve
+angles in only a bounded number of leaves. Work on the slab
+$1/2\le s\le1$, whose probability is $3/4$, and put
+$t=\delta^{1/\beta}$. For any infinite input $u$, let $v$
+be its stopped prefix in
 $\mathcal L(n,t)$. No feasibility is imposed on this input.
 The functions $z-s$ and $-z-s$ are nonpositive on $Q$ and
 Euclidean $\sqrt2$-Lipschitz. At every successful state the
@@ -2726,18 +2746,20 @@ of their feasible prefixes. One input per selected leaf proves
 the upper comparison.
 \end{proof}
 
-The nonlinear reliability theorem does not assert this finite-horizon
-comparison for general nonlinear controls. Its probability estimates
-are those proved in Section~\ref{sec:reliability}.
+The exact interval partition is what makes this comparison possible.
+For nonlinear controls, Section~\ref{sec:reliability} instead uses
+whole-triangle probability domination and thickened forced regions;
+it makes no claim of a finite-horizon comparison with this linear tree.
 
 \section{A common radial comparison with positive control entropy}
 \label{app:arsinh}
-Uniform exponential contraction in the main results is a substantive
-restriction. A slower common radial contraction can coexist with
-positive control entropy at every fixed small ambient tolerance,
-even though all feasible states converge. We give a self-contained
-planar comparison, using the exact, outer and reference-trajectory
-tracking catalogue definitions.
+The vanishing fixed-tolerance rate in our class relies on exponential
+contraction of the norm under every input. To compare this assumption
+with convergence of feasible states, consider a slower radial system.
+It has positive catalogue entropy at every fixed ambient tolerance,
+although all its infinitely feasible trajectories approach the origin.
+We use the exact, outer and reference-trajectory tracking definitions
+below, with the time limit taken before the tolerance tends to zero.
 
 Let $R(s)=\operatorname{arsinh}s$, $U=\{-1,1\}$ and
 \begin{equation}\label{eq:arsinhsystem}
@@ -2776,6 +2798,7 @@ gives $r_{\rm inv}(n,K,Q^\varepsilon)\le r_{\rm inv}^+(n,\varepsilon,K,Q)$.
 These fixed-tolerance entropy objects are separate from the
 simultaneous shrinking-precision rates in the main text.
 
+\Needspace{10\baselineskip}
 \begin{proposition}\label{prop:arsinh}
 The maps \eqref{eq:arsinhsystem} are global smooth diffeomorphisms
 and $Q$ is controlled invariant. For every fixed positive-area
@@ -2819,7 +2842,10 @@ s_{k+1}^{-2}-s_k^{-2}\longrightarrow1/3,
 \qquad R^n(s)\sim\sqrt{3/n}.
 \]
 The second statement follows by telescoping and Ces\`aro averages.
-Choose $s_0>0$ such that $K_0=K\cap\{s\ge s_0\}$ has
+
+This slow radial decay leaves the exponential angular expansion
+visible even at a fixed ambient tolerance. Choose $s_0>0$ such that
+$K_0=K\cap\{s\ge s_0\}$ has
 positive area. Such a choice exists because $\{s=0\}\cap Q$
 is a null singleton. For any input, feasible or not, the final
 vertical coordinate as a function of the initial $z$ is affine
@@ -2860,7 +2886,9 @@ time rate is at most $\log2$. The outer lower rate and the
 count inequality give the matching outer and tracking limits,
 and then \eqref{eq:arsinhentropies} in the stated limit order.
 
-For every infinitely feasible input from $Q$, monotonicity gives
+It remains to compare these positive entropy rates with feasible
+state separation. For every infinitely feasible input from $Q$,
+monotonicity gives
 $s_k\le R^k(1)$ and feasibility gives $|z_k|\le s_k$.
 All such states lie in $R^k(1)Q$; since $\diam Q=2$, any two
 feasible trajectories have distance at most $2R^k(1)\to0$.
