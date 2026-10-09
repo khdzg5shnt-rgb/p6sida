@@ -1,15 +1,16 @@
 # P6 当前稿与历史恢复入口
 
-唯一现行英文稿为 [完整 TeX](../../paper/P6_PRECISION_COST.tex) 和
-[37 页 PDF](../../paper/P6_PRECISION_COST.pdf)。先读 [CURRENT.md](../../CURRENT.md)
-及 [本轮结构性改写说明](READER_REWRITE_20261010.md)。本轮基线为 `4daf068c7d31a245a6406b504ddbf4e1249a0761`；采用该基线全部成果，六项结果及证明保留，旧新位置对照见修改说明。
+唯一现行英文稿为 [完整 TeX](../../paper/P6_PRECISION_COST.tex) 和 [34 页 PDF](../../paper/P6_PRECISION_COST.pdf)。先读 [CURRENT.md](../../CURRENT.md) 及 [本轮 DCDS 对照与修订说明](DCDS_FINAL_REVISION_20261010.md)。本轮基线为 `f510c91c5baadab6149bbca8d81bcb487c957cbf`，采用该 37 页稿的全部成果，再按新授权作内容取舍。旧页码不适用于新稿。
 
-本轮重写了全文阅读顺序与证明叙述，没有新增研究命题。完成普通提交与远端回读后停止；历史 NEXT_COMMAND 不构成自动续研授权。
+控制字母表及 arsinh 比较已移出现行稿，但完整数学内容保存在 37 页归档。其他五项指定结果仍在现行稿，位置见 CURRENT。没有新增研究命题。历史 NEXT_COMMAND 不构成自动续研授权。
 
 | 入口 | 身份 |
 | --- | --- |
-| [本轮结构性改写说明](READER_REWRITE_20261010.md) | 37 页现行稿的改动、前后对照、五篇参照、验证范围及限制 |
-| [35 页基线 TeX](https://github.com/khdzg5shnt-rgb/p6sida/blob/4daf068c7d31a245a6406b504ddbf4e1249a0761/paper/P6_PRECISION_COST.tex) / [PDF](https://github.com/khdzg5shnt-rgb/p6sida/blob/4daf068c7d31a245a6406b504ddbf4e1249a0761/paper/P6_PRECISION_COST.pdf) | 本轮改写前完整版本，保留于祖先提交，不用旧稿覆盖当前稿 |
+| [本轮修改说明](DCDS_FINAL_REVISION_20261010.md) / [来源记录](DCDS_SOURCES_20261010.json) | 34 页现行稿的十篇全文比较、取舍、验证与限制 |
+| [归档说明](../../paper/archive/README.md) | 35/37 页 TeX/PDF 精确快照及哈希 |
+| [37 页 TeX](../../paper/archive/P6_PRECISION_COST_37p_f510c91.tex) / [PDF](../../paper/archive/P6_PRECISION_COST_37p_f510c91.pdf) | 本轮基线的逐字节副本；旧 Appendix B / D 的完整内容可在此恢复 |
+| [35 页 TeX](../../paper/archive/P6_PRECISION_COST_35p_4daf068.tex) / [PDF](../../paper/archive/P6_PRECISION_COST_35p_4daf068.pdf) | `4daf068c7d31a245a6406b504ddbf4e1249a0761` 的逐字节副本 |
+| [上一轮结构改写说明](READER_REWRITE_20261010.md) | 37 页历史稿的改动、五篇 JDE 参照和当时验证范围 |
 | [上一轮终读记录](FINAL_READ_20261010.md) | 当时四处定点修改、35 页位置与限制 |
 | [较早数学与行文记录](MATH_STYLE_REVIEW_20261010.md) | 五篇文献身份及当时核查，不代替本轮核读 |
 | [内容恢复记录](CONTENT_RESTORATION_20261009.md) | 六项补回及完整轮次去向，保留历史页码 |
@@ -21,7 +22,7 @@
 | 49 页稿提交 `22e9716c3fc656ac71029cbac566dd93ac56c04e` | 原稿与可靠性主线的旧完整合并版本 |
 | 补回前提交 `609bdffd3e25f3a86231b450b1c0edb67e7bd766` | 27 页集中主线修订前稿 |
 
-上一轮修订基线为 `fea87f320bd4b1ea8c64ef7dbc1e8809378f4ac2`，对应六项补回后的35页稿。
+较早终读轮的修订基线为 `fea87f320bd4b1ea8c64ef7dbc1e8809378f4ac2`，对应六项补回后的35页稿。
 该轮中断前已有未提交修订，续接采用后完成。当时位置：§9.2径向角依赖、§9.3折叠；
 附录C pp.31–33，附录D pp.33–35。
 
