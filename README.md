@@ -1,20 +1,18 @@
-# P6 mathematical contribution research
+# P6: Precision and reliability costs in contracting control systems
 
-归档初稿：*Positive invariance entropy under uniform state convergence*。
-唯一现行英文稿：*Precision and reliability costs in contracting control systems*。
-[完整 TeX](paper/P6_PRECISION_COST.tex) 与 [35 页 PDF](paper/P6_PRECISION_COST.pdf) 对应。
+唯一现行英文稿：[完整 TeX](paper/P6_PRECISION_COST.tex) / [35 页 PDF](paper/P6_PRECISION_COST.pdf)。
+作者 **Ziqing Ding**，**School of Mathematical Sciences, Nanjing Normal University, Nanjing, China**。
 
-本轮以 main `97060923f46bc270a75637625ebe3ddf37cd6d28` 的 35 页稿为基线，重读现行稿全部数学内容及十篇 DCDS 作者版的具体页段。纠正首次退出与容差的混淆及截面记号，展开面积估计的代入、求和和平衡参数，改清厚化宽度，删并重复解释。沿用已有内容取舍，不将 arsinh 比较放回正文。20 个正式陈述保持原文；未识别需改变结论的证明错误，这不替代独立人工审读。
+本轮从 `6364c14f3e80765f9c6590214cc856eba17e5ef6` 的已审阅稿整理 arXiv 提交文件。仅修改署名、PDF 元数据、引言末段的文献范围表述及 AI 声明；§2 至附录 E 的数学正文和参考文献逐字节保留。未新增研究、执行投稿或修改其他项目。
 
-- [CURRENT.md](CURRENT.md)：当前稿、六项结果去向与验证状态。
-- [FINAL_READER_ACCEPTANCE_20261010.md](research/COMBINED_PAPER/FINAL_READER_ACCEPTANCE_20261010.md)：本轮前后对照、十篇原文的实际重读位置、数学范围和真实差距判断。
-- [FINAL_MATH_READ_20261010.md](research/COMBINED_PAPER/FINAL_MATH_READ_20261010.md)：上一轮数学复核、35 页基线及当时限制。
-- [DCDS_FINAL_REVISION_20261010.md](research/COMBINED_PAPER/DCDS_FINAL_REVISION_20261010.md) / [来源记录](research/COMBINED_PAPER/DCDS_SOURCES_20261010.json)：上一轮十篇准确引用、全文版本、逐篇比较与取舍，保留当时页码。
-- [RESTORE.md](research/COMBINED_PAPER/RESTORE.md)：现行稿、本轮 35 页基线、较早 34 页稿、旧 35/37 页精确归档及原稿的恢复入口。
-- [READER_REWRITE_20261010.md](research/COMBINED_PAPER/READER_REWRITE_20261010.md)：37 页改写的历史说明，保留五篇 JDE 对照及当时页码。
-- [FINAL_READ_20261010.md](research/COMBINED_PAPER/FINAL_READ_20261010.md)、[MATH_STYLE_REVIEW_20261010.md](research/COMBINED_PAPER/MATH_STYLE_REVIEW_20261010.md)、[CONTENT_RESTORATION_20261009.md](research/COMBINED_PAPER/CONTENT_RESTORATION_20261009.md)：较早轮次记录，不能代替当前核查。
+- [P6_ARXIV_SOURCE.zip](paper/P6_ARXIV_SOURCE.zip)：只含完整 TeX 的可独立编译源码包。
+- [ARXIV_SUBMISSION.txt](paper/ARXIV_SUBMISSION.txt)：标题、作者、摘要、建议分类及上传说明。
+- [CURRENT.md](CURRENT.md)：当前身份、六项历史结果去向及文件哈希。
+- [ARXIV_PREPARATION_20261010.md](research/COMBINED_PAPER/ARXIV_PREPARATION_20261010.md)：本轮范围、验证与剩余文献限制。
+- [FINAL_READER_ACCEPTANCE_20261010.md](research/COMBINED_PAPER/FINAL_READER_ACCEPTANCE_20261010.md)：上一轮完整数学复核、十篇 DCDS 实际重读位置及差距判断；保留历史原文。
+- [RESTORE.md](research/COMBINED_PAPER/RESTORE.md)：历次基线、归档成果和原稿的恢复入口。
 
-连续终读、编译与全部 35 页版面检查完成。十篇参照本轮实际定向重读 68 页，不声称再次通读全部 241 页。局部图像几何、耦合不动点、厚化与 Cantor 构造仍需慢读；证据不足以认证整篇达到十篇共同水平，没有真人测试或 AI 检测认证。Wang–Huang 2022 全文缺口未关闭。作者信息、人类数学审读与批准仍待确认，真实 AI 披露保留。单代理、仅 P6，无新研究或投稿；完成普通提交与远端回读后停止。
+源码包在干净目录用 pdfLaTeX 编译为 35 页，全部页面检查完毕，无编译警告或未定义引用。人工审读状态采用用户本轮提供的事实，不声称独立第三方验证。AI 披露仍如实包含数学论证及正文准备用途。Wang–Huang 2022 全文覆盖缺口仍未关闭，未确认对其结果的新颖性。arXiv 平台生成结果尚需在上传时预览；本仓库记录的是文件准备完成。
 
 ## 历史研究记录（以下不构成自动续研授权）
 

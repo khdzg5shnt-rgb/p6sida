@@ -1,0 +1,44 @@
+P6 arXiv submission fields
+
+Title
+Precision and reliability costs in contracting control systems
+
+Authors
+Ziqing Ding
+
+Affiliation
+School of Mathematical Sciences, Nanjing Normal University, Nanjing, China
+
+Suggested primary category
+math.DS (Dynamical Systems)
+
+Suggested cross-list
+math.OC (Optimization and Control)
+
+Comments
+35 pages
+
+MSC classes
+93C55 (primary); 37B40 (primary); 93D15; 94A24
+
+Abstract
+Even when every input drives the state to zero, keeping a trajectory near a prescribed set can require an increasing number of control choices as the tolerance shrinks. We study this cost for two $C^2$ planar maps and a triangular constraint. A controller observes the initial state and selects one input sequence from a finite catalogue. The triangle is controlled invariant, both maps contract toward zero, and their critical sets have area zero. Their prescribed linear parts have radial factors equal to a common power $\beta>1$ of the contraction factors of the inverse angular maps. For tolerances $\delta_n=\exp(-\gamma n+o(n))\to0$, we compute the exponential catalogue growth rate $S(\gamma)$ for full coverage. One compact set obtained by removing an arbitrarily small fixed area has a lower saturation rate. If neither map has a critical point in the triangle, allowing failure probability $\exp(-\alpha n+o(n))$, $\alpha>0$, gives the rate $\min\{S(\gamma),L_a(\alpha)\}$. Here $L_a(\alpha)$ is the growth rate of the number of exactly feasible words needed in the linear model with that failure allowance. The proof bounds the area served by one input and constructs regions that force different control prefixes. Finally, an injective example preserves every finite-horizon full-cover count of the linear model but has a reliability lower rate strictly above the linear rate. Thus critical sets of area zero do not suffice for the probability formula.
+
+上传说明（不放入源码 ZIP）
+上传 P6_ARXIV_SOURCE.zip；其中仅有完整的 P6_PRECISION_COST.tex。
+选择 pdfLaTeX；参考文献已内嵌，无额外图片、BibTeX 或自定义样式文件。
+主分类及交叉分类为建议，按论文内容及平台要求填写。
+论文尚无期刊发表信息；Journal reference 和 DOI 留空。
+账号邮箱和发布许可在 arXiv 页面按真实情况填写/选择，本稿不虚构邮箱。
+arXiv 重新编译后，查看生成的 PDF，确认标题、署名、35 页及末页单位正确。
+本地文件已检查，平台重新生成的 PDF 尚未经过本地检查流程。
+
+材料边界
+Wang–Huang (2022), DOI 10.1088/1361-6544/ac4f33 的全文重叠核查仍未完成。
+文中保留准确引用和已核实的主题介绍，没有声称排除其对本文结果的覆盖。
+
+官方说明
+https://info.arxiv.org/help/submit_tex.html
+https://info.arxiv.org/help/prep.html
+https://arxiv.org/category_taxonomy
+https://info.arxiv.org/help/license/index.html

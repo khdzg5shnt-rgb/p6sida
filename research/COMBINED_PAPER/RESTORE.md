@@ -1,12 +1,13 @@
 # P6 当前稿与历史恢复入口
 
-唯一现行英文稿为 [完整 TeX](../../paper/P6_PRECISION_COST.tex) 和 [35 页 PDF](../../paper/P6_PRECISION_COST.pdf)。先读 [CURRENT.md](../../CURRENT.md) 及 [本轮数学与读者验收说明](FINAL_READER_ACCEPTANCE_20261010.md)。本轮基线为 `97060923f46bc270a75637625ebe3ddf37cd6d28` 的 35 页稿；重新核查全部现行证明，并恢复十篇 DCDS 作者版定向重读。历史报告保留各自的旧页码，不以旧结论替代本轮核查。
+唯一现行英文稿为 [完整 TeX](../../paper/P6_PRECISION_COST.tex) 和 [35 页 PDF](../../paper/P6_PRECISION_COST.pdf)，配套 [arXiv 源码包](../../paper/P6_ARXIV_SOURCE.zip) 与 [提交字段](../../paper/ARXIV_SUBMISSION.txt)。先读 [CURRENT.md](../../CURRENT.md) 及 [本轮准备说明](ARXIV_PREPARATION_20261010.md)。本轮基线为 `6364c14f3e80765f9c6590214cc856eba17e5ef6`，只完成署名及预印本文件整理。全部现行证明和十篇 DCDS 的上一轮核查见 [最终读者验收](FINAL_READER_ACCEPTANCE_20261010.md)，不将其冒充本轮重新审查。
 
 控制字母表及 arsinh 比较已移出现行稿，但完整数学内容保存在 37 页归档。其他五项指定结果仍在现行稿，位置见 CURRENT。没有新增研究命题。历史 NEXT_COMMAND 不构成自动续研授权。
 
 | 入口 | 身份 |
 | --- | --- |
-| [本轮验收说明](FINAL_READER_ACCEPTANCE_20261010.md) | 当前 35 页稿的必要修订、十篇原文比较位置及尚存差距 |
+| [arXiv 准备说明](ARXIV_PREPARATION_20261010.md) | 现行 35 页署名稿、源码包与交付范围 |
+| 35 页稿提交 `6364c14f3e80765f9c6590214cc856eba17e5ef6` / [验收说明](FINAL_READER_ACCEPTANCE_20261010.md) | 本轮署名整理的基线；完整数学复核、十篇原文比较及尚存差距 |
 | 35 页稿提交 `97060923f46bc270a75637625ebe3ddf37cd6d28` / [当时说明](FINAL_MATH_READ_20261010.md) | 本轮基线；在该提交的 paper/P6_PRECISION_COST.tex 及对应 PDF 恢复 |
 | 34 页稿提交 `ea9577ed24ceebed452179d586e5c1350346020b` | 较早 DCDS 取舍后的完整稿；在该提交的同一路径恢复 |
 | [DCDS 修订说明](DCDS_FINAL_REVISION_20261010.md) / [来源记录](DCDS_SOURCES_20261010.json) | 上一轮 34 页稿的十篇全文比较、取舍、验证与限制 |
@@ -35,4 +36,4 @@
 
 复现当前 PDF：在仓库根执行
 `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/p6-paper-build paper/P6_PRECISION_COST.tex`。
-出版前的人类作者与证明审读事实仍待确认；本轮没有选刊或投稿。
+作者与单位已按用户本轮信息填写；用户报告已检查现稿，未提供逐项核查范围。AI 使用范围据实保留。Wang–Huang 全文覆盖核查仍待完成；本轮没有执行投稿。
