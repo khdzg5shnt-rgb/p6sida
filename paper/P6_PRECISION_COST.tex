@@ -115,7 +115,7 @@ For $\gamma\le\beta h$, where $h=-\sum_i a_i\log a_i$, the rate
 is $\gamma/\beta$ regardless of $\alpha>0$. Above this threshold,
 exponentially reliable coverage costs strictly more than coverage
 with a fixed positive failure allowance, until the full-state rate
-is reached. The information selects a whole open-loop input at time
+is reached. The transmitted index selects a whole open-loop input at time
 zero; no subsequent communication is considered.
 
 Ordinary precision costs require a weaker hypothesis. If the critical
@@ -563,7 +563,7 @@ Taylor's integral formula gives \(|R_i-r_i|\le2Ls\),
 The same bounds apply with the appropriate constant linear term in
 \(N_i\). In particular \(R_i\ge r_*/2\).
 Dividing these formulas by \(R_i\), and differentiating the quotient,
-gives, with the generous common constant \(B\),
+gives, with the common constant \(B\),
 \begin{equation}
 \begin{split}
  &|R_i-r_i|\le Bs,\qquad |\log(R_i/r_i)|\le Bs,\\
@@ -1005,8 +1005,7 @@ If $\kappa_L<1$ is the common contraction constant of
 \|y^v(s)-y^v(s')\|_\infty
  \le\frac{a^*B}{1-\kappa_L}|s-s'|.
 \end{equation}
-This proves the uniform physical realisation, continuity, and
-genuine-infeasibility assertions. \end{proof}
+\end{proof}
 
 The preceding margin is angular. Its physical size decreases with
 the radius, so a long exact word need not remain distinguishable at
@@ -1589,7 +1588,7 @@ Every $a<q<\min\{q_c,q_\alpha\}$ satisfies
 \]
 Together with \eqref{eq:reliableupper} and
 \eqref{eq:reliablefixedmass}, this proves
-Theorem~\ref{thm:reliability}. The common-cost endpoint $c=h$
+Theorem~\ref{thm:reliability}. At the common-cost endpoint $c=h$, the proof
 uses the fixed-mass argument, while the saturation and reliability
 endpoints use strict types approaching from below. Integer rounding
 changes $m$ by less than fixed $L$; the transient changes $N$ by
@@ -1739,7 +1738,7 @@ therefore gives a global $C^2$ map satisfying
 and $|g(y)-y|\le2$ globally. The map is fixed independently of
 every horizon and both sequences.
 
-\subsection{The actual maps and all dynamical assumptions}
+\subsection{The maps and their dynamical properties}
 Set
 \[
 \psi(s)=\frac{E(s-1/4)}{E(s-1/4)+E(1/2-s)}.
@@ -1794,8 +1793,8 @@ pullback in $Q$. No positive-area set is collapsed to a null set.
 Each fibre map is strictly increasing and identity outside $[-1,1]$,
 so $H$ is globally bijective. It is proper, since its first coordinate
 is unchanged and $|H^z-z|\le2|s|$. Thus it and both $F_i$ are
-global homeomorphisms. They are not asserted to be diffeomorphisms;
-the displayed critical points are genuine.
+global homeomorphisms, although their Jacobian determinants vanish
+on the displayed null set.
 
 The fixed radial factors satisfy
 \[
@@ -1814,8 +1813,9 @@ $A_u^F(n,\delta;Q)=H^{-1}A_u^{\mathsf A}(n,\delta;Q)$ on $Q$.
 Since $H(Q)=Q$, full covers correspond, proving
 \eqref{eq:counterfull}. Probability covers correspond only after
 transporting $\mu$ to $H_*\mu$, which is absolutely continuous
-but is not uniform area. This is consistent with measure-transport
-invariance results; it is not a counterexample to them.
+but is not uniform area. Measure-transport invariance therefore
+compares the linear system with this transported measure, rather
+than with uniform area.
 
 \subsection{Positive-area forced families and the strict rate gap}
 Every infinite sequence of blocks $01,10$ has runs at most two.
@@ -1889,7 +1889,7 @@ Theorem~\ref{thm:counter}.
 
 The example leaves the full-state finite-horizon counts unchanged
 but changes the probability weights of forced physical regions.
-Its own accurate reliability spectrum and the existence of its
+Its exact reliability spectrum and the existence of its
 reliability limit are not determined here; the strict lower-limit
 gap suffices for the obstruction. Absolute continuity and null-set
 pullback preservation alone do not control exponential tail masses.
@@ -1913,7 +1913,7 @@ Let \(t=\max a_i^{\beta-1}<1\),
        0<c<\min\{1-a^*,\ (1-v)/v,\ 1\},\qquad
        g(s)=1-\frac{cs}{1+s^2}.
 \]
-Consider the single explicit family
+Consider the family
 \begin{equation}
 \begin{split}
  F_0(s,z)&=(r_0s,\ g(s)t_0(z+a_1s)),\\
@@ -1938,7 +1938,7 @@ domains are
 D_0(s)=[-1,a_0/g(s)-a_1],\qquad
  D_1(s)=[a_0-a_1/g(s),1].                                   \label{eq:inwarddomains}
 \end{equation}
-Their endpoints lie strictly inside \((-1,1)\), and their overlap
+The two interior cut points lie strictly inside \((-1,1)\), and the overlap
 has angular width \(1/g(s)-1>0\), physical width
 \(s(1/g(s)-1)=O(cs^2)\) near zero. Together with nonsingularity
 and \eqref{eq:inwardnorm}, this verifies the assumptions of
@@ -1954,15 +1954,16 @@ The multiplier is uniformly greater than one, since
 \(g(s)>a^*\), and \(q_1\ge1-g(s_0)>0\) for \(y_0\ge-1\).
 The sequence eventually exceeds two, violating \(y\le1\).
 Monotonicity means that this also holds for the smallest initial
-angle, hence for all of them. Thus a description in which every word has a nonempty full-image
-slice does not apply to this example.
+angle, hence for all of them. The complete fixed-radius section
+is therefore empty for sufficiently long all-zero words.
 
 This statement concerns \(I_{0^m}(s_0)\) at a fixed radius, not the
 whole physical region \(\mathcal I_{0^m}\). Choosing the radius smaller
 can make a given finite word feasible. Indeed any finite word admits
 a bounded-run infinite extension, and Lemma~\ref{lem:shadow} realises that
-extension at a sufficiently small positive radius. Missing fixed-radius
-slices must not be confused with removing a word everywhere in $Q$.
+extension at a sufficiently small positive radius. Thus every finite
+word is realised somewhere in $Q$, despite the empty sections at
+larger radii.
 
 There is also a constraint-preserving conjugacy obstruction.
 For \eqref{eq:inward}, \(F_0\) sends the positive lower edge of $Q$ strictly
@@ -1979,12 +1980,13 @@ whole upper edge into $\partial Q$, both corresponding intersections
 contain a continuum. A homeomorphism \(H\) of the plane with
 \(H(Q)=Q\), simultaneously conjugating the two labelled controls
 (even allowing a label permutation), would map each intersection
-in \eqref{eq:inwardboundary} onto the corresponding target intersection. Finite versus
-continuum is impossible. Thus this example is not reducible to
+in \eqref{eq:inwardboundary} onto the corresponding target intersection,
+which is impossible because a homeomorphism preserves finiteness.
+Thus this example is not reducible to
 such a boundary-edge-preserving pair by a fixed $Q$-preserving simultaneous
 control homeomorphism, and in particular not by such a \(C^1\)
-or bi-Lipschitz map. No assertion about unconstrained coordinate
-changes or every member of the new class is made.
+or bi-Lipschitz map. This obstruction concerns the stated example
+and conjugacies that preserve the constraint.
 
 For example, take $a_0=1/3$, $a_1=2/3$, $\beta=2$ and $c=1/100$.
 The choice $\Lambda=9$ in \eqref{eq:inwardnorm} gives a global
@@ -1997,8 +1999,8 @@ this same inward family at exponent $\gamma=\log4$:
 \]
 This holds for every precision sequence of that exponent.
 The first inequality follows from $(4/3)^3>2$ and the second
-from $4<9/2$. It is an evaluation of the spectrum, not a claim
-that missing fixed-radius words require a different count.
+from $4<9/2$. The spectrum therefore remains valid despite the
+empty fixed-radius sections.
 
 
 \section{Consequences and scope}
@@ -2027,7 +2029,7 @@ sufficient reliability condition; the counterexample does not
 classify all maps with critical points. The high-precision
 mismatch spectrum, the high-side rate of an arbitrary compact
 initial set, and the exact reliability spectrum of the counterexample
-remain outside the conclusions proved here.
+are not determined here.
 
 \appendix
 
@@ -2092,8 +2094,9 @@ and each leaf satisfies $r_*t<P_w\le t$. Hence
 t^{-D}\le N(t)\le(r_*t)^{-D},\qquad
 r_F(n,\delta_n;Q)\le2^JN(\delta_n/M).
 \end{equation}
-This proves the upper rate $\gamma D$ through an actual full-time
-catalogue, without asserting that the reference tree is necessary.
+This gives the upper rate $\gamma D$ with a catalogue satisfying
+every intermediate constraint. Optimality follows from the lower
+bound below.
 
 For the lower rate put $p_*=r_0^D$, so $1-p_*=r_1^D$, and
 $c_R(p)=-p\log r_0-(1-p)\log r_1$. Then

@@ -1,15 +1,18 @@
 # P6 当前状态
 
-截至2026-10-09（UTC）：完成“以五篇JDE原文为参照的专业行文修订”。
-开始及提交前main为 `7f6324f013e59af0eee946c36d785e94ec854ef4`，
-未发现后续完成项或适用仓库指令。本轮没有新数学任务。
+截至2026-10-09（UTC）：在五篇JDE参照修订后，完成末次逐段行文检查。
+本次基线main为 `3ff3354c9bbcd504f549a664b0fce0456695ddb9`，
+未发现后续完成项或适用仓库指令。本次没有新数学任务。
 
 唯一现行稿：*Precision and reliability costs in contracting control systems*。
 [TeX](paper/P6_PRECISION_COST.tex)与[27页PDF](paper/P6_PRECISION_COST.pdf)对应。
 主线仍是非线性精度—可靠性转移、零面积临界不足的反例及实际覆盖几何；
 匹配谱、固定初始集与附录失配判据保留。附录B的有限计数2到1修正未变。
 
-当前停点为[JDE_STYLE_REVIEW](research/COMBINED_PAPER/JDE_STYLE_REVIEW.md)：
+当前停点为[JDE_STYLE_REVIEW](research/COMBINED_PAPER/JDE_STYLE_REVIEW.md)§6：
+删改证明收尾及实例中的审计式表达，修正区间端点与两个内侧切点的措辞。
+15项正式结果、全部公式、结构假设、附录B和AI披露未变；不保证AI不可识别。
+同一记录保留前轮：
 五篇准确书目、版本与实际页码、每篇至少两项写法对照及P6修改位置。
 正式原件两篇、已核对应作者稿三篇；没有把未读正式版记为全文已读。
 改写摘要、引言、证明用途说明、反例与结论；失配专用符号延后到附录。
