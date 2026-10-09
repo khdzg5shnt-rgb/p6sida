@@ -1,37 +1,45 @@
 # P6 mathematical contribution research
 
-基线论文：*Positive invariance entropy under uniform state convergence*。
+归档初稿：*Positive invariance entropy under uniform state convergence*。
 
 当前唯一英文稿：*Precision and reliability costs in contracting control systems*。
-[TeX](paper/P6_PRECISION_COST.tex)和[27页PDF](paper/P6_PRECISION_COST.pdf)已完成
-五篇JDE原文参照下的专业行文修订。主线为非线性精度—可靠性转移、
-零面积临界不足的反例及实际覆盖几何；保留匹配谱、固定初始集和附录失配判据。
-原稿及全部历史保留，附录仍保留内部有限时域计数2到1的修正。
+[TeX](paper/P6_PRECISION_COST.tex)和[35页PDF](paper/P6_PRECISION_COST.pdf)对应。
+2026-10-09按明确授权，以已核main `609bdffd3e25f3a86231b450b1c0edb67e7bd766`
+作基线，完成一次“初稿与历史已证成果的选择性补回及完整英文稿修订”。
+未发现后续完成项；上传P6_1009.tex与该基线TeX逐字节相同。
 
-随后完成末次行文检查：减少证明收尾和实例说明中的审计式表达，修正“全部
-端点在内部”为“两个内侧切点在内部”。正式陈述、公式与AI披露未变，
-重新编译并检查全部27页；不承诺AI不可识别。记录见下述§6。
+六项实际补回：§8.4逆面积常数指数下界、§9.2内部可行折叠、§9.3角度影响径向、
+§9.4局部一致与远处塌缩、附录C匹配线性有限时域概率比较、附录D的arsinh比较。
+各项均自含必要证明；没有重复现有一般成本及可靠性定理。
+折叠存在临界点，不能直接用可靠性正向定理；塌缩违反零面积临界假设；
+arsinh的R′(0)=1，属于另一系统类，不是统一指数收缩定理的特例。
 
-当前依据为[JDE_STYLE_REVIEW](research/COMBINED_PAPER/JDE_STYLE_REVIEW.md)：
-记录两篇正式原件、三篇作者稿的实际阅读范围、十项具体写法对照和已改位置。
-摘要及引言解释两个目录构造；证明先说明估计用途；反例解释正则性与质量尺度；
-失配专用符号移到附录。新增CCS2020的体积目录方法归属，共13条实际引用。
-15项正式陈述、结构假设、原有证明计算、附录计数修正及AI披露保持不变。
-编译与全部27页检查完成，未发现本次改写涉及部分的实质数学错误。
-[FINAL_CHECK](research/COMBINED_PAPER/FINAL_CHECK.md)仍保留前轮完整采用链核验。
-没有新增数学定理，不把AI核验当作人工同行验证或期刊升级。
+原有15项正式陈述、附录B的内部有限计数2到1修正、作者字段、AI披露和13条文献不变。
+目前20项正式陈述、136个唯一标签；编译与全部35页渲染检查完成。
+页数增加不自动提高贡献或期刊定位，本轮没有选刊、投稿或联系他人。
 
-JDE维持B（合理冲刺）。正式送出前仍需Wang–Huang2022正式正文的定向覆盖
-核验、真实作者审读/批准与事实填写，以及期刊专属指南确认。该文完整spanning
-定义与证明（DOI10.1088/1361-6544/ac4f33）仍未读，未据此认定已覆盖或未覆盖。
-数学正文已完整，不机械要求再加定理，不预认一区/TOP。
+- [CURRENT.md](CURRENT.md)：当前状态和完成停点。
+- [RESTORE.md](research/COMBINED_PAPER/RESTORE.md)：现行稿、原始稿与Git历史的恢复入口。
+- [CONTENT_RESTORATION_20261009.md](research/COMBINED_PAPER/CONTENT_RESTORATION_20261009.md)：六项位置、独立核验、39个可见研究目录及全部成果去向。
+- [P6_Research_History_Audit_20261009.md](research/COMBINED_PAPER/P6_Research_History_Audit_20261009.md)：修订前历史索引，不作为证明正确性的前提。
 
-[FINAL_SELECTION](research/COMBINED_PAPER/FINAL_SELECTION.md)保留前轮取舍依据。
-旧[FINAL_REVIEW](research/COMBINED_PAPER/FINAL_REVIEW.md)、
-[RESULT_COVERAGE](research/COMBINED_PAPER/RESULT_COVERAGE.md)、
-[INTEGRATION_NOTES](research/COMBINED_PAPER/INTEGRATION_NOTES.md)为49页稿历史；
-[SOURCES](research/COMBINED_PAPER/SOURCES.md)的真实版本和阅读限制继续适用。
-完成后停止，不自动开启研究轮或投稿。以下为历轮历史说明。
+这是一份选择性采用的主线稿，不能称为R01–R40全部成果的累积合集。
+R01–R09的独立成果、R10–R13的已证技术界和未解问题均保存。
+特别是R09真实率极限存在已证明，准确常数未求；R10–R13没有证明策略最优。
+等分支、无限精度指数、持续角向重叠及长的专用构造等未覆盖范围见本轮采用表。
+原稿、高维、lift、反馈和连续时间理论不删除，所有版本历史保持可恢复。
+
+[FINAL_SELECTION](research/COMBINED_PAPER/FINAL_SELECTION.md)保留前轮取舍依据；
+旧[RESULT_COVERAGE](research/COMBINED_PAPER/RESULT_COVERAGE.md)、
+[FINAL_REVIEW](research/COMBINED_PAPER/FINAL_REVIEW.md)及
+[INTEGRATION_NOTES](research/COMBINED_PAPER/INTEGRATION_NOTES.md)仍是旧49页稿记录。
+[JDE_STYLE_REVIEW](research/COMBINED_PAPER/JDE_STYLE_REVIEW.md)保留前轮行文核验，
+[SOURCES](research/COMBINED_PAPER/SOURCES.md)的真实文献版本和阅读限制不变。
+
+六项恢复没有未闭合的必要证明步骤。反例的准确可靠性谱／极限、一般失配高侧、
+塌缩的高侧准确谱及暂停的策略最优问题仍未解决；现稿没有宣称完整分类。
+Wang–Huang2022正式正文的直接覆盖证据、真实作者信息与人工审读／批准仍待完成。
+本轮完成后停止；以下均为历轮历史说明，不是自动重开研究或投稿的指令。
 
 R34阶段稿的数学增量来自R33：可行瞬态零集拉回、同一个固定紧集的多局部逆图和早期首真越界面积，允许Q内真实可行折叠而保留全部声明范围内的率。R34完整收入这些证明及实例，不假设全Q统一逆Jacobian下界，完成全文、编译及19页渲染核对；整合不算新证明。
 
@@ -170,8 +178,8 @@ R29已在同一R27结构类求出全Q准确谱及全部有限精度指数下的�
 - [`research/R08/REPORT.md`](research/R08/REPORT.md)：本轮结构裁决、相比现稿的实际增量及未认证的发表分量。
 - [`research/R08/SOURCES.md`](research/R08/SOURCES.md)：最近原文、准确 APA/DOI、实际阅读范围和逐项覆盖。
 - [`research/R08/NEXT_COMMAND.md`](research/R08/NEXT_COMMAND.md)：已完成停点与同一重叠系统真实目录最优率的唯一入口。
-- [paper/P6_PRECISION_COST.tex](paper/P6_PRECISION_COST.tex)：唯一完整英文LaTeX，集中于平面精度—可靠性、实际覆盖几何与非塌缩条件；原稿cone熵分离已从现行正文撤下，历史保留。
-- [`paper/P6_PRECISION_COST.pdf`](paper/P6_PRECISION_COST.pdf)：已编译并逐页检查的唯一阶段稿。
+- [paper/P6_PRECISION_COST.tex](paper/P6_PRECISION_COST.tex)：唯一现行英文LaTeX，集中于平面精度—可靠性、实际覆盖几何与非塌缩条件；附录D保留一个arsinh熵—混沌分离比较，其余原稿理论独立归档。
+- [`paper/P6_PRECISION_COST.pdf`](paper/P6_PRECISION_COST.pdf)：已编译并逐页检查的35页现行稿。
 - [`research/R07/STAGE_PAPER_DECISION.md`](research/R07/STAGE_PAPER_DECISION.md)：成稿裁决、定理关系、证明链、直接覆盖边界和条件性期刊判断。
 - [`research/R07/DCDS_FINAL_REVIEW.md`](research/R07/DCDS_FINAL_REVIEW.md)：历史 DCDS 终稿核验、Chen–Zhong 2024 的直接定义覆盖、官方适配与完成停点。
 - [`paper/COVER_LETTER_DRAFT.md`](paper/COVER_LETTER_DRAFT.md)：旧阶段稿的历史 DCDS 附信，未适配当前整合稿。
@@ -215,6 +223,6 @@ R04的固定概率反例及经典分数覆盖结论保留。旧阶段稿以R06�
 
 R11新增任意完整可行区间的统一同长重编码及残余预算比较，具体证明见R11。等时几何碎裂不会另付指数因子，但固定策略在相同时间内的成本可能不足，所需后续目录仍未控制。G_m率g存在，g=κ未证；本轮没有收紧κ或提高阶段稿期刊档位判断。经典固定块、分支重数及拼接不包装为原创。R11当时的下一入口只处理这一预算因子；后续未解决，现保持暂停，不按旧入口自动开轮或扩稿。
 
-R12进一步证明合法达标区间最多相交三条最优目录区间，因而实际端点延续的重复计数只有常数损失。未达成本的实际计数R_m之指数相对N_m恰为g−κ，并有端点长度与预算的显式两侧界；这不是策略最优证明。剩余障碍是最优覆盖上的端点大小—预算分布。R13按新授权完成一次攻击，但未取得该因子的新控制；仅保存有限精确端点闭合的排除理由，属于已有理论的具体应用，不认证独立新主贡献。R13暂停停点与排除理由作为历史保留。R14获新授权后只核验端点递推及贪心工具，没有比较增量或提交；R15已转入同一路线A的结构充分条件，R16证明同一匹配系统的高精度分裂，R17将二者收束为准确共同成本边界；R18进一步给出局部匹配不足的光滑非可逆反例，R19进一步完成指定可逆状态依赖类的正向边界转移，R20已按新授权整合主贡献并完成唯一论文，此为R20历史停点；其后R32已整合一般反馈判据，R33再完成非塌缩有限瞬态转移；这是R33历史停点；其后R34已整合非塌缩范围、R36已完成行文修订。当前唯一论文为初始P6与R40的完整合并稿，最新状态以CURRENT及research/COMBINED_PAPER中的现行记录为准。
+R12进一步证明合法达标区间最多相交三条最优目录区间，因而实际端点延续的重复计数只有常数损失。未达成本的实际计数R_m之指数相对N_m恰为g−κ，并有端点长度与预算的显式两侧界；这不是策略最优证明。剩余障碍是最优覆盖上的端点大小—预算分布。R13按新授权完成一次攻击，但未取得该因子的新控制；仅保存有限精确端点闭合的排除理由，属于已有理论的具体应用，不认证独立新主贡献。R13暂停停点与排除理由作为历史保留。R14获新授权后只核验端点递推及贪心工具，没有比较增量或提交；R15已转入同一路线A的结构充分条件，R16证明同一匹配系统的高精度分裂，R17将二者收束为准确共同成本边界；R18进一步给出局部匹配不足的光滑非可逆反例，R19进一步完成指定可逆状态依赖类的正向边界转移，R20已按新授权整合主贡献并完成唯一论文，此为R20历史停点；其后R32已整合一般反馈判据，R33再完成非塌缩有限瞬态转移；这是R33历史停点；其后R34已整合非塌缩范围、R36已完成行文修订。当前唯一论文为精度与可靠性主线稿，已选择性补回六项初稿或历史成果；原始稿和旧完整合并稿由原文件及Git历史保存，最新采用关系以CURRENT及CONTENT_RESTORATION_20261009为准。
 
-复现阶段稿 PDF：在仓库根目录执行 `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/p6-paper-build paper/P6_PRECISION_COST.tex`。历史 R01 笔记仍可单独编译。原稿保留不覆盖；此仓库仅存 P6，不修改其他暂停项目。
+复现现行 PDF：在仓库根目录执行 `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/p6-paper-build paper/P6_PRECISION_COST.tex`。历史 R01 笔记仍可单独编译。原稿保留不覆盖；此仓库仅存 P6，不修改其他暂停项目。
