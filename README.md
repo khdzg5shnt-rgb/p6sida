@@ -3,16 +3,19 @@
 基线论文：*Positive invariance entropy under uniform state convergence*。
 
 当前唯一英文稿：*Precision and reliability costs in contracting control systems*。
-[TeX](paper/P6_PRECISION_COST.tex)和[26页PDF](paper/P6_PRECISION_COST.pdf)已完成
-数学采用链、专业可读性及行文风格核验。主线为非线性精度—可靠性转移、
+[TeX](paper/P6_PRECISION_COST.tex)和[27页PDF](paper/P6_PRECISION_COST.pdf)已完成
+五篇JDE原文参照下的专业行文修订。主线为非线性精度—可靠性转移、
 零面积临界不足的反例及实际覆盖几何；保留匹配谱、固定初始集和附录失配判据。
 原稿及全部历史保留，附录仍保留内部有限时域计数2到1的修正。
 
-当前依据为[FINAL_CHECK](research/COMBINED_PAPER/FINAL_CHECK.md)：
-未发现需撤回或缩小主定理的具体错误；补写首真越界面积、概率运输及优化步骤，
-修正相关定义的n+1对应，补明既有测度目录归属，统一符号并改善专业行文。
-15项正式陈述、12条引用和完整证明保留；编译与全部26页检查完成。
-没有新增数学定理，不把AI核验当作人工同行验证。
+当前依据为[JDE_STYLE_REVIEW](research/COMBINED_PAPER/JDE_STYLE_REVIEW.md)：
+记录两篇正式原件、三篇作者稿的实际阅读范围、十项具体写法对照和已改位置。
+摘要及引言解释两个目录构造；证明先说明估计用途；反例解释正则性与质量尺度；
+失配专用符号移到附录。新增CCS2020的体积目录方法归属，共13条实际引用。
+15项正式陈述、结构假设、原有证明计算、附录计数修正及AI披露保持不变。
+编译与全部27页检查完成，未发现本次改写涉及部分的实质数学错误。
+[FINAL_CHECK](research/COMBINED_PAPER/FINAL_CHECK.md)仍保留前轮完整采用链核验。
+没有新增数学定理，不把AI核验当作人工同行验证或期刊升级。
 
 JDE维持B（合理冲刺）。正式送出前仍需Wang–Huang2022正式正文的定向覆盖
 核验、真实作者审读/批准与事实填写，以及期刊专属指南确认。该文完整spanning

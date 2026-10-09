@@ -36,10 +36,11 @@ reliability exponent, noncollapse, initial-state probability}
 \begin{document}
 \raggedbottom
 \begin{abstract}
-We determine the number of open-loop controls needed to keep an initial
-state within a shrinking neighbourhood of a constraint, with an
-exponentially small probability of failure. For a class of binary planar
-systems contracting toward the origin, we prove that the cost at
+We study finite catalogues of open-loop controls that keep trajectories
+within a shrinking neighbourhood of a constraint. The initial state
+selects a catalogue entry, and failure is measured by uniform area on
+the constraint. For a class of binary planar systems contracting toward
+the origin, we prove that the exponential catalogue rate at
 precision $\exp(-\gamma n+o(n))$ and failure probability
 $\exp(-\alpha n+o(n))$ is $\min\{S(\gamma),L_a(\alpha)\}$,
 provided the controlled maps have no critical points on the constraint.
@@ -50,17 +51,19 @@ through all feasible transient branches and constructs positive-area
 regions that force prescribed control prefixes under approximate
 feasibility. We also give an injective $C^2$ example with null critical
 sets that preserves every finite-horizon full-state catalogue count
-but has a strictly greater reliability cost. This distinguishes the
-noncollapse needed for ordinary precision costs from that needed for
-exponential reliability. The ordinary costs include an exact full-state
-spectrum and the rate of a single fixed, nearly full-area compact set.
+but has a strictly greater reliability cost. Thus preservation of
+full-state costs does not ensure preservation of exponential
+reliability. Under the weaker null-critical-set hypothesis, we also
+determine the full-state precision spectrum and the rate of one
+fixed, nearly full-area compact initial set.
 \end{abstract}
 \maketitle
 
 \section{Introduction}
-Suppose that knowledge of the initial state allows a controller to
-select one input from a finite catalogue. The number of available
-inputs measures the information required to maintain a state constraint.
+At time zero, a controller observes the initial state and selects
+one open-loop input from a finite catalogue. How large must that
+catalogue be to maintain a state constraint? Its size measures the
+information needed to make this initial choice.
 Invariance entropy describes its exponential growth with the horizon;
 see \cite{CK2009,Kawan2013}. When all inputs contract toward a common
 state, a fixed positive tolerance eventually makes the constraint
@@ -101,9 +104,13 @@ Theorem~\ref{thm:reliability} gives
 \lim_{n\to\infty}n^{-1}\log r_{e_n}(n,\delta_n;Q)
        =\min\{S(\gamma),L_a(\alpha)\}.
 \]
-The spectrum $S$ combines angular entropy with radial stopping cost.
-The function $L_a$ is the classical binary source-coding rate at
-reliability exponent $\alpha$; both functions are evaluated explicitly.
+The two terms come from different constructions. Covering all initial
+states at the prescribed tolerance gives the precision spectrum $S$.
+Keeping exactly feasible words outside a sufficiently rare family
+gives $L_a$, the classical binary source-coding rate at reliability
+exponent $\alpha$. The smaller catalogue suffices. The lower bound
+shows that allowing arbitrary approximate inputs cannot improve its
+exponential rate. Both functions are evaluated explicitly.
 For $\gamma\le\beta h$, where $h=-\sum_i a_i\log a_i$, the rate
 is $\gamma/\beta$ regardless of $\alpha>0$. Above this threshold,
 exponentially reliable coverage costs strictly more than coverage
@@ -123,15 +130,17 @@ catalogue count of the linear model while increasing its reliability
 cost. The transient changes the probability of states requiring
 many different inputs.
 
-The proofs must control the sets covered by arbitrary approximate
-inputs. A complete feasible section at a fixed radius can be empty
-or have a truncated terminal image, and several controls can be
-feasible at the same state. Thus disagreement with a designated
-coding need not violate the constraint. We first estimate the area
-of states whose prescribed input actually leaves $Q$ for the first
-time. Separate angular and radial products give the bound in
-Theorem~\ref{thm:area}, which survives a finite transient on one
-fixed compact window of arbitrarily small area loss.
+The main difficulty is to pass from control words to the states
+that an arbitrary approximate input actually covers. At a fixed
+radius, a complete feasible section may be empty and its terminal
+image may be truncated. Several controls may also be feasible at
+the same state, so disagreement with a designated coding need not
+violate the constraint. We instead partition covered states by
+their first actual exit from $Q$. An angular product measures the
+width of the preceding feasible region, while a radial product
+measures how much exit the tolerance permits. Their ratio yields
+Theorem~\ref{thm:area}. After a finite transient, this estimate
+holds on one fixed compact set with arbitrarily small area loss.
 
 An exponentially small failure allowance cannot absorb an arbitrary
 fixed area loss, or even an error of order $\delta_n$. Two further
@@ -142,7 +151,8 @@ Lemma~\ref{lem:massforcing} supplies disjoint positive-area regions
 of known mass on which any successful input must follow a prescribed
 prefix. At the first wrong control, the distance from $Q$ exceeds
 the tolerance; later reentry cannot undo that violation. These
-estimates allow type counting to bound the actual optimal catalogue.
+estimates supply the physical mass bounds needed to apply type
+counting to the optimal catalogue.
 
 \subsection{Related work}
 Our full-cover quantity is the outer invariance complexity of
@@ -178,13 +188,18 @@ estimates provide this comparison for the stated structural class.
 The transient counterexample shows that null-set preservation
 alone cannot supply it.
 
-We use classical graph estimates, summable distortion, stopping
-scales and typical-set arguments; related geometric methods appear
-in \cite{Hutchinson1981,KD2018}. The entropy optimisation uses
-the method of types \cite{Csiszar1998}. The additional work lies
-in relating these estimates to unrestricted approximate controls
-and to physical failure probabilities. The explicit spectrum is
-a consequence of that comparison and elementary counting.
+Volume estimates for the set served by a single control already give
+catalogue lower bounds in the invariance-pressure setting; see
+Colonius, Cossich and Santana \cite{CCS2020}. We use this general
+principle together with classical graph estimates, summable
+distortion, stopping scales and typical sets; related geometric
+methods appear in \cite{Hutchinson1981,KD2018}. The entropy
+optimisation is an application of the method of types
+\cite{Csiszar1998}. Here the estimates must retain the tolerance
+at the first true exit and the mass of regions whose failure cannot
+be absorbed by $e_n$. The area and probability comparisons above
+establish that connection. Once they are available, the explicit
+rates follow by counting.
 
 \subsection{Organisation}
 Section~\ref{sec:planar} defines the catalogues and states the
@@ -305,18 +320,20 @@ Then $V(\mathsf A_i x)\le
 \max\{\max_i r_i,t(1+1/\Lambda)\}V(x)$ globally, with factor
 less than one, and $\det\mathsf A_i=r_i^2/a_i>0$.
 
-For words write
+Two products will be used throughout the geometric estimates:
 \[
 \lambda_w=\prod_{j=1}^{|w|}a_{w_j},\qquad
 P_w=\prod_{j=1}^{|w|}r_{w_j},
 \]
-with empty products one. Define
+with empty products one. The angular product $\lambda_w$ controls
+the width of a feasible initial section; the radial product $P_w$
+controls the physical scale reached after the word. Their comparison
+is proved in Section~\ref{sec:geometry}, without assuming that a
+terminal section fills the angular interval. We also use the mean
+radial cost
 \begin{equation}\label{eq:radialparameters}
-\chi_R=-\sum_i a_i\log r_i>h,\qquad
-\gamma_0=-\log\max_i r_i>0,\qquad r_0^D+r_1^D=1.
+\chi_R=-\sum_i a_i\log r_i>h.
 \end{equation}
-The root $D$ is unique in $(0,1)$, since the left side decreases
-from two to zero and $r_0+r_1<1$. Also $\chi_R\ge\gamma_0$.
 
 \subsection{Probability costs}
 Write $H_b$ for binary entropy. In the matched case
@@ -333,8 +350,12 @@ where $0\log0=0$. In particular $H_b(a_0)=\chi(a_0)=h$.
 I_a(p)=\chi(p)-H_b(p),\qquad
 L_a(\alpha)=\max_{I_a(p)\le\alpha}H_b(p).
 \end{equation}
-The function $I_a$ is relative entropy with respect to $(a_0,a_1)$;
-$L_a$ is the classical binary source-coding rate at reliability exponent $\alpha$.
+The function $I_a$ is relative entropy with respect to $(a_0,a_1)$.
+For reference words with zero frequency $p$, $H_b(p)$ gives the
+count exponent and $I_a(p)$ the probability exponent. Thus $L_a$
+is the classical binary source-coding rate at reliability exponent
+$\alpha$. The theorem below identifies how this word count enters
+the physical control problem.
 
 \begin{theorem}[Precision--reliability transfer]\label{thm:reliability}
 Assume the standing hypotheses with $\beta_0=\beta_1=\beta$,
@@ -357,9 +378,8 @@ state to its first successful input. The sets are Borel, so this is a
 measurable initial-state encoder. A fixed-length index sent once at
 time zero has minimum bit length $\lceil\log_2 r_e\rceil$; the
 asymptotic bit rate is \eqref{eq:jointcost} divided by $\log2$.
-There are no later messages. This interpretation does not identify
-the catalogue rate with a causal feedback data-rate or a channel
-capacity. The bit conversion is a definition-level consequence.
+There are no later messages: this is the cost of one initial index.
+It gives neither a causal feedback data-rate nor a channel capacity.
 
 \begin{theorem}[A null-critical transient changes reliability]
 \label{thm:counter}
@@ -386,9 +406,11 @@ It does not show that every system with critical points fails,
 or give a necessary and sufficient probability criterion.
 
 \subsection{Ordinary precision costs and fixed initial sets}
-The following results use only the standing null-critical hypothesis.
-They both describe the baseline precision cost and distinguish it
-from the exponentially reliable cost above.
+For full coverage, and for coverage of a fixed compact initial set,
+the standing null-critical hypothesis suffices. The next theorem
+provides the spectrum used in Theorem~\ref{thm:reliability} and
+shows why the choice of a large initial set is a different question
+from an exponentially small failure allowance.
 \begin{theorem}[Precision spectrum and initial-set dependence]\label{thm:main}
 Suppose $\beta_0=\beta_1=\beta$ in the standing assumptions.
 For every fixed system,
@@ -459,10 +481,10 @@ determined by the theorem.
 
 The role of matching can also be tested within the same matrix
 family. Appendix~\ref{sec:mismatch} proves that unequal radial
-powers give distinct full-state and near-full-set rates already
-for every $0<\gamma<\gamma_0$. Thus a common positive-area rate
-on an interval adjacent to zero holds precisely when the powers
-match. This criterion concerns ordinary precision costs in the
+powers give distinct full-state and near-full-set rates throughout
+an interval of positive exponents adjacent to zero. A common
+positive-area rate on such an interval therefore holds precisely
+when the powers match. This criterion concerns ordinary precision costs in the
 specified family; it is not a classification of reliability.
 
 \subsection{The physical coverage estimate}
@@ -495,10 +517,13 @@ $1-\zeta$ for any prescribed $\zeta\in(0,1)$.
 \end{theorem}
 
 \section{Local feasible geometry}\label{sec:geometry}
-We first control complete feasible regions near the origin. The angular
-and radial products describe different scales, so they remain separate
-throughout this section. The first-exit estimate will then apply to
-any input, even one that is only approximately feasible.
+This section proves two bounds used later: a complete feasible
+word region has area at most a constant times $\lambda_w$, and
+states surviving a first exit after $w$ have area at most a constant
+times $\delta\lambda_w/P_w$. We obtain both from monotonicity
+along radial graphs. The first bound concerns exactly feasible
+prefixes; the second is what allows arbitrary approximate inputs
+in the catalogue lower bounds.
 
 Use \((s,y)\) with \(z=sy\) for \(s>0\). All local estimates
 below are on \(0<s\le\rho\), \(|y|\le1\); their extensions
@@ -517,7 +542,10 @@ R_i(0,y)=r_i,\quad
  L_1(y):=T_1(0,y)=(y-a_0)/a_1.                                \label{eq:limangular}
 \end{equation}
 
-We choose the local constants from the maps as follows. Let
+The local errors below are of order $s$. Radial contraction makes
+their sum finite along a feasible orbit, which will give product
+comparisons independent of the word length. We choose all constants
+from the maps before considering individual words. Let
 \(L\) bound the Euclidean bilinear operator norm of both second
 derivatives on \(\overline B(0,2)\), and let
 \(r_*=\min r_i\), \(r^*=\max r_i\), \(a^*=\max a_i\),
@@ -589,8 +617,8 @@ For a fixed initial radius \(0<s_0\le\rho\), start with the horizontal
 graph \(S\equiv s_0\). Let \(I_w(s_0)\) be the set of initial angles
 whose trajectory under a finite word \(w\) stays in $Q$ at every
 intermediate time. It is a closed interval, possibly empty or a point.
-Here is the induction that checks all constraints. The current angular
-image is an interval, with a graph obeying \eqref{eq:coneupdate}. Extend that graph
+To check every intermediate constraint, suppose the current angular
+image is an interval with a graph obeying \eqref{eq:coneupdate}. Extend that graph
 constantly to the two sides of its domain. The extension is positive,
 bounded by \(\rho\), and obeys the logarithmic-slope bound almost
 everywhere. Both \(T_i(S(y),y)\) are increasing. By \eqref{eq:edges}, control 0
@@ -817,13 +845,18 @@ over the finite word family, omitting empty \(M_w\)'s, to obtain
 every local inverse branch meeting \(M_w\) is included.
 \end{proof}
 
-The lemma provides an inverse-area bound on a fixed regular window,
-not a Jacobian lower bound on all \(Q\) or a global multiplicity
-bound. Its constants may depend on the prescribed area loss.
+The inverse-area bound is confined to the selected regular window;
+its constant may depend on the prescribed area loss. In particular,
+it supplies no uniform inverse-Jacobian bound on all \(Q\).
 The upper catalogues below still cover every actual state, including
 the critical states omitted from this window.
 
 \begin{proof}[Proof of Theorem~\ref{thm:area}]
+We divide the covered states into three classes: those that exit
+during the transient, those that remain exactly feasible through
+the next $m$ steps, and those that first exit during those $m$ steps.
+These classes give, in order, the three terms of
+\eqref{eq:actualarea}.
 Choose \(J,T,L_T\) from Lemma~\ref{lem:regularwindow}.
 Let \(Q_\delta=\{x:\dist(x,Q)<\delta\}\).
 For \(0<\delta\le1\), the tubes around the three edges of \(Q\) give
@@ -892,7 +925,11 @@ assertion is made for unbounded runs or all constant words.
 
 \end{lemma}
 \begin{proof}
- The inverse reference maps are
+We first keep the reference angular orbit away from the boundary.
+We then solve the perturbed angular and radial recursions together
+near that orbit. This will preserve both feasibility and the margin
+against the alternative control.
+The inverse reference maps are
 \(f_0(y)=a_0y-a_1\), \(f_1(y)=a_1y+a_0\).
 For any fixed infinite input \(v\), successive inverse compositions
 give a unique reference bounded orbit \(y_k^0\in[-1,1]\).
@@ -1238,10 +1275,13 @@ strict gap and the exact saturation threshold.
 \section{Physical probability and exponential reliability}
 \label{sec:reliability}
 Throughout this section the powers match, $r_i=a_i^\beta$, and
-\eqref{eq:noncritical} holds. We first prove probability domination
-on the whole triangle. The lower bound then uses regions with known
-positive physical mass, rather than only the individual witnesses
-needed for the full-state precision spectrum.
+\eqref{eq:noncritical} holds. The proof has two parts. A uniform
+bound on probability transport lets us discard rare feasible words
+and obtain the $L_a$ upper bound; the full-state construction already
+gives the $S$ upper bound. For the reverse inequality we thicken the
+trajectories from Section~\ref{sec:shadow} into disjoint regions of
+known mass. Their total mass determines which word families a
+successful catalogue must cover.
 
 \subsection{All feasible transient branches}
 Let $J$ and $\rho$ be as in Section~\ref{sec:area}, so every
@@ -1292,14 +1332,19 @@ over all at most $2^J$ transients and all $v$ to obtain
 \eqref{eq:wordprobability}.
 \end{proof}
 
-This is domination, not equality of word probabilities or a claim
-that feasible regions form a partition. Applying
-\eqref{eq:wholeinverse} to the first true exit during the transient
-would bound its area by $JK_JC_Q\delta$. We do not discard this
-area at failure cost $e_n$: $\delta_n$ can be exponentially larger
-than $e_n$. The next construction uses exactly feasible prefixes.
+The word regions may overlap; \eqref{eq:wordprobability} only
+requires an upper bound on the probability of their union.
+This is enough for the upper construction below, which uses exactly
+feasible prefixes. In contrast, applying \eqref{eq:wholeinverse}
+to a transient first exit would leave an area error of
+$JK_JC_Q\delta$. Such an error cannot be charged to the failure
+budget, since $\delta_n$ may be exponentially larger than $e_n$.
 
 \subsection{Two catalogue upper bounds}
+To obtain the reliability bound, keep words whose total discarded
+probability is below $e_n$. This catalogue is exactly feasible
+through time $n$ on every state it serves, so its construction has
+no tolerance error to subtract from the failure budget.
 Fix $\varepsilon>0$, $n>J$, and $N=n-J$.
 Keep every exactly feasible length-$n$ prefix $\sigma v$, with
 $|\sigma|=J$, whose tail zero frequency $p$ satisfies
@@ -1358,6 +1403,12 @@ retain a positive successful mass, not to construct an upper
 bound with exponentially small failure.
 
 \subsection{Positive-area regions forcing complete prefixes}
+The witnesses in Lemma~\ref{lem:shadow} distinguish control words,
+but individual states have zero area. For a reliability lower bound
+we need a whole region for each word, with controlled mass and the
+same forced prefix at every point. The next lemma obtains these
+regions by thickening the witnesses on the angular scale
+$\lambda_w$.
 \begin{lemma}[Thickened physical words]\label{lem:massforcing}
 For every integer $L\ge2$ there are $\tau_L,E_L>0$ such that
 any family $\mathcal W$ of distinct words of a common length $m$,
@@ -1372,6 +1423,10 @@ successful set $A_u(n,\delta;Q)$ meets $E_w$ has prefix $w$.
 All constants are fixed before $m,n,\delta$ and the word family.
 \end{lemma}
 \begin{proof}
+We choose the thickness so that the selected word remains feasible
+and each possible first wrong control retains an angular margin.
+After computing the area and proving disjointness, the radial
+product converts that margin into the required physical distance.
 For each word choose a bounded-run extension $v(w)$.
 Lemma~\ref{lem:shadow} gives a common radius bound $s_L>0$,
 continuous centres $y_w(s)$ for $0<s\le s_L$, and wrong-control
@@ -1447,6 +1502,11 @@ Suppose $c=\gamma/\beta>h$. Fix an interior frequency $p$ with
 \begin{equation}\label{eq:strictprobtype}
 \chi(p)<c,\qquad I_a(p)<\alpha.
 \end{equation}
+The first strict inequality will make each selected prefix
+unavoidable at precision $\delta_n$. The second will make the
+union of its physical regions too large to discard within $e_n$.
+We preserve both gaps while approximating the frequency by
+bounded-run blocks.
 Choose $j_L/L\to p$ and use the length-$L$ blocks starting with
 zero, ending with one, and containing $j_L$ zeros. Write
 \[
@@ -1560,10 +1620,16 @@ which needs only Theorem~\ref{thm:area}, gives the lower rate.
 
 \section{A transient preserving full costs but changing reliability}
 \label{sec:counter}
-We prove Theorem~\ref{thm:counter}. The construction alters only
-the first step from $Q$. It remains injective and has no positive-area
-collapse. Its small target regions have physical preimages whose
-probabilities decay too slowly to omit at the required failure budget.
+We prove Theorem~\ref{thm:counter} by changing only the first step
+from $Q$. An angular homeomorphism sends relatively large source
+intervals to much smaller intervals whose states force different
+control blocks. The dynamics become linear immediately after this
+bijective transient, preserving the minimum number of controls
+for full coverage. The transient changes the
+probability of the forced regions, however, and these probabilities
+will decay too slowly for the prescribed failure budget. The
+construction below verifies both its $C^2$ regularity and its null
+critical set.
 
 \subsection{A flat increasing Cantor interpolation}
 Fix the parameters of the theorem and put $\lambda=a_0a_1$.
@@ -1590,6 +1656,10 @@ On $J_0=[-1/2,1/2]$ use the source maps
 b=2/5,\qquad h_0(y)=by-(1-b)/2,
 \qquad h_1(y)=by+(1-b)/2.
 \]
+The two contraction ratios serve different purposes. The gap
+$\lambda<b^2$ will make the interpolation $C^2$ at Cantor points.
+At level $k$, the source intervals retain total length $(2b)^k$;
+this is the mass scale used in the reliability obstruction.
 Their Cantor set $\mathcal D$ is null, because the total level-$k$
 interval length is $(2b)^k\to0$. For $\sigma\in\{0,1\}^k$ put
 \[
@@ -1827,10 +1897,13 @@ pullback preservation alone do not control exponential tail masses.
 \section{A nonlinear example with inward boundary images}\label{sec:examples}
 In this section the powers match: $\beta_0=\beta_1=\beta>1$,
 so $r_i=a_i^\beta$ and $t_i=a_i^{\beta-1}$.
-The following nonsingular example has nonlinear, truncated feasible
-images. It satisfies the reliability hypotheses and cannot be reduced
-to the matched linear pair by the stated constraint-preserving
-simultaneous conjugacies.
+The following example explains why the proof retained complete
+feasible intervals with possibly truncated images. Its branches
+overlap, yet long constant words have empty sections at a fixed
+positive radius. The maps are nonsingular and satisfy the
+reliability theorem. Their boundary images also rule out a
+constraint-preserving simultaneous conjugacy to the matched
+linear pair.
 
 \subsection{Empty fixed-radius slices}
 \label{sec:inward}
@@ -1929,15 +2002,15 @@ that missing fixed-radius words require a different count.
 
 
 \section{Consequences and scope}
-The first-order angular and radial scales determine the ordinary
-precision spectrum under qualitative noncollapse. Exponential
-reliability is also sensitive to the probability transported through
-the transient. Nonsingularity on $Q$ gives the uniform area domination
-needed for the rate $\min\{S(\gamma),L_a(\alpha)\}$. The Cantor
-transient preserves every full-state finite-horizon count but assigns
-greater mass to regions that require different inputs. It separates
-these two kinds of information cost while preserving null-set
-pullbacks and absolute continuity.
+The distinction between ordinary precision cost and exponential
+reliability is quantitative. For the former, deleting an arbitrarily
+small fixed area leaves a compact set on which transient inverse
+area bounds suffice. For the latter, the discarded area would have
+to fit the shrinking failure budget. Nonsingularity on $Q$ avoids
+this loss by giving uniform probability domination on the whole
+triangle. The Cantor transient shows why null-set preservation
+alone is insufficient, even when every full-state finite-horizon
+catalogue count is preserved.
 
 The fixed-set and probabilistic conclusions concern different
 covering requirements. A single nearly full-area compact set has
@@ -1959,6 +2032,18 @@ remain outside the conclusions proved here.
 \appendix
 
 \section{Mismatch and the common-cost criterion}\label{sec:mismatch}
+
+The main probability results use matched radial powers. This appendix asks
+whether matching is necessary for a common low-precision rate
+across all positive-area compact initial sets. The geometric
+estimates already retained the two products $\lambda_w$ and $P_w$
+separately; only the stopping count changes when the powers differ.
+For this purpose define
+\[
+\gamma_0=-\log\max_i r_i>0,\qquad r_0^D+r_1^D=1.
+\]
+The root $D$ is unique in $(0,1)$, since the left side decreases
+from two to zero and $r_0+r_1<1$. Also $\chi_R\ge\gamma_0$.
 
 \begin{theorem}[First-order matching criterion]\label{thm:criterion}
 For every fixed system satisfying the standing assumptions, the
@@ -1989,10 +2074,6 @@ Every other fixed positive-area compact $K\subset Q$ has lower
 rate at least $\gamma h/\chi_R$ in this range.
 \end{theorem}
 
-
-We now return to the standing assumptions with $\beta_0\ne\beta_1$.
-The same physical estimates apply, but the angular and radial
-products no longer have a common-power identity.
 
 \begin{proof}[Proof of Theorem~\ref{thm:mismatch}]
 First consider the upper rate on $Q$. For every $0<\gamma<\gamma_0$,
@@ -2175,6 +2256,11 @@ Invariance complexity and equi-invariability for control systems,
 Invariance entropy, quasi-stationary measures and control sets,
 \emph{Discrete Contin. Dyn. Syst.}, \textbf{38} (2018), 2093--2123.
 \doi{10.3934/dcds.2018086}.
+
+\bibitem{CCS2020}F. Colonius, J. A. N. Cossich and A. J. Santana,
+Bounds for invariance pressure,
+\emph{J. Differential Equations}, \textbf{268} (2020), 7877--7896.
+\doi{10.1016/j.jde.2019.11.091}.
 
 \bibitem{CK2009}F. Colonius and C. Kawan,
 Invariance entropy for control systems, \emph{SIAM J. Control Optim.} \textbf{48} (2009), no.~3, 1701--1721.
