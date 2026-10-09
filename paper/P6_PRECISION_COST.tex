@@ -37,31 +37,29 @@ reliability exponent, critical points, initial-state probability}
 \begin{document}
 \raggedbottom
 \begin{abstract}
-A finite control catalogue assigns one input sequence to each
-observed initial state. We determine how its minimum size depends
-on two requirements: the distance allowed from a triangular state
-constraint and the probability of failing that constraint. The
-systems consist of two $C^2$ planar maps with prescribed linear
-parts, controlled invariance of the triangle, contraction toward
-the origin under every input, and critical sets of area zero.
-The main formulas apply when the radial factors are the same power
-$\beta>1$ of the angular branch weights. For tolerances
-$\delta_n=\exp(-\gamma n+o(n))\to0$, we compute an explicit
-full-cover rate $S(\gamma)$. After removing an arbitrarily small
-fixed area, we obtain one compact set on which the rate saturates
-at a smaller value.
-If neither map has a critical point in the triangle, allowing
-failure probability $\exp(-\alpha n+o(n))$, $\alpha>0$, gives
-the rate $\min\{S(\gamma),L_a(\alpha)\}$, where $L_a$ is the
-binary source-coding rate for the prescribed error exponent.
-The proof compares
-angular word weights with physical area and constructs regions
-whose successful inputs must share a prescribed prefix. An
-injective example shows why the critical-point hypothesis matters:
-a single nonlinear step preserves every finite-horizon full-cover
-count of the linear model but increases the reliability lower rate.
-Thus null critical sets suffice for the full-cover formula but
-not for the probability formula.
+Even when every input drives the state to zero, keeping a trajectory
+near a prescribed set can require an increasing number of control
+choices as the tolerance shrinks. We study this cost for two $C^2$
+planar maps and a triangular constraint. A controller observes the
+initial state and selects one input sequence from a finite catalogue.
+The triangle is controlled invariant, both maps contract toward zero,
+and their critical sets have area zero. Their prescribed linear parts
+have radial factors equal to a common power $\beta>1$ of the
+contraction factors of the inverse angular maps.
+For tolerances $\delta_n=\exp(-\gamma n+o(n))\to0$, we compute
+the exponential catalogue growth rate $S(\gamma)$ for full coverage.
+One compact set obtained by removing an arbitrarily small fixed area
+has a lower saturation rate. If neither map has a critical point in
+the triangle, allowing failure probability $\exp(-\alpha n+o(n))$,
+$\alpha>0$, gives the rate $\min\{S(\gamma),L_a(\alpha)\}$.
+Here $L_a(\alpha)$ is the growth rate of the number of exactly
+feasible words needed in the linear model with that failure allowance.
+The proof bounds the area served by one
+input and constructs regions that force different control prefixes.
+Finally, an injective example preserves every finite-horizon
+full-cover count of the linear model but has a reliability lower
+rate strictly above the linear rate. Thus critical sets of area zero do not
+suffice for the probability formula.
 \end{abstract}
 \maketitle
 
@@ -266,8 +264,8 @@ A_u(n,\delta;K)=\{x\in K:\dist(F_u^kx,Q)<\delta
 Let $r_F(n,\delta;K)$ be the smallest number of infinite inputs
 whose sets \eqref{eq:catalogue} cover $K$. The list is selected
 before the initial state; the assigned input
-may depend on that state. Success means satisfying every inequality
-in \eqref{eq:catalogue}, including times before a reentry into $Q$.
+may depend on that state. We call a prefix \emph{exactly feasible}
+from $x$ if all its intermediate states belong to $Q$.
 Only the first $n$ letters matter. Under the controlled-invariance
 assumption below, the $2^n$ words already cover $Q$, so the minimum
 is finite.
@@ -655,8 +653,9 @@ with area element $s_0\,ds_0\,dy_0$, yields
  \quad |\mathcal I_w|\le C_A\rho^2\lambda_w,
  \quad \mathcal I_w=\{(s,sy):0<s\le\rho,\ y\in I_w(s)\}.      \label{eq:striparea}
 \end{equation}
-The Jacobian of \((s,y)\mapsto(s,sy)\) is \(s\).
-There is no positive lower bound on \(|I_w|\); some fixed-radius slices in Section~\ref{sec:inward} are empty.
+There is no corresponding positive lower bound for
+$|I_w(s_0)|$: the example in Section~\ref{sec:inward} has empty
+sections at some positive radii.
 
 Endpoints are included by continuity. A degenerate interval must
 still be retained in a full cover, although it contributes no area.
@@ -701,9 +700,9 @@ C\delta\lambda_w/P_w.     \label{eq:exitarea}
 \end{equation}
 The monotonicity argument bounds the overshoot set even if the
 cut lies outside the terminal image or that image is a point.
-Reentry cannot undo a violation at this first exit. Throughout
-this argument the prescribed input is fixed: switching between
-two feasible word labels is not the event being counted.
+An exit from $Q$ may still respect the tolerance. Estimate~\eqref{eq:exitarea}
+bounds all states that do so at this first exit; imposing the later
+constraints, with or without reentry, can only reduce their area.
 \section{States that force a control prefix}\label{sec:shadow}
 Counting feasible word labels does not give a catalogue lower
 bound, because their regions may overlap. We instead
@@ -981,8 +980,6 @@ catalogue construction,
 \begin{equation}\label{eq:treeupper}
 r_F(n,\delta;Q)\le 2^J(n+1)^2e^{nS(\Gamma_{n,\delta})}.
 \end{equation}
-Only pairs realised by actual initial states are needed for this
-upper bound.
 
 Every function under the maximum defining $S$ is Lipschitz in
 $\gamma$, with common constant at most
@@ -1031,8 +1028,7 @@ $c_L=\beta\chi_L$. Fix $L$ first and take
 \begin{equation}\label{eq:prefixratio}
 0<t<\min\{1,\gamma/(\beta\chi_L)\}.
 \end{equation}
-The lemma, which checks the physical margin and every constrained
-time, gives
+The lemma gives
 \begin{equation}\label{eq:prefixlower}
 \liminf_n n^{-1}\log r_F(n,\delta_n;Q)\ge tB_L.
 \end{equation}
@@ -1330,28 +1326,41 @@ All derivative inputs here are in \(Q\); no nonsingularity condition
 is needed at the last output, which may be outside.
 
 \smallskip
-\emph{States that reach the local region.}
-For the remaining states, \(\sigma=u|J\) is exactly feasible.
-Transport them by \(F_\sigma\) to \(Q_\rho\), and use
-\eqref{eq:finitecharts} to pull back endpoint area estimates.
-If the next \(m\) prescribed digits are exactly feasible for at
-least one transported state, \eqref{eq:striparea} and
-\eqref{eq:typicalproducts} bound the area of the survival class by
-\(C_{T,\eta}e^{-(h-\eta)m}\). If no such state exists, that class is empty.
-The states left to count first exit during these $m$ local steps.
-For such an exit at time \(j\le m\), the prescribed
-\((j-1)\)-prefix is feasible for a transported state whenever the
-class is nonempty. Its pulled-back area, by \eqref{eq:exitarea},
-\eqref{eq:finitecharts} and both products in
-\eqref{eq:typicalproducts}, is at most
+\emph{Local survival and the later first exits.}
+The remaining states follow the exactly feasible transient
+$\sigma=u|J$ into $Q_\rho$. There are two possibilities during
+the next $m$ steps. Those that remain in $Q$ follow the prescribed
+length-$m$ tail $v$. Its region has area at most $C_A\rho^2\lambda_v$.
+If this class is nonempty, one of its states comes from $T$, so
+the uniform word estimate gives
+$\lambda_v\le D_\eta e^{-(h-\eta)m}$. Pulling the region back
+through $F_\sigma$ multiplies this upper bound by at most $L_T$.
+Thus the survival class has area at most
+$C_{T,\eta}e^{-(h-\eta)m}$.
+
+For a first exit at local time $j\le m$, only the preceding
+word $w$ of length $j-1$ must be exactly feasible. If the exit
+class is nonempty, that word is realised after a transient from
+$T$. Applying the two bounds in \eqref{eq:typicalproducts} to
+the ratio in \eqref{eq:exitarea} gives
 \[
-C_{T,\eta}\delta e^{(\chi_R-h+2\eta)(j-1)}.
+\frac{\lambda_w}{P_w}
+\le D_\eta^2
+  \frac{e^{-(h-\eta)(j-1)}}{e^{-(\chi_R+\eta)(j-1)}}
+=D_\eta^2 e^{(\chi_R-h+2\eta)(j-1)}.
 \]
-Since \(\chi_R>h\), the sum is bounded by a fixed multiple of
-\(\delta e^{(\chi_R-h+2\eta)m}\). Together with
-\eqref{eq:transient} and exact survival, this proves
-\eqref{eq:actualarea}. The argument only used constraints up to
-the first exit, so later reentries require no additional estimate.
+After the same transient pullback, the area is at most
+$C_{T,\eta}\delta e^{(\chi_R-h+2\eta)(j-1)}$.
+These classes include successful states that later reenter $Q$.
+Summing over first-exit times gives
+\[
+\sum_{j=1}^{m}e^{(\chi_R-h+2\eta)(j-1)}
+\le \frac{e^{(\chi_R-h+2\eta)m}}
+              {e^{\chi_R-h+2\eta}-1},
+\]
+where $\chi_R>h$. The denominator is absorbed into $C_{T,\eta}$.
+Adding this bound to local survival and \eqref{eq:transient}
+proves \eqref{eq:actualarea}, also for $m=0$, when the sum is empty.
 \end{proof}
 \subsection{Positive-area and fixed near-full initial sets}
 Return to matched powers, $r_i=a_i^\beta$.
@@ -1366,8 +1375,14 @@ m_n=\min\left\{n-J,
 \]
 Eventually $m_n\ge0$, and
 $\delta_n\le e^{-(\chi_R+\eta)m_n}$.
-Each term on the right of \eqref{eq:actualarea} is then at most
-a constant times $e^{-(h-\eta)m_n}$. Consequently
+This choice balances survival and exit: explicitly,
+\[
+\delta_n e^{(\chi_R-h+2\eta)m_n}
+\le e^{-(h-\eta)m_n},\qquad
+\delta_n\le e^{-(h-\eta)m_n}.
+\]
+Thus each term in \eqref{eq:actualarea} has that upper bound,
+up to a constant independent of $n$. Consequently
 \[
 \liminf_n n^{-1}\log r_F(n,\delta_n;K)
  \ge (h-\eta)\min\{1,\gamma/(\chi_R+\eta)\}.
@@ -1465,27 +1480,20 @@ over all at most $2^J$ transients and all $v$ to obtain
 \eqref{eq:wordprobability}.
 \end{proof}
 
-The union estimate is enough even when word regions overlap.
-We will discard a collection of exactly feasible words and bound
-the area that loses every such choice. Using approximate words
-at this stage would introduce an error of order $\delta_n$ from
-early exits. That error need not fit the budget $e_n$, so exact
-feasibility is essential to this upper construction.
-
 \subsection{Two catalogue upper bounds}
-To obtain the reliability bound, keep words whose total discarded
-probability is below $e_n$. This catalogue is exactly feasible
-through time $n$ on every state it serves, so its construction has
-no tolerance error to subtract from the failure budget.
+We keep exactly feasible words and discard only families whose
+total area is below $e_n$. This avoids a tolerance error of order
+$\delta_n$ from early exits, which need not fit the failure budget.
 Fix $\varepsilon>0$, $n>J$, and $N=n-J$.
 Keep every exactly feasible length-$n$ prefix $\sigma v$, with
 $|\sigma|=J$, whose tail zero frequency $p$ satisfies
 $I_a(p)\le\alpha+\varepsilon$. Empty complete regions may be omitted.
 Append any infinite input to each kept horizon prefix.
-Every state not covered has an exactly feasible length-$n$ prefix
-by controlled invariance, and all such prefixes from that state
-have discarded tails. By Lemma~\ref{lem:probtransport}, its total
-probability is at most
+Every uncovered state has an exactly feasible length-$n$ prefix
+by controlled invariance, and all its feasible prefixes have
+discarded tails. Hence the uncovered set is contained in the union
+of the discarded word regions, whether or not these regions overlap.
+Lemma~\ref{lem:probtransport} bounds its probability by
 \begin{equation}\label{eq:reliablefailure}
 C_0\sum_{I_a(j/N)>\alpha+\varepsilon}
 \binom Nj e^{-N\chi(j/N)}
@@ -1529,16 +1537,16 @@ eventually. The union bound and $\varepsilon\downarrow0$ give
 Since $S(\gamma)=\gamma/\beta$ for $\gamma\le\beta h$
 and $L_a(\alpha)\ge h$, this matches \eqref{eq:reliableupper}
 for $0\le\gamma\le\beta h$. At $\gamma=0$, the upper bound and
-$r_{e_n}\ge1$ give the zero limit. Fixed loss is used here to
-retain a positive successful mass, not to construct an upper
-bound with exponentially small failure.
+$r_{e_n}\ge1$ give the zero limit.
 
 \subsection{Giving the forced prefixes positive area}
-The correct angular width for a region forcing $w$ is
-$\lambda_w$. Expansion through any prefix then changes that width
-by at most a fixed factor before time $|w|$. Choosing a small
-multiple of this width preserves both feasibility and the
-wrong-control margin.
+Following a word $w$ expands angular differences by a factor
+comparable to $\lambda_w^{-1}$. We therefore start with angular
+width proportional to $\lambda_w$. Up to time $|w|$, the perturbed
+trajectory will remain within a fixed small angular distance of
+the central orbit. The proof first keeps the whole proposed region
+feasible, then checks that the other control still violates the
+constraint by a definite amount.
 \begin{lemma}[Regions with a forced input prefix]\label{lem:massforcing}
 For every integer $L\ge2$ there are $\tau_L,E_L>0$ such that
 any family $\mathcal W$ of distinct words of a common length $m$,
@@ -1632,8 +1640,8 @@ excess at least $d_L'/2$. Thus
 Either $z-s$ or $-z-s$ has this positive excess. Each function
 has Euclidean Lipschitz constant $\sqrt2$ and is nonpositive on
 $Q$, so the distance is at least $E_LP_w/\sqrt2>\delta$.
-The constraint is violated at that time. Later reentry cannot
-remove the violation. This proves the all-point forcing assertion.
+This violates the constraint at time $j$ and proves the forcing
+assertion for every point of $E_w$.
 \end{proof}
 
 \subsection{Which rare word families must be covered?}
@@ -1938,8 +1946,7 @@ Thus every wrong-control angular excess is at least
 $d_*=(a_*/a^*)d>0$.
 This holds on each complete interval $Z_\sigma$ through its
 $2k$-digit block prefix: its endpoints have such bounded-run
-extensions, and the linear prefix maps are monotone. No symbolic
-Cantor subset replaces the whole interval in this assertion.
+extensions, and the linear prefix maps are monotone.
 
 For each $\sigma\in\{0,1\}^k$ define an actual physical region
 \[
@@ -1965,9 +1972,8 @@ Its distance from $Q$ is at least this value divided by $\sqrt2$.
 For $k=\lfloor n/2\rfloor$ and
 $\gamma=-\beta\log\lambda$, the logarithmic ratio to $\delta_n$
 has positive rate $-\tfrac12\beta\log\lambda$.
-Every successful input thus has the full selected prefix, for every
-point in the region. Later reentry cannot remove the constraint
-at this first wrong step.
+Every successful input from the region must therefore have the
+selected prefix.
 
 One catalogue input can consequently cover points of at most one
 region. A catalogue of $R$ inputs with failure at most $e_n$ obeys
@@ -1996,9 +2002,6 @@ below $1/16$. Binary entropy is increasing up to $1/2$, so
 $L_a(1/8)<H_b(1/16)<\tfrac12\log2$.
 This proves the strict inequality \eqref{eq:counterrate} and completes
 Theorem~\ref{thm:counter}.
-
-The exact reliability spectrum of this example, and whether its rate has a limit, remain
-undetermined.
 
 \subsection{An exponential lower bound for inverse area}
 Lemma~\ref{lem:regularwindow} removes a fixed area before bounding

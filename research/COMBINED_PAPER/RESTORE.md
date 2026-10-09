@@ -1,13 +1,14 @@
 # P6 当前稿与历史恢复入口
 
-唯一现行英文稿为 [完整 TeX](../../paper/P6_PRECISION_COST.tex) 和 [35 页 PDF](../../paper/P6_PRECISION_COST.pdf)。先读 [CURRENT.md](../../CURRENT.md) 及 [本轮数学与可读性复核说明](FINAL_MATH_READ_20261010.md)。本轮基线为 `ea9577ed24ceebed452179d586e5c1350346020b` 的 34 页稿，采用已经完成的 DCDS 对照和内容取舍，再补清证明及表达。历史报告保留各自的旧页码。
+唯一现行英文稿为 [完整 TeX](../../paper/P6_PRECISION_COST.tex) 和 [35 页 PDF](../../paper/P6_PRECISION_COST.pdf)。先读 [CURRENT.md](../../CURRENT.md) 及 [本轮数学与读者验收说明](FINAL_READER_ACCEPTANCE_20261010.md)。本轮基线为 `97060923f46bc270a75637625ebe3ddf37cd6d28` 的 35 页稿；重新核查全部现行证明，并恢复十篇 DCDS 作者版定向重读。历史报告保留各自的旧页码，不以旧结论替代本轮核查。
 
 控制字母表及 arsinh 比较已移出现行稿，但完整数学内容保存在 37 页归档。其他五项指定结果仍在现行稿，位置见 CURRENT。没有新增研究命题。历史 NEXT_COMMAND 不构成自动续研授权。
 
 | 入口 | 身份 |
 | --- | --- |
-| [本轮复核说明](FINAL_MATH_READ_20261010.md) | 当前 35 页稿的证明补充、表达修改和验证边界 |
-| 34 页稿提交 `ea9577ed24ceebed452179d586e5c1350346020b` | 本轮基线；在该提交的 paper/P6_PRECISION_COST.tex 及对应 PDF 恢复 |
+| [本轮验收说明](FINAL_READER_ACCEPTANCE_20261010.md) | 当前 35 页稿的必要修订、十篇原文比较位置及尚存差距 |
+| 35 页稿提交 `97060923f46bc270a75637625ebe3ddf37cd6d28` / [当时说明](FINAL_MATH_READ_20261010.md) | 本轮基线；在该提交的 paper/P6_PRECISION_COST.tex 及对应 PDF 恢复 |
+| 34 页稿提交 `ea9577ed24ceebed452179d586e5c1350346020b` | 较早 DCDS 取舍后的完整稿；在该提交的同一路径恢复 |
 | [DCDS 修订说明](DCDS_FINAL_REVISION_20261010.md) / [来源记录](DCDS_SOURCES_20261010.json) | 上一轮 34 页稿的十篇全文比较、取舍、验证与限制 |
 | [归档说明](../../paper/archive/README.md) | 35/37 页 TeX/PDF 精确快照及哈希 |
 | [37 页 TeX](../../paper/archive/P6_PRECISION_COST_37p_f510c91.tex) / [PDF](../../paper/archive/P6_PRECISION_COST_37p_f510c91.pdf) | `f510c91` 历史基线的逐字节副本；旧 Appendix B / D 的完整内容可在此恢复 |
