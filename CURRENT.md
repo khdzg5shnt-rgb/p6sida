@@ -1,27 +1,27 @@
 # P6 当前状态
 
-本轮完成“十篇 DCDS 主刊全文对照、内容取舍与最终实质修订”。基线 main 为 `f510c91c5baadab6149bbca8d81bcb487c957cbf`；开始及提交准备时回查均无新增远端工作。只处理 P6，单代理执行，没有新研究、投稿或联系他人。
+本轮从 main `ea9577ed24ceebed452179d586e5c1350346020b` 的 34 页稿继续，完成一次现行全文数学复核、必要的推导补充及表达修订。采用上一轮十篇 DCDS 对照和内容取舍；没有重启研究。只处理 P6，单代理，无投稿或联系他人。
 
 唯一现行英文稿：*Precision and reliability costs in contracting control systems*。
-[完整 TeX](paper/P6_PRECISION_COST.tex) 与 [34 页 PDF](paper/P6_PRECISION_COST.pdf) 对应。
-[本轮修改说明](research/COMBINED_PAPER/DCDS_FINAL_REVISION_20261010.md) 包含十篇准确引用、实际版本、逐篇比较、关键前后对照、取舍及剩余困难；[来源记录](research/COMBINED_PAPER/DCDS_SOURCES_20261010.json) 保存 URL、页码与哈希。
+[完整 TeX](paper/P6_PRECISION_COST.tex) 与 [35 页 PDF](paper/P6_PRECISION_COST.pdf) 对应。
+[本轮复核与修改说明](research/COMBINED_PAPER/FINAL_MATH_READ_20261010.md) 记录具体前后对照、验证范围和剩余限制；[上一轮 DCDS 比较](research/COMBINED_PAPER/DCDS_FINAL_REVISION_20261010.md) 及 [来源记录](research/COMBINED_PAPER/DCDS_SOURCES_20261010.json) 保持历史原文。
 
-主线为精度—可靠性目录率及面积失真障碍。全覆盖证明前移，面积工具放在固定初态集与概率证明之前；Cantor 插值完整证明移至附录 D。控制字母表比较和 arsinh 比较移出现行稿，完整保存在 37 页归档，未删除历史成果。其他保留结论的假设、量词和证明范围没有缩小。
+主线仍为精度—可靠性目录率及面积失真障碍。本轮明确摘要的匹配条件，展开收缩映射、同一紧集、厚化区间、Cantor 积分和局部常数的论证；删除重复预告及空泛限制总结。20 个正式陈述逐字保留，未缩小结论，也未把行文改善称为新数学。
 
 | 六项结果 | 最终去向 |
 | --- | --- |
-| 逆面积指数下界 | §8.5，Corollary 8.2，pp.23–24；陈述 p.24 |
+| 逆面积指数下界 | §8.5，Corollary 8.2，p.24 |
 | 角依赖径向例子 | Appendix C.1，pp.29–30 |
 | 内部可行折叠 | Appendix C.2，Proposition C.1，pp.30–31 |
 | 远处塌缩 | Appendix C.3，Proposition C.2，pp.31–33 |
-| 匹配线性有限时域概率比较 | Appendix A，pp.26–27；Lemma A.1 p.26 |
+| 匹配线性有限时域概率比较 | Appendix A，pp.26–28；Lemma A.1 p.27 |
 | arsinh 正熵与可行状态收敛 | 37 页归档 Appendix D，pp.34–36；Proposition D.1 p.35 |
 
-重新核读当前完整 TeX/PDF，连续终读最终稿并逐页查看全部 34 页渲染图。编译收敛，无未定义引用、重复标签、LaTeX 警告或 overfull/underfull 提示。重查局部几何、首次退出/再进入、紧集先选、常数依赖、严格指数余量和极限顺序；未识别需改变保留正式结论的数学错误。此为 AI 辅助核查，不替代独立人类数学审读。
+完整重读现行稿全部证明及附录，连续终读修订稿，逐页查看全部 35 页渲染图。编译收敛，无未定义引用、重复标签、LaTeX 警告或 overfull/underfull 提示。重查常数依赖、紧集选择顺序、首次退出与再进入、严格指数余量、端点和极限顺序；未识别需改变正式结论的数学错误。这是 AI 辅助检查，不是独立人类数学认证。
 
-十篇主刊论文均取得并阅读全文作者版本（共 241 个 PDF 页面），具体版本差异如实记录。比较没有给出“超过十篇”认证：§3.2、Lemma 4.1、Lemma 7.2、§8 与 Appendix D 仍较难读。无真人测试。Wang–Huang 2022（10.1088/1361-6544/ac4f33）全文覆盖缺口仍未关闭，未据摘要确认新颖性。真实作者信息、人工数学审读及稿件/AI 披露批准仍待确认。
+§3.2、Lemma 4.1、Lemma 7.2、§8/Appendix D 仍有较重阅读负担，没有真人测试或“无法辨认 AI”的保证。Wang–Huang 2022 全文覆盖缺口未关闭，未据摘要确认新颖性。作者信息及人工审读/批准仍待确认，真实 AI 披露保持原文。本轮没有把已移入历史的 arsinh 证明计入现行稿审查。
 
-TeX SHA-256：`aa2dc07baf0871cc707119ae496ff08b504754d65751373361335d956101be4b`。
-PDF SHA-256：`3544384e3d3a62e6bd890a0a167e0a0c32de42703c6d5321e6e6125568f51a7c`。
+TeX SHA-256：`e7912419014dff256c2e8e5f874ef96a9c7ef48a58ed05d1f9a18e95406b813a`。
+PDF SHA-256：`885c049a29731e647f3521fa047cfd6133f1b0281f85901db9b9071d0d24fd11`。
 
-35 页和 37 页 TeX/PDF 已精确归档于 [paper/archive](paper/archive/README.md)，并与祖先提交逐字节核对。原稿、旧报告、R01–R40 和所有历史记录保持历史身份。恢复见 [RESTORE](research/COMBINED_PAPER/RESTORE.md)。完成本轮普通提交与远端逐字节回读后停止，不自动开启下一轮。
+旧 35/37 页精确归档、原始稿、全部历史报告保持不变；上一轮 34 页稿可由基线提交恢复。恢复入口见 [RESTORE](research/COMBINED_PAPER/RESTORE.md)。完成本轮普通提交与远端逐字节回读后停止，不自动开启下一轮。

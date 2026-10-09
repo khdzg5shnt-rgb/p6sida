@@ -41,22 +41,27 @@ A finite control catalogue assigns one input sequence to each
 observed initial state. We determine how its minimum size depends
 on two requirements: the distance allowed from a triangular state
 constraint and the probability of failing that constraint. The
-systems consist of two $C^2$ planar maps that contract toward the
-origin and have prescribed linear parts. For tolerances
+systems consist of two $C^2$ planar maps with prescribed linear
+parts, controlled invariance of the triangle, contraction toward
+the origin under every input, and critical sets of area zero.
+The main formulas apply when the radial factors are the same power
+$\beta>1$ of the angular branch weights. For tolerances
 $\delta_n=\exp(-\gamma n+o(n))\to0$, we compute an explicit
-full-cover rate $S(\gamma)$. On a single compact set of arbitrarily
-nearly full area, the rate saturates at a smaller value.
+full-cover rate $S(\gamma)$. After removing an arbitrarily small
+fixed area, we obtain one compact set on which the rate saturates
+at a smaller value.
 If neither map has a critical point in the triangle, allowing
 failure probability $\exp(-\alpha n+o(n))$, $\alpha>0$, gives
 the rate $\min\{S(\gamma),L_a(\alpha)\}$, where $L_a$ is the
-binary source-coding reliability function. The proof compares
+binary source-coding rate for the prescribed error exponent.
+The proof compares
 angular word weights with physical area and constructs regions
 whose successful inputs must share a prescribed prefix. An
 injective example shows why the critical-point hypothesis matters:
 a single nonlinear step preserves every finite-horizon full-cover
 count of the linear model but increases the reliability lower rate.
-Its critical sets have area zero, which suffices for the full-cover
-formula but not for the probability formula.
+Thus null critical sets suffice for the full-cover formula but
+not for the probability formula.
 \end{abstract}
 \maketitle
 
@@ -70,8 +75,8 @@ Here we ask how the answer depends jointly on the allowed distance
 from the set and the probability that no input in the list succeeds.
 The only randomness is in the initial state.
 
-Our systems have an apparent simplification: every input drives
-the state toward the origin, which belongs to the constraint set.
+Every input drives the state toward the origin, which belongs to
+the constraint set.
 At a fixed positive tolerance, only finitely many early choices
 matter. If the tolerance decreases with the horizon, however,
 contraction takes longer to make those choices irrelevant.
@@ -188,8 +193,7 @@ The original motivation was the relation between control entropy
 and state chaos. In the class studied here, convergence of all
 states to zero already excludes persistent separation of states.
 The question that remains is how rapidly the necessary control
-choices grow as precision and reliability increase. We use that
-question to organise the results below.
+choices grow as precision and reliability increase.
 
 \subsection{Relation to earlier work}
 The full-cover count is the outer invariance complexity of Chen
@@ -454,8 +458,8 @@ Here $I_a(p)=p\log(p/a_0)+(1-p)\log((1-p)/a_1)$ is the
 relative entropy of $(p,1-p)$ with respect to $(a_0,a_1)$.
 Frequencies with probability exponent greater than $\alpha$ can
 be discarded at the exponential scale. Counting the remaining
-words gives $L_a(\alpha)$, the binary source-coding reliability
-function. For nonlinear controls, the word weights need not equal
+words gives $L_a(\alpha)$, the source-coding rate at error exponent
+$\alpha$. For nonlinear controls, the word weights need not equal
 initial-state probabilities. The next theorem supplies the required
 comparison under a stronger derivative assumption.
 
@@ -779,8 +783,20 @@ Choose \(s_*\le\rho\) so small that
 a^*Bs_*\le(1-a^*)b/2,
  \qquad a^*B(s_*+C_s s_*^2)<(1-a^*)/2.                     \label{eq:shadowbounds}
 \end{equation}
-Then \eqref{eq:shadowoperator} maps the ball into itself and has Lipschitz constant at
-most \(a^*+a^*B(s_*+C_s s_*^2)<1\).
+The reference orbit satisfies $y_k^0=f_{v_{k+1}}(y_{k+1}^0)$.
+Consequently, for every candidate in the ball,
+\[
+\|\mathcal By-y^0\|_\infty\le a^*b+a^*Bs_*<b.
+\]
+This proves that the ball is invariant. To compare two candidates,
+use \eqref{eq:radialdependence} in the nonlinear term of
+\eqref{eq:shadowoperator}. The result is
+\[
+\|\mathcal By-\mathcal B\widetilde y\|_\infty
+\le\bigl[a^*+a^*B(s_*+C_s s_*^2)\bigr]
+                                      \|y-\widetilde y\|_\infty.
+\]
+By \eqref{eq:shadowbounds}, the bracket is less than one.
 The contraction mapping theorem gives a fixed sequence. Its fixed-point
 equation is \(y_{k+1}=T_{v_{k+1}}(s_k,y_k)\), the required angular
 recursion. It has \(|y_k|\le1-3d_L/4\), so the constructed
@@ -1235,11 +1251,17 @@ B_J=\bigcup_{|\sigma|=J}
 \]
 is null. The finite union
 \(Z_J=\bigcup_{1\le|w|\le J}Z_w\) is a compact null set.
-On \(Q\setminus B_J\), the maximum frequency deviation over all
-feasible transient choices and all their feasible length-\(m\)
-tails tends to zero. It is measurable: for each \(m\) there are
-finitely many words and their complete feasibility domains are
-closed. Egorov on \(K\), followed by removal of
+For $m\ge1$, define on $Q$
+\[
+\omega_m(x)=\max\left\{
+ \left|\frac{\#0(v)}m-a_0\right|:
+ |\sigma|=J,\ |v|=m,\ x\in D_{\sigma v}\right\}.
+\]
+Controlled invariance makes the maximum nonempty. It is measurable
+because the family is finite and each feasibility domain is closed.
+The local conclusion gives $\omega_m(x)\to0$ on $Q\setminus B_J$;
+the maximum includes every feasible transient and tail, including
+all choices in an overlap. Egorov's theorem on $K$, followed by removal of
 \(B_J\cup Z_J\cup\{0\}\) and compact inner approximation,
 gives \(T\) of the stated area with uniform convergence.
 Allocate less than \(\varepsilon/2\) loss to Egorov and less than
@@ -1559,13 +1581,16 @@ change in the angle after each prefix $w|j$ by
  \le C_A\epsilon_L\lambda_w/\lambda_{w|j}
  \le D_L,\qquad D_L=C_A\epsilon_L.
 \end{equation}
-To extend this estimate to the whole proposed interval, argue by
-continuation. If the complete interval $I_w(s)$ ended within the proposed
-initial interval, continuity would make an initial or intermediate
-angular constraint attain an endpoint. Its centre is at distance
-$\Delta_L$, while $D_L\le\Delta_L/4$, a contradiction.
-The radii stay positive and below $\rho<1$, so no radial constraint
-terminates the interval. Thus the entire interval is feasible.
+The centre satisfies all the finitely many constraints strictly,
+so it lies in the interior of $I_w(s)$. If the proposed interval
+were not contained in $I_w(s)$, follow it from the centre to the
+first endpoint of $I_w(s)$. Estimate~\eqref{eq:thickangle} applies
+up to that endpoint by continuity. Every intermediate angle
+there is still at distance at least $\Delta_L-D_L>0$ from the
+boundary. The radii remain positive and below $\rho<1$ as well.
+Thus all constraints remain strict, and continuity extends the
+feasible interval past the endpoint, a contradiction. The whole
+proposed interval is therefore feasible.
 This argument applies even when the complete terminal image is
 truncated; it does not assume that image is onto.
 
@@ -1752,11 +1777,8 @@ more slowly than $e_n$, almost all $2^k$ prefixes are required.
 
 We realise this geometry with two Cantor constructions having
 the same binary addresses. Source intervals shrink by $b=2/5$;
-target intervals shrink by $\lambda=a_0a_1$. The inequality
-$\lambda<b^2$ makes a $C^2$ interpolation possible, while the
-slower source decay gives the excess probability mass. We first
-specify the intervals and the map, then check the control
-hypotheses and the resulting catalogue bound.
+target intervals shrink by $\lambda=a_0a_1$. The slower source
+decay gives the excess probability mass.
 
 \subsection{Source and target intervals}
 Fix the parameters of the theorem and put $\lambda=a_0a_1$.
@@ -1783,12 +1805,10 @@ On $J_\varnothing=[-1/2,1/2]$ use the source maps
 b=2/5,\qquad h_0(y)=by-(1-b)/2,
 \qquad h_1(y)=by+(1-b)/2.
 \]
-The two contraction ratios serve different purposes. The gap
-$\lambda<b^2$ will make the interpolation $C^2$ at Cantor points.
-At level $k$, the source intervals retain total length $(2b)^k$;
-this is the mass scale used in the reliability obstruction.
-Their Cantor set $\mathcal D$ is null, because the total level-$k$
-interval length is $(2b)^k\to0$. For $\sigma\in\{0,1\}^k$ put
+At level $k$, the source intervals retain total length $(2b)^k$,
+the mass scale used in the reliability obstruction. Their Cantor
+set $\mathcal D$ is null because this length tends to zero.
+For $\sigma\in\{0,1\}^k$ put
 \[
 J_\sigma=h_{\sigma_1}\circ\cdots\circ h_{\sigma_k}(J_\varnothing),
 \qquad Z_\sigma=B_{\sigma_1}\circ\cdots\circ B_{\sigma_k}([A,B]).
@@ -2178,7 +2198,7 @@ the folded example in Appendix~\ref{app:hypotheses} is covered
 only by the precision theorem. Two precision questions also remain
 outside the formulas proved here: arbitrary positive-area initial
 sets above $\beta h$, and the general high-precision regime for
-unequal radial powers. These are limits of the present conclusions.
+unequal radial powers.
 
 \appendix
 
@@ -2365,7 +2385,7 @@ the precision scale before the horizon. Thus the depth cap does
 not affect the stopping count. More precisely, for every
 $0<\gamma<\gamma_0$,
 all branches of the tree in Lemma~\ref{lem:stopping} cross
-$P_w\le\delta_n/M$ before depth $n-J$ for large $n$, since
+$P_w\le\delta_n/M$ by depth $n-J$ for large $n$, since
 \[
 P_w\le e^{-\gamma_0(n-J)}<\delta_n/M
        \quad\text{at that depth}.
@@ -2469,16 +2489,13 @@ such an exponent, contradicting the common-rate property.
 The necessity of matching is established within the first-derivative
 family \eqref{eq:jets} under the standing assumptions. The argument
 only uses exponents adjacent to zero; it does not determine the
-high-precision mismatch spectrum or compare a prescribed strategy
-with an optimal catalogue.
+high-precision mismatch spectrum.
 
 \section{Further examples testing the hypotheses}\label{app:hypotheses}
 The first example satisfies nonsingularity despite angular
 dependence of the radius. The second retains null critical sets
 but introduces a fold. The third drops even the nullity condition
 and shows how positive-area initial sets can have zero cost.
-Together they test assumptions used in the proofs; the rate
-statements below are limited to what those proofs establish.
 
 \subsection{Radial motion depending on angle}\label{sec:radialfeedback}
 The graph estimates did not require the radius to evolve independently
@@ -2824,20 +2841,21 @@ $\mathcal D$. They are continuous, by \eqref{eq:gapderivative}
 for high-level gaps and endpoint flatness for the remaining finite
 collection.
 
-Continuity of the candidate functions $q_1,q_2$ alone would not
-identify them as derivatives of $g$. To do so, recover each function
-by integration. The integral of
-$q_1$ over a gap is its target gap length. Nullity of $\mathcal C$
-and order preservation therefore imply
-$g(x)=A+\int_{-1/2}^xq_1(y)\,dy$ on $J_\varnothing$; inside a gap include
-the partial integral of \eqref{eq:gapinterpolation}.
-Moreover
+To identify these functions as derivatives, first integrate $q_1$.
+Its integral over each source gap is the corresponding target gap
+length. Since the target Cantor set $\mathcal C$ is null, these
+lengths exhaust every increment of $g$ between Cantor points.
+Including a partial integral when $x$ lies in a gap gives
+\[
+g(x)=A+\int_{-1/2}^xq_1(y)\,dy\qquad(x\in J_\varnothing).
+\]
+Next integrate $q_2$. The gap estimates give
 \[
 \sum_{\text{gaps}}\int|q_2|
                   \le C\sum_{k\ge0}(2\lambda/b)^k<\infty.
 \]
 Each complete-gap integral of $q_2$ is zero, and a partial-gap
-integral equals $q_1(x)$. Since $\mathcal D$ is null,
+integral equals $q_1(x)$. Now using nullity of the source set $\mathcal D$,
 $q_1(x)=\int_{-1/2}^xq_2(y)\,dy$. The fundamental theorem of
 calculus gives $g'=q_1$ and $g''=q_2$. Thus $g$ is $C^2$
 on $J_\varnothing$, flat to second order on $\mathcal D$, with positive
@@ -2889,13 +2907,33 @@ Taylor's integral formula gives \(|R_i-r_i|\le2Ls\),
 \(|\partial_sR_i|,|\partial_sN_i|\le2L\), and
 \(|\partial_yR_i|\le2Ls\),
 \(|\partial_yN_i-t_i|\le2Ls\).
-The same bounds apply with the appropriate constant linear term in
-\(N_i\). In particular \(R_i\ge r_*/2\).
-Dividing these formulas by \(R_i\), and differentiating the quotient,
-gives \eqref{eq:local} with the common constant $B$.
-For example, \(|N_i|\le3\) on the stated rectangle, and
-quotient derivatives use \(R_i^{-2}\le4/r_*^2\). Thus the chosen
-\(B\) bounds every term in \eqref{eq:local}.
+Put $N_i^0(y)=r_iL_i(y)$. The same Taylor estimate gives
+$|N_i-N_i^0|\le2Ls$. Since $|N_i^0|\le2$, the choice of
+$\rho$ ensures $|N_i|\le3$ and $R_i\ge r_*/2$.
+The logarithmic bounds follow directly:
+\[
+|\log R_i-\log r_i|\le4Ls/r_*,\qquad
+|\partial_s\log R_i|\le4L/r_*,\qquad
+|\partial_y\log R_i|\le4Ls/r_*.
+\]
+For the angular bounds, use $T_i=N_i/R_i$ and
+$\partial_yN_i^0=t_i$. In particular,
+\[
+\begin{split}
+T_i-L_i&=\frac{N_i-N_i^0}{R_i}
+              +N_i^0\left(\frac1{R_i}-\frac1{r_i}\right),\\
+\partial_sT_i&=\frac{\partial_sN_i}{R_i}
+                         -\frac{N_i\partial_sR_i}{R_i^2},\\
+\partial_yT_i-\frac1{a_i}
+ &=\frac{\partial_yN_i-t_i}{R_i}
+       +t_i\left(\frac1{R_i}-\frac1{r_i}\right)
+                         -\frac{N_i\partial_yR_i}{R_i^2}.
+\end{split}
+\]
+Here $|R_i^{-1}-r_i^{-1}|\le4Ls/r_*^2$ and $0<t_i<1$.
+The three right-hand sides are bounded respectively by $Cs$, $C$
+and $Cs$, with $C=40(1+L)/r_*^2$. Our choice of $B$ dominates
+both $C$ and $4L/r_*$, proving every estimate in \eqref{eq:local}.
 
 
 \section*{Declaration of generative AI and AI-assisted technologies
