@@ -2,25 +2,22 @@
 
 归档初稿：*Positive invariance entropy under uniform state convergence*。
 唯一现行英文稿：*Precision and reliability costs in contracting control systems*。
-[TeX](paper/P6_PRECISION_COST.tex) 与 [35页PDF](paper/P6_PRECISION_COST.pdf) 对应。
+[TeX](paper/P6_PRECISION_COST.tex) 与 [35 页 PDF](paper/P6_PRECISION_COST.pdf) 对应。
 
-2026-10-10（Asia/Shanghai）完成“完整稿数学正确性复核、五篇同方向JDE原文对照与专业行文修订”。基线为 `fea87f320bd4b1ea8c64ef7dbc1e8809378f4ac2`；中断续接采用已有实质修改，没有退回原稿或重开研究。
+2026-10-10（Asia/Shanghai）完成基于 main `b7d5336746a074689c5e4b3d4b94ce4af10a92ba` 的完整终读与定点修订。全文核查现行证明链，没有识别出需撤回正式结果的必要缺口；不把旧结论或编译当作证明。
 
-本轮核验当前全部正式结果及证明，未发现需撤回主定理的实质问题。重写摘要、引言和结论，明确精度—可靠性主线及实际覆盖接口；例子按无临界点、零面积临界集、正面积塌缩组织。五篇JDE全文中两篇为正式版、三篇为已核作者稿，具体版本、页码、APA、DOI及每篇两项写法对照均在新记录中。
+本轮只改四处英文：区分 S 的三段公式与 L_a 的唯一根刻画，删去两处重复预告/总结，并纠正附录 D 的解释。固定容差零率所需的是所有输入的一致趋零；指数速度是充分条件，不能将其与仅可行轨迹趋零混淆。没有改动 20 项正式陈述、六项恢复结果、13 条文献、作者字段和 AI 披露。
 
-六项继续自含保留：§8.4逆面积指数下界，§9.2角度影响径向，§9.3内部可行折叠，§9.4远处塌缩，附录C匹配线性有限时域概率比较，附录D的arsinh比较。后者属于另一系统类；折叠不能套用无临界点可靠性定理；塌缩违反零面积临界集假设。
+同五篇 JDE 原文身份与 SHA 再核，本轮定向回读摘要、引言及相关证明段落，比较依据见最新记录。最终 PDF 仍 35 页，编译、引用、全文抽取与全部页面渲染检查完成。Wang–Huang 2022 的直接全文覆盖缺口仍未关闭：正式下载返回验证码 HTML，未取得可核作者全文。人工作者信息、数学审读及批准仍需确认。
 
-20项正式陈述、附录B有限计数2到1修正、13条文献、作者字段和AI披露保留。最终35页编译、交叉引用、全文抽取和全部页面渲染检查已完成。
-
-- [CURRENT.md](CURRENT.md)：当前状态与停止点。
-- [MATH_STYLE_REVIEW_20261010.md](research/COMBINED_PAPER/MATH_STYLE_REVIEW_20261010.md)：本轮数学核验、六项最终位置、五篇完整阅读和实际修改。
+- [CURRENT.md](CURRENT.md)：当前状态、六项结果最新页码与停止点。
+- [FINAL_READ_20261010.md](research/COMBINED_PAPER/FINAL_READ_20261010.md)：本轮核查、四处修改、五篇具体比较与剩余限制。
+- [MATH_STYLE_REVIEW_20261010.md](research/COMBINED_PAPER/MATH_STYLE_REVIEW_20261010.md)：上一轮完整修订与外部文献身份记录，历史保留。
 - [RESTORE.md](research/COMBINED_PAPER/RESTORE.md)：现行稿与历史恢复入口。
-- [CONTENT_RESTORATION_20261009.md](research/COMBINED_PAPER/CONTENT_RESTORATION_20261009.md)：上一轮补回与39个可见目录的实际去向；页码更新见本轮记录。
-- [P6_Research_History_Audit_20261009.md](research/COMBINED_PAPER/P6_Research_History_Audit_20261009.md)：来源索引，不能作为证明正确性的前提。
+- [CONTENT_RESTORATION_20261009.md](research/COMBINED_PAPER/CONTENT_RESTORATION_20261009.md)：六项补回及 39 个可见目录去向；页码以最新记录为准。
+- [P6_Research_History_Audit_20261009.md](research/COMBINED_PAPER/P6_Research_History_Audit_20261009.md)：历史来源索引。
 
-这是一份选择性采用的主线论文，不是R01–R40全部成果的累积合集。原始稿、各轮数学笔记、旧采用表和所有提交保持可恢复。R09真实率极限存在已证，准确常数仍未求；R10–R13的技术界没有变成策略最优定理。旧JDE_STYLE_REVIEW与49页旧合并稿的RESULT_COVERAGE等文件保留历史身份。
-
-本轮没有未闭合的已识别必要证明步骤；文献完整直接覆盖、真实作者信息及人工审读/批准仍待确认。反例准确可靠性谱及极限、折叠可靠性、一般失配高侧等开放范围未被文字修订掩盖。未选刊、投稿或提高既有期刊判断。完成后停止，不自动R41。
+全部旧稿、研究目录、旧报告和提交保留。这是选择性采用的主线论文，不是所有轮次的累积合集。未解决的可靠性与高侧问题、暂停的策略最优问题仍保留原限制。没有新增命题、提高既有期刊定位、分派代理或投稿。完成即停止，不自动进入 R41。
 
 ## 历史研究记录（以下不构成自动续研授权）
 

@@ -115,9 +115,10 @@ approximate inputs cannot improve on the smaller of these two rates.
 For $\gamma\le\beta h$, where $h=-\sum_i a_i\log a_i$, the
 rate is $\gamma/\beta$ for every $\alpha>0$. Above this threshold,
 exponential reliability costs more than a fixed positive failure
-allowance, until the full-state rate is reached. Both functions and
-the two precision thresholds are evaluated explicitly. The transmitted
-index chooses the entire input at time zero.
+allowance, until the full-state rate is reached. We give a three-piece
+formula for $S$ and, below saturation, characterise $L_a$ by a unique
+relative-entropy level on an interval. The transmitted index chooses
+the entire input at time zero.
 
 Ordinary precision costs require a weaker hypothesis. If the critical
 sets merely have area zero, the full-state rate remains $S$, and
@@ -202,9 +203,7 @@ stopping scales and typical sets; related geometric methods appear
 in \cite{Hutchinson1981,KD2018}. The entropy optimisation uses
 the method of types \cite{Csiszar1998}. The geometric work here
 is to retain the tolerance at the first true exit and to bound
-the mass of regions whose loss would exceed $e_n$. It is these
-estimates, rather than word counting alone, that identify the rate
-of the actual catalogue.
+the mass of regions whose loss would exceed $e_n$.
 
 \subsection{Organisation}
 Section~\ref{sec:planar} defines the catalogues and states the
@@ -1429,10 +1428,8 @@ successful set $A_u(n,\delta;Q)$ meets $E_w$ has prefix $w$.
 All constants are fixed before $m,n,\delta$ and the word family.
 \end{lemma}
 \begin{proof}
-We choose the thickness so that the selected word remains feasible
-and each possible first wrong control retains an angular margin.
-After computing the area and proving disjointness, the radial
-product converts that margin into the required physical distance.
+Choose the angular thickness proportional to $\lambda_w$ so that
+feasibility and the wrong-control margin persist through every prefix.
 For each word choose a bounded-run extension $v(w)$.
 Lemma~\ref{lem:shadow} gives a common radius bound $s_L>0$,
 continuous centres $y_w(s)$ for $0<s\le s_L$, and wrong-control
@@ -2753,10 +2750,13 @@ it makes no claim of a finite-horizon comparison with this linear tree.
 
 \section{A common radial comparison with positive control entropy}
 \label{app:arsinh}
-The vanishing fixed-tolerance rate in our class relies on exponential
-contraction of the norm under every input. To compare this assumption
-with convergence of feasible states, consider a slower radial system.
-It has positive catalogue entropy at every fixed ambient tolerance,
+The fixed-tolerance argument in Section~\ref{sec:planar} uses convergence
+to the origin uniformly over all initial states in $Q$ and all inputs.
+That argument only needs a uniform time after which every trajectory
+stays inside the tolerance ball; an exponential rate is sufficient
+but not necessary. Convergence restricted to feasible trajectories
+does not give this conclusion. The system below has slower radial
+decay and positive catalogue entropy at every fixed ambient tolerance,
 although all its infinitely feasible trajectories approach the origin.
 We use the exact, outer and reference-trajectory tracking definitions
 below, with the time limit taken before the tolerance tends to zero.
