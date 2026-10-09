@@ -3,27 +3,27 @@
 基线论文：*Positive invariance entropy under uniform state convergence*。
 
 当前唯一英文稿：*Precision and reliability costs in contracting control systems*。
-已按授权从49页合并稿取舍为26页集中主线的
-[TeX](paper/P6_PRECISION_COST.tex)和[PDF](paper/P6_PRECISION_COST.pdf)。
-主贡献是非线性精度—可靠性转移及零面积临界不足的严格反例，
-完整保留实际覆盖几何、匹配准确谱和固定初始集分裂；失配判据放入附录。
-高维锥体、熵—混沌、lift与反馈等独立链从本篇撤下，原稿及全部历史保留。
-附录保留扩大控制集合后内部有限时域计数2到1的修正，不再声称所有计数不变。
+[TeX](paper/P6_PRECISION_COST.tex)和[26页PDF](paper/P6_PRECISION_COST.pdf)已完成
+数学采用链、专业可读性及行文风格核验。主线为非线性精度—可靠性转移、
+零面积临界不足的反例及实际覆盖几何；保留匹配谱、固定初始集和附录失配判据。
+原稿及全部历史保留，附录仍保留内部有限时域计数2到1的修正。
 
-当前依据为[FINAL_SELECTION](research/COMBINED_PAPER/FINAL_SELECTION.md)：
-结果去留、实际修订、直接覆盖、作者待确认事项与JDE判断。
-15项正式陈述及完整证明保留；12条参考文献，编译、引用和全部26页检查通过。
-本次没有新增数学定理，篇幅缩短不等于贡献升级或退步。
+当前依据为[FINAL_CHECK](research/COMBINED_PAPER/FINAL_CHECK.md)：
+未发现需撤回或缩小主定理的具体错误；补写首真越界面积、概率运输及优化步骤，
+修正相关定义的n+1对应，补明既有测度目录归属，统一符号并改善专业行文。
+15项正式陈述、12条引用和完整证明保留；编译与全部26页检查完成。
+没有新增数学定理，不把AI核验当作人工同行验证。
 
-JDE仍为B（合理冲刺），数学内容值得送审评估；正式发出前仍需真实作者
-审读/批准、Wang–Huang2022正式正文定向覆盖核验，以及期刊专属指南确认。
-缺口是DOI10.1088/1361-6544/ac4f33的完整spanning定义与证明，不是要求
-机械再加定理。作者信息和AI披露保持事实准确，不预认一区/TOP。
+JDE维持B（合理冲刺）。正式送出前仍需Wang–Huang2022正式正文的定向覆盖
+核验、真实作者审读/批准与事实填写，以及期刊专属指南确认。该文完整spanning
+定义与证明（DOI10.1088/1361-6544/ac4f33）仍未读，未据此认定已覆盖或未覆盖。
+数学正文已完整，不机械要求再加定理，不预认一区/TOP。
 
+[FINAL_SELECTION](research/COMBINED_PAPER/FINAL_SELECTION.md)保留前轮取舍依据。
 旧[FINAL_REVIEW](research/COMBINED_PAPER/FINAL_REVIEW.md)、
 [RESULT_COVERAGE](research/COMBINED_PAPER/RESULT_COVERAGE.md)、
-[INTEGRATION_NOTES](research/COMBINED_PAPER/INTEGRATION_NOTES.md)为49页稿历史记录；
-[SOURCES](research/COMBINED_PAPER/SOURCES.md)中的真实版本和阅读限制继续适用。
+[INTEGRATION_NOTES](research/COMBINED_PAPER/INTEGRATION_NOTES.md)为49页稿历史；
+[SOURCES](research/COMBINED_PAPER/SOURCES.md)的真实版本和阅读限制继续适用。
 完成后停止，不自动开启研究轮或投稿。以下为历轮历史说明。
 
 R34阶段稿的数学增量来自R33：可行瞬态零集拉回、同一个固定紧集的多局部逆图和早期首真越界面积，允许Q内真实可行折叠而保留全部声明范围内的率。R34完整收入这些证明及实例，不假设全Q统一逆Jacobian下界，完成全文、编译及19页渲染核对；整合不算新证明。
@@ -163,7 +163,7 @@ R29已在同一R27结构类求出全Q准确谱及全部有限精度指数下的�
 - [`research/R08/REPORT.md`](research/R08/REPORT.md)：本轮结构裁决、相比现稿的实际增量及未认证的发表分量。
 - [`research/R08/SOURCES.md`](research/R08/SOURCES.md)：最近原文、准确 APA/DOI、实际阅读范围和逐项覆盖。
 - [`research/R08/NEXT_COMMAND.md`](research/R08/NEXT_COMMAND.md)：已完成停点与同一重叠系统真实目录最优率的唯一入口。
-- [paper/P6_PRECISION_COST.tex](paper/P6_PRECISION_COST.tex)：唯一完整英文LaTeX，分别陈述原稿cone熵分离与最新平面精度—可靠性结果的假设、定理和完整证明；共享真实控制目录的问题，不宣称两类系统整体互含。
+- [paper/P6_PRECISION_COST.tex](paper/P6_PRECISION_COST.tex)：唯一完整英文LaTeX，集中于平面精度—可靠性、实际覆盖几何与非塌缩条件；原稿cone熵分离已从现行正文撤下，历史保留。
 - [`paper/P6_PRECISION_COST.pdf`](paper/P6_PRECISION_COST.pdf)：已编译并逐页检查的唯一阶段稿。
 - [`research/R07/STAGE_PAPER_DECISION.md`](research/R07/STAGE_PAPER_DECISION.md)：成稿裁决、定理关系、证明链、直接覆盖边界和条件性期刊判断。
 - [`research/R07/DCDS_FINAL_REVIEW.md`](research/R07/DCDS_FINAL_REVIEW.md)：历史 DCDS 终稿核验、Chen–Zhong 2024 的直接定义覆盖、官方适配与完成停点。

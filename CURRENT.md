@@ -1,32 +1,31 @@
 # P6 当前状态
 
-截至2026-10-08（UTC）：按用户授权完成“贡献取舍与JDE冲刺终稿定稿”。
-开始main为 `22e9716c3fc656ac71029cbac566dd93ac56c04e`，没有后续完成项或仓库级指令。
-本次不新增数学研究。
+截至2026-10-09（UTC）：完成“数学正确性、专业可读性与行文风格终稿核验”。
+开始main为 `3e08c9992426d4cdea887c9e0cb595f43918d285`，没有后续完成项或适用仓库指令。
+本次只核查现稿采用链并落实修订，没有新数学研究。
 
-唯一现行论文：*Precision and reliability costs in contracting control systems*。
+唯一现行稿：*Precision and reliability costs in contracting control systems*。
 [TeX](paper/P6_PRECISION_COST.tex)与[26页PDF](paper/P6_PRECISION_COST.pdf)对应。
-从49页合并稿取舍为可靠性主线：非线性转移、零面积临界不足的严格反例、
-实际覆盖与概率几何、匹配准确谱及固定初始集分裂。匹配—失配判据移入附录A。
-高维锥体、熵—混沌、lift和反馈等独立论证从现行正文撤下，原稿和历史完整保留。
-附录B保留已修正的有限时域计数：扩大控制集可使内部集目录由2条降至1条，
-不恢复“所有计数不变”。
+主线仍是非线性精度—可靠性转移、零面积临界不足的反例及实际覆盖几何；
+匹配谱和固定初始集保留，失配判据在附录A。原稿及历史完整保留。
+附录B仍保留扩大控制集可使内部有限时域计数由2降至1的修正。
 
-[结果去留、来源与送审裁决](research/COMBINED_PAPER/FINAL_SELECTION.md)为当前停点。
-旧[末次检查](research/COMBINED_PAPER/FINAL_REVIEW.md)、
-[结果对应表](research/COMBINED_PAPER/RESULT_COVERAGE.md)和
-[整合记录](research/COMBINED_PAPER/INTEGRATION_NOTES.md)描述此前49页稿，保留为历史。
+当前停点为[FINAL_CHECK](research/COMBINED_PAPER/FINAL_CHECK.md)：
+15项结论的采用链、逐项发现与修复、真实来源范围和送审限制。
+本次未发现需撤回或缩小主定理的具体错误；补写局部区域、首真越界面积拉回、
+瞬态概率集合包含、稀有类型质量及优化端点。修正Chen–Zhong的n+1时域对应，
+补明其测度目录归属，统一符号并改善引言、证明衔接和结论。
+这不是独立人工同行验证，也不是新定理或期刊升级。
 
-本次采用链未发现需撤下主定理的具体数学漏洞；完整证明保留，15项正式陈述，
-12条参考文献。编译、交叉引用和全部26页检查通过，提交后按SHA全文回读。
-这一结论不替代真实作者审读。
+编译、引用及全部26页检查完成；最终源码/PDF按提交SHA完整回读。
+[FINAL_SELECTION](research/COMBINED_PAPER/FINAL_SELECTION.md)保留前轮取舍决定；
+FINAL_REVIEW、RESULT_COVERAGE及INTEGRATION_NOTES仍是49页历史稿记录。
 
-JDE仍为B（合理冲刺）。数学正文已完整；正式发出前还需关闭
-Wang–Huang2022（DOI10.1088/1361-6544/ac4f33）的正文直接覆盖问题，
-确认作者事实、人工审读和批准，并核清当前JDE专属指南。
-该指南本次官方入口返回403；不把通用Elsevier要求冒充全部期刊要求。
-已据可读官方政策保持准确AI披露，没有编造人工核验。
-陈虎.pdf、WHS2019、NWH2022均保持已取得状态，不重复索取。
+JDE维持B（合理冲刺）。未识别出现稿采用链的具体数学阻断；正式送出前仍需
+Wang–Huang2022（DOI10.1088/1361-6544/ac4f33）正式正文的定向覆盖核验，
+真实作者审读/批准及作者信息，并确认期刊专属指南。正文缺口限制新颖性判断，
+不等于已有等价覆盖；不重复失败获取或索取。陈虎.pdf及其他已取得原件未标缺失。
+作者与AI披露保持事实准确。
 
 完成后停止，不自动新研究轮、投稿准备或投稿；R09–R14继续暂停。
 只操作p6sida，未读改P3/P4，未联系他人或分派代理。
