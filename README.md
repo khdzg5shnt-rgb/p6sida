@@ -2,22 +2,20 @@
 
 归档初稿：*Positive invariance entropy under uniform state convergence*。
 唯一现行英文稿：*Precision and reliability costs in contracting control systems*。
-[TeX](paper/P6_PRECISION_COST.tex) 与 [35 页 PDF](paper/P6_PRECISION_COST.pdf) 对应。
+[完整 TeX](paper/P6_PRECISION_COST.tex) 与 [37 页 PDF](paper/P6_PRECISION_COST.pdf) 对应。
 
-2026-10-10（Asia/Shanghai）完成基于 main `b7d5336746a074689c5e4b3d4b94ce4af10a92ba` 的完整终读与定点修订。全文核查现行证明链，没有识别出需撤回正式结果的必要缺口；不把旧结论或编译当作证明。
+本轮以 main `4daf068c7d31a245a6406b504ddbf4e1249a0761` 为基线，完成用户授权的全文结构性改写。摘要与引言从已有线性模型出发，说明目录、角区间、径向收缩及精度—可靠性两项预算；主结果重新排序，面积工具移至证明部分，局部常数核算移至附录 E。局部几何、瞬态、强制前缀、概率下界和 Cantor 构造均重写了证明叙述，六项恢复结果及必要证明完整保留。
 
-本轮只改四处英文：区分 S 的三段公式与 L_a 的唯一根刻画，删去两处重复预告/总结，并纠正附录 D 的解释。固定容差零率所需的是所有输入的一致趋零；指数速度是充分条件，不能将其与仅可行轨迹趋零混淆。没有改动 20 项正式陈述、六项恢复结果、13 条文献、作者字段和 AI 披露。
+完整连续核读后，未识别出需要改变正式数学结论的错误；修正 Cantor 根区间的记号冲突。20 项正式陈述的数学正文未变，三项引理标题调整；13 条文献、作者状态及 AI 披露保留。最终 37 页编译收敛，逐页版面检查完成。五篇 JDE 的参照落实到具体改写，不能据此认证数学贡献或可读性已获人类认可。
 
-同五篇 JDE 原文身份与 SHA 再核，本轮定向回读摘要、引言及相关证明段落，比较依据见最新记录。最终 PDF 仍 35 页，编译、引用、全文抽取与全部页面渲染检查完成。Wang–Huang 2022 的直接全文覆盖缺口仍未关闭：正式下载返回验证码 HTML，未取得可核作者全文。人工作者信息、数学审读及批准仍需确认。
+- [CURRENT.md](CURRENT.md)：当前状态、六项结果页码与停止点。
+- [READER_REWRITE_20261010.md](research/COMBINED_PAPER/READER_REWRITE_20261010.md)：本轮结构调整、关键前后对照、五篇具体依据、验证及限制。
+- [RESTORE.md](research/COMBINED_PAPER/RESTORE.md)：现行稿及原稿、35 页基线等历史入口。
+- [FINAL_READ_20261010.md](research/COMBINED_PAPER/FINAL_READ_20261010.md)：上一轮四处定点修改的历史记录，保留旧页码。
+- [MATH_STYLE_REVIEW_20261010.md](research/COMBINED_PAPER/MATH_STYLE_REVIEW_20261010.md)：较早完整审读与五篇外部全文身份记录。
+- [CONTENT_RESTORATION_20261009.md](research/COMBINED_PAPER/CONTENT_RESTORATION_20261009.md)：六项补回及来源；当前页码以 CURRENT 为准。
 
-- [CURRENT.md](CURRENT.md)：当前状态、六项结果最新页码与停止点。
-- [FINAL_READ_20261010.md](research/COMBINED_PAPER/FINAL_READ_20261010.md)：本轮核查、四处修改、五篇具体比较与剩余限制。
-- [MATH_STYLE_REVIEW_20261010.md](research/COMBINED_PAPER/MATH_STYLE_REVIEW_20261010.md)：上一轮完整修订与外部文献身份记录，历史保留。
-- [RESTORE.md](research/COMBINED_PAPER/RESTORE.md)：现行稿与历史恢复入口。
-- [CONTENT_RESTORATION_20261009.md](research/COMBINED_PAPER/CONTENT_RESTORATION_20261009.md)：六项补回及 39 个可见目录去向；页码以最新记录为准。
-- [P6_Research_History_Audit_20261009.md](research/COMBINED_PAPER/P6_Research_History_Audit_20261009.md)：历史来源索引。
-
-全部旧稿、研究目录、旧报告和提交保留。这是选择性采用的主线论文，不是所有轮次的累积合集。未解决的可靠性与高侧问题、暂停的策略最优问题仍保留原限制。没有新增命题、提高既有期刊定位、分派代理或投稿。完成即停止，不自动进入 R41。
+Wang–Huang 2022 的直接全文覆盖缺口仍未关闭。§3.2、Lemma 5.1 和 §8.2 仍需作者按目标读者判断；没有真人读者测试。真实作者信息、人工数学复核及稿件/披露批准仍待确认。所有旧稿、研究目录及旧报告保留；只处理 P6，无子代理、无新研究、无投稿。完成普通提交和远端回读后停止。
 
 ## 历史研究记录（以下不构成自动续研授权）
 

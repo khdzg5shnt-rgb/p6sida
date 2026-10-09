@@ -1,30 +1,29 @@
 # P6 当前状态
 
-截至 2026-10-10（Asia/Shanghai），已完成用户授权的一次“完整终读与定点修订”。基线 main 为 `b7d5336746a074689c5e4b3d4b94ce4af10a92ba`；恢复时无后续提交。
+已完成用户授权的“面向读者的全文结构性改写”。本轮基线 main 为 `4daf068c7d31a245a6406b504ddbf4e1249a0761`；开始及提交前回查均无新增远端工作。只处理 P6，单代理执行，未开展新研究或重启暂停问题。
 
-唯一现行稿：*Precision and reliability costs in contracting control systems*。
-[TeX](paper/P6_PRECISION_COST.tex) 与 [35 页 PDF](paper/P6_PRECISION_COST.pdf) 对应。
-最新记录：[FINAL_READ_20261010](research/COMBINED_PAPER/FINAL_READ_20261010.md)。
-上一轮完整数学与行文记录：[MATH_STYLE_REVIEW_20261010](research/COMBINED_PAPER/MATH_STYLE_REVIEW_20261010.md)；保留历史身份，不覆盖。
+唯一现行英文稿：*Precision and reliability costs in contracting control systems*。
+[完整 TeX](paper/P6_PRECISION_COST.tex) 与 [37 页 PDF](paper/P6_PRECISION_COST.pdf) 对应。
+[本轮修改说明](research/COMBINED_PAPER/READER_REWRITE_20261010.md) 给出关键前后对照、五篇 JDE 的具体参照、数学核查范围及剩余阅读难点。
 
-本轮全文终读正文与四个附录，从定义核查证明链，未识别出需撤回正式结果的必要证明缺口。只改四处：收紧 S 与 L_a 的公式形式说明；删除两处重复总结/证明预告；纠正附录 D 对固定容差零率条件的解释——指数收缩足够，但关键是所有输入的一致趋零，不能与仅可行轨迹趋零混淆。
+改写覆盖摘要、引言、主结果组织、局部几何、有限瞬态、强制前缀、概率下界及 Cantor 构造。先由已有匹配线性模型说明目录服务的状态、角区间与径向收缩，再区分精度和失败概率。面积工具移至 §4，局部常数计算完整移至新附录 E。主要定理数学内容未变；没有将语言改善称作数学贡献提升。
 
-20 项正式陈述逐字保留，136 个唯一标签、17 个 proof 环境及 13 条文献保留；作者字段与 AI 披露不变。最终 35 页编译收敛，交叉引用、全文抽取及所有页面渲染检查完成。本轮定向回读同五篇 JDE 的具体段落；两篇正式版、三篇已核作者稿，不冒称本轮重新全文阅读外部五篇。
-
-| 六项保留结果 | 当前最终位置 |
+| 六项保留结果 | 当前位置 |
 | --- | --- |
-| 逆面积指数下界 | §8.4 / Corollary 8.1，p.23 |
-| 角度影响径向收缩 | §9.2，p.25 |
-| 内部可行折叠 | §9.3 / Proposition 9.1，pp.25–27 |
-| 局部一致与远处塌缩 | §9.4 / Proposition 9.2，pp.27–28 |
-| 匹配线性有限时域概率比较 | Appendix C，pp.31–33；Lemma C.1，p.32 |
-| arsinh 正熵与可行状态收敛 | Appendix D，pp.33–34；Proposition D.1，p.33 |
+| 逆面积指数下界 | §8.5 / Corollary 8.1，p.25 |
+| 角依赖径向例子 | §9.2，p.27 |
+| 内部可行折叠 | §9.3 / Proposition 9.1，pp.27–29 |
+| 远处塌缩 | §9.4 / Proposition 9.2，pp.29–30 |
+| 匹配线性有限时域概率比较 | Appendix C，pp.33–34；Lemma C.1，p.34 |
+| arsinh 正熵与可行状态收敛 | Appendix D，pp.34–36；Proposition D.1，p.35 |
 
-Wang–Huang 2022 书目信息及 DOI 重新核实；正式下载实际返回验证码 HTML，未取得可核全文，直接覆盖缺口仍在。未解决范围仍包括反例准确可靠性谱及极限、折叠可靠性、塌缩高侧准确谱、一般失配高侧、任意正面积紧集高侧及暂停的策略最优问题。
+完整连续核读，重查量词、常数依赖、极限顺序、首真越界及再进入。修正 Cantor 根区间与地址 0 区间共用 J₀ 的记号冲突；根改为 J∅。未识别出需要改变正式结论的证明错误。20 项正式陈述的数学正文保留，仅三项引理标题改写；17 段 proof、136 个旧标签及 13 条文献保留，新增一个附录标签。计数与编译不代替证明或可读性判断。
 
-真实作者信息、人工数学审读及稿件/披露批准仍待确认。AI 辅助复核不是独立人类同行认证；没有 AI 概率分数或不可检测承诺，没有提高既有期刊定位。
+37 页编译收敛，无未定义引用、LaTeX 警告或 overfull/underfull 提示，所有页面已逐页查看渲染图。§3.2、Lemma 5.1、§8.2 仍较密，需要作者判断是否达到目标读者要求；没有真人读者测试。真实作者信息状态及 AI 披露不变。
 
-TeX SHA-256：`81b7aa9ce6a56f6a294c5eac94fbfa9af1a7c88f1c213864d26e04b9ebc0d18c`。
-PDF SHA-256：`a405ab69c70f96e643b9d668186353afedeabfba4edf746095fe40eed6dc7384`。
+Wang–Huang 2022（10.1088/1361-6544/ac4f33）仍未取得可核全文，不能据摘要确认新颖性。一般失配高侧、任意正面积紧集高侧、折叠可靠性、塌缩高侧和 Cantor 准确可靠性谱及极限仍保持原限制。暂停问题未重启，人工数学审读及作者批准仍待确认。
 
-原稿、旧稿、R01–R40 和旧报告均保留。六项采用来源见 [CONTENT_RESTORATION_20261009](research/COMBINED_PAPER/CONTENT_RESTORATION_20261009.md)，当前页码以上表为准；历史研究不构成自动续研授权。完成后停止，不自动 R41，不重启暂停问题，不投稿。
+TeX SHA-256：`487dad7c8e349a893cb4f04a499898d409019d1ac2c954bb074833af242b3b07`。
+PDF SHA-256：`adc825c49ac728ea4e72367a63fdb5acddb2c7ba97e88842c8aaa08436e471ad`。
+
+35 页基线保留在提交 `4daf068c7d31a245a6406b504ddbf4e1249a0761`，原稿、旧稿、R01–R40 和所有旧报告保持历史身份。恢复见 [RESTORE](research/COMBINED_PAPER/RESTORE.md)。完成本次普通提交与远端回读后停止，不自动新开研究轮，不投稿。
